@@ -1,5 +1,10 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  makeStyles,
+  FormControl,
+  FormGroup,
+  TextField,
+} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -8,8 +13,10 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import Search from "@material-ui/icons/Search";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import MessageIcon from "@material-ui/icons/ChatBubbleOutline";
+import { ModalBlock } from "../components/ModalBlock";
+import { SignedForm } from "../components/SignedForm";
 
-const useStyles = makeStyles((theme) => ({
+export const useStylesSignIn = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     height: "100vh",
@@ -28,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     top: "53%",
     transform: "translate(-50%, -50%)",
-    width: "350%",
-    height: "350%",
+    width: "260%",
+    height: "260%",
   },
   blueSideListInfo: {
     position: "relative",
@@ -72,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
   },
 
+  loginSideField: {
+    marginBottom: 18,
+  },
+  registerField: {
+    marginBottom: theme.spacing(5),
+  },
   // button: {
   // 	fontWeight: 700,
   // },
@@ -82,7 +95,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const SignIn = () => {
-  const classes = useStyles();
+  const classes = useStylesSignIn();
+  const [visibleSign, setvisibleSign] = useState(false);
+  const [visibleModal, setVisibleModal] = useState(false);
+
+  const handleClickSignIn = () => {
+    setVisibleModal(true);
+    setvisibleSign(true);
+  };
+
+  const handleClickSignUp = () => {
+    setVisibleModal(false);
+    setvisibleSign(true);
+  };
+
+  const handleClose = () => {
+    setvisibleSign(false);
+  };
 
   return (
     <div className={classes.wrapper}>
@@ -123,6 +152,7 @@ export const SignIn = () => {
           </Typography>
           <br />
           <Button
+            onClick={handleClickSignUp}
             style={{ marginBottom: 18 }}
             variant="contained"
             color="primary"
@@ -130,9 +160,54 @@ export const SignIn = () => {
           >
             Зарегистрироваться
           </Button>
-          <Button variant="outlined" color="primary" fullWidth={true}>
+          <Button
+            onClick={handleClickSignIn}
+            variant="outlined"
+            color="primary"
+            fullWidth={true}
+          >
             Войти
           </Button>
+
+          <ModalBlock
+            signed={visibleModal}
+            visible={visibleSign}
+            onClose={handleClose}
+            // classes={classes}
+          >
+            {visibleModal ? (
+              <FormControl component="fieldset" fullWidth>
+                <FormGroup aria-label="position" row>
+                  <TextField
+                    className={classes.loginSideField}
+                    autoFocus
+                    id="email"
+                    label="E-Mail"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    variant="filled"
+                    type="email"
+                    fullWidth
+                  />
+                  <TextField
+                    className={classes.loginSideField}
+                    autoFocus
+                    id="password"
+                    label="Пароль"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    variant="filled"
+                    type="password"
+                    fullWidth
+                  />
+                </FormGroup>
+              </FormControl>
+            ) : (
+              <SignedForm classes={classes} />
+            )}
+          </ModalBlock>
         </div>
       </section>
     </div>
