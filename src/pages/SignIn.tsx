@@ -4,6 +4,7 @@ import {
   FormControl,
   FormGroup,
   TextField,
+  DialogActions,
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -170,42 +171,56 @@ export const SignIn = () => {
           </Button>
 
           <ModalBlock
-            signed={visibleModal}
+            title={
+              visibleModal ? 'Войти в аккаунт"' : "Создайте учетную запись"
+            }
             visible={visibleSign}
             onClose={handleClose}
             // classes={classes}
           >
             {visibleModal ? (
-              <FormControl component="fieldset" fullWidth>
-                <FormGroup aria-label="position" row>
-                  <TextField
-                    className={classes.loginSideField}
-                    autoFocus
-                    id="email"
-                    label="E-Mail"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    variant="filled"
-                    type="email"
+              <>
+                <FormControl component="fieldset" fullWidth>
+                  <FormGroup aria-label="position" row>
+                    <TextField
+                      className={classes.loginSideField}
+                      autoFocus
+                      id="email"
+                      label="E-Mail"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      variant="filled"
+                      type="email"
+                      fullWidth
+                    />
+                    <TextField
+                      className={classes.loginSideField}
+                      autoFocus
+                      id="password"
+                      label="Пароль"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      variant="filled"
+                      type="password"
+                      fullWidth
+                    />
+                  </FormGroup>
+                </FormControl>
+                <DialogActions>
+                  <Button
+                    onClick={handleClose}
+                    variant="contained"
+                    color="primary"
                     fullWidth
-                  />
-                  <TextField
-                    className={classes.loginSideField}
-                    autoFocus
-                    id="password"
-                    label="Пароль"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    variant="filled"
-                    type="password"
-                    fullWidth
-                  />
-                </FormGroup>
-              </FormControl>
+                  >
+                    Далее
+                  </Button>
+                </DialogActions>
+              </>
             ) : (
-              <SignedForm classes={classes} />
+              <SignedForm onClose={handleClose} classes={classes} />
             )}
           </ModalBlock>
         </div>

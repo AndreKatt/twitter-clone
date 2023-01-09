@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { IconButton, Typography } from "@material-ui/core";
+import { Button, IconButton, Typography } from "@material-ui/core";
 import {
   Twitter,
   Search,
@@ -9,8 +9,11 @@ import {
   PermIdentityOutlined,
   BookmarkBorderOutlined,
   EmailOutlined,
+  MoreHoriz,
 } from "@material-ui/icons";
-import { useHomeStyles } from "../pages/Home";
+import { useHomeStyles } from "../pages/Home/theme";
+import { ModalBlock } from "./ModalBlock";
+import { AddTweetForm } from "./AddTweetForm";
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -19,6 +22,16 @@ interface SideMenuProps {
 export const SideMenu: React.FC<SideMenuProps> = ({
   classes,
 }): React.ReactElement => {
+  const [visibleAddTweet, setVisibleAddTweet] = useState(false);
+
+  const handleOpenAddTweet = () => {
+    setVisibleAddTweet(true);
+  };
+
+  const handleCloseAddTweet = () => {
+    setVisibleAddTweet(false);
+  };
+
   return (
     <ul className={classes.sideMenuList}>
       <li className={classes.sideMenuListItem}>
@@ -28,9 +41,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <Search className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <Search className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Поиск
           </Typography>
@@ -38,9 +49,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <NotificationsNone className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <NotificationsNone className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Уведомления
           </Typography>
@@ -48,9 +57,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <EmailOutlined className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <EmailOutlined className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Сообщения
           </Typography>
@@ -58,9 +65,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <BookmarkBorderOutlined className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <BookmarkBorderOutlined className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Закладки
           </Typography>
@@ -68,9 +73,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <ListAltOutlined className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <ListAltOutlined className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Список
           </Typography>
@@ -78,13 +81,35 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.sideMenuListItem}>
         <div>
-          <IconButton aria-label="">
-            <PermIdentityOutlined className={classes.sideMenuListItemIcon} />
-          </IconButton>
+          <PermIdentityOutlined className={classes.sideMenuListItemIcon} />
           <Typography className={classes.sideMenuListItemLabel} variant="h6">
             Профиль
           </Typography>
         </div>
+      </li>
+      <li className={classes.sideMenuListItem}>
+        <div>
+          <MoreHoriz className={classes.sideMenuListItemIcon} />
+          <Typography className={classes.sideMenuListItemLabel} variant="h6">
+            Еще
+          </Typography>
+        </div>
+      </li>
+      <li className={classes.sideMenuListItem}>
+        <Button
+          onClick={handleOpenAddTweet}
+          className={classes.sideMenuTweetButton}
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
+          <span>Твитнуть</span>
+        </Button>
+        <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>
+          <div style={{ width: 550 }}>
+            <AddTweetForm maxRows={15} classes={classes} />
+          </div>
+        </ModalBlock>
       </li>
     </ul>
   );
