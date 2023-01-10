@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -15,15 +15,31 @@ import {
   Typography,
 } from "@material-ui/core";
 import { PersonAddOutlined, Search } from "@material-ui/icons";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { Tweet } from "../../components/Tweet";
 import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
 import { useHomeStyles } from "./theme";
 import { SearchTextField } from "../../components/SearchTextField";
+import { useDispatch } from "react-redux";
+import { fetchTweets } from "../../store/ducks/tweets/actionCreatores";
+import { useSelector } from "react-redux";
+import {
+  selectTweetsLoading,
+  selectTweetsItems,
+} from "../../store/ducks/tweets/selectors";
 
 export const Home = (): React.ReactElement => {
+  const dispatch = useDispatch();
   const classes = useHomeStyles();
+
+  const tweets = useSelector(selectTweetsItems);
+  const isLoading = useSelector(selectTweetsLoading);
+
+  useEffect(() => {
+    dispatch(fetchTweets());
+  }, [dispatch]);
 
   return (
     <Container className={classes.wrapper} maxWidth="lg">
@@ -43,66 +59,22 @@ export const Home = (): React.ReactElement => {
 
               <div className={classes.addFormBottomLine} />
             </Paper>
-            <Tweet
-              text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio voluptatibus vero, veniam eos, ipsum ut expedita laudantium voluptas error dicta earum neque tempora, ex recusandae velit aperiam eligendi officia autem."
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
-            <Tweet
-              text="Porro optio alias saepe labore incidunt asperiores doloribus fuga sequi repellendus exercitationem iusto, aliquid laudantium repellat officiis fugit quibusdam! Libero, nam facilis."
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
-            <Tweet
-              text="Eveniet ad aut esse nulla! In dolores vitae numquam quibusdam, quas tempora! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium aliquam aperiam nesciunt consectetur commodi iusto voluptatibus laborum recusandae soluta esse, laboriosam facere! Quae voluptates hic voluptatibus minima eveniet, earum eligendi!"
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
-            <Tweet
-              text="Я гений!"
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
-            <Tweet
-              text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio voluptatibus vero, veniam eos, ipsum ut expedita laudantium voluptas error dicta earum neque tempora, ex recusandae velit aperiam eligendi officia autem."
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
-            <Tweet
-              text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio voluptatibus vero, veniam eos, ipsum ut expedita laudantium voluptas error dicta earum neque tempora, ex recusandae velit aperiam eligendi officia autem."
-              user={{
-                fullname: "HIDEO_KOJIMA",
-                userName: "HIDEO_KOJIMA_EN",
-                avaterUrl:
-                  "https://pbs.twimg.com/profile_images/914211724412166144/Bf2Yij9b_400x400.jpg",
-              }}
-              classes={classes}
-            />
+            {isLoading ? (
+              <div className={classes.tweetsLoadingSpinner}>
+                <CircularProgress />
+              </div>
+            ) : (
+              tweets.map((tweet) => (
+                <Tweet
+                  key={tweet._id}
+                  text={tweet.text}
+                  fullname={tweet.user.fullname}
+                  userName={tweet.user.username}
+                  avatarUrl={tweet.user.avatarUrl}
+                  classes={classes}
+                />
+              ))
+            )}
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>

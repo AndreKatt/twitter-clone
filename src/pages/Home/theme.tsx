@@ -121,6 +121,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetUserName: {
     color: grey[500],
   },
+  tweetsLoadingSpinner: {
+    textAlign: "center",
+    paddingTop: 150,
+  },
   rightSide: {
     paddingTop: 20,
     position: "sticky",

@@ -14,17 +14,18 @@ import { useHomeStyles } from "../pages/Home/theme";
 interface TweetProps {
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
-  user: {
-    fullname: string;
-    userName: string;
-    avaterUrl: string;
-  };
+
+  fullname: string;
+  userName: string;
+  avatarUrl: string;
 }
 
 export const Tweet: React.FC<TweetProps> = ({
   classes,
   text,
-  user,
+  fullname,
+  userName,
+  avatarUrl,
 }): React.ReactElement => {
   return (
     <Paper
@@ -33,14 +34,14 @@ export const Tweet: React.FC<TweetProps> = ({
     >
       <Avatar
         className={classes.tweetAvatar}
-        alt={`Аватарка пользователя ${user.fullname}`}
-        src={user.avaterUrl}
+        alt={`Аватарка пользователя ${fullname}`}
+        src={avatarUrl}
       />
       <div className={classes.tweetContent}>
         <div className={classes.tweetTextContent}>
           <Typography>
-            <b>{user.fullname}</b>&nbsp;
-            <span className={classes.tweetUserName}>@{user.userName}</span>
+            <b>{fullname}</b>&nbsp;
+            <span className={classes.tweetUserName}>@{userName}</span>
             &nbsp;
             <span className={classes.tweetUserName}>·</span>&nbsp;
             <span className={classes.tweetUserName}>1 ч</span>
