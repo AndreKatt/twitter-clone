@@ -1,5 +1,5 @@
-import { makeStyles, Theme } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
+import { makeStyles, Theme } from "@material-ui/core";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
   wrapper: {
@@ -105,6 +105,20 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   tweetLink: {
     color: "inherit",
     textDecoration: "none",
+  },
+  tweetInfoBlock: {
+    display: "flex",
+    flexDirection: "column",
+    "& div": {
+      marginTop: -27,
+    },
+  },
+  fullTweetText: {
+    fontSize: 24,
+    marginTop: -10,
+    marginLeft: 5,
+    lineHeight: 1.3125,
+    wordBreak: "break-word",
   },
   tweetContent: {
     display: "flex",

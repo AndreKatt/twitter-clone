@@ -3,13 +3,8 @@ import {
   SetTopicsActionInterface,
   FetchTopicsActionInterface,
   SetTopicsLoadingStateActionInterface,
+  TopicsActionsType,
 } from "./contracts/actionTypes";
-
-export enum TopicsActionsType {
-  SET_TOPICS = "tweets/SET_TOPICS",
-  FETCH_TOPICS = "tweets/FETCH_TOPICS",
-  SET_LOADING_STATE = "tweets/SET_LOADING_STATE",
-}
 
 export const setTopics = (
   payload: TopicsState["items"]

@@ -4,7 +4,7 @@ import { Tweet, TweetsState } from "../../store/ducks/tweets/contracts/state";
 export const TweetsApi = {
   async fetchTweets(): Promise<TweetsState["items"] | undefined> {
     try {
-      const { data } = await axios.get("/tweets");
+      const { data } = await axios.get("/tweets?_sort=id&_order=desc");
       return data;
     } catch (e) {
       console.log(e);
@@ -23,7 +23,6 @@ export const TweetsApi = {
   async addTweet(payload: Tweet): Promise<Tweet | undefined> {
     try {
       const { data } = await axios.post("/tweets", payload);
-      console.log(data);
       return data;
     } catch (e) {
       console.log(e);

@@ -1,7 +1,14 @@
-import React, { ReactElement, useEffect } from "react";
+import React from "react";
+import classNames from "classnames";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { ReactElement, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import Paper from "@material-ui/core/Paper";
+import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import {
   fetchTweetData,
@@ -11,10 +18,8 @@ import {
   selectTweetData,
   selectTweetLoading,
 } from "../store/ducks/tweet/selectors";
-import { Tweet } from "../components/Tweet";
 
 import { useHomeStyles } from "../pages/Home/theme";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
 interface FullTweetProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -50,14 +55,37 @@ export const FullTweet: React.FC<FullTweetProps> = ({
 
   if (tweetData) {
     return (
-      <Tweet
-        _id={tweetData._id}
-        text={tweetData.text}
-        fullname={tweetData.user.fullname}
-        userName={tweetData.user.username}
-        avatarUrl={tweetData.user.avatarUrl}
-        classes={classes}
-      />
+      <Paper variant="outlined">
+        <div className={classNames(classes.tweet, classes.tweetsHeader)}>
+          <Avatar
+            className={classes.tweetAvatar}
+            alt={`Аватарка пользователя ${tweetData.user.fullname}`}
+            src={tweetData.user.avatarUrl}
+          />
+          <div className={classes.tweetContent}>
+            <div className={classes.tweetTextContent}>
+              <Typography className={classes.tweetInfoBlock}>
+                <b>{tweetData.user.fullname}</b>&nbsp;
+                <div>
+                  <span className={classes.tweetUserName}>
+                    @{tweetData.user.username}
+                  </span>
+                  &nbsp;
+                  <span className={classes.tweetUserName}>·</span>&nbsp;
+                  <span className={classes.tweetUserName}>1 ч</span>
+                </div>
+              </Typography>
+            </div>
+          </div>
+        </div>
+        <Typography
+          className={classNames(classes.fullTweetText, classes.tweetsHeader)}
+          variant="body1"
+          gutterBottom
+        >
+          <span> {tweetData.text}</span>
+        </Typography>
+      </Paper>
     );
   }
 

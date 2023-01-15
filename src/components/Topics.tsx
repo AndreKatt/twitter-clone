@@ -1,16 +1,17 @@
 import React from "react";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Divider,
-  Paper,
-} from "@material-ui/core";
-import { useHomeStyles } from "../pages/Home/theme";
-import { useSelector } from "react-redux";
-import { selectTopicsItems } from "../store/ducks/topics/selectors";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+import List from "@material-ui/core/List";
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import Typography from "@material-ui/core/Typography";
+import ListItemText from "@material-ui/core/ListItemText";
+
+import { selectTopicsItems } from "../store/ducks/topics/selectors";
+
+import { useHomeStyles } from "../pages/Home/theme";
 
 interface TopicsProps {
   classes: ReturnType<typeof useHomeStyles>;

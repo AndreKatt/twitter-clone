@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -6,34 +7,33 @@ import { Outlet, useLocation, useNavigate } from "react-router-dom";
 // mui
 // components
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
-import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-//icons
-import CircularProgress from "@material-ui/core/CircularProgress";
+import ListItem from "@material-ui/core/ListItem";
+import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
-import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
+import Typography from "@material-ui/core/Typography";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import InputAdornment from "@material-ui/core/InputAdornment";
+//icons
 import Search from "@material-ui/icons/Search";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
 
 // redux
 import { fetchTweets } from "../../store/ducks/tweets/actionCreatores";
-
-import { selectTopicsLoading } from "../../store/ducks/topics/selectors";
 import { fetchTopics } from "../../store/ducks/topics/actionCreatores";
+import { selectTopicsLoading } from "../../store/ducks/topics/selectors";
 
 // components
+import { Topics } from "../../components/Topics";
 import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
 import { SearchTextField } from "../../components/SearchTextField";
-import { Topics } from "../../components/Topics";
 
 // styles
 import { useHomeStyles } from "./theme";

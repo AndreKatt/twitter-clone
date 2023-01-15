@@ -1,6 +1,8 @@
 import produce from "immer";
 import { Draft } from "immer/dist/internal";
-import { TweetActions, TweetActionsType } from "./actionCreatores";
+
+import { TweetActions } from "./actionCreatores";
+import { TweetActionsType } from "./contracts/actionTypes";
 import { LoadingState, TweetState } from "./contracts/state";
 
 const initialTweetState: TweetState = {

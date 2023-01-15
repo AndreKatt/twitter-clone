@@ -1,7 +1,8 @@
-import { applyMiddleware, compose, createStore } from "redux";
-import { rootReducer } from "./rootReducer";
 import createSagaMiddleware from "@redux-saga/core";
+import { applyMiddleware, compose, createStore } from "redux";
+
 import rootSaga from "./saga";
+import { rootReducer } from "./rootReducer";
 import { TweetsState } from "./ducks/tweets/contracts/state";
 import { TopicsState } from "./ducks/topics/contracts/state";
 import { TweetState } from "./ducks/tweet/contracts/state";

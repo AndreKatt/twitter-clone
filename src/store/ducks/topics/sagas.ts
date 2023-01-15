@@ -1,11 +1,9 @@
 import { call, put, takeEvery } from "redux-saga/effects";
+
 import { TopicsApi } from "../../../services/api/topicsApi ";
-import {
-  setTopics,
-  setTopicsLoadingState,
-  TopicsActionsType,
-} from "./actionCreatores";
 import { LoadingState, Topic } from "./contracts/state";
+import { TopicsActionsType } from "./contracts/actionTypes";
+import { setTopics, setTopicsLoadingState } from "./actionCreatores";
 
 export function* fetchTopicsRequest() {
   try {

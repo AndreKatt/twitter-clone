@@ -1,11 +1,10 @@
 import React from "react";
-import {
-  Button,
-  DialogActions,
-  FormControl,
-  FormGroup,
-  TextField,
-} from "@material-ui/core";
+
+import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import DialogActions from "@material-ui/core/DialogActions";
 import { useStylesSignIn } from "../pages/SignIn";
 
 interface SignedFormProps {

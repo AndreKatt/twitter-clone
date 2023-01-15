@@ -1,4 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
+
+import Button from "@material-ui/core/Button";
+import Search from "@material-ui/icons/Search";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import Typography from "@material-ui/core/Typography";
+import MessageIcon from "@material-ui/icons/ChatBubbleOutline";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import {
   makeStyles,
   FormControl,
@@ -6,14 +14,7 @@ import {
   TextField,
   DialogActions,
 } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 
-// icons
-import TwitterIcon from "@material-ui/icons/Twitter";
-import Search from "@material-ui/icons/Search";
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
-import MessageIcon from "@material-ui/icons/ChatBubbleOutline";
 import { ModalBlock } from "../components/ModalBlock";
 import { SignedForm } from "../components/SignedForm";
 

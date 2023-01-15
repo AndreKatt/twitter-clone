@@ -1,15 +1,17 @@
 import React from "react";
+import classNames from "classnames";
 import { Link } from "react-router-dom";
 
-import { Paper, Typography, Avatar, IconButton } from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import ChatBubbleOutline from "@material-ui/icons/ChatBubbleOutline";
 import {
-  ChatBubbleOutline,
-  RepeatOutlined,
   FavoriteBorderOutlined,
+  RepeatOutlined,
   ReplySharp,
 } from "@material-ui/icons";
-import classNames from "classnames";
-
 import { useHomeStyles } from "../pages/Home/theme";
 
 interface TweetProps {

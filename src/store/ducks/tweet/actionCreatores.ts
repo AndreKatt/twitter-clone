@@ -2,14 +2,9 @@ import {
   SetTweetDataActionInterface,
   FetchTweetDataActionInterface,
   SetTweetDataLoadingStateActionInterface,
+  TweetActionsType,
 } from "./contracts/actionTypes";
 import { LoadingState, TweetState } from "./contracts/state";
-
-export enum TweetActionsType {
-  SET_TWEET_DATA = "tweet/SET_TWEET_DATA",
-  FETCH_TWEET_DATA = "tweet/FETCH_TWEET_DATA",
-  SET_LOADING_STATE = "tweet/SET_LOADING_STATE",
-}
 
 export const setTweetData = (
   payload: TweetState["data"]

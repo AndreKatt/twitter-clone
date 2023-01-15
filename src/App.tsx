@@ -1,16 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-// pages
-import { Home } from "./pages/Home/Home";
 import { SignIn } from "./pages/SignIn";
-
-// outlets
-import { HomeTweets } from "./outlets/HomeTweets";
+import { Home } from "./pages/Home/Home";
 import { FullTweet } from "./outlets/FullTweet";
+import { HomeTweets } from "./outlets/HomeTweets";
 import { TopicTweets } from "./outlets/TopicTweets";
 
-//style
 import { useHomeStyles } from "./pages/Home/theme";
 
 function App() {

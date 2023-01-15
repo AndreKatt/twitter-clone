@@ -1,6 +1,8 @@
 import produce from "immer";
 import { Draft } from "immer/dist/internal";
-import { TopicsActions, TopicsActionsType } from "./actionCreatores";
+
+import { TopicsActions } from "./actionCreatores";
+import { TopicsActionsType } from "./contracts/actionTypes";
 import { LoadingState, TopicsState } from "./contracts/state";
 
 const initialTopicsState: TopicsState = {

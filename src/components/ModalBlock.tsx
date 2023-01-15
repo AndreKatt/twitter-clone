@@ -1,11 +1,10 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton,
-} from "@material-ui/core";
+
+import Dialog from "@material-ui/core/Dialog";
 import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
 
 // import { useStylesSignIn } from "../../pages/SignIn";
 

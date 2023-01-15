@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { Button, IconButton, Typography } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Search from "@material-ui/icons/Search";
+import Twitter from "@material-ui/icons/Twitter";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { AddTweetForm } from "./AddTweetForm";
+import { ModalBlock } from "./ModalBlock";
 import {
-  Twitter,
-  Search,
-  NotificationsNone,
-  ListAltOutlined,
-  PermIdentityOutlined,
   BookmarkBorderOutlined,
   EmailOutlined,
+  ListAltOutlined,
   MoreHoriz,
+  NotificationsNone,
+  PermIdentityOutlined,
 } from "@material-ui/icons";
+
 import { useHomeStyles } from "../pages/Home/theme";
-import { ModalBlock } from "./ModalBlock";
-import { AddTweetForm } from "./AddTweetForm";
-import { Link } from "react-router-dom";
 
 interface SideMenuProps {
   classes: ReturnType<typeof useHomeStyles>;
