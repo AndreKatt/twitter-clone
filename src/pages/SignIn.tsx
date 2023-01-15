@@ -171,9 +171,7 @@ export const SignIn = () => {
           </Button>
 
           <ModalBlock
-            title={
-              visibleModal ? 'Войти в аккаунт"' : "Создайте учетную запись"
-            }
+            title={visibleModal ? "Войти в аккаунт" : "Создайте учетную запись"}
             visible={visibleSign}
             onClose={handleClose}
             // classes={classes}

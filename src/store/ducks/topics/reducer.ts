@@ -1,28 +1,28 @@
 import produce from "immer";
 import { Draft } from "immer/dist/internal";
-import { TweetsActions, TweetsActionsType } from "./actionCreatores";
-import { LoadingState, TweetsState } from "./contracts/state";
+import { TopicsActions, TopicsActionsType } from "./actionCreatores";
+import { LoadingState, TopicsState } from "./contracts/state";
 
-const initialTweetsState: TweetsState = {
+const initialTopicsState: TopicsState = {
   items: [],
   loadingState: LoadingState.NEVER,
 };
 
 // immer
-export const tweetsReducer = produce(
-  (draft: Draft<TweetsState>, action: TweetsActions) => {
+export const topicsReducer = produce(
+  (draft: Draft<TopicsState>, action: TopicsActions) => {
     switch (action.type) {
-      case TweetsActionsType.SET_TWEETS:
+      case TopicsActionsType.SET_TOPICS:
         draft.items = action.payload;
         draft.loadingState = LoadingState.LOADED;
         break;
 
-      case TweetsActionsType.FETCH_TWEETS:
+      case TopicsActionsType.FETCH_TOPICS:
         draft.items = [];
         draft.loadingState = LoadingState.LOADING;
         break;
 
-      case TweetsActionsType.SET_LOADING_STATE:
+      case TopicsActionsType.SET_LOADING_STATE:
         draft.loadingState = action.payload;
         break;
 
@@ -30,5 +30,5 @@ export const tweetsReducer = produce(
         break;
     }
   },
-  initialTweetsState
+  initialTopicsState
 );

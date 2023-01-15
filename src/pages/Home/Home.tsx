@@ -1,45 +1,61 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
+// mui
+// components
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import {
-  Avatar,
-  Button,
-  Divider,
-  InputAdornment,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Paper,
-  Typography,
-} from "@material-ui/core";
-import { PersonAddOutlined, Search } from "@material-ui/icons";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
+import ListItemText from "@material-ui/core/ListItemText";
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
+//icons
 import CircularProgress from "@material-ui/core/CircularProgress";
+import IconButton from "@material-ui/core/IconButton";
+import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
+import Search from "@material-ui/icons/Search";
 
-import { Tweet } from "../../components/Tweet";
+// redux
+import { fetchTweets } from "../../store/ducks/tweets/actionCreatores";
+
+import { selectTopicsLoading } from "../../store/ducks/topics/selectors";
+import { fetchTopics } from "../../store/ducks/topics/actionCreatores";
+
+// components
 import { SideMenu } from "../../components/SideMenu";
 import { AddTweetForm } from "../../components/AddTweetForm";
-import { useHomeStyles } from "./theme";
 import { SearchTextField } from "../../components/SearchTextField";
-import { useDispatch } from "react-redux";
-import { fetchTweets } from "../../store/ducks/tweets/actionCreatores";
-import { useSelector } from "react-redux";
-import {
-  selectTweetsLoading,
-  selectTweetsItems,
-} from "../../store/ducks/tweets/selectors";
+import { Topics } from "../../components/Topics";
 
-export const Home = (): React.ReactElement => {
+// styles
+import { useHomeStyles } from "./theme";
+
+interface HomeProps {
+  classes: ReturnType<typeof useHomeStyles>;
+}
+
+export const Home: React.FC<HomeProps> = ({ classes }) => {
   const dispatch = useDispatch();
-  const classes = useHomeStyles();
+  const location = useLocation();
+  const nav = useNavigate();
 
-  const tweets = useSelector(selectTweetsItems);
-  const isLoading = useSelector(selectTweetsLoading);
+  const isLoadingTopics = useSelector(selectTopicsLoading);
 
   useEffect(() => {
     dispatch(fetchTweets());
+    dispatch(fetchTopics());
   }, [dispatch]);
+
+  const isHomeLocation = location.pathname === "/home";
+  const isTopicsLocation = location.pathname === "/home/search";
 
   return (
     <Container className={classes.wrapper} maxWidth="lg">
@@ -50,31 +66,29 @@ export const Home = (): React.ReactElement => {
         <Grid sm={8} md={6} item>
           <Paper className={classes.tweetsWrapper} variant="outlined">
             <Paper className={classes.tweetsHeader} variant="outlined">
-              <Typography variant="h6">Главная</Typography>
+              {!isHomeLocation && (
+                <IconButton
+                  onClick={() => nav(-1)}
+                  color="primary"
+                  className={classes.tweetsHeaderBackButton}
+                >
+                  <ArrowBack />
+                </IconButton>
+              )}
+              <Typography variant="h6">
+                {!isHomeLocation ? "Твитнуть" : "Главная"}
+              </Typography>
             </Paper>
-            <Paper>
-              <div className={classes.addForm}>
-                <AddTweetForm classes={classes} />
-              </div>
+            {isHomeLocation || isTopicsLocation ? (
+              <Paper>
+                <div className={classes.addForm}>
+                  <AddTweetForm classes={classes} />
+                </div>
+                <div className={classes.addFormBottomLine} />
+              </Paper>
+            ) : null}
 
-              <div className={classes.addFormBottomLine} />
-            </Paper>
-            {isLoading ? (
-              <div className={classes.tweetsLoadingSpinner}>
-                <CircularProgress />
-              </div>
-            ) : (
-              tweets.map((tweet) => (
-                <Tweet
-                  key={tweet._id}
-                  text={tweet.text}
-                  fullname={tweet.user.fullname}
-                  userName={tweet.user.username}
-                  avatarUrl={tweet.user.avatarUrl}
-                  classes={classes}
-                />
-              ))
-            )}
+            <Outlet />
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>
@@ -92,44 +106,13 @@ export const Home = (): React.ReactElement => {
               fullWidth
             />
             <Paper className={classes.rightSideBlock}>
-              <Paper className={classes.rightSideBlockHeader}>
-                <b>Актуальные темы</b>
-              </Paper>
-              <List>
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Санкт-Петербург"
-                    secondary={
-                      <Typography component="span" variant="body2">
-                        Твитов: 3 331
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Украина"
-                    secondary={
-                      <Typography component="span" variant="body2">
-                        Твитов: +100500
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-                <ListItem className={classes.rightSideBlockItem}>
-                  <ListItemText
-                    primary="Беларусь"
-                    secondary={
-                      <Typography component="span" variant="body2">
-                        Твитов: 12 083
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-                <Divider component="li" />
-              </List>
+              {isLoadingTopics ? (
+                <div className={classes.topicsLoadingSpinner}>
+                  <CircularProgress />
+                </div>
+              ) : (
+                <Topics classes={classes} />
+              )}
             </Paper>
             <Paper className={classes.rightSideBlock}>
               <Paper className={classes.rightSideBlockHeader}>

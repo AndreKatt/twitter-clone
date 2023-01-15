@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Paper, Typography, Avatar, IconButton } from "@material-ui/core";
 import {
@@ -12,15 +13,16 @@ import classNames from "classnames";
 import { useHomeStyles } from "../pages/Home/theme";
 
 interface TweetProps {
+  _id: string;
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
-
   fullname: string;
   userName: string;
   avatarUrl: string;
 }
 
 export const Tweet: React.FC<TweetProps> = ({
+  _id,
   classes,
   text,
   fullname,
@@ -48,9 +50,11 @@ export const Tweet: React.FC<TweetProps> = ({
           </Typography>
         </div>
 
-        <Typography variant="body1" gutterBottom>
-          <span> {text}</span>
-        </Typography>
+        <Link to={`tweet/${_id}`} className={classes.tweetLink}>
+          <Typography variant="body1" gutterBottom>
+            <span> {text}</span>
+          </Typography>
+        </Link>
         <div className={classes.tweetFooter}>
           <div>
             <IconButton className={classes.tweetFooterIcon}>

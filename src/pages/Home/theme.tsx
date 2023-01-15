@@ -11,6 +11,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   logoIcon: {
     fontSize: 36,
   },
+
+  // sideMenu
   sideMenuList: {
     position: "sticky",
     top: 0,
@@ -64,6 +66,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+
+  // tweets
   tweetsWrapper: {
     borderRadius: 0,
     height: "100%",
@@ -71,6 +75,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderBottom: 0,
   },
   tweetsHeader: {
+    display: "flex",
+    alignItems: "center",
     borderTop: 0,
     borderLeft: 0,
     borderRight: 0,
@@ -80,8 +86,14 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       fontWeight: 800,
     },
   },
+  tweetsHeaderBackButton: {
+    marginRight: 20,
+  },
+
+  // tweet
   tweet: {
     display: "flex",
+    alignItems: "flex-start",
     flexDirection: "row",
     paddingTop: 15,
     paddingLeft: 20,
@@ -89,6 +101,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       backgroundColor: "rgb(245, 248, 250)",
     },
+  },
+  tweetLink: {
+    color: "inherit",
+    textDecoration: "none",
   },
   tweetContent: {
     display: "flex",
@@ -125,6 +141,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     textAlign: "center",
     paddingTop: 150,
   },
+  topicsLoadingSpinner: {
+    textAlign: "center",
+    paddingTop: 50,
+    paddingBottom: 50,
+  },
+
+  // rightSide Menu
   rightSide: {
     paddingTop: 20,
     position: "sticky",
@@ -163,7 +186,13 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       backgroundColor: "#edf3f6",
     },
+    "& a": {
+      color: "inherit",
+      textDecoration: "none",
+    },
   },
+
+  // addForm
   addForm: {
     padding: 20,
   },

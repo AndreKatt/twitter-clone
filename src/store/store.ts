@@ -3,6 +3,8 @@ import { rootReducer } from "./rootReducer";
 import createSagaMiddleware from "@redux-saga/core";
 import rootSaga from "./saga";
 import { TweetsState } from "./ducks/tweets/contracts/state";
+import { TopicsState } from "./ducks/topics/contracts/state";
+import { TweetState } from "./ducks/tweet/contracts/state";
 
 declare global {
   interface Window {
@@ -19,6 +21,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 export interface RootState {
   tweets: TweetsState;
+  topics: TopicsState;
+  tweet: TweetState;
 }
 
 export const store = createStore(
