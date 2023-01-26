@@ -39,8 +39,15 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     }
   };
 
+  const currentUser = {
+    text: text,
+    user: {
+      email: "katy1998@mail.ru",
+      username: "katty",
+    },
+  };
   const handleClickAddTweet = (): void => {
-    dispatch(fetchAddTweet(text));
+    dispatch(fetchAddTweet(currentUser));
     setText("");
   };
 

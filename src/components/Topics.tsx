@@ -24,7 +24,8 @@ export const Topics: React.FC<TopicsProps> = ({
 
   return (
     <>
-      <Paper className={classes.rightSideBlockHeader}>
+      <p>BlahBlah</p>
+      {/* <Paper className={classes.rightSideBlockHeader}>
         <b>Актуальные темы</b>
       </Paper>
       {topics.map((topic) => (
@@ -45,7 +46,7 @@ export const Topics: React.FC<TopicsProps> = ({
           </ListItem>
           <Divider component="li" />
         </List>
-      ))}
+      ))} */}
     </>
   );
 };

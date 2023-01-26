@@ -1,6 +1,7 @@
 import {
   AddFormState,
   LoadingState,
+  SendTweet,
   Tweet,
   TweetsState,
 } from "./contracts/state";
@@ -22,7 +23,7 @@ export const setTweets = (
 });
 
 export const fetchAddTweet = (
-  payload: string
+  payload: SendTweet
 ): FetchAddTweetActionInterface => ({
   type: TweetsActionsType.FETCH_ADD_TWEET,
   payload,

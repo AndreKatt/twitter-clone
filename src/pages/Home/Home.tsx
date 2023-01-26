@@ -30,10 +30,10 @@ import { fetchTopics } from "../../store/ducks/topics/actionCreatores";
 import { selectTopicsLoading } from "../../store/ducks/topics/selectors";
 
 // components
-import { Topics } from "../../components/Topics";
-import { SideMenu } from "../../components/SideMenu";
-import { AddTweetForm } from "../../components/AddTweetForm";
 import { SearchTextField } from "../../components/SearchTextField";
+import { AddTweetForm } from "../../components/AddTweetForm";
+import { SideMenu } from "../../components/SideMenu";
+import { Topics } from "../../components/Topics";
 
 // styles
 import { useHomeStyles } from "./theme";

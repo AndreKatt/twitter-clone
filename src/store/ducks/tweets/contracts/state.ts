@@ -11,13 +11,24 @@ export enum AddFormState {
   NEVER = "NEVER",
 }
 
+export interface SendTweet {
+  text: string;
+  user: {
+    email: string;
+    // fullname: string;
+    username: string;
+    // avatarUrl: string;
+  };
+}
+
 export interface Tweet {
   _id: string;
   text: string;
   user: {
-    fullname: string;
+    email: string;
+    // fullname: string;
     username: string;
-    avatarUrl: string;
+    // avatarUrl: string;
   };
 }
 

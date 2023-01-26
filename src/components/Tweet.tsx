@@ -18,18 +18,18 @@ interface TweetProps {
   _id: string;
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
-  fullname: string;
+  email: string;
   userName: string;
-  avatarUrl: string;
+  // avatarUrl: string;
 }
 
 export const Tweet: React.FC<TweetProps> = ({
   _id,
   classes,
   text,
-  fullname,
+  email,
   userName,
-  avatarUrl,
+  // avatarUrl,
 }): React.ReactElement => {
   return (
     <Paper
@@ -38,13 +38,13 @@ export const Tweet: React.FC<TweetProps> = ({
     >
       <Avatar
         className={classes.tweetAvatar}
-        alt={`Аватарка пользователя ${fullname}`}
-        src={avatarUrl}
+        alt={`Аватарка пользователя ${email}`}
+        // src={avatarUrl}
       />
       <div className={classes.tweetContent}>
         <div className={classes.tweetTextContent}>
           <Typography>
-            <b>{fullname}</b>&nbsp;
+            <b>{email}</b>&nbsp;
             <span className={classes.tweetUserName}>@{userName}</span>
             &nbsp;
             <span className={classes.tweetUserName}>·</span>&nbsp;

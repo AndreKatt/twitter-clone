@@ -49,6 +49,7 @@
     "jest-watch-typeahead": "^1.0.0",
     "json-server": "^0.17.1",
     "mini-css-extract-plugin": "^2.4.5",
+    "nodemon": "^2.0.20",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
@@ -80,7 +81,7 @@
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^6.4.1"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:8888",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

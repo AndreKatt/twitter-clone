@@ -31,9 +31,9 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({
             key={tweet._id}
             _id={tweet._id}
             text={tweet.text}
-            fullname={tweet.user.fullname}
+            email={tweet.user.email}
             userName={tweet.user.username}
-            avatarUrl={tweet.user.avatarUrl}
+            // avatarUrl={tweet.user.avatarUrl}
             classes={classes}
           />
         ))

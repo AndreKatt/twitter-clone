@@ -52,6 +52,7 @@ export const FullTweet: React.FC<FullTweetProps> = ({
       </div>
     );
   }
+  console.log(tweetData);
 
   if (tweetData) {
     return (
@@ -59,13 +60,13 @@ export const FullTweet: React.FC<FullTweetProps> = ({
         <div className={classNames(classes.tweet, classes.tweetsHeader)}>
           <Avatar
             className={classes.tweetAvatar}
-            alt={`Аватарка пользователя ${tweetData.user.fullname}`}
-            src={tweetData.user.avatarUrl}
+            alt={`Аватарка пользователя ${tweetData.user.email}`}
+            // src={tweetData.user.avatarUrl}
           />
           <div className={classes.tweetContent}>
             <div className={classes.tweetTextContent}>
               <Typography className={classes.tweetInfoBlock}>
-                <b>{tweetData.user.fullname}</b>&nbsp;
+                <b>{tweetData.user.email}</b>&nbsp;
                 <div>
                   <span className={classes.tweetUserName}>
                     @{tweetData.user.username}
