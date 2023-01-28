@@ -1,14 +1,23 @@
 import React from "react";
 import classNames from "classnames";
+import format from "date-fns/format";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { ReactElement, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { ReactElement, useEffect } from "react";
 
-import Paper from "@material-ui/core/Paper";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ChatBubbleOutline from "@material-ui/icons/ChatBubbleOutline";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Avatar from "@material-ui/core/Avatar";
+import Paper from "@material-ui/core/Paper";
+import {
+  FavoriteBorderOutlined,
+  RepeatOutlined,
+  ReplySharp,
+} from "@material-ui/icons";
+import { ru } from "date-fns/locale";
 
 import {
   fetchTweetData,
@@ -52,40 +61,77 @@ export const FullTweet: React.FC<FullTweetProps> = ({
       </div>
     );
   }
-  console.log(tweetData);
 
   if (tweetData) {
     return (
-      <Paper variant="outlined">
-        <div className={classNames(classes.tweet, classes.tweetsHeader)}>
-          <Avatar
-            className={classes.tweetAvatar}
-            alt={`Аватарка пользователя ${tweetData.user.email}`}
-            // src={tweetData.user.avatarUrl}
-          />
-          <div className={classes.tweetContent}>
-            <div className={classes.tweetTextContent}>
-              <Typography className={classes.tweetInfoBlock}>
-                <b>{tweetData.user.email}</b>&nbsp;
-                <div>
-                  <span className={classes.tweetUserName}>
-                    @{tweetData.user.username}
-                  </span>
-                  &nbsp;
-                  <span className={classes.tweetUserName}>·</span>&nbsp;
-                  <span className={classes.tweetUserName}>1 ч</span>
-                </div>
-              </Typography>
+      <Paper>
+        <div className={classes.fullTweetWrapper}>
+          <div className={classNames(classes.tweet, classes.tweetsHeader)}>
+            <Avatar
+              className={classes.tweetAvatar}
+              alt={`Аватарка пользователя ${tweetData.user.email}`}
+              // src={tweetData.user.avatarUrl}
+            />
+            <div className={classes.tweetContent}>
+              <div className={classes.tweetTextContent}>
+                <Typography className={classes.tweetInfoBlock}>
+                  <b>{tweetData.user.email}</b>&nbsp;
+                  <div>
+                    <span className={classes.tweetUserName}>
+                      @{tweetData.user.username}
+                    </span>
+                  </div>
+                </Typography>
+              </div>
+            </div>
+          </div>
+          <Typography
+            className={classNames(classes.fullTweetText, classes.tweetsHeader)}
+            variant="body1"
+            gutterBottom
+          >
+            <span> {tweetData.text}</span>
+            <Typography
+              className={classNames(
+                classes.fullTweetData,
+                classes.tweetUserName
+              )}
+            >
+              <span>{format(new Date(tweetData.createdAt), "H:mm")}</span>
+              &nbsp;
+              <span>·</span>&nbsp;
+              <span>
+                {format(new Date(tweetData.createdAt), "dd MMM yyyy г.", {
+                  locale: ru,
+                })}
+              </span>
+            </Typography>
+          </Typography>
+
+          <div className={classes.fullTweetFooter}>
+            <div>
+              <IconButton className={classes.tweetFooterIcon}>
+                <ChatBubbleOutline style={{ fontSize: 25 }} />
+              </IconButton>
+              <span>1</span>
+            </div>
+            <div>
+              <IconButton className={classes.tweetFooterIcon}>
+                <RepeatOutlined style={{ fontSize: 25 }} />
+              </IconButton>
+            </div>
+            <div>
+              <IconButton className={classes.tweetFooterIcon}>
+                <FavoriteBorderOutlined style={{ fontSize: 25 }} />
+              </IconButton>
+            </div>
+            <div>
+              <IconButton className={classes.tweetFooterIcon}>
+                <ReplySharp style={{ fontSize: 25 }} />
+              </IconButton>
             </div>
           </div>
         </div>
-        <Typography
-          className={classNames(classes.fullTweetText, classes.tweetsHeader)}
-          variant="body1"
-          gutterBottom
-        >
-          <span> {tweetData.text}</span>
-        </Typography>
       </Paper>
     );
   }

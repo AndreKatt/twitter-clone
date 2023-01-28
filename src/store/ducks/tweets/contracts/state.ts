@@ -30,6 +30,7 @@ export interface Tweet {
     username: string;
     // avatarUrl: string;
   };
+  createdAt: string;
 }
 
 export interface TweetsState {

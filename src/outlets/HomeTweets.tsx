@@ -34,6 +34,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({
             email={tweet.user.email}
             userName={tweet.user.username}
             // avatarUrl={tweet.user.avatarUrl}
+            createdAt={tweet.createdAt}
             classes={classes}
           />
         ))
