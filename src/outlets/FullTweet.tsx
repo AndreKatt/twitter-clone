@@ -1,8 +1,8 @@
 import React from "react";
 import classNames from "classnames";
 import format from "date-fns/format";
+import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ReactElement, useEffect } from "react";
 
@@ -17,16 +17,11 @@ import {
   RepeatOutlined,
   ReplySharp,
 } from "@material-ui/icons";
-import { ru } from "date-fns/locale";
 
-import {
-  fetchTweetData,
-  setTweetData,
-} from "../store/ducks/tweet/actionCreatores";
-import {
-  selectTweetData,
-  selectTweetLoading,
-} from "../store/ducks/tweet/selectors";
+import { useAppDispatch } from "../redux/store";
+import { fetchTweetData } from "../redux/tweet/asyncActions";
+import { selectTweetData, selectTweetLoading } from "../redux/tweet/selectors";
+import { setTweetData } from "../redux/tweet/slice";
 
 import { useHomeStyles } from "../pages/Home/theme";
 
@@ -38,7 +33,7 @@ export const FullTweet: React.FC<FullTweetProps> = ({
   classes,
 }): ReactElement | null => {
   const { id }: { id?: string } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const tweetData = useSelector(selectTweetData);
   const isTweetLoading = useSelector(selectTweetLoading);
 

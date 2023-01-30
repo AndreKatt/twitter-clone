@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
@@ -25,9 +24,9 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
 
 // redux
-import { fetchTweets } from "../../store/ducks/tweets/actionCreatores";
-import { fetchTopics } from "../../store/ducks/topics/actionCreatores";
-import { selectTopicsLoading } from "../../store/ducks/topics/selectors";
+import { selectTopicsLoading } from "../../redux/topics/selectors";
+import { fetchTweets } from "../../redux/tweets/asyncActions";
+import { fetchTopics } from "../../redux/topics/asyncActions";
 
 // components
 import { SearchTextField } from "../../components/SearchTextField";
@@ -37,13 +36,14 @@ import { Topics } from "../../components/Topics";
 
 // styles
 import { useHomeStyles } from "./theme";
+import { useAppDispatch } from "../../redux/store";
 
 interface HomeProps {
   classes: ReturnType<typeof useHomeStyles>;
 }
 
 export const Home: React.FC<HomeProps> = ({ classes }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const nav = useNavigate();
 

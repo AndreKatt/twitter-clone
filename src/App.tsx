@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { SignIn } from "./pages/SignIn";
+import { SignIn } from "./pages/SignIn/SignIn";
 import { Home } from "./pages/Home/Home";
 import { FullTweet } from "./outlets/FullTweet";
 import { HomeTweets } from "./outlets/HomeTweets";

@@ -7,7 +7,7 @@ import { useHomeStyles } from "../pages/Home/theme";
 import {
   selectTweetsItems,
   selectTweetsLoading,
-} from "../store/ducks/tweets/selectors";
+} from "../redux/tweets/selectors";
 
 interface HomeTweetsProps {
   classes: ReturnType<typeof useHomeStyles>;

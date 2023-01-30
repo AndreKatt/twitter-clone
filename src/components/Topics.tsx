@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import ListItemText from "@material-ui/core/ListItemText";
 
-import { selectTopicsItems } from "../store/ducks/topics/selectors";
+import { selectTopicsItems } from "../redux/topics/selectors";
 
 import { useHomeStyles } from "../pages/Home/theme";
 

@@ -6,12 +6,9 @@ import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
-// import { useStylesSignIn } from "../../pages/SignIn";
-
 interface ModalBlockProps {
   title?: string;
   children: React.ReactNode;
-  // classes: ReturnType<typeof useStylesSignIn>;
   visible: boolean;
   onClose: () => void;
 }
@@ -33,7 +30,6 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
           <CloseIcon style={{ fontSize: 26 }} color="secondary" />
         </IconButton>
         {title}
-        {/* {signed ? "Войти в аккаунт" : "Создайте учетную запись"} */}
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
     </Dialog>

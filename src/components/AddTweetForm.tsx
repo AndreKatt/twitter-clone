@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import classNames from "classnames";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Alert from "@mui/material/Alert";
 import Button from "@material-ui/core/Button";
@@ -11,11 +11,11 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { ImageOutlined, SentimentSatisfiedOutlined } from "@material-ui/icons";
 
-import { AddFormState } from "../store/ducks/tweets/contracts/state";
-import { selectAddFormState } from "../store/ducks/tweets/selectors";
-import { fetchAddTweet } from "../store/ducks/tweets/actionCreatores";
-
 import { useHomeStyles } from "../pages/Home/theme";
+import { useAppDispatch } from "../redux/store";
+import { selectAddFormState } from "../redux/tweets/selectors";
+import { addTweet } from "../redux/tweets/asyncActions";
+import { AddFormState } from "../redux/tweets/types";
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -25,7 +25,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   classes,
   maxRows,
 }): React.ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
   const [text, setText] = useState<string>("");
   const textLimitPercent = (text.length / 280) * 100;
@@ -47,7 +47,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     },
   };
   const handleClickAddTweet = (): void => {
-    dispatch(fetchAddTweet(currentUser));
+    dispatch(addTweet(currentUser));
     setText("");
   };
 

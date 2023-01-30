@@ -7,8 +7,6 @@ import Search from "@material-ui/icons/Search";
 import Twitter from "@material-ui/icons/Twitter";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import { AddTweetForm } from "./AddTweetForm";
-import { ModalBlock } from "./ModalBlock";
 import {
   BookmarkBorderOutlined,
   EmailOutlined,
@@ -18,6 +16,8 @@ import {
   PermIdentityOutlined,
 } from "@material-ui/icons";
 
+import { ModalBlock } from "./ModalBlock";
+import { AddTweetForm } from "./AddTweetForm";
 import { useHomeStyles } from "../pages/Home/theme";
 
 interface SideMenuProps {
