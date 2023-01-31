@@ -12,6 +12,3 @@ export const selectTopicstStatus = (state: RootState): LoadingState =>
 
 export const selectTopicsLoading = (state: RootState): boolean =>
   selectTopicstStatus(state) === LoadingState.LOADING;
-
-export const selectTopicsLoaded = (state: RootState): boolean =>
-  selectTopicstStatus(state) === LoadingState.LOADED;

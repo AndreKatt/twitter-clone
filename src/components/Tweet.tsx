@@ -24,7 +24,7 @@ interface TweetProps {
   _id: string;
   text: string;
   classes: ReturnType<typeof useHomeStyles>;
-  email: string;
+  fullname: string;
   userName: string;
   // avatarUrl: string;
   createdAt: string;
@@ -34,7 +34,7 @@ export const Tweet: React.FC<TweetProps> = ({
   _id,
   classes,
   text,
-  email,
+  fullname,
   userName,
   // avatarUrl,
   createdAt,
@@ -49,6 +49,7 @@ export const Tweet: React.FC<TweetProps> = ({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <Paper
       className={classNames(classes.tweet, classes.tweetWrapper)}
@@ -58,7 +59,7 @@ export const Tweet: React.FC<TweetProps> = ({
         <div className={classes.tweetAvatarWrapper}>
           <Avatar
             className={classes.tweetAvatar}
-            alt={`Аватарка пользователя ${email}`}
+            alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
         </div>
@@ -67,7 +68,7 @@ export const Tweet: React.FC<TweetProps> = ({
           <div className={classes.tweetHeaderWrapper}>
             <div className={classes.tweetTextContent}>
               <Typography>
-                <b>{email}</b>&nbsp;
+                <b>{fullname}</b>&nbsp;
                 <span className={classes.tweetUserName}>@{userName}</span>
                 &nbsp;
                 <span className={classes.tweetUserName}>·</span>&nbsp;

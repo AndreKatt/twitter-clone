@@ -10,7 +10,7 @@ export interface SendTweet {
   text: string;
   user: {
     email: string;
-    // fullname: string;
+    fullname: string;
     username: string;
     // avatarUrl: string;
   };
@@ -21,7 +21,7 @@ export interface Tweet {
   text: string;
   user: {
     email: string;
-    // fullname: string;
+    fullname: string;
     username: string;
     // avatarUrl: string;
   };

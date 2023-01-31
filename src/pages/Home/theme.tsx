@@ -23,6 +23,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   },
   sideMenuListItem: {
     cursor: "pointer",
+    "& a": {
+      textDecoration: "none",
+      color: "inherit",
+    },
     "&:hover": {
       "& div": {
         backgroundColor: "rgba(29, 161, 242, 0.1)",

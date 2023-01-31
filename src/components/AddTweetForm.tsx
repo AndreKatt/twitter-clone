@@ -43,12 +43,14 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
   const handleClickAddTweet = (): void => {
     const email = window.localStorage.getItem("email");
+    const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
-    if (email && username) {
+    if (fullname && username && email) {
       const currentUser = {
         text: text,
         user: {
           email: email,
+          fullname: fullname,
           username: username,
         },
       };

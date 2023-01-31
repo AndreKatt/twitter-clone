@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import {
   BookmarkBorderOutlined,
   EmailOutlined,
+  HomeOutlined,
   ListAltOutlined,
   MoreHoriz,
   NotificationsNone,
@@ -44,6 +45,16 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           <IconButton className={classes.logo} aria-label="" color="primary">
             <Twitter className={classes.logoIcon} />
           </IconButton>
+        </Link>
+      </li>
+      <li className={classes.sideMenuListItem}>
+        <Link to="/home">
+          <div>
+            <HomeOutlined className={classes.sideMenuListItemIcon} />
+            <Typography className={classes.sideMenuListItemLabel} variant="h6">
+              Главная
+            </Typography>
+          </div>
         </Link>
       </li>
       <li className={classes.sideMenuListItem}>

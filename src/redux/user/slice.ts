@@ -2,12 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { LoadingState } from "../types";
 import { SignInUserState } from "./types";
-import { getCurrentUserByToken, signIn } from "./asyncActions";
+import { getCurrentUserByToken, signIn, signUp } from "./asyncActions";
 
 const initialState: SignInUserState = {
   user: undefined,
   token: undefined,
   currentUser: undefined,
+  registerStatus: LoadingState.NEVER,
   loginStatus: LoadingState.NEVER,
   currentUserStatus: LoadingState.NEVER,
 };
@@ -18,15 +19,10 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(signIn.pending, (state) => {
-        state.loginStatus = LoadingState.LOADING;
-      })
       .addCase(signIn.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user = action.payload.user;
         state.loginStatus = LoadingState.SUCCESS;
-        // setCurrentUser(action.payload);
-        console.log(action.payload);
       })
       .addCase(signIn.rejected, (state) => {
         state.loginStatus = LoadingState.ERROR;
@@ -37,6 +33,12 @@ export const userSlice = createSlice({
       })
       .addCase(getCurrentUserByToken.rejected, (state) => {
         state.currentUserStatus = LoadingState.ERROR;
+      })
+      .addCase(signUp.fulfilled, (state) => {
+        state.registerStatus = LoadingState.SUCCESS;
+      })
+      .addCase(signUp.rejected, (state) => {
+        state.registerStatus = LoadingState.ERROR;
       });
   },
 });

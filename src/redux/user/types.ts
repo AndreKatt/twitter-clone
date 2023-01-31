@@ -9,7 +9,7 @@ export interface UserData {
   email: string;
   username: string;
   fullname: string;
-  password: string;
+  passwordHash: string;
   confirmHash: string;
   confirmed?: boolean;
 }
@@ -24,6 +24,7 @@ export interface SignInUserState {
   user?: UserData;
   token?: Token;
   currentUser?: CurrentUserData;
+  registerStatus: LoadingState;
   loginStatus: LoadingState;
   currentUserStatus: LoadingState;
 }

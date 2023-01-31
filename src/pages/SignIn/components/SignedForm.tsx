@@ -19,7 +19,6 @@ import {
 } from "../../../redux/user/asyncActions";
 import { useAppDispatch } from "../../../redux/store";
 import { useStylesSignIn } from "../theme";
-import { useNavigate } from "react-router-dom";
 
 interface SignedFormProps {
   classes: ReturnType<typeof useStylesSignIn>;
@@ -33,8 +32,14 @@ export interface LoginFormProps {
 
 const loginFormSchema = yup
   .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(6).required(),
+    email: yup
+      .string()
+      .required("Введите E-Mail!")
+      .email("E-Mail адрес указан некорректно."),
+    password: yup
+      .string()
+      .required("Введите пароль!")
+      .min(6, "Пароль должен содержать минимум 6 символов."),
   })
   .required();
 
@@ -45,7 +50,6 @@ function transition(props: any) {
 export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const {
     control,
@@ -65,7 +69,6 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
       setOpen(false);
       await dispatch(getCurrentUserByToken());
       onClose();
-      navigate("/home");
     }
     if (type === "user/signIn/rejected") {
       setOpen(true);
@@ -139,7 +142,8 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
         TransitionComponent={transition}
       >
         <Alert onClose={onClose} severity="error" sx={{ width: "100%" }}>
-          Такого пользователя не существует! Неверный логин или пароль.
+          Не удалось войти в аккаунт. Неверный логин или пароль. Или аккаунт не
+          был подтвержден.
         </Alert>
       </Snackbar>
     </form>

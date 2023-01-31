@@ -70,7 +70,7 @@ export const FullTweet: React.FC<FullTweetProps> = ({
             <div className={classes.tweetContent}>
               <div className={classes.tweetTextContent}>
                 <Typography className={classes.tweetInfoBlock}>
-                  <b>{tweetData.user.email}</b>&nbsp;
+                  <b>{tweetData.user.fullname}</b>&nbsp;
                   <div>
                     <span className={classes.tweetUserName}>
                       @{tweetData.user.username}
