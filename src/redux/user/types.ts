@@ -14,8 +14,16 @@ export interface UserData {
   confirmed?: boolean;
 }
 
+export interface CurrentUserData {
+  email: string;
+  username: string;
+  fullname: string;
+}
+
 export interface SignInUserState {
-  data?: UserData;
+  user?: UserData;
   token?: Token;
-  status: LoadingState;
+  currentUser?: CurrentUserData;
+  loginStatus: LoadingState;
+  currentUserStatus: LoadingState;
 }

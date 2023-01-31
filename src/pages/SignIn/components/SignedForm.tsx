@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -12,14 +13,13 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import DialogActions from "@material-ui/core/DialogActions";
 
-import { useStylesSignIn } from "../theme";
-import { signIn } from "../../../redux/user/asyncActions";
-import { useAppDispatch } from "../../../redux/store";
-import { useSelector } from "react-redux";
 import {
-  selectUserError,
-  selectUserToken,
-} from "../../../redux/user/selectors";
+  getCurrentUserByToken,
+  signIn,
+} from "../../../redux/user/asyncActions";
+import { useAppDispatch } from "../../../redux/store";
+import { useStylesSignIn } from "../theme";
+import { useNavigate } from "react-router-dom";
 
 interface SignedFormProps {
   classes: ReturnType<typeof useStylesSignIn>;
@@ -45,8 +45,7 @@ function transition(props: any) {
 export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const onError = useSelector(selectUserError);
-  const signInToken = useSelector(selectUserToken);
+  const navigate = useNavigate();
 
   const {
     control,
@@ -61,13 +60,14 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
   });
 
   const onSubmit = async (data: LoginFormProps) => {
-    await dispatch(signIn(data));
-    if (!onError) {
+    const { type } = await dispatch(signIn(data));
+    if (type === "user/signIn/fulfilled") {
       setOpen(false);
-      if (signInToken)
-        window.localStorage.setItem("token", signInToken.access_token);
+      await dispatch(getCurrentUserByToken());
       onClose();
-    } else {
+      navigate("/home");
+    }
+    if (type === "user/signIn/rejected") {
       setOpen(true);
     }
   };

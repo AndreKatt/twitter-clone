@@ -11,11 +11,13 @@ import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { ImageOutlined, SentimentSatisfiedOutlined } from "@material-ui/icons";
 
-import { useHomeStyles } from "../pages/Home/theme";
-import { useAppDispatch } from "../redux/store";
 import { selectAddFormState } from "../redux/tweets/selectors";
 import { addTweet } from "../redux/tweets/asyncActions";
+import { setAddFormState } from "../redux/tweets/slice";
 import { AddFormState } from "../redux/tweets/types";
+import { useAppDispatch } from "../redux/store";
+
+import { useHomeStyles } from "../pages/Home/theme";
 
 interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -39,16 +41,22 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     }
   };
 
-  const currentUser = {
-    text: text,
-    user: {
-      email: "katy1998@mail.ru",
-      username: "katty",
-    },
-  };
   const handleClickAddTweet = (): void => {
-    dispatch(addTweet(currentUser));
-    setText("");
+    const email = window.localStorage.getItem("email");
+    const username = window.localStorage.getItem("username");
+    if (email && username) {
+      const currentUser = {
+        text: text,
+        user: {
+          email: email,
+          username: username,
+        },
+      };
+      dispatch(addTweet(currentUser));
+      setText("");
+    }
+
+    setAddFormState(AddFormState.ERROR);
   };
 
   return (

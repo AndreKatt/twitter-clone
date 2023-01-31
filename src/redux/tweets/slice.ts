@@ -17,6 +17,9 @@ export const tweetsSlice = createSlice({
       state.items = action.payload;
       state.status = LoadingState.LOADED;
     },
+    setAddFormState(state, action: PayloadAction<AddFormState>) {
+      state.addFormState = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchTweets.pending, (state) => {
@@ -44,6 +47,6 @@ export const tweetsSlice = createSlice({
   },
 });
 
-export const { setTweets } = tweetsSlice.actions;
+export const { setTweets, setAddFormState } = tweetsSlice.actions;
 
 export default tweetsSlice.reducer;
