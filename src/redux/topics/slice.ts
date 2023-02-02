@@ -17,18 +17,17 @@ const topicsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchTopics.pending, (state) => {
-      state.status = LoadingState.LOADING;
-    });
-
-    builder.addCase(fetchTopics.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = LoadingState.LOADED;
-    });
-
-    builder.addCase(fetchTopics.rejected, (state) => {
-      state.status = LoadingState.ERROR;
-    });
+    builder
+      .addCase(fetchTopics.pending, (state) => {
+        state.status = LoadingState.LOADING;
+      })
+      .addCase(fetchTopics.fulfilled, (state, action) => {
+        state.items = action.payload;
+        state.status = LoadingState.LOADED;
+      })
+      .addCase(fetchTopics.rejected, (state) => {
+        state.status = LoadingState.ERROR;
+      });
   },
 });
 

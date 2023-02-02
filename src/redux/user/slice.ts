@@ -27,6 +27,9 @@ export const userSlice = createSlice({
       .addCase(signIn.rejected, (state) => {
         state.loginStatus = LoadingState.ERROR;
       })
+      .addCase(getCurrentUserByToken.pending, (state) => {
+        state.currentUserStatus = LoadingState.LOADING;
+      })
       .addCase(getCurrentUserByToken.fulfilled, (state, action) => {
         state.currentUser = action.payload;
         state.currentUserStatus = LoadingState.SUCCESS;

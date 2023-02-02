@@ -17,19 +17,18 @@ const tweetSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchTweetData.pending, (state) => {
-      state.status = LoadingState.LOADING;
-    });
-
-    builder.addCase(fetchTweetData.fulfilled, (state, action) => {
-      state.data = action.payload;
-      state.status = LoadingState.SUCCESS;
-    });
-
-    builder.addCase(fetchTweetData.rejected, (state) => {
-      state.data = undefined;
-      state.status = LoadingState.ERROR;
-    });
+    builder
+      .addCase(fetchTweetData.pending, (state) => {
+        state.status = LoadingState.LOADING;
+      })
+      .addCase(fetchTweetData.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.status = LoadingState.SUCCESS;
+      })
+      .addCase(fetchTweetData.rejected, (state) => {
+        state.data = undefined;
+        state.status = LoadingState.ERROR;
+      });
   },
 });
 

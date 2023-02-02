@@ -19,6 +19,8 @@ import {
 
 import { useHomeStyles } from "../pages/Home/theme";
 import { formatDate } from "../utils/formatDate";
+import { useAppDispatch } from "../redux/store";
+import { deleteTweet } from "../redux/tweets/asyncActions";
 
 interface TweetProps {
   _id: string;
@@ -41,6 +43,7 @@ export const Tweet: React.FC<TweetProps> = ({
 }): React.ReactElement => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const dispatch = useAppDispatch();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -48,6 +51,11 @@ export const Tweet: React.FC<TweetProps> = ({
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const deleteOne = async () => {
+    await dispatch(deleteTweet(_id));
+    handleClose();
   };
 
   return (
@@ -131,7 +139,7 @@ export const Tweet: React.FC<TweetProps> = ({
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose}>Редактировать</MenuItem>
-          <MenuItem onClick={handleClose}>Удалить твит</MenuItem>
+          <MenuItem onClick={deleteOne}>Удалить твит</MenuItem>
         </Menu>
       </div>
     </Paper>

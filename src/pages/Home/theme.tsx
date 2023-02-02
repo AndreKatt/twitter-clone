@@ -2,6 +2,14 @@ import { grey } from "@material-ui/core/colors";
 import { makeStyles, Theme } from "@material-ui/core";
 
 export const useHomeStyles = makeStyles((theme: Theme) => ({
+  centered: {
+    height: 80,
+    width: 80,
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+  },
   wrapper: {
     height: "100vh",
   },

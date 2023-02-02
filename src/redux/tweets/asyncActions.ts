@@ -19,3 +19,19 @@ export const addTweet = createAsyncThunk<Tweet, SendTweet>(
     return data;
   }
 );
+
+export const deleteTweet = createAsyncThunk<TweetsState["items"], string>(
+  "tweets/delete",
+  async (id) => {
+    await axios.delete<Tweet>("/api/tweets/" + id);
+    const { data } = await axios.get<TweetsState["items"]>(
+      "/api/tweets/index?_sort=id&_order=desc"
+    );
+    return data;
+  }
+);
+
+//доделать
+export const updateTweet = createAsyncThunk("tweet/update", async (id) => {
+  const { data } = await axios.patch("/api/tweets/update/" + id);
+});
