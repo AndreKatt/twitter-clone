@@ -1,21 +1,18 @@
 import React from "react";
-import { useState } from "react";
 import classNames from "classnames";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import Alert from "@mui/material/Alert";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { ImageOutlined, SentimentSatisfiedOutlined } from "@material-ui/icons";
-
+import { Alert, TextareaAutosize } from "@mui/material";
 import { selectAddFormState } from "../redux/tweets/selectors";
-import { addTweet } from "../redux/tweets/asyncActions";
+import { addTweet, uploadFile } from "../redux/tweets/asyncActions";
 import { setAddFormState } from "../redux/tweets/slice";
 import { AddFormState } from "../redux/tweets/types";
 import { useAppDispatch } from "../redux/store";
+import { UploadImages } from "./UploadImages";
 
 import { useHomeStyles } from "../pages/Home/theme";
 
@@ -23,6 +20,12 @@ interface AddTweetFormProps {
   classes: ReturnType<typeof useHomeStyles>;
   maxRows?: number;
 }
+
+export interface UploadedObject {
+  blobUrl: string;
+  file: File;
+}
+
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   classes,
   maxRows,
@@ -30,6 +33,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
   const [text, setText] = useState<string>("");
+  const [images, setImages] = useState<UploadedObject[]>([]);
   const textLimitPercent = (text.length / 280) * 100;
   const textCount = 280 - text.length;
 
@@ -41,7 +45,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     }
   };
 
-  const handleClickAddTweet = (): void => {
+  const handleClickAddTweet = async (): Promise<void> => {
     const email = window.localStorage.getItem("email");
     const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
@@ -54,7 +58,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
           username: username,
         },
       };
-      dispatch(addTweet(currentUser));
+      await dispatch(uploadFile(images[0].file));
+      await dispatch(addTweet(currentUser));
       setText("");
     }
 
@@ -84,18 +89,12 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             classes.addFormBottomActions
           )}
         >
-          <IconButton color="primary">
-            <ImageOutlined style={{ fontSize: 26 }} />
-          </IconButton>
-          <IconButton color="primary">
-            <SentimentSatisfiedOutlined style={{ fontSize: 26 }} />
-          </IconButton>
+          <UploadImages images={images} onChangeImages={setImages} />
         </div>
         <div className={classes.addFormButtomRight}>
           {text && (
             <>
               <span>{textCount}</span>
-
               <div className={classes.addFormCircleProgress}>
                 {text.length <= 280 ? (
                   <CircularProgress

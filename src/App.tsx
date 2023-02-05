@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import Twitter from "@material-ui/icons/Twitter";
 
-import { SignIn } from "./pages/SignIn/SignIn";
 import { Home } from "./pages/Home/Home";
+import { SignIn } from "./pages/SignIn/SignIn";
 import { FullTweet } from "./outlets/FullTweet";
-import { HomeTweets } from "./outlets/HomeTweets";
 import { TopicTweets } from "./outlets/TopicTweets";
+import { HomeTweets } from "./outlets/HomeTweets";
+
+import { useAppDispatch } from "./redux/store";
+import { selectIsAuth } from "./redux/user/selectors";
+import { getCurrentUserByToken } from "./redux/user/asyncActions";
 
 import { useHomeStyles } from "./pages/Home/theme";
-import { selectIsAuth } from "./redux/user/selectors";
-import { useAppDispatch } from "./redux/store";
-import { getCurrentUserByToken } from "./redux/user/asyncActions";
-import { CircularProgress } from "@mui/material";
-import Twitter from "@material-ui/icons/Twitter";
 
 function App() {
   const [loading, setLoading] = useState(true);

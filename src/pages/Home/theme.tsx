@@ -239,9 +239,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderRight: 0,
     backgroundColor: "transparent",
     padding: "13px 18px",
-    "& b": {
-      fontSize: 20,
-      fontWeight: 800,
+    "& h5": {
+      // fontSize: 20,
+      fontWeight: 700,
     },
   },
   rightSideBlockItem: {

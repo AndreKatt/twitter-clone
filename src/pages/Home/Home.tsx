@@ -116,7 +116,7 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
             </Paper>
             <Paper className={classes.rightSideBlock}>
               <Paper className={classes.rightSideBlockHeader}>
-                <b>Кого читать</b>
+                <Typography variant="h5">Кого читать</Typography>
               </Paper>
               <List>
                 <ListItem className={classes.rightSideBlockItem}>

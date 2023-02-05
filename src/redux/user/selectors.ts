@@ -11,3 +11,7 @@ export const selectAuthState = (
 
 export const selectIsAuth = (state: RootState): boolean =>
   !!selectUserState(state).token;
+
+export const selectCurrentUserStatus = (
+  state: RootState
+): SignInUserState["currentUserStatus"] => state.user.currentUserStatus;

@@ -28,6 +28,12 @@ export interface Tweet {
   createdAt: string;
 }
 
+export interface UploadedFileData {
+  width: number;
+  height: number;
+  url: string;
+}
+
 export interface TweetsState {
   items: Tweet[];
   status: LoadingState;

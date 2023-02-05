@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
-import { addTweet, deleteTweet, fetchTweets } from "./asyncActions";
+import {
+  addTweet,
+  deleteTweet,
+  fetchTweets,
+  updateTweet,
+} from "./asyncActions";
 import { AddFormState, TweetsState } from "./types";
 
 const initialState: TweetsState = {
@@ -42,6 +47,12 @@ export const tweetsSlice = createSlice({
         state.addFormState = AddFormState.NEVER;
       })
       .addCase(addTweet.rejected, (state) => {
+        state.addFormState = AddFormState.ERROR;
+      })
+      .addCase(updateTweet.fulfilled, (state) => {
+        state.addFormState = AddFormState.NEVER;
+      })
+      .addCase(updateTweet.rejected, (state) => {
         state.addFormState = AddFormState.ERROR;
       })
       .addCase(deleteTweet.pending, (state) => {
