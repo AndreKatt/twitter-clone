@@ -19,6 +19,7 @@ export interface SendTweet {
 export interface Tweet {
   _id: string;
   text: string;
+  images?: [];
   user: {
     email: string;
     fullname: string;

@@ -24,6 +24,7 @@ import { selectTweetData, selectTweetLoading } from "../redux/tweet/selectors";
 import { setTweetData } from "../redux/tweet/slice";
 
 import { useHomeStyles } from "../pages/Home/theme";
+import { ImagesList } from "../components/ImagesList";
 
 interface FullTweetProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -86,6 +87,9 @@ export const FullTweet: React.FC<FullTweetProps> = ({
             gutterBottom
           >
             <span> {tweetData.text}</span>
+            {tweetData.images && (
+              <ImagesList images={tweetData.images} classes={classes} />
+            )}
             <Typography
               className={classNames(
                 classes.fullTweetData,

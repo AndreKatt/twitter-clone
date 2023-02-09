@@ -1,11 +1,12 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
-import { DeleteForever, ImageOutlined } from "@material-ui/icons";
+import { ImageOutlined } from "@material-ui/icons";
 import { UploadedObject } from "./AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
 
-import { useStylesSignIn } from "../pages/SignIn/theme";
+import { useHomeStyles } from "../pages/Home/theme";
+import { ImagesList } from "./ImagesList";
 
 interface UploadImagesProps {
   images: UploadedObject[];
@@ -17,7 +18,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
   images,
   onChangeImages,
 }) => {
-  const classes = useStylesSignIn();
+  const classes = useHomeStyles();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClickImage = () => {
@@ -66,22 +67,11 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
         id="upload-input"
         hidden
       />
-      <div className={classes.imagesList}>
-        {images.map((obj) => (
-          <div
-            key={obj.blobUrl}
-            className={classes.imagesListItem}
-            style={{ backgroundImage: `url(${obj.blobUrl})` }}
-          >
-            <IconButton
-              onClick={(): void => removeImage(obj.blobUrl)}
-              color="primary"
-            >
-              <DeleteForever style={{ fontSize: 20 }} />
-            </IconButton>
-          </div>
-        ))}
-      </div>
+      <ImagesList
+        images={images.map((img) => img.blobUrl)}
+        classes={classes}
+        removeImage={removeImage}
+      />
       <IconButton onClick={handleClickImage} color="primary">
         <ImageOutlined style={{ fontSize: 26 }} />
       </IconButton>

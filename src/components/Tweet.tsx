@@ -21,10 +21,12 @@ import { useHomeStyles } from "../pages/Home/theme";
 import { formatDate } from "../utils/formatDate";
 import { useAppDispatch } from "../redux/store";
 import { deleteTweet } from "../redux/tweets/asyncActions";
+import { ImagesList } from "./ImagesList";
 
 interface TweetProps {
   _id: string;
   text: string;
+  images?: string[];
   classes: ReturnType<typeof useHomeStyles>;
   fullname: string;
   userName: string;
@@ -38,6 +40,7 @@ export const Tweet: React.FC<TweetProps> = ({
   text,
   fullname,
   userName,
+  images,
   // avatarUrl,
   createdAt,
 }): React.ReactElement => {
@@ -54,8 +57,10 @@ export const Tweet: React.FC<TweetProps> = ({
   };
 
   const deleteOne = async () => {
-    await dispatch(deleteTweet(_id));
-    handleClose();
+    if (window.confirm("Вы действительно хотите удалить этот твит?")) {
+      await dispatch(deleteTweet(_id));
+      handleClose();
+    }
   };
 
   return (
@@ -91,6 +96,7 @@ export const Tweet: React.FC<TweetProps> = ({
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>
+            {images && <ImagesList images={images} classes={classes} />}
           </Link>
           <div className={classes.tweetFooter}>
             <div>
