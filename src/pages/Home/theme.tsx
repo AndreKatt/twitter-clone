@@ -79,6 +79,36 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     },
   },
 
+  // UserSideProfile
+  profileWrapper: {
+    height: "60px",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    position: "fixed",
+    borderRadius: "40px",
+    bottom: "30px",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#e3f1fc",
+    },
+  },
+  avatar: {
+    width: "40px",
+    height: "40px",
+    marginLeft: "10px",
+  },
+  userNameWrapper: {
+    paddingLeft: "13px",
+  },
+  userName: {
+    fontSize: "17px",
+  },
+  button: {
+    padding: "0 10px 0 20px",
+  },
+
   // tweets
   tweetsWrapper: {
     borderRadius: 0,

@@ -37,6 +37,7 @@ import { Topics } from "../../components/Topics";
 // styles
 import { useHomeStyles } from "./theme";
 import { useAppDispatch } from "../../redux/store";
+import { UserSideProfile } from "../../components/UserSideProfile";
 
 interface HomeProps {
   classes: ReturnType<typeof useHomeStyles>;
@@ -62,6 +63,7 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
       <Grid container spacing={3}>
         <Grid sm={1} md={3} item>
           <SideMenu classes={classes} />
+          <UserSideProfile classes={classes} />
         </Grid>
         <Grid sm={8} md={6} item>
           <Paper className={classes.tweetsWrapper} variant="outlined">
