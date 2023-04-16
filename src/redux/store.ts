@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-
 import topics from "./topics/slice";
 import tweets from "./tweets/slice";
 import tweet from "./tweet/slice";

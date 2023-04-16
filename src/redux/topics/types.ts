@@ -1,12 +1,12 @@
 import { LoadingState } from "../types";
 
-export interface Topic {
+export type Topic = {
   _id: string;
   name: string;
   count: number;
-}
+};
 
-export interface TopicsState {
+export type TopicsState = {
   items: Topic[];
   status: LoadingState;
-}
+};

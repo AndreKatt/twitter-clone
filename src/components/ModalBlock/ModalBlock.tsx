@@ -5,13 +5,8 @@ import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
-
-interface ModalBlockProps {
-  title?: string;
-  children: React.ReactNode;
-  visible: boolean;
-  onClose: () => void;
-}
+// types
+import type { ModalBlockProps } from "./types";
 
 export const ModalBlock: React.FC<ModalBlockProps> = ({
   title,

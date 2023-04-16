@@ -16,19 +16,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import {
   getCurrentUserByToken,
   signIn,
-} from "../../../redux/user/asyncActions";
-import { useAppDispatch } from "../../../redux/store";
-import { useStylesSignIn } from "../theme";
-
-interface SignedFormProps {
-  classes: ReturnType<typeof useStylesSignIn>;
-  onClose: () => void;
-}
-
-export interface LoginFormProps {
-  email: string;
-  password: string;
-}
+} from "../../../../redux/user/asyncActions";
+import { useAppDispatch } from "../../../../redux/store";
+// types
+import type { SignedFormProps } from "./types";
+import type { LoginFormProps } from "../../../../types";
 
 const loginFormSchema = yup
   .object({
@@ -84,7 +76,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="email"
                 label="E-Mail"
@@ -105,7 +97,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.loginSideField}
+                className={classes.classes.loginSideField}
                 autoFocus
                 id="password"
                 label="Пароль"

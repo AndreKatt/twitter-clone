@@ -17,22 +17,12 @@ import {
   ReplySharp,
 } from "@material-ui/icons";
 
-import { useHomeStyles } from "../pages/Home/theme";
-import { formatDate } from "../utils/formatDate";
-import { useAppDispatch } from "../redux/store";
-import { deleteTweet } from "../redux/tweets/asyncActions";
-import { ImagesList } from "./ImagesList";
-
-interface TweetProps {
-  _id: string;
-  text: string;
-  images?: string[];
-  classes: ReturnType<typeof useHomeStyles>;
-  fullname: string;
-  userName: string;
-  // avatarUrl: string;
-  createdAt: string;
-}
+import { formatDate } from "../../utils/formatDate";
+import { useAppDispatch } from "../../redux/store";
+import { deleteTweet } from "../../redux/tweets/asyncActions";
+import { ImagesList } from "../ImagesList/ImagesList";
+// types
+import type { TweetProps } from "./types";
 
 export const Tweet: React.FC<TweetProps> = ({
   _id,
@@ -65,58 +55,63 @@ export const Tweet: React.FC<TweetProps> = ({
 
   return (
     <Paper
-      className={classNames(classes.tweet, classes.tweetWrapper)}
+      className={classNames(
+        classes.classes.tweet,
+        classes.classes.tweetWrapper
+      )}
       variant="outlined"
     >
-      <div className={classes.tweetHeaderUserContent}>
-        <div className={classes.tweetAvatarWrapper}>
+      <div className={classes.classes.tweetHeaderUserContent}>
+        <div className={classes.classes.tweetAvatarWrapper}>
           <Avatar
-            className={classes.tweetAvatar}
+            className={classes.classes.tweetAvatar}
             alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
         </div>
 
-        <div className={classes.tweetContent}>
-          <div className={classes.tweetHeaderWrapper}>
-            <div className={classes.tweetTextContent}>
+        <div className={classes.classes.tweetContent}>
+          <div className={classes.classes.tweetHeaderWrapper}>
+            <div className={classes.classes.tweetTextContent}>
               <Typography>
                 <b>{fullname}</b>&nbsp;
-                <span className={classes.tweetUserName}>@{userName}</span>
+                <span className={classes.classes.tweetUserName}>
+                  @{userName}
+                </span>
                 &nbsp;
-                <span className={classes.tweetUserName}>·</span>&nbsp;
-                <span className={classes.tweetUserName}>
+                <span className={classes.classes.tweetUserName}>·</span>&nbsp;
+                <span className={classes.classes.tweetUserName}>
                   {formatDate(new Date(createdAt))} назад
                 </span>
               </Typography>
             </div>
           </div>
 
-          <Link to={`tweet/${_id}`} className={classes.tweetLink}>
+          <Link to={`tweet/${_id}`} className={classes.classes.tweetLink}>
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>
             {images && <ImagesList images={images} classes={classes} />}
           </Link>
-          <div className={classes.tweetFooter}>
+          <div className={classes.classes.tweetFooter}>
             <div>
-              <IconButton className={classes.tweetFooterIcon}>
+              <IconButton className={classes.classes.tweetFooterIcon}>
                 <ChatBubbleOutline style={{ fontSize: 20 }} />
               </IconButton>
               <span>1</span>
             </div>
             <div>
-              <IconButton className={classes.tweetFooterIcon}>
+              <IconButton className={classes.classes.tweetFooterIcon}>
                 <RepeatOutlined style={{ fontSize: 20 }} />
               </IconButton>
             </div>
             <div>
-              <IconButton className={classes.tweetFooterIcon}>
+              <IconButton className={classes.classes.tweetFooterIcon}>
                 <FavoriteBorderOutlined style={{ fontSize: 20 }} />
               </IconButton>
             </div>
             <div>
-              <IconButton className={classes.tweetFooterIcon}>
+              <IconButton className={classes.classes.tweetFooterIcon}>
                 <ReplySharp style={{ fontSize: 20 }} />
               </IconButton>
             </div>

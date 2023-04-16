@@ -2,16 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
 
-import { Tweet } from "../components/Tweet";
-import { useHomeStyles } from "../pages/Home/theme";
+import { Tweet } from "../../components/Tweet/Tweet";
 import {
   selectTweetsItems,
   selectTweetsLoading,
-} from "../redux/tweets/selectors";
-
-interface HomeTweetsProps {
-  classes: ReturnType<typeof useHomeStyles>;
-}
+} from "../../redux/tweets/selectors";
+// types
+import type { HomeTweetsProps } from "./types";
 
 export const HomeTweets: React.FC<HomeTweetsProps> = ({
   classes,
@@ -22,7 +19,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({
   return (
     <div>
       {isLoadingTweets ? (
-        <div className={classes.tweetsLoadingSpinner}>
+        <div className={classes.classes.tweetsLoadingSpinner}>
           <CircularProgress />
         </div>
       ) : (

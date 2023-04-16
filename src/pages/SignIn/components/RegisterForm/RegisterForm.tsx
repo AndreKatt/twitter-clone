@@ -13,23 +13,10 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import DialogActions from "@material-ui/core/DialogActions";
 
-import { signUp } from "../../../redux/user/asyncActions";
-import { useAppDispatch } from "../../../redux/store";
-
-import { useStylesSignIn } from "../theme";
-
-interface SignUpFormProps {
-  classes: ReturnType<typeof useStylesSignIn>;
-  onClose: () => void;
-}
-
-export interface RegisterFormProps {
-  email: string;
-  username: string;
-  fullname: string;
-  password: string;
-  password2: string;
-}
+import { signUp } from "../../../../redux/user/asyncActions";
+import { useAppDispatch } from "../../../../redux/store";
+// types
+import type { RegisterFormProps, SignUpFormProps } from "./types";
 
 const loginFormSchema = yup
   .object({
@@ -103,7 +90,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="name"
                 label="Логин"
@@ -124,7 +111,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="email"
                 label="E-Mail"
@@ -145,7 +132,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="fullname"
                 label="Имя"
@@ -166,7 +153,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="password"
                 label="Пароль"
@@ -187,7 +174,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             control={control}
             render={({ field }) => (
               <TextField
-                className={classes.registerField}
+                className={classes.classes.registerField}
                 autoFocus
                 id="password2"
                 label="Повторите пароль"

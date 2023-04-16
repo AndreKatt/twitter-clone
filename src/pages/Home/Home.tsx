@@ -29,19 +29,16 @@ import { fetchTweets } from "../../redux/tweets/asyncActions";
 import { fetchTopics } from "../../redux/topics/asyncActions";
 
 // components
-import { SearchTextField } from "../../components/SearchTextField";
-import { AddTweetForm } from "../../components/AddTweetForm";
-import { SideMenu } from "../../components/SideMenu";
-import { Topics } from "../../components/Topics";
+import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
+import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
+import { SideMenu } from "../../components/SideMenu/SideMenu";
+import { Topics } from "../../components/Topics/Topics";
 
 // styles
-import { useHomeStyles } from "./theme";
 import { useAppDispatch } from "../../redux/store";
-import { UserSideProfile } from "../../components/UserSideProfile";
-
-interface HomeProps {
-  classes: ReturnType<typeof useHomeStyles>;
-}
+import { UserSideProfile } from "../../components/UserSideProfile/UserSideProfile";
+// types
+import type { HomeProps } from "./types";
 
 export const Home: React.FC<HomeProps> = ({ classes }) => {
   const dispatch = useAppDispatch();
@@ -59,20 +56,20 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
   const isTopicsLocation = location.pathname === "/home/search";
 
   return (
-    <Container className={classes.wrapper} maxWidth="lg">
+    <Container className={classes.classes.wrapper} maxWidth="lg">
       <Grid container spacing={3}>
         <Grid sm={1} md={3} item>
           <SideMenu classes={classes} />
           <UserSideProfile classes={classes} />
         </Grid>
         <Grid sm={8} md={6} item>
-          <Paper className={classes.tweetsWrapper} variant="outlined">
-            <Paper className={classes.tweetsHeader} variant="outlined">
+          <Paper className={classes.classes.tweetsWrapper} variant="outlined">
+            <Paper className={classes.classes.tweetsHeader} variant="outlined">
               {!isHomeLocation && (
                 <IconButton
                   onClick={() => nav(-1)}
                   color="primary"
-                  className={classes.tweetsHeaderBackButton}
+                  className={classes.classes.tweetsHeaderBackButton}
                 >
                   <ArrowBack />
                 </IconButton>
@@ -83,10 +80,10 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
             </Paper>
             {isHomeLocation || isTopicsLocation ? (
               <Paper>
-                <div className={classes.addForm}>
+                <div className={classes.classes.addForm}>
                   <AddTweetForm classes={classes} />
                 </div>
-                <div className={classes.addFormBottomLine} />
+                <div className={classes.classes.addFormBottomLine} />
               </Paper>
             ) : null}
 
@@ -94,7 +91,7 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
           </Paper>
         </Grid>
         <Grid sm={3} md={3} item>
-          <div className={classes.rightSide}>
+          <div className={classes.classes.rightSide}>
             <SearchTextField
               variant="outlined"
               placeholder="Поиск по твиттеру"
@@ -107,21 +104,21 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
               }}
               fullWidth
             />
-            <Paper className={classes.rightSideBlock}>
+            <Paper className={classes.classes.rightSideBlock}>
               {isLoadingTopics ? (
-                <div className={classes.topicsLoadingSpinner}>
+                <div className={classes.classes.topicsLoadingSpinner}>
                   <CircularProgress />
                 </div>
               ) : (
                 <Topics classes={classes} />
               )}
             </Paper>
-            <Paper className={classes.rightSideBlock}>
-              <Paper className={classes.rightSideBlockHeader}>
+            <Paper className={classes.classes.rightSideBlock}>
+              <Paper className={classes.classes.rightSideBlockHeader}>
                 <Typography variant="h5">Кого читать</Typography>
               </Paper>
               <List>
-                <ListItem className={classes.rightSideBlockItem}>
+                <ListItem className={classes.classes.rightSideBlockItem}>
                   <ListItemAvatar>
                     <Avatar
                       alt="Роберт Смит"

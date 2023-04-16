@@ -6,6 +6,7 @@ import {
   fetchTweets,
   updateTweet,
 } from "./asyncActions";
+// types
 import { AddFormState, TweetsState } from "./types";
 
 const initialState: TweetsState = {

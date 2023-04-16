@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
 import { fetchTopics } from "./asyncActions";
-import { TopicsState } from "./types";
+// types
+import type { TopicsState } from "./types";
 
 const initialState: TopicsState = {
   items: [],

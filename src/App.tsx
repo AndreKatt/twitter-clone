@@ -5,9 +5,9 @@ import Twitter from "@material-ui/icons/Twitter";
 
 import { Home } from "./pages/Home/Home";
 import { SignIn } from "./pages/SignIn/SignIn";
-import { FullTweet } from "./outlets/FullTweet";
+import { FullTweet } from "./outlets/FullTweet/FullTweet";
 import { TopicTweets } from "./outlets/TopicTweets";
-import { HomeTweets } from "./outlets/HomeTweets";
+import { HomeTweets } from "./outlets/HomeTweets/HomeTweets";
 
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/user/selectors";
@@ -44,10 +44,16 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/home/*" element={<Home classes={classes} />}>
-        <Route path="" element={<HomeTweets classes={classes} />} />
+      <Route path="/home/*" element={<Home classes={{ classes: classes }} />}>
+        <Route
+          path=""
+          element={<HomeTweets classes={{ classes: classes }} />}
+        />
         <Route path="search" element={<TopicTweets />} />
-        <Route path="tweet/:id" element={<FullTweet classes={classes} />} />
+        <Route
+          path="tweet/:id"
+          element={<FullTweet classes={{ classes: classes }} />}
+        />
       </Route>
       <Route path="signin" element={<SignIn />} />
     </Routes>

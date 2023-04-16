@@ -6,7 +6,7 @@ export enum AddFormState {
   NEVER = "NEVER",
 }
 
-export interface SendTweet {
+export type SendTweet = {
   text: string;
   user: {
     email: string;
@@ -14,9 +14,9 @@ export interface SendTweet {
     username: string;
     // avatarUrl: string;
   };
-}
+};
 
-export interface Tweet {
+export type Tweet = {
   _id: string;
   text: string;
   images?: [];
@@ -27,16 +27,16 @@ export interface Tweet {
     // avatarUrl: string;
   };
   createdAt: string;
-}
+};
 
-export interface UploadedFileData {
+export type UploadedFileData = {
   width: number;
   height: number;
   url: string;
-}
+};
 
-export interface TweetsState {
+export type TweetsState = {
   items: Tweet[];
   status: LoadingState;
   addFormState: AddFormState;
-}
+};

@@ -84,7 +84,6 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     height: "60px",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-around",
     alignItems: "center",
     position: "fixed",
     borderRadius: "40px",

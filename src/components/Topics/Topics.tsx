@@ -9,13 +9,9 @@ import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
 import ListItemText from "@material-ui/core/ListItemText";
 
-import { selectTopicsItems } from "../redux/topics/selectors";
-
-import { useHomeStyles } from "../pages/Home/theme";
-
-interface TopicsProps {
-  classes: ReturnType<typeof useHomeStyles>;
-}
+import { selectTopicsItems } from "../../redux/topics/selectors";
+//types
+import type { TopicsProps } from "./types";
 
 export const Topics: React.FC<TopicsProps> = ({
   classes,
@@ -25,12 +21,12 @@ export const Topics: React.FC<TopicsProps> = ({
   return (
     <>
       <p>BlahBlah</p>
-      {/* <Paper className={classes.rightSideBlockHeader}>
+      {/* <Paper className={classes.classes.rightSideBlockHeader}>
         <b>Актуальные темы</b>
       </Paper>
       {topics.map((topic) => (
         <List key={topic._id}>
-          <ListItem className={classes.rightSideBlockItem}>
+          <ListItem className={classes.classes.rightSideBlockItem}>
             <Link
               to={`search`} // поменять на ?g=${topic.name}
             >

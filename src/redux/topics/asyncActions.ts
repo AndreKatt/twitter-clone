@@ -1,6 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { TopicsState } from "./types";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+// types
+import type { TopicsState } from "./types";
 
 export const fetchTopics = createAsyncThunk<TopicsState["items"]>(
   "topics/fetchTopics",

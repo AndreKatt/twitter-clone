@@ -8,9 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import MessageIcon from "@material-ui/icons/ChatBubbleOutline";
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 
-import { RegisterForm } from "./components/RegisterForm";
-import { ModalBlock } from "../../components/ModalBlock";
-import { SignedForm } from "./components/SignedForm";
+import { RegisterForm } from "./components/RegisterForm/RegisterForm";
+import { ModalBlock } from "../../components/ModalBlock/ModalBlock";
+import { SignedForm } from "./components/SignedForm/SignedForm";
 
 import { useStylesSignIn } from "./theme";
 
@@ -95,9 +95,15 @@ export const SignIn: React.FC = () => {
             onClose={handleClose}
           >
             {visibleModal ? (
-              <SignedForm onClose={handleClose} classes={classes} />
+              <SignedForm
+                onClose={handleClose}
+                classes={{ classes: classes }}
+              />
             ) : (
-              <RegisterForm onClose={handleClose} classes={classes} />
+              <RegisterForm
+                onClose={handleClose}
+                classes={{ classes: classes }}
+              />
             )}
           </ModalBlock>
         </div>

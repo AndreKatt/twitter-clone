@@ -1,6 +1,7 @@
-import { RootState } from "../store";
 import { LoadingState } from "../types";
-import { TopicsState } from "./types";
+// types
+import type { RootState } from "../store";
+import type { TopicsState } from "./types";
 
 export const selectTopics = (state: RootState): TopicsState => state.topics;
 

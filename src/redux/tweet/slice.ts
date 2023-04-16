@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
 import { fetchTweetData } from "./asyncActions";
-import { TweetState } from "./types";
+// types
+import type { TweetState } from "./types";
 
 const initialState: TweetState = {
   data: undefined,

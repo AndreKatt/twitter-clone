@@ -1,5 +1,5 @@
-import { RootState } from "../store";
-import { SignInUserState } from "./types";
+import type { RootState } from "../store";
+import type { SignInUserState } from "./types";
 
 export const selectUserState = (state: RootState): SignInUserState =>
   state.user;

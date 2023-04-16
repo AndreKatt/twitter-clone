@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { LoadingState } from "../types";
-import { SignInUserState } from "./types";
 import { getCurrentUserByToken, signIn, signUp } from "./asyncActions";
+//types
+import type { SignInUserState } from "./types";
 
 const initialState: SignInUserState = {
   user: undefined,

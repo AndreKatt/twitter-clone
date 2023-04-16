@@ -1,19 +1,15 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { ImageOutlined } from "@material-ui/icons";
-import { UploadedObject } from "./AddTweetForm";
+// import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
 
-import { useHomeStyles } from "../pages/Home/theme";
-import { ImagesList } from "./ImagesList";
+import { useHomeStyles } from "../../pages/Home/theme";
+import { ImagesList } from "../ImagesList/ImagesList";
+// types
+import type { UploadImagesProps } from "./types";
 
-interface UploadImagesProps {
-  images: UploadedObject[];
-  onChangeImages: (
-    callback: (prev: UploadedObject[]) => UploadedObject[]
-  ) => void;
-}
 export const UploadImages: React.FC<UploadImagesProps> = ({
   images,
   onChangeImages,
@@ -69,7 +65,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
       />
       <ImagesList
         images={images.map((img) => img.blobUrl)}
-        classes={classes}
+        classes={{ classes: classes }}
         removeImage={removeImage}
       />
       <IconButton onClick={handleClickImage} color="primary">
