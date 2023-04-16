@@ -22,18 +22,15 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
-
 // redux
 import { selectTopicsLoading } from "../../redux/topics/selectors";
 import { fetchTweets } from "../../redux/tweets/asyncActions";
 import { fetchTopics } from "../../redux/topics/asyncActions";
-
 // components
 import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
 import { SideMenu } from "../../components/SideMenu/SideMenu";
 import { Topics } from "../../components/Topics/Topics";
-
 // styles
 import { useAppDispatch } from "../../redux/store";
 import { UserSideProfile } from "../../components/UserSideProfile/UserSideProfile";
@@ -90,7 +87,7 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
             <Outlet />
           </Paper>
         </Grid>
-        <Grid sm={3} md={3} item>
+        <Grid xs={1} sm={3} md={3} item>
           <div className={classes.classes.rightSide}>
             <SearchTextField
               variant="outlined"

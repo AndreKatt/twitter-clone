@@ -22,14 +22,21 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
 
   // sideMenu
   sideMenuList: {
+    display: "block !important",
     position: "sticky",
     top: 0,
     listStyle: "none",
     padding: 0,
     margin: 0,
     maxWidth: 230,
+    "@media(max-height: 960px)": {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
   },
   sideMenuListItem: {
+    position: "relative",
     cursor: "pointer",
     "& a": {
       textDecoration: "none",
@@ -55,6 +62,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
       height: 50,
       marginBottom: 15,
       transition: "background-color 0.1s ease-in-out",
+      "@media(max-height: 790px)": {
+        marginBottom: 5,
+      },
+      "@media(max-height: 700px)": {
+        marginBottom: 0,
+      },
     },
   },
   sideMenuListItemLabel: {
@@ -67,15 +80,32 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
   },
   sideMenuListItemIcon: {
     fontSize: 28,
-    marginLeft: -5,
+    marginLeft: -10,
   },
   sideMenuTweetButton: {
     padding: theme.spacing(3.2),
     marginTop: theme.spacing(2),
+    width: 220,
+    "& span": {
+      fontSize: 17,
+    },
     "@media(max-width: 960px)": {
+      width: 51,
+      borderRadius: "50%",
+      marginLeft: 5,
       "& span": {
-        display: "none",
+        "& span": {
+          display: "none",
+        },
       },
+    },
+  },
+  sideMenuButtonIcon: {
+    width: 20,
+    display: "none",
+    color: "white",
+    "@media(max-width: 960px)": {
+      display: "flex",
     },
   },
 
@@ -87,10 +117,14 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     alignItems: "center",
     position: "fixed",
     borderRadius: "40px",
-    bottom: "30px",
+    bottom: "10px",
     cursor: "pointer",
+    transition: "background-color 0.2s",
     "&:hover": {
       backgroundColor: "#e3f1fc",
+    },
+    "@media(max-width: 960px)": {
+      display: "none",
     },
   },
   avatar: {
@@ -102,7 +136,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     paddingLeft: "13px",
   },
   userName: {
-    fontSize: "17px",
+    fontSize: "15px",
   },
   button: {
     padding: "0 10px 0 20px",
@@ -179,6 +213,7 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     borderTop: "1px solid rgba(204, 214, 221)",
   },
   tweetWrapper: {
+    position: "relative",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "space-between",
@@ -201,6 +236,10 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     paddingLeft: 15,
+    paddingRight: 35,
+    "@media (max-width: 786px)": {
+      width: 360,
+    },
   },
   tweetTextContent: {
     display: "flex",
@@ -213,7 +252,11 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-  tweetMenu: {},
+  tweetMenuButton: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+  },
   tweetAvatarWrapper: {
     paddingLeft: 15,
   },
@@ -226,7 +269,25 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
     position: "relative",
     left: -13,
     justifyContent: "space-between",
-    width: 450,
+    width: 500,
+    "@media (max-width: 1224px)": {
+      width: 475,
+    },
+    "@media (max-width: 1180px)": {
+      width: 450,
+    },
+    "@media (max-width: 1150px)": {
+      width: 425,
+    },
+    "@media (max-width: 1080px)": {
+      width: 400,
+    },
+    "@media (max-width: 1024px)": {
+      width: 380,
+    },
+    "@media (max-width: 980px)": {
+      width: 350,
+    },
   },
   tweetFooterIcon: {
     "&:hover": {

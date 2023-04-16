@@ -1,11 +1,10 @@
-import React from "react";
+import React, { ReactElement, useEffect } from "react";
 import classNames from "classnames";
 import format from "date-fns/format";
 import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { ReactElement, useEffect } from "react";
-
+// mui
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ChatBubbleOutline from "@material-ui/icons/ChatBubbleOutline";
 import Typography from "@material-ui/core/Typography";
@@ -17,6 +16,7 @@ import {
   RepeatOutlined,
   ReplySharp,
 } from "@material-ui/icons";
+// redux
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
 import {
@@ -68,7 +68,7 @@ export const FullTweet: React.FC<FullTweetProps> = ({
           >
             <Avatar
               className={classes.classes.tweetAvatar}
-              alt={`Аватарка пользователя ${tweetData.user.email}`}
+              alt="Аватарка пользователя"
               // src={tweetData.user.avatarUrl}
             />
             <div className={classes.classes.tweetContent}>

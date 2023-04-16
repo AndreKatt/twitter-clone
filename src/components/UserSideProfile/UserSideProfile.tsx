@@ -16,7 +16,10 @@ export const UserSideProfile: React.FC<UserProfileProps> = ({ classes }) => {
         <Typography className={classes.classes.userName}>
           <b>{user.currentUser?.fullname}</b>
         </Typography>
-        <Typography style={{ color: colors.grey[500] }}>
+        <Typography
+          className={classes.classes.userName}
+          style={{ color: colors.grey[500] }}
+        >
           {user.currentUser?.username}
         </Typography>
       </div>

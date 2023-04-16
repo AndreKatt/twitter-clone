@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Button from "@material-ui/core/Button";
 import Search from "@material-ui/icons/Search";
 import Twitter from "@material-ui/icons/Twitter";
@@ -16,7 +15,7 @@ import {
   NotificationsNone,
   PermIdentityOutlined,
 } from "@material-ui/icons";
-
+import { BorderColorOutlined } from "@material-ui/icons";
 import { ModalBlock } from "../ModalBlock/ModalBlock";
 import { AddTweetForm } from "../AddTweetForm/AddTweetForm";
 //types
@@ -148,8 +147,9 @@ export const SideMenu: React.FC<SideMenuProps> = ({
           className={classes.classes.sideMenuTweetButton}
           variant="contained"
           color="primary"
-          fullWidth
         >
+          <BorderColorOutlined className={classes.classes.sideMenuButtonIcon} />
+
           <span>Твитнуть</span>
         </Button>
         <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>

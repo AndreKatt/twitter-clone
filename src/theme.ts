@@ -36,6 +36,11 @@ export const theme = createTheme({
   },
   shadows: [],
   overrides: {
+    MuiGrid: {
+      item: {
+        padding: "0px 12px 12px 0px !important",
+      },
+    },
     MuiButton: {
       root: {
         borderRadius: 30,
@@ -43,6 +48,7 @@ export const theme = createTheme({
         fontSize: 16,
         height: 40,
         fontWeight: 700,
+        minWidth: 51,
       },
       textPrimary: {
         paddingLeft: 20,

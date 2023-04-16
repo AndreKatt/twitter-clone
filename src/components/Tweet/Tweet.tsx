@@ -119,7 +119,7 @@ export const Tweet: React.FC<TweetProps> = ({
         </div>
       </div>
 
-      <div>
+      <div className={classes.classes.tweetMenuButton}>
         <IconButton
           aria-label="more"
           id="long-button"
