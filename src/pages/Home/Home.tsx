@@ -2,9 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-
 // mui
-// components
 import Grid from "@material-ui/core/Grid";
 import List from "@material-ui/core/List";
 import Paper from "@material-ui/core/Paper";
@@ -18,7 +16,6 @@ import Typography from "@material-ui/core/Typography";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import InputAdornment from "@material-ui/core/InputAdornment";
-//icons
 import Search from "@material-ui/icons/Search";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";

@@ -49,7 +49,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
       </li>
       <li className={classes.classes.sideMenuListItem}>
         <Link to="/home">
-          <div>
+          <div className={classes.classes.sideMenuListItemWrapper}>
             <HomeOutlined className={classes.classes.sideMenuListItemIcon} />
             <Typography
               className={classes.classes.sideMenuListItemLabel}
@@ -61,7 +61,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </Link>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <Search className={classes.classes.sideMenuListItemIcon} />
           <Typography
             className={classes.classes.sideMenuListItemLabel}
@@ -72,7 +72,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <NotificationsNone className={classes.classes.sideMenuListItemIcon} />
           <Typography
             className={classes.classes.sideMenuListItemLabel}
@@ -83,7 +83,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <EmailOutlined className={classes.classes.sideMenuListItemIcon} />
           <Typography
             className={classes.classes.sideMenuListItemLabel}
@@ -94,7 +94,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <BookmarkBorderOutlined
             className={classes.classes.sideMenuListItemIcon}
           />
@@ -107,7 +107,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <ListAltOutlined className={classes.classes.sideMenuListItemIcon} />
           <Typography
             className={classes.classes.sideMenuListItemLabel}
@@ -118,7 +118,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <PermIdentityOutlined
             className={classes.classes.sideMenuListItemIcon}
           />
@@ -131,7 +131,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </div>
       </li>
       <li className={classes.classes.sideMenuListItem}>
-        <div>
+        <div className={classes.classes.sideMenuListItemWrapper}>
           <MoreHoriz className={classes.classes.sideMenuListItemIcon} />
           <Typography
             className={classes.classes.sideMenuListItemLabel}
