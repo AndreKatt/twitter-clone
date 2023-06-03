@@ -1,27 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { CircularProgress } from "@material-ui/core";
-
+import CircularProgress from "@mui/material/CircularProgress";
 import { Tweet } from "../../components/Tweet/Tweet";
 import {
   selectTweetsItems,
   selectTweetsLoading,
 } from "../../redux/tweets/selectors";
+// styles
+import { CircularProgressWrapper } from "./styles";
 // types
-import type { HomeTweetsProps } from "./types";
 
-export const HomeTweets: React.FC<HomeTweetsProps> = ({
-  classes,
-}): React.ReactElement => {
+export const HomeTweets: React.FC = (): React.ReactElement => {
   const tweets = useSelector(selectTweetsItems);
   const isLoadingTweets = useSelector(selectTweetsLoading);
 
   return (
     <div>
       {isLoadingTweets ? (
-        <div className={classes.classes.tweetsLoadingSpinner}>
+        <CircularProgressWrapper>
           <CircularProgress />
-        </div>
+        </CircularProgressWrapper>
       ) : (
         tweets.map((tweet) => (
           <Tweet
@@ -33,7 +31,6 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({
             userName={tweet.user.username}
             // avatarUrl={tweet.user.avatarUrl}
             createdAt={tweet.createdAt}
-            classes={classes}
           />
         ))
       )}

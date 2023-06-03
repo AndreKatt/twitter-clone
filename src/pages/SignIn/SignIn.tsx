@@ -1,21 +1,27 @@
 import React from "react";
 import { useState } from "react";
-
-import Button from "@material-ui/core/Button";
-import Search from "@material-ui/icons/Search";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import Typography from "@material-ui/core/Typography";
-import MessageIcon from "@material-ui/icons/ChatBubbleOutline";
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
-
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+// local libs
 import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 import { ModalBlock } from "../../components/ModalBlock/ModalBlock";
 import { SignedForm } from "./components/SignedForm/SignedForm";
-
-import { useStylesSignIn } from "./theme";
+import { listInfo } from "./fixtures";
+// styles
+import {
+  BlueSideContainer,
+  ListInfo,
+  ListInfoItem,
+  LoginSideContainer,
+  LoginSideWrapper,
+  LogoIcon,
+  LogoImage,
+  MainContainer,
+  SignUpButton,
+  Title,
+} from "./styles";
 
 export const SignIn: React.FC = () => {
-  const classes = useStylesSignIn();
   const [visibleSign, setvisibleSign] = useState(false);
   const [visibleModal, setVisibleModal] = useState(false);
 
@@ -34,52 +40,40 @@ export const SignIn: React.FC = () => {
   };
 
   return (
-    <div className={classes.wrapper}>
-      <section className={classes.blueSide}>
-        <TwitterIcon color="primary" className={classes.blueSideBigIcon} />
-        <ul className={classes.blueSideListInfo}>
-          <li className={classes.blueListInfoItem}>
-            <Typography variant="h6">
-              <Search className={classes.blueSideListIcon} />
-              Читайте о том, что вам интересно.
-            </Typography>
-          </li>
-          <li className={classes.blueListInfoItem}>
-            <Typography variant="h6">
-              <PeopleOutlineIcon className={classes.blueSideListIcon} />
-              Узнайте, о чем говорят в мире.
-            </Typography>
-          </li>
-          <li className={classes.blueListInfoItem}>
-            <Typography variant="h6">
-              <MessageIcon className={classes.blueSideListIcon} />
-              Присоединяйтесь к общению.
-            </Typography>
-          </li>
-        </ul>
-      </section>
-      <section className={classes.loginSide}>
-        <div className={classes.loginSideWrapper}>
-          <TwitterIcon
-            color="primary"
-            className={classes.loginSideTwitterIcon}
-          />
-          <Typography className={classes.loginSideTitle} variant="h4">
+    <MainContainer>
+      <BlueSideContainer>
+        <LogoImage color="primary" />
+
+        <ListInfo>
+          {listInfo.map((item) => (
+            <ListInfoItem key={item.id}>
+              <Typography variant="h6">
+                {item.icon}
+                {item.label}
+              </Typography>
+            </ListInfoItem>
+          ))}
+        </ListInfo>
+      </BlueSideContainer>
+
+      <LoginSideWrapper>
+        <LoginSideContainer>
+          <LogoIcon color="primary" />
+          <Title variant="h4">
             Узнайте, что происходит в мире прямо сейчас
-          </Typography>
+          </Title>
           <Typography>
             <b>Присоединяйтесь к твиттеру прямо сейчас!</b>
           </Typography>
           <br />
-          <Button
+          <SignUpButton
             onClick={handleClickSignUp}
-            style={{ marginBottom: 18 }}
             variant="contained"
             color="primary"
             fullWidth={true}
           >
             Зарегистрироваться
-          </Button>
+          </SignUpButton>
           <Button
             onClick={handleClickSignIn}
             variant="outlined"
@@ -95,19 +89,13 @@ export const SignIn: React.FC = () => {
             onClose={handleClose}
           >
             {visibleModal ? (
-              <SignedForm
-                onClose={handleClose}
-                classes={{ classes: classes }}
-              />
+              <SignedForm onClose={handleClose} />
             ) : (
-              <RegisterForm
-                onClose={handleClose}
-                classes={{ classes: classes }}
-              />
+              <RegisterForm onClose={handleClose} />
             )}
           </ModalBlock>
-        </div>
-      </section>
-    </div>
+        </LoginSideContainer>
+      </LoginSideWrapper>
+    </MainContainer>
   );
 };

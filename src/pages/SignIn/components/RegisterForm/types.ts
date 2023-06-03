@@ -1,7 +1,4 @@
-import type { SignComponentStyleProps } from "../../types";
-
 export type SignUpFormProps = {
-  classes: SignComponentStyleProps;
   onClose: () => void;
 };
 

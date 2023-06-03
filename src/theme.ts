@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { red } from "@material-ui/core/colors";
-import { createTheme } from "@material-ui/core/styles";
+import { red } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   typography: {
@@ -13,11 +13,12 @@ export const theme = createTheme({
       "Ubuntu",
       "Helvetica Neue",
       "sans-serif",
-    ],
+    ].join(","),
   },
+
   palette: {
     primary: {
-      main: "rgb(29, 161, 242)",
+      main: "rgb(29, 155, 240)",
       dark: "rgb(26, 145, 218)",
       contrastText: "#fff",
     },
@@ -34,67 +35,111 @@ export const theme = createTheme({
       primary: "#14171a",
     },
   },
-  shadows: [],
-  overrides: {
+
+  shadows: {
+    1: "none",
+    24: "none",
+  },
+
+  components: {
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          marginTop: -32,
+          marginLeft: -8,
+          paddingLeft: "0 !important",
+        },
+      },
+    },
+
+    MuiPaper: {
+      defaultProps: {
+        outlined: {
+          borderTop: 0,
+          borderLeft: 0,
+          borderRight: 0,
+          borderRadius: 0,
+        },
+      },
+    },
+
     MuiGrid: {
-      item: {
-        padding: "0px 12px 12px 0px !important",
+      defaultProps: {
+        item: {
+          padding: "0px 12px 12px 0px !important",
+        },
       },
     },
+
     MuiButton: {
-      root: {
-        borderRadius: 30,
-        textTransform: "none",
-        fontSize: 16,
-        height: 40,
-        fontWeight: 700,
-        minWidth: 51,
-      },
-      textPrimary: {
-        paddingLeft: 20,
-        paddingRight: 20,
-      },
-      outlinedPrimary: {
-        borderColor: "rgb(29, 161, 243)",
+      styleOverrides: {
+        root: {
+          borderRadius: 30,
+          textTransform: "none",
+          fontSize: 16,
+          height: 40,
+          fontWeight: 700,
+          minWidth: 51,
+          boxShadow: "none",
+        },
+        textPrimary: {
+          paddingLeft: 20,
+          paddingRight: 20,
+        },
+        outlinedPrimary: {
+          borderColor: "rgb(29, 155, 240)",
+        },
       },
     },
+
     MuiFilledInput: {
-      underline: {
-        "&:after": {
-          borderBottomWidth: "2px",
+      defaultProps: {
+        underline: {
+          "&:after": {
+            borderBottomWidth: "2px",
+          },
+          "&:before": {
+            borderColor: "#000",
+            borderBottomWidth: "2px",
+          },
         },
-        "&:before": {
-          borderColor: "#000",
-          borderBottomWidth: "2px",
+        input: {
+          backgroundColor: "rgb(245, 248, 250)",
         },
-      },
-      input: {
-        backgroundColor: "rgb(245, 248, 250)",
       },
     },
+
     MuiDialog: {
-      paper: {
-        borderRadius: 15,
-      },
-    },
-    MuiDialogActions: {
-      root: {
-        marginBottom: 8,
-      },
-    },
-    MuiDialogTitle: {
-      root: {
-        borderBottom: "1px solid rgba(204, 214, 221)",
-        marginBottom: 10,
-        padding: "10px 15px",
-        "& h2": {
-          display: "flex",
-          alignItems: "center",
-          fontWeight: 800,
+      defaultProps: {
+        paper: {
+          borderRadius: 15,
         },
-        "& button": {
-          padding: 8,
-          marginRight: 20,
+      },
+    },
+
+    MuiDialogActions: {
+      defaultProps: {
+        root: {
+          marginBottom: 8,
+        },
+      },
+    },
+
+    MuiDialogTitle: {
+      defaultProps: {
+        root: {
+          borderBottom: "1px solid rgba(204, 214, 221)",
+          marginBottom: 10,
+          padding: "10px 15px",
+          "& h2": {
+            display: "flex",
+            alignItems: "center",
+            fontWeight: 800,
+          },
+          "& button": {
+            padding: 8,
+            marginRight: 20,
+          },
         },
       },
     },

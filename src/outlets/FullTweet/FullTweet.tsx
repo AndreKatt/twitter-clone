@@ -1,22 +1,12 @@
 import React, { ReactElement, useEffect } from "react";
-import classNames from "classnames";
 import format from "date-fns/format";
 import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// mui
-import CircularProgress from "@material-ui/core/CircularProgress";
-import ChatBubbleOutline from "@material-ui/icons/ChatBubbleOutline";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Avatar from "@material-ui/core/Avatar";
-import Paper from "@material-ui/core/Paper";
-import {
-  FavoriteBorderOutlined,
-  RepeatOutlined,
-  ReplySharp,
-} from "@material-ui/icons";
-// redux
+import CircularProgress from "@mui/material/CircularProgress";
+import Paper from "@mui/material/Paper";
+import { grey } from "@mui/material/colors";
+// local libs
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
 import {
@@ -25,12 +15,26 @@ import {
 } from "../../redux/tweet/selectors";
 import { setTweetData } from "../../redux/tweet/slice";
 import { ImagesList } from "../../components/ImagesList/ImagesList";
-//types
-import type { FullTweetProps } from "./types";
+import { footerIcons } from "./fixtures";
+// styles
+import {
+  SpinnerWrapper,
+  TextContentContainer,
+  TextContentWrapper,
+  HeaderText,
+  TweetAvatar,
+  FooterIcon,
+} from "../../styles";
+import {
+  FullTweetContainer,
+  FullTweetWrapper,
+  FooterContainer,
+  HeaderTextContent,
+  TweetText,
+  TweetData,
+} from "./styles";
 
-export const FullTweet: React.FC<FullTweetProps> = ({
-  classes,
-}): ReactElement | null => {
+export const FullTweet: React.FC = (): ReactElement | null => {
   const { id }: { id?: string } = useParams();
   const dispatch = useAppDispatch();
   const tweetData = useSelector(selectTweetData);
@@ -50,58 +54,37 @@ export const FullTweet: React.FC<FullTweetProps> = ({
 
   if (isTweetLoading) {
     return (
-      <div className={classes.classes.topicsLoadingSpinner}>
+      <SpinnerWrapper>
         <CircularProgress />
-      </div>
+      </SpinnerWrapper>
     );
   }
 
   if (tweetData) {
     return (
       <Paper>
-        <div className={classes.classes.fullTweetWrapper}>
-          <div
-            className={classNames(
-              classes.classes.tweet,
-              classes.classes.tweetsHeader
-            )}
-          >
-            <Avatar
-              className={classes.classes.tweetAvatar}
+        <FullTweetWrapper>
+          <FullTweetContainer>
+            <TweetAvatar
               alt="Аватарка пользователя"
               // src={tweetData.user.avatarUrl}
             />
-            <div className={classes.classes.tweetContent}>
-              <div className={classes.classes.tweetTextContent}>
-                <Typography className={classes.classes.tweetInfoBlock}>
+            <TextContentContainer>
+              <TextContentWrapper>
+                <HeaderTextContent>
                   <b>{tweetData.user.fullname}</b>&nbsp;
                   <div>
-                    <span className={classes.classes.tweetUserName}>
-                      @{tweetData.user.username}
-                    </span>
+                    <HeaderText>@{tweetData.user.username}</HeaderText>
                   </div>
-                </Typography>
-              </div>
-            </div>
-          </div>
-          <Typography
-            className={classNames(
-              classes.classes.fullTweetText,
-              classes.classes.tweetsHeader
-            )}
-            variant="body1"
-            gutterBottom
-          >
+                </HeaderTextContent>
+              </TextContentWrapper>
+            </TextContentContainer>
+          </FullTweetContainer>
+
+          <TweetText variant="h4" gutterBottom>
             <span> {tweetData.text}</span>
-            {tweetData.images && (
-              <ImagesList images={tweetData.images} classes={classes} />
-            )}
-            <Typography
-              className={classNames(
-                classes.classes.fullTweetData,
-                classes.classes.tweetUserName
-              )}
-            >
+            {tweetData.images && <ImagesList images={tweetData.images} />}
+            <TweetData color={grey[500]}>
               <span>{format(new Date(tweetData.createdAt), "H:mm")}</span>
               &nbsp;
               <span>·</span>&nbsp;
@@ -110,33 +93,18 @@ export const FullTweet: React.FC<FullTweetProps> = ({
                   locale: ru,
                 })}
               </span>
-            </Typography>
-          </Typography>
+            </TweetData>
+          </TweetText>
 
-          <div className={classes.classes.fullTweetFooter}>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <ChatBubbleOutline style={{ fontSize: 25 }} />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <RepeatOutlined style={{ fontSize: 25 }} />
-              </IconButton>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <FavoriteBorderOutlined style={{ fontSize: 25 }} />
-              </IconButton>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <ReplySharp style={{ fontSize: 25 }} />
-              </IconButton>
-            </div>
-          </div>
-        </div>
+          <FooterContainer>
+            {footerIcons.map((item) => (
+              <div key={item.id}>
+                <FooterIcon>{item.icon}</FooterIcon>
+                <span>{item.count}</span>
+              </div>
+            ))}
+          </FooterContainer>
+        </FullTweetWrapper>
       </Paper>
     );
   }

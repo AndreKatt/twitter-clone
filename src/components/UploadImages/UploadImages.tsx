@@ -65,7 +65,6 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
       />
       <ImagesList
         images={images.map((img) => img.blobUrl)}
-        classes={{ classes: classes }}
         removeImage={removeImage}
       />
       <IconButton onClick={handleClickImage} color="primary">

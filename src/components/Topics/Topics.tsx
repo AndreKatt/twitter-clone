@@ -10,12 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import { selectTopicsItems } from "../../redux/topics/selectors";
-//types
-import type { TopicsProps } from "./types";
 
-export const Topics: React.FC<TopicsProps> = ({
-  classes,
-}): React.ReactElement => {
+export const Topics: React.FC = (): React.ReactElement => {
   const topics = useSelector(selectTopicsItems);
 
   return (

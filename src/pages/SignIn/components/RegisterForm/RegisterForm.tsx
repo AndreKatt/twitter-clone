@@ -2,55 +2,27 @@ import React from "react";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-import Alert from "@mui/material/Alert";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import Slide from "@mui/material/Slide/Slide";
 import Snackbar from "@mui/material/Snackbar";
-import FormGroup from "@material-ui/core/FormGroup";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import DialogActions from "@material-ui/core/DialogActions";
-
+import FormGroup from "@mui/material/FormGroup";
+import FormControl from "@mui/material/FormControl";
+import DialogActions from "@mui/material/DialogActions";
+// local libs
 import { signUp } from "../../../../redux/user/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
+import { loginFormSchema } from "./fixtures";
+// styles
+import { InputField } from "../../styles";
+import { SignAlert } from "./styles";
 // types
 import type { RegisterFormProps, SignUpFormProps } from "./types";
-
-const loginFormSchema = yup
-  .object({
-    email: yup
-      .string()
-      .required("Введите E-Mail!")
-      .email("E-Mail адрес указан некорректно."),
-    username: yup
-      .string()
-      .required("Введите логин!")
-      .min(2, "Логин должен содержать минимум 2 символа"),
-    fullname: yup
-      .string()
-      .required("Введите имя!")
-      .min(2, "Имя должено содержать минимум 2 символа"),
-    password: yup
-      .string()
-      .required("Введите пароль")
-      .min(6, "Пароль должен содержать минимум 6 символов."),
-    password2: yup
-      .string()
-      .required("Подтвердите пароль!")
-      .oneOf([yup.ref("password")], "Пароли не совпадают"),
-  })
-  .required();
 
 function transition(props: any) {
   return <Slide {...props} direction="down" />;
 }
 
-export const RegisterForm: React.FC<SignUpFormProps> = ({
-  classes,
-  onClose,
-}) => {
+export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
 
@@ -89,8 +61,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             name="username"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="name"
                 label="Логин"
@@ -110,8 +81,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             name="email"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="email"
                 label="E-Mail"
@@ -131,8 +101,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             name="fullname"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="fullname"
                 label="Имя"
@@ -152,8 +121,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             name="password"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="password"
                 label="Пароль"
@@ -173,8 +141,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
             name="password2"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="password2"
                 label="Повторите пароль"
@@ -210,11 +177,11 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
         onClose={() => setOpenSuccess(false)}
         TransitionComponent={transition}
       >
-        <Alert onClose={onClose} severity="success" sx={{ width: "100%" }}>
+        <SignAlert onClose={onClose} severity="success">
           Вы успешно зарегистрированы. На вашу почту направлено письмо для
           подтверждения аккаунта. После подтверждения аккаунта войдите в
           профиль.
-        </Alert>
+        </SignAlert>
       </Snackbar>
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -223,9 +190,9 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({
         onClose={() => setOpenError(false)}
         TransitionComponent={transition}
       >
-        <Alert onClose={onClose} severity="error" sx={{ width: "100%" }}>
+        <SignAlert onClose={onClose} severity="error">
           Ошибка при создании аккаунта. Попробуйте позже.
-        </Alert>
+        </SignAlert>
       </Snackbar>
     </form>
   );

@@ -1,32 +1,38 @@
 import React from "react";
-import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import Menu from "@mui/material/Menu";
-import Paper from "@material-ui/core/Paper";
 import MenuItem from "@mui/material/MenuItem";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import ChatBubbleOutline from "@material-ui/icons/ChatBubbleOutline";
-import {
-  FavoriteBorderOutlined,
-  RepeatOutlined,
-  ReplySharp,
-} from "@material-ui/icons";
-
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+// local libs
+import { ImagesList } from "../ImagesList/ImagesList";
 import { formatDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
-import { ImagesList } from "../ImagesList/ImagesList";
+// styles
+import {
+  TextContentContainer,
+  TextContentWrapper,
+  HeaderText,
+  TweetAvatar,
+  FooterIcon,
+} from "../../styles";
+import {
+  AvatarWrapper,
+  FooterContainer,
+  HeaderContainer,
+  HeaderTextContainer,
+  MenuButtonContainer,
+  TweetContainer,
+} from "./styles";
 // types
 import type { TweetProps } from "./types";
+import { footerIcons, menuText } from "./fixtures";
 
 export const Tweet: React.FC<TweetProps> = ({
   _id,
-  classes,
   text,
   fullname,
   userName,
@@ -54,72 +60,47 @@ export const Tweet: React.FC<TweetProps> = ({
   };
 
   return (
-    <Paper
-      className={classNames(
-        classes.classes.tweet,
-        classes.classes.tweetWrapper
-      )}
-      variant="outlined"
-    >
-      <div className={classes.classes.tweetHeaderUserContent}>
-        <div className={classes.classes.tweetAvatarWrapper}>
-          <Avatar
-            className={classes.classes.tweetAvatar}
+    <TweetContainer variant="outlined">
+      <HeaderContainer>
+        <AvatarWrapper>
+          <TweetAvatar
             alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
-        </div>
+        </AvatarWrapper>
 
-        <div className={classes.classes.tweetContent}>
-          <div className={classes.classes.tweetHeaderWrapper}>
-            <div className={classes.classes.tweetTextContent}>
+        <TextContentContainer>
+          <HeaderTextContainer>
+            <TextContentWrapper>
               <Typography>
                 <b>{fullname}</b>&nbsp;
-                <span className={classes.classes.tweetUserName}>
-                  @{userName}
-                </span>
+                <HeaderText>@{userName}</HeaderText>
                 &nbsp;
-                <span className={classes.classes.tweetUserName}>·</span>&nbsp;
-                <span className={classes.classes.tweetUserName}>
-                  {formatDate(new Date(createdAt))} назад
-                </span>
+                <HeaderText>·</HeaderText>&nbsp;
+                <HeaderText>{formatDate(new Date(createdAt))} назад</HeaderText>
               </Typography>
-            </div>
-          </div>
+            </TextContentWrapper>
+          </HeaderTextContainer>
 
-          <Link to={`tweet/${_id}`} className={classes.classes.tweetLink}>
+          <Link to={`tweet/${_id}`}>
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>
-            {images && <ImagesList images={images} classes={classes} />}
+            {images && <ImagesList images={images} />}
           </Link>
-          <div className={classes.classes.tweetFooter}>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <ChatBubbleOutline style={{ fontSize: 20 }} />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <RepeatOutlined style={{ fontSize: 20 }} />
-              </IconButton>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <FavoriteBorderOutlined style={{ fontSize: 20 }} />
-              </IconButton>
-            </div>
-            <div>
-              <IconButton className={classes.classes.tweetFooterIcon}>
-                <ReplySharp style={{ fontSize: 20 }} />
-              </IconButton>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className={classes.classes.tweetMenuButton}>
+          <FooterContainer>
+            {footerIcons.map((item) => (
+              <div key={item.id}>
+                <FooterIcon>{item.icon}</FooterIcon>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </FooterContainer>
+        </TextContentContainer>
+      </HeaderContainer>
+
+      <MenuButtonContainer>
         <IconButton
           aria-label="more"
           id="long-button"
@@ -128,7 +109,7 @@ export const Tweet: React.FC<TweetProps> = ({
           aria-haspopup="true"
           onClick={handleClick}
         >
-          <MoreVertIcon />
+          <MoreHorizIcon />
         </IconButton>
         <Menu
           id="long-menu"
@@ -139,10 +120,10 @@ export const Tweet: React.FC<TweetProps> = ({
           open={open}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Редактировать</MenuItem>
-          <MenuItem onClick={deleteOne}>Удалить твит</MenuItem>
+          <MenuItem onClick={handleClose}>{menuText[0]}</MenuItem>
+          <MenuItem onClick={deleteOne}>{menuText[1]}</MenuItem>
         </Menu>
-      </div>
-    </Paper>
+      </MenuButtonContainer>
+    </TweetContainer>
   );
 };

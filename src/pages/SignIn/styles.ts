@@ -1,0 +1,82 @@
+import { Container, styled } from "@mui/material";
+import Typography, { TypographyProps } from "@mui/material/Typography";
+import Button, { ButtonProps } from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import List from "@mui/material/List";
+import Twitter from "@mui/icons-material/Twitter";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
+import ListItem from "@mui/material/ListItem";
+
+export const MainContainer = styled(Container)({
+  display: "flex",
+  height: "103vh",
+});
+
+export const BlueSideContainer = styled(Paper)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#71C9F8",
+  flex: "0 0 50%",
+  overflow: "hidden",
+  position: "relative",
+});
+
+export const ListInfo = styled(List)({
+  position: "relative",
+  width: 380,
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  "& h6": {
+    display: "flex",
+    alignItems: "center",
+    color: "white",
+    fontWeight: 700,
+    fontSize: 20,
+  },
+});
+
+export const ListInfoItem = styled(ListItem)({
+  marginBottom: 30,
+});
+
+export const Title = styled(Typography)<TypographyProps>({
+  fontWeight: 700,
+  fontSize: 32,
+  marginBottom: 60,
+  marginTop: 20,
+});
+
+export const SignUpButton = styled(Button)<ButtonProps>({
+  marginBottom: 18,
+});
+
+export const LogoImage = styled(Twitter)({
+  position: "absolute",
+  left: "50%",
+  top: "53%",
+  transform: "translate(-50%, -50%)",
+  width: "260%",
+  height: "260%",
+});
+
+export const LogoIcon = styled(Twitter)({
+  fontSize: 47,
+});
+
+export const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
+  marginBottom: theme.spacing(5),
+}));
+
+export const LoginSideWrapper = styled(Paper)({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: "0 0 50%",
+  overflow: "hidden",
+});
+
+export const LoginSideContainer = styled(Paper)({
+  width: 380,
+});

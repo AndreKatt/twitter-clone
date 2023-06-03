@@ -3,38 +3,48 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 // mui
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import Paper from "@material-ui/core/Paper";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Search from "@material-ui/icons/Search";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { ArrowBack, PersonAddOutlined } from "@material-ui/icons";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import Paper from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+// import InputAdornment from "@mui/material/InputAdornment";
+// import SearchIcon from "@mui/icons-material/Search";
+import CircularProgress from "@mui/material/CircularProgress";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 // redux
 import { selectTopicsLoading } from "../../redux/topics/selectors";
 import { fetchTweets } from "../../redux/tweets/asyncActions";
 import { fetchTopics } from "../../redux/topics/asyncActions";
+import { useAppDispatch } from "../../redux/store";
 // components
 import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
 import { SideMenu } from "../../components/SideMenu/SideMenu";
 import { Topics } from "../../components/Topics/Topics";
-// styles
-import { useAppDispatch } from "../../redux/store";
 import { UserSideProfile } from "../../components/UserSideProfile/UserSideProfile";
+// styles
+import {
+  AddTweetBottomLine,
+  AddTweetWrapper,
+  HeaderButton,
+  RecommendedHeader,
+  RecommendedItem,
+  RightSideContainer,
+  InnerContainer,
+  TweetsContainer,
+  TweetsHeader,
+} from "./styles";
+import { SpinnerWrapper } from "../../styles";
 // types
-import type { HomeProps } from "./types";
 
-export const Home: React.FC<HomeProps> = ({ classes }) => {
+export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const nav = useNavigate();
@@ -50,69 +60,68 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
   const isTopicsLocation = location.pathname === "/home/search";
 
   return (
-    <Container className={classes.classes.wrapper} maxWidth="lg">
+    <Container maxWidth="lg">
       <Grid container spacing={3}>
         <Grid sm={1} md={3} item>
-          <SideMenu classes={classes} />
-          <UserSideProfile classes={classes} />
+          <SideMenu />
+          <UserSideProfile />
         </Grid>
+
         <Grid sm={8} md={6} item>
-          <Paper className={classes.classes.tweetsWrapper} variant="outlined">
-            <Paper className={classes.classes.tweetsHeader} variant="outlined">
+          <TweetsContainer variant="outlined">
+            <TweetsHeader variant="outlined">
               {!isHomeLocation && (
-                <IconButton
-                  onClick={() => nav(-1)}
-                  color="primary"
-                  className={classes.classes.tweetsHeaderBackButton}
-                >
-                  <ArrowBack />
-                </IconButton>
+                <HeaderButton onClick={() => nav(-1)} color="primary">
+                  <ArrowBackIcon />
+                </HeaderButton>
               )}
               <Typography variant="h6">
                 {!isHomeLocation ? "Твитнуть" : "Главная"}
               </Typography>
-            </Paper>
+            </TweetsHeader>
+
             {isHomeLocation || isTopicsLocation ? (
               <Paper>
-                <div className={classes.classes.addForm}>
-                  <AddTweetForm classes={classes} />
-                </div>
-                <div className={classes.classes.addFormBottomLine} />
+                <AddTweetWrapper>
+                  <AddTweetForm />
+                </AddTweetWrapper>
+                <AddTweetBottomLine />
               </Paper>
             ) : null}
 
             <Outlet />
-          </Paper>
+          </TweetsContainer>
         </Grid>
         <Grid xs={1} sm={3} md={3} item>
-          <div className={classes.classes.rightSide}>
+          <RightSideContainer>
             <SearchTextField
-              variant="outlined"
-              placeholder="Поиск по твиттеру"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search />
-                  </InputAdornment>
-                ),
-              }}
-              fullWidth
+            // variant="outlined"
+            // placeholder="Поиск по твиттеру"
+            // InputProps={{
+            //   startAdornment: (
+            //     <InputAdornment position="start">
+            //       <SearchIcon />
+            //     </InputAdornment>
+            //   ),
+            // }}
+            // fullWidth
             />
-            <Paper className={classes.classes.rightSideBlock}>
+            <InnerContainer>
               {isLoadingTopics ? (
-                <div className={classes.classes.topicsLoadingSpinner}>
+                <SpinnerWrapper>
                   <CircularProgress />
-                </div>
+                </SpinnerWrapper>
               ) : (
-                <Topics classes={classes} />
+                <Topics />
               )}
-            </Paper>
-            <Paper className={classes.classes.rightSideBlock}>
-              <Paper className={classes.classes.rightSideBlockHeader}>
+            </InnerContainer>
+            <InnerContainer>
+              <RecommendedHeader>
                 <Typography variant="h5">Кого читать</Typography>
-              </Paper>
+              </RecommendedHeader>
+
               <List>
-                <ListItem className={classes.classes.rightSideBlockItem}>
+                <RecommendedItem>
                   <ListItemAvatar>
                     <Avatar
                       alt="Роберт Смит"
@@ -128,13 +137,13 @@ export const Home: React.FC<HomeProps> = ({ classes }) => {
                     }
                   />
                   <Button color="primary">
-                    <PersonAddOutlined />
+                    <PersonAddOutlinedIcon />
                   </Button>
-                </ListItem>
+                </RecommendedItem>
                 <Divider component="li" />
               </List>
-            </Paper>
-          </div>
+            </InnerContainer>
+          </RightSideContainer>
         </Grid>
       </Grid>
     </Container>

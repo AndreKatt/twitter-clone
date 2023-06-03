@@ -3,21 +3,22 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import Alert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide/Slide";
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
-import FormGroup from "@material-ui/core/FormGroup";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import DialogActions from "@material-ui/core/DialogActions";
-
+import FormGroup from "@mui/material/FormGroup";
+import FormControl from "@mui/material/FormControl";
+import DialogActions from "@mui/material/DialogActions";
+// local libs
 import {
   getCurrentUserByToken,
   signIn,
 } from "../../../../redux/user/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
+// styles
+import { InputField } from "../../styles";
+import { SignInInputField } from "./styles";
 // types
 import type { SignedFormProps } from "./types";
 import type { LoginFormProps } from "../../../../types";
@@ -39,7 +40,7 @@ function transition(props: any) {
   return <Slide {...props} direction="down" />;
 }
 
-export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
+export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -75,8 +76,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
             name="email"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.registerField}
+              <InputField
                 autoFocus
                 id="email"
                 label="E-Mail"
@@ -96,8 +96,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ classes, onClose }) => {
             name="password"
             control={control}
             render={({ field }) => (
-              <TextField
-                className={classes.classes.loginSideField}
+              <SignInInputField
                 autoFocus
                 id="password"
                 label="Пароль"

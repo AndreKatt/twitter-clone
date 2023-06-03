@@ -1,24 +1,31 @@
 import React from "react";
-import classNames from "classnames";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
-import Button from "@material-ui/core/Button";
-import Avatar from "@material-ui/core/Avatar";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { Alert, TextareaAutosize } from "@mui/material";
+import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Alert } from "@mui/material";
+import { UploadImages } from "../UploadImages/UploadImages";
+// redux
 import { selectAddFormState } from "../../redux/tweets/selectors";
 import { addTweet, uploadFile } from "../../redux/tweets/asyncActions";
 import { setAddFormState } from "../../redux/tweets/slice";
 import { AddFormState } from "../../redux/tweets/types";
 import { useAppDispatch } from "../../redux/store";
-import { UploadImages } from "../UploadImages/UploadImages";
+// styles
+import {
+  BodyContainer,
+  BottomContainer,
+  ImagesWrapper,
+  ButtomRightContainer,
+  CircularProgressWrapper,
+  AddTweetAvatar,
+  Textarea,
+} from "./styles";
 //types
 import type { AddTweetFormProps } from "./types";
 import type { UploadedObject } from "../../types";
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
-  classes,
   maxRows,
 }): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -62,35 +69,30 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   };
 
   return (
-    <div>
-      <div className={classes.classes.addFormBody}>
-        <Avatar
-          className={classes.classes.tweetAvatar}
+    <>
+      <BodyContainer>
+        <AddTweetAvatar
           alt="Ваша аватарка"
           src="https://images.unsplash.com/photo-1558499932-9609acb6f443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
         />
-        <TextareaAutosize
+        <Textarea
           onChange={handleChangeTextarea}
-          className={classes.classes.addFormTextarea}
           placeholder="Что происходит?"
           value={text}
           maxRows={maxRows}
         />
-      </div>
-      <div className={classes.classes.addFormBottom}>
-        <div
-          className={classNames(
-            classes.classes.tweetFooter,
-            classes.classes.addFormBottomActions
-          )}
-        >
+      </BodyContainer>
+
+      <BottomContainer>
+        <ImagesWrapper>
           <UploadImages images={images} onChangeImages={setImages} />
-        </div>
-        <div className={classes.classes.addFormButtomRight}>
+        </ImagesWrapper>
+
+        <ButtomRightContainer>
           {text && (
             <>
               <span>{textCount}</span>
-              <div className={classes.classes.addFormCircleProgress}>
+              <CircularProgressWrapper>
                 {text.length <= 280 ? (
                   <CircularProgress
                     variant="determinate"
@@ -111,7 +113,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                   thickness={4}
                   value={100}
                 />
-              </div>
+              </CircularProgressWrapper>
             </>
           )}
 
@@ -122,7 +124,6 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
               !text ||
               textLimitPercent > 100
             }
-            color="primary"
             variant="contained"
           >
             {addFormState === AddFormState.LOADING ? (
@@ -131,13 +132,14 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
               "Твитнуть"
             )}
           </Button>
-        </div>
-      </div>
+        </ButtomRightContainer>
+      </BottomContainer>
+
       {addFormState === AddFormState.ERROR && (
         <Alert severity="error">
           Ошибка при добавлении твита <span>😔</span>
         </Alert>
       )}
-    </div>
+    </>
   );
 };

@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { KeyboardArrowDown } from "@material-ui/icons";
-import { Avatar, colors, Typography } from "@material-ui/core";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { selectUserState } from "../../redux/user/selectors";
-//types
-import type { UserProfileProps } from "./types";
-import { IconButton } from "@mui/material";
+// styles
+import {
+  Button,
+  Fullname,
+  ProfileAvatar,
+  ProfileContainer,
+  TextContainer,
+  Username,
+} from "./styles";
 
-export const UserSideProfile: React.FC<UserProfileProps> = ({ classes }) => {
+export const UserSideProfile: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const user = useSelector(selectUserState);
@@ -23,16 +28,9 @@ export const UserSideProfile: React.FC<UserProfileProps> = ({ classes }) => {
   };
 
   return (
-    <div
-      className="sideProfileContainer"
-      // style={{ position: "relative", height: 500 }}
-    >
+    <div className="sideProfileContainer">
       <Menu
-        // container={document.querySelector(".sideProfileContainer")}
         id="profile-menu"
-        // MenuListProps={{
-        //   "aria-labelledby": "long-button",
-        // }}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -53,31 +51,25 @@ export const UserSideProfile: React.FC<UserProfileProps> = ({ classes }) => {
         </MenuItem>
       </Menu>
 
-      <div
-        className={classes.classes.profileWrapper}
+      <ProfileContainer
         aria-label="more"
         aria-controls={open ? "profile-menu" : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <Avatar className={classes.classes.avatar} />
-        <div className={classes.classes.userNameWrapper}>
-          <Typography className={classes.classes.userName}>
+        <ProfileAvatar />
+        <TextContainer>
+          <Fullname>
             <b>{user.currentUser?.fullname}</b>
-          </Typography>
-          <Typography
-            className={classes.classes.userName}
-            style={{ color: colors.grey[500] }}
-          >
-            {user.currentUser?.username}
-          </Typography>
-        </div>
+          </Fullname>
+          <Username>{user.currentUser?.username}</Username>
+        </TextContainer>
 
-        <IconButton className={classes.classes.button}>
-          <KeyboardArrowDown />
-        </IconButton>
-      </div>
+        <Button>
+          <KeyboardArrowDownIcon />
+        </Button>
+      </ProfileContainer>
     </div>
   );
 };

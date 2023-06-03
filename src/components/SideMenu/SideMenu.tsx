@@ -1,29 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Search from "@material-ui/icons/Search";
-import Twitter from "@material-ui/icons/Twitter";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import {
-  BookmarkBorderOutlined,
-  EmailOutlined,
-  HomeOutlined,
-  ListAltOutlined,
-  MoreHoriz,
-  NotificationsNone,
-  PermIdentityOutlined,
-} from "@material-ui/icons";
-import { BorderColorOutlined } from "@material-ui/icons";
 import { ModalBlock } from "../ModalBlock/ModalBlock";
 import { AddTweetForm } from "../AddTweetForm/AddTweetForm";
-//types
-import { SideMenuProps } from "./types";
+import { menuItems } from "./fixtures";
+// styles
+import {
+  AddTweetButton,
+  ButtonIcon,
+  Label,
+  ListItemWrapper,
+  LogoIcon,
+  LogoIconButton,
+  SideMenuList,
+  SideMenuListItem,
+} from "./styles";
 
-export const SideMenu: React.FC<SideMenuProps> = ({
-  classes,
-}): React.ReactElement => {
+export const SideMenu: React.FC = (): React.ReactElement => {
   const [visibleAddTweet, setVisibleAddTweet] = useState(false);
 
   const handleOpenAddTweet = () => {
@@ -35,129 +28,42 @@ export const SideMenu: React.FC<SideMenuProps> = ({
   };
 
   return (
-    <ul className={classes.classes.sideMenuList}>
-      <li className={classes.classes.sideMenuListItem}>
+    <SideMenuList>
+      <SideMenuListItem>
         <Link to="/home">
-          <IconButton
-            className={classes.classes.logo}
-            aria-label=""
-            color="primary"
-          >
-            <Twitter className={classes.classes.logoIcon} />
-          </IconButton>
+          <LogoIconButton aria-label="" color="primary">
+            <LogoIcon />
+          </LogoIconButton>
         </Link>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <Link to="/home">
-          <div className={classes.classes.sideMenuListItemWrapper}>
-            <HomeOutlined className={classes.classes.sideMenuListItemIcon} />
-            <Typography
-              className={classes.classes.sideMenuListItemLabel}
-              variant="h6"
-            >
-              Главная
-            </Typography>
-          </div>
+      </SideMenuListItem>
+
+      {menuItems.map((item) => (
+        <Link to={item.link}>
+          <SideMenuListItem key={item.label}>
+            <ListItemWrapper>
+              {item.icon}
+              <Label variant="h6">{item.label}</Label>
+            </ListItemWrapper>
+          </SideMenuListItem>
         </Link>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <Search className={classes.classes.sideMenuListItemIcon} />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Поиск
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <NotificationsNone className={classes.classes.sideMenuListItemIcon} />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Уведомления
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <EmailOutlined className={classes.classes.sideMenuListItemIcon} />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Сообщения
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <BookmarkBorderOutlined
-            className={classes.classes.sideMenuListItemIcon}
-          />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Закладки
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <ListAltOutlined className={classes.classes.sideMenuListItemIcon} />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Список
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <PermIdentityOutlined
-            className={classes.classes.sideMenuListItemIcon}
-          />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Профиль
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <div className={classes.classes.sideMenuListItemWrapper}>
-          <MoreHoriz className={classes.classes.sideMenuListItemIcon} />
-          <Typography
-            className={classes.classes.sideMenuListItemLabel}
-            variant="h6"
-          >
-            Еще
-          </Typography>
-        </div>
-      </li>
-      <li className={classes.classes.sideMenuListItem}>
-        <Button
+      ))}
+
+      <SideMenuListItem>
+        <AddTweetButton
           onClick={handleOpenAddTweet}
-          className={classes.classes.sideMenuTweetButton}
           variant="contained"
           color="primary"
         >
-          <BorderColorOutlined className={classes.classes.sideMenuButtonIcon} />
-
+          <ButtonIcon />
           <span>Твитнуть</span>
-        </Button>
+        </AddTweetButton>
+
         <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>
           <div style={{ width: 550 }}>
-            <AddTweetForm maxRows={15} classes={classes} />
+            <AddTweetForm maxRows={15} />
           </div>
         </ModalBlock>
-      </li>
-    </ul>
+      </SideMenuListItem>
+    </SideMenuList>
   );
 };
