@@ -6,22 +6,15 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
 
 export const SideMenuList = styled("ul")({
-  display: "block !important",
   position: "sticky",
   top: 0,
   listStyle: "none",
-  padding: 0,
-  margin: 0,
+  marginTop: 0,
   maxWidth: 230,
-
+  alignSelf: "start",
   "& a": {
     textDecoration: "none",
     color: "inherit",
-  },
-  "@media(max-height: 960px)": {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
   },
 });
 
@@ -48,7 +41,6 @@ export const SideMenuListItem = styled("li")(({ theme }) => ({
     position: "relative",
     borderRadius: 30,
     marginBottom: 15,
-    marginLeft: 25,
     transition: "background-color 0.1s ease-in-out",
 
     "@media(max-height: 790px)": {
@@ -70,21 +62,20 @@ export const ListItemWrapper = styled("div")({
 });
 
 export const LogoIconButton = styled(IconButton)<IconButtonProps>({
-  margin: " 0 0 10px -5px",
+  margin: " 2px 0 12px",
 });
 
 export const LogoIcon = styled(TwitterIcon)({
-  fontSize: "36px !important",
-  paddingLeft: 30,
+  fontSize: "32px",
 });
 
 export const Label = styled(Typography)<TypographyProps>({
-  fontWeight: 700,
+  fontWeight: 400,
   fontSize: 20,
   marginLeft: 15,
   whiteSpace: "nowrap",
 
-  "@media(max-width: 959px)": {
+  "@media(max-width: 1199px)": {
     display: "none",
   },
 });
@@ -94,11 +85,7 @@ export const AddTweetButton = styled(Button)<ButtonProps>(({ theme }) => ({
   marginTop: theme.spacing(2),
   width: 220,
 
-  "& span": {
-    fontSize: 17,
-  },
-
-  "@media(max-width: 959px)": {
+  "@media(max-width: 1199px)": {
     width: 51,
     borderRadius: "50%",
 
@@ -113,7 +100,7 @@ export const ButtonIcon = styled(BorderColorTwoToneIcon)({
   display: "none",
   color: "white",
 
-  "@media(max-width: 959px)": {
+  "@media(max-width: 1199px)": {
     display: "flex",
   },
 });

@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import List from "@material-ui/core/List";
-import Paper from "@material-ui/core/Paper";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import Typography from "@material-ui/core/Typography";
-import ListItemText from "@material-ui/core/ListItemText";
+// import List from "@material-ui/core/List";
+// import Paper from "@material-ui/core/Paper";
+// import Divider from "@material-ui/core/Divider";
+// import ListItem from "@material-ui/core/ListItem";
+// import Typography from "@material-ui/core/Typography";
+// import ListItemText from "@material-ui/core/ListItemText";
 
 import { selectTopicsItems } from "../../redux/topics/selectors";
 

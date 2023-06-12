@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Tweet } from "../../components/Tweet/Tweet";
@@ -8,9 +8,8 @@ import {
 } from "../../redux/tweets/selectors";
 // styles
 import { CircularProgressWrapper } from "./styles";
-// types
 
-export const HomeTweets: React.FC = (): React.ReactElement => {
+export const HomeTweets: React.FC = () => {
   const tweets = useSelector(selectTweetsItems);
   const isLoadingTweets = useSelector(selectTweetsLoading);
 

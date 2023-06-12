@@ -11,15 +11,17 @@ export const ProfileContainer = styled("div")({
   alignItems: "center",
   position: "fixed",
   borderRadius: "40px",
-  bottom: "10px",
+  bottom: 10,
+  marginLeft: "-232px",
   cursor: "pointer",
   transition: "background-color 0.2s",
   "&:hover": {
     backgroundColor: "#e3f1fc",
   },
 
-  "@media(max-width: 959px)": {
+  "@media(max-width: 1199px)": {
     width: "60px",
+    marginLeft: "-58px",
   },
 });
 
@@ -27,7 +29,7 @@ export const TextContainer = styled("div")({
   display: "block",
   paddingLeft: "10px",
 
-  "@media(max-width: 959px)": {
+  "@media(max-width: 1199px)": {
     display: "none",
   },
 });
@@ -42,7 +44,7 @@ export const Button = styled(IconButton)({
   display: "block",
   padding: "0 12px 0 10px",
 
-  "@media(max-width: 960px)": {
+  "@media(max-width: 1199px)": {
     display: "none !important",
   },
 });

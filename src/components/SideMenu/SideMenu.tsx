@@ -16,7 +16,7 @@ import {
   SideMenuListItem,
 } from "./styles";
 
-export const SideMenu: React.FC = (): React.ReactElement => {
+export const SideMenu: React.FC = () => {
   const [visibleAddTweet, setVisibleAddTweet] = useState(false);
 
   const handleOpenAddTweet = () => {
@@ -38,8 +38,8 @@ export const SideMenu: React.FC = (): React.ReactElement => {
       </SideMenuListItem>
 
       {menuItems.map((item) => (
-        <Link to={item.link}>
-          <SideMenuListItem key={item.label}>
+        <Link key={item.label} to={item.link}>
+          <SideMenuListItem>
             <ListItemWrapper>
               {item.icon}
               <Label variant="h6">{item.label}</Label>

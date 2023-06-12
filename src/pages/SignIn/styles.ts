@@ -1,4 +1,5 @@
-import { Container, styled } from "@mui/material";
+import { styled } from "@mui/material";
+import Container, { ContainerProps } from "@mui/material/Container";
 import Typography, { TypographyProps } from "@mui/material/Typography";
 import Button, { ButtonProps } from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
@@ -7,9 +8,10 @@ import Twitter from "@mui/icons-material/Twitter";
 import TextField, { TextFieldProps } from "@mui/material/TextField";
 import ListItem from "@mui/material/ListItem";
 
-export const MainContainer = styled(Container)({
+export const MainContainer = styled(Container)<ContainerProps>({
   display: "flex",
   height: "103vh",
+  marginLeft: "-8px",
 });
 
 export const BlueSideContainer = styled(Paper)({

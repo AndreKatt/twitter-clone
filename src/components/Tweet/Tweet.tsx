@@ -20,7 +20,6 @@ import {
   FooterIcon,
 } from "../../styles";
 import {
-  AvatarWrapper,
   FooterContainer,
   HeaderContainer,
   HeaderTextContainer,
@@ -62,12 +61,12 @@ export const Tweet: React.FC<TweetProps> = ({
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
-        <AvatarWrapper>
+        <div>
           <TweetAvatar
             alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
-        </AvatarWrapper>
+        </div>
 
         <TextContentContainer>
           <HeaderTextContainer>

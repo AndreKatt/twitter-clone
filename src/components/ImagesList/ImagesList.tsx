@@ -1,6 +1,6 @@
 import React from "react";
-import { IconButton } from "@material-ui/core";
-import { DeleteForever } from "@material-ui/icons";
+import IconButton from "@mui/material/IconButton";
+import DeleteForever from "@mui/icons-material/DeleteForever";
 // import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 // styles
 import { ImageWrapper, ImagesContainer } from "./styles";

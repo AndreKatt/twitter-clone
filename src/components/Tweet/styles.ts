@@ -43,10 +43,6 @@ export const HeaderContainer = styled("div")({
   },
 });
 
-export const AvatarWrapper = styled("div")({
-  paddingLeft: 15,
-});
-
 export const HeaderTextContainer = styled("div")({
   flex: 1,
   display: "flex",

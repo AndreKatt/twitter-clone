@@ -1,11 +1,10 @@
 import React from "react";
-import IconButton from "@material-ui/core/IconButton";
-import { ImageOutlined } from "@material-ui/icons";
+import IconButton from "@mui/material/IconButton";
+import ImageOutlined from "@mui/icons-material/ImageOutlined";
 // import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
 
-import { useHomeStyles } from "../../pages/Home/theme";
 import { ImagesList } from "../ImagesList/ImagesList";
 // types
 import type { UploadImagesProps } from "./types";
@@ -14,7 +13,6 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
   images,
   onChangeImages,
 }) => {
-  const classes = useHomeStyles();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClickImage = () => {

@@ -2,6 +2,14 @@ import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
+import Grid, { GridProps } from "@mui/material/Grid";
+
+export const MenuGrid = styled(Grid)<GridProps>({
+  "@media(max-height: 1240px)": {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+});
 
 export const AddTweetWrapper = styled("div")({
   padding: 20,

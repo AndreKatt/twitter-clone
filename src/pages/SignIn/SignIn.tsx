@@ -40,7 +40,7 @@ export const SignIn: React.FC = () => {
   };
 
   return (
-    <MainContainer>
+    <MainContainer maxWidth="lg">
       <BlueSideContainer>
         <LogoImage color="primary" />
 
