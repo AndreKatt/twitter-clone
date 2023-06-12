@@ -72,7 +72,7 @@ export const Home: React.FC = () => {
                 </HeaderButton>
               )}
               <Typography variant="h6">
-                {!isHomeLocation ? "Твитнуть" : "Главная"}
+                {!isHomeLocation ? "Твит" : "Главная"}
               </Typography>
             </TweetsHeader>
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Tweet } from "../../components/Tweet/Tweet";
@@ -14,7 +14,7 @@ export const HomeTweets: React.FC = () => {
   const isLoadingTweets = useSelector(selectTweetsLoading);
 
   return (
-    <div>
+    <>
       {isLoadingTweets ? (
         <CircularProgressWrapper>
           <CircularProgress />
@@ -33,6 +33,6 @@ export const HomeTweets: React.FC = () => {
           />
         ))
       )}
-    </div>
+    </>
   );
 };

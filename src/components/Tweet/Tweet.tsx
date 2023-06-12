@@ -1,16 +1,25 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import {
+  ClickAwayListener,
+  Grow,
+  ListItemIcon,
+  ListItemText,
+  MenuList,
+  Paper,
+  Popper,
+} from "@mui/material";
 // local libs
 import { ImagesList } from "../ImagesList/ImagesList";
 import { formatDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
+import { footerIcons, menuItems } from "./fixtures";
 // styles
 import {
   TextContentContainer,
@@ -20,15 +29,17 @@ import {
   FooterIcon,
 } from "../../styles";
 import {
+  FooterWrapper,
   FooterContainer,
   HeaderContainer,
   HeaderTextContainer,
   MenuButtonContainer,
   TweetContainer,
+  DeleteMenuText,
+  TweetPopper,
 } from "./styles";
 // types
 import type { TweetProps } from "./types";
-import { footerIcons, menuText } from "./fixtures";
 
 export const Tweet: React.FC<TweetProps> = ({
   _id,
@@ -42,6 +53,15 @@ export const Tweet: React.FC<TweetProps> = ({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
+
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setAnchorEl(null);
+    } else if (event.key === "Escape") {
+      setAnchorEl(null);
+    }
+  }
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -61,12 +81,12 @@ export const Tweet: React.FC<TweetProps> = ({
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
-        <div>
+        <>
           <TweetAvatar
             alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
-        </div>
+        </>
 
         <TextContentContainer>
           <HeaderTextContainer>
@@ -88,41 +108,71 @@ export const Tweet: React.FC<TweetProps> = ({
             {images && <ImagesList images={images} />}
           </Link>
 
-          <FooterContainer>
+          <FooterWrapper>
             {footerIcons.map((item) => (
-              <div key={item.id}>
+              <FooterContainer key={item.id}>
                 <FooterIcon>{item.icon}</FooterIcon>
-                <span>{item.label}</span>
-              </div>
+                <Typography>{item.label}</Typography>
+              </FooterContainer>
             ))}
-          </FooterContainer>
+          </FooterWrapper>
         </TextContentContainer>
       </HeaderContainer>
 
       <MenuButtonContainer>
         <IconButton
           aria-label="more"
-          id="long-button"
-          aria-controls={open ? "long-menu" : undefined}
+          id="more-button"
+          aria-controls={open ? "more-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
           aria-haspopup="true"
           onClick={handleClick}
         >
           <MoreHorizIcon />
         </IconButton>
-        <Menu
-          id="long-menu"
-          MenuListProps={{
-            "aria-labelledby": "long-button",
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>{menuText[0]}</MenuItem>
-          <MenuItem onClick={deleteOne}>{menuText[1]}</MenuItem>
-        </Menu>
       </MenuButtonContainer>
+
+      <TweetPopper
+        open={open}
+        anchorEl={anchorEl}
+        role={undefined}
+        placement="bottom-end"
+        transition
+        disablePortal
+      >
+        {({ TransitionProps }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin: "right top",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="more-menu"
+                  aria-labelledby="more-button"
+                  onKeyDown={handleListKeyDown}
+                >
+                  <MenuItem onClick={deleteOne}>
+                    <ListItemIcon>{menuItems.delete.icon}</ListItemIcon>
+                    <DeleteMenuText>{menuItems.delete.label}</DeleteMenuText>
+                  </MenuItem>
+                  <MenuItem>
+                    <ListItemIcon>{menuItems.pin.icon}</ListItemIcon>
+                    <ListItemText>{menuItems.pin.label}</ListItemText>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <ListItemIcon>{menuItems.edit.icon}</ListItemIcon>
+                    <ListItemText>{menuItems.edit.label}</ListItemText>
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </TweetPopper>
     </TweetContainer>
   );
 };

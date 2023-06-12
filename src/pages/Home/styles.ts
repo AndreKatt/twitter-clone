@@ -34,12 +34,17 @@ export const TweetsContainer = styled(Paper)<PaperProps>({
 });
 
 export const TweetsHeader = styled(Paper)<PaperProps>({
+  position: "sticky",
+  top: 0,
+  zIndex: 2,
+  backgroundColor: "rgba(255, 255, 255, 0.8)",
   display: "flex",
   alignItems: "center",
   borderTop: 0,
   borderLeft: 0,
   borderRight: 0,
   borderRadius: 0,
+  backdropFilter: "blur(12px)",
   padding: "10px 15px",
   "& h6": {
     fontWeight: 800,

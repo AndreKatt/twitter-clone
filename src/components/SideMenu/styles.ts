@@ -10,7 +10,7 @@ export const SideMenuList = styled("ul")({
   top: 0,
   listStyle: "none",
   marginTop: 0,
-  maxWidth: 230,
+  maxWidth: 220,
   alignSelf: "start",
   "& a": {
     textDecoration: "none",

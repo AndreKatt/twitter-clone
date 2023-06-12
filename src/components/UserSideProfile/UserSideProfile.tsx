@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Paper from "@mui/material/Paper";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import MenuList from "@mui/material/MenuList";
+import Grow from "@mui/material/Grow";
+// local libs
 import { selectUserState } from "../../redux/user/selectors";
 // styles
 import {
@@ -12,12 +16,23 @@ import {
   ProfileContainer,
   TextContainer,
   Username,
+  MenuPopper,
 } from "./styles";
+import { Divider } from "@mui/material";
 
 export const UserSideProfile: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const user = useSelector(selectUserState);
+
+  function handleListKeyDown(event: React.KeyboardEvent) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setAnchorEl(null);
+    } else if (event.key === "Escape") {
+      setAnchorEl(null);
+    }
+  }
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
@@ -29,30 +44,9 @@ export const UserSideProfile: React.FC = () => {
 
   return (
     <div className="sideProfileContainer">
-      <Menu
-        id="profile-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        <MenuItem>
-          Добавить существующую
-          <>
-            <br />
-          </>
-          учетную запись
-        </MenuItem>
-        <MenuItem>
-          Выйти из учетной записи
-          <>
-            <br />
-          </>
-          {`${user.currentUser?.email}`}
-        </MenuItem>
-      </Menu>
-
       <ProfileContainer
         aria-label="more"
+        id="profile"
         aria-controls={open ? "profile-menu" : undefined}
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
@@ -70,6 +64,51 @@ export const UserSideProfile: React.FC = () => {
           <KeyboardArrowDownIcon />
         </Button>
       </ProfileContainer>
+
+      <MenuPopper
+        open={open}
+        anchorEl={anchorEl}
+        role={undefined}
+        placement="top-end"
+        transition
+        // disablePortal
+      >
+        {({ TransitionProps }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin: "right bottom",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="profile-menu"
+                  aria-labelledby="profile"
+                  onKeyDown={handleListKeyDown}
+                >
+                  <Divider />
+                  <MenuItem>
+                    Добавить существующую
+                    <>
+                      <br />
+                    </>
+                    учетную запись
+                  </MenuItem>
+                  <MenuItem>
+                    Выйти из учетной записи
+                    <>
+                      <br />
+                    </>
+                    {`${user.currentUser?.email}`}
+                  </MenuItem>
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </MenuPopper>
     </div>
   );
 };

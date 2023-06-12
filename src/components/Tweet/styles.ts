@@ -1,12 +1,18 @@
 import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
+import Popper, { PopperProps } from "@mui/material/Popper";
+import ListItemText from "@mui/material/ListItemText";
 
 export const TweetContainer = styled(Paper)<PaperProps>({
   position: "relative",
-  justifyContent: "space-between",
-  padding: "10px 0 2px 0",
   display: "flex",
+  justifyContent: "space-between",
   alignItems: "flex-start",
+  borderTop: 0,
+  borderRight: 0,
+  borderLeft: 0,
+  borderRadius: 0,
+  padding: "10px 0 2px 0",
   flexDirection: "row",
   paddingTop: 15,
   paddingLeft: 20,
@@ -49,7 +55,7 @@ export const HeaderTextContainer = styled("div")({
   justifyContent: "space-between",
 });
 
-export const FooterContainer = styled("div")({
+export const FooterWrapper = styled("div")({
   display: "grid",
   position: "relative",
   left: -13,
@@ -72,8 +78,25 @@ export const FooterContainer = styled("div")({
   },
 });
 
+export const FooterContainer = styled(Paper)({
+  display: "flex",
+  alignItems: "center",
+  backgroundColor: "inherit",
+});
+
 export const MenuButtonContainer = styled("div")({
   position: "absolute",
   right: 0,
   top: 0,
+});
+
+export const DeleteMenuText = styled(ListItemText)({
+  color: "red",
+});
+
+export const TweetPopper = styled(Popper)<PopperProps>({
+  borderRadius: 12,
+  boxShadow:
+    "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
+  inset: "0px 1vw auto auto !important",
 });

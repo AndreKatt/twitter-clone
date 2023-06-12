@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -77,7 +76,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         />
         <Textarea
           onChange={handleChangeTextarea}
-          placeholder="Что происходит?"
+          placeholder="Что происходит?!"
           value={text}
           maxRows={maxRows}
         />
