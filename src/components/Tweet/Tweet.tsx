@@ -12,7 +12,6 @@ import {
   ListItemText,
   MenuList,
   Paper,
-  Popper,
 } from "@mui/material";
 // local libs
 import { ImagesList } from "../ImagesList/ImagesList";

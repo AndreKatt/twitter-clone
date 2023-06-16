@@ -5,8 +5,8 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 export const LogoIcon = styled(TwitterIcon)({
-  height: "7vw",
-  width: "7vw",
+  height: "8%",
+  width: "8%",
   position: "absolute",
   left: "50%",
   top: "50%",

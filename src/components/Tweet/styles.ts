@@ -99,4 +99,5 @@ export const TweetPopper = styled(Popper)<PopperProps>({
   boxShadow:
     "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
   inset: "0px 1vw auto auto !important",
+  zIndex: 2,
 });

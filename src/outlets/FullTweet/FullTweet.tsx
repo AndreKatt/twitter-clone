@@ -81,7 +81,7 @@ export const FullTweet: React.FC = (): ReactElement | null => {
             </TextContentContainer>
           </FullTweetContainer>
 
-          <TweetText variant="h4" gutterBottom>
+          <TweetText gutterBottom>
             <span> {tweetData.text}</span>
             {tweetData.images && <ImagesList images={tweetData.images} />}
             <TweetData color={grey[500]}>

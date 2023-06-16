@@ -48,9 +48,9 @@ export const TweetText = styled(Typography)<TypographyProps>({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
-  fontSize: 24,
-  marginTop: -10,
-  marginLeft: 5,
+  fontSize: 18,
+  marginTop: 5,
+  marginLeft: 20,
   lineHeight: 1.3125,
   wordBreak: "break-word",
 });

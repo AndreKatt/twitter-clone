@@ -37,6 +37,9 @@ import {
   TweetsContainer,
   TweetsHeader,
   MenuGrid,
+  HeaderSection,
+  SectionTitle,
+  HeaderTitleContainer,
 } from "./styles";
 import { SpinnerWrapper } from "../../styles";
 
@@ -66,14 +69,23 @@ export const Home: React.FC = () => {
         <Grid sm={8} md={6} item>
           <TweetsContainer variant="outlined">
             <TweetsHeader variant="outlined">
-              {!isHomeLocation && (
-                <HeaderButton onClick={() => nav(-1)} color="primary">
-                  <ArrowBackIcon />
-                </HeaderButton>
+              <HeaderTitleContainer>
+                {!isHomeLocation && (
+                  <HeaderButton onClick={() => nav(-1)} color="primary">
+                    <ArrowBackIcon />
+                  </HeaderButton>
+                )}
+                <Typography variant="h6">
+                  {isHomeLocation ? "Главная" : "Твит"}
+                </Typography>
+              </HeaderTitleContainer>
+
+              {isHomeLocation && (
+                <HeaderSection>
+                  <SectionTitle>Для вас</SectionTitle>
+                  <SectionTitle>Вы читаете</SectionTitle>
+                </HeaderSection>
               )}
-              <Typography variant="h6">
-                {!isHomeLocation ? "Твит" : "Главная"}
-              </Typography>
             </TweetsHeader>
 
             {isHomeLocation || isTopicsLocation ? (
