@@ -2,19 +2,14 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
+
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
+
 import CircularProgress from "@mui/material/CircularProgress";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 // local libs
 import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
@@ -30,10 +25,7 @@ import {
   AddTweetBottomLine,
   AddTweetWrapper,
   HeaderButton,
-  RecommendedHeader,
-  RecommendedItem,
   RightSideContainer,
-  InnerContainer,
   TweetsContainer,
   TweetsHeader,
   MenuGrid,
@@ -41,7 +33,8 @@ import {
   SectionTitle,
   HeaderTitleContainer,
 } from "./styles";
-import { SpinnerWrapper } from "../../styles";
+import { InnerContainer, SpinnerWrapper } from "../../styles";
+import { WhoToFollow } from "../../components/WhoToFollow/WoToFollow";
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -113,34 +106,7 @@ export const Home: React.FC = () => {
                 <Topics />
               )}
             </InnerContainer>
-            <InnerContainer>
-              <RecommendedHeader>
-                <Typography variant="h5">Кого читать</Typography>
-              </RecommendedHeader>
-
-              <List>
-                <RecommendedItem>
-                  <ListItemAvatar>
-                    <Avatar
-                      alt="Роберт Смит"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS13INLI1-yVvnzG1s09l1vIQhyMPiqC_iiSQ&usqp=CAU"
-                    />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary="Robbie LoveCats"
-                    secondary={
-                      <Typography component="span" variant="body2">
-                        @TheCure
-                      </Typography>
-                    }
-                  />
-                  <Button color="primary">
-                    <PersonAddOutlinedIcon />
-                  </Button>
-                </RecommendedItem>
-                <Divider component="li" />
-              </List>
-            </InnerContainer>
+            <WhoToFollow />
           </RightSideContainer>
         </Grid>
       </Grid>

@@ -2,7 +2,6 @@ import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import ListItem from "@mui/material/ListItem";
 import Grid, { GridProps } from "@mui/material/Grid";
 import { colors } from "@mui/material";
 
@@ -87,48 +86,5 @@ export const SectionTitle = styled(Typography)({
 
   "&:hover": {
     backgroundColor: "rgba(15, 20, 25, 0.1)",
-  },
-});
-
-export const InnerContainer = styled(Paper)({
-  backgroundColor: "#F5F8FA",
-  borderRadius: 15,
-  marginTop: 20,
-
-  "& .MuiList-root": {
-    paddingTop: 0,
-  },
-});
-
-export const RecommendedHeader = styled(Paper)({
-  borderTop: 0,
-  borderLeft: 0,
-  borderRight: 0,
-  backgroundColor: "transparent",
-  padding: "13px 18px",
-
-  "& h5": {
-    fontWeight: 700,
-  },
-});
-
-export const RecommendedItem = styled(ListItem)({
-  cursor: "pointer",
-
-  "& .MuiTypography-body1": {
-    fontWeight: 700,
-  },
-  "& .MuiListItemAvatar-root": {
-    margin: 0,
-  },
-  "& .MuiListItemText-root": {
-    margin: 0,
-  },
-  "& a": {
-    color: "inherit",
-    textDecoration: "none",
-  },
-  "&:hover": {
-    backgroundColor: "#edf3f6",
   },
 });

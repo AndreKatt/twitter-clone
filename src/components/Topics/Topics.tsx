@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-// import List from "@material-ui/core/List";
-// import Paper from "@material-ui/core/Paper";
-// import Divider from "@material-ui/core/Divider";
-// import ListItem from "@material-ui/core/ListItem";
-// import Typography from "@material-ui/core/Typography";
-// import ListItemText from "@material-ui/core/ListItemText";
-
+import Paper from "@mui/material/Paper";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+// local libs
 import { selectTopicsItems } from "../../redux/topics/selectors";
 
 export const Topics: React.FC = (): React.ReactElement => {
@@ -16,13 +15,13 @@ export const Topics: React.FC = (): React.ReactElement => {
 
   return (
     <>
-      <p>BlahBlah</p>
-      {/* <Paper className={classes.classes.rightSideBlockHeader}>
+      {/* <p>BlahBlah</p> */}
+      <Paper>
         <b>Актуальные темы</b>
       </Paper>
       {topics.map((topic) => (
         <List key={topic._id}>
-          <ListItem className={classes.classes.rightSideBlockItem}>
+          <ListItem>
             <Link
               to={`search`} // поменять на ?g=${topic.name}
             >
@@ -38,7 +37,7 @@ export const Topics: React.FC = (): React.ReactElement => {
           </ListItem>
           <Divider component="li" />
         </List>
-      ))} */}
+      ))}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
+import Paper from "@mui/material/Paper";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
@@ -63,3 +64,13 @@ export const FooterIcon = styled(IconButton)<IconButtonProps>(({ theme }) => ({
     },
   },
 }));
+
+export const InnerContainer = styled(Paper)({
+  backgroundColor: "#F5F8FA",
+  borderRadius: 15,
+  marginTop: 20,
+
+  "& .MuiList-root": {
+    paddingTop: 0,
+  },
+});

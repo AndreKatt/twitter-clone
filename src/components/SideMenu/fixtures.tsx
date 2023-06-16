@@ -10,12 +10,12 @@ import PendingOutlinedIcon from "@mui/icons-material/PendingOutlined";
 
 export const menuItems = [
   { link: "/home", icon: <HomeOutlinedIcon />, label: "Главная" },
-  { link: "/", icon: <SearchIcon />, label: "Обзор" },
-  { link: "/", icon: <NotificationsOutlinedIcon />, label: "Уведомления" },
-  { link: "/", icon: <EmailOutlinedIcon />, label: "Сообщения" },
-  { link: "/", icon: <StickyNote2OutlinedIcon />, label: "Списки" },
-  { link: "/", icon: <BookmarkBorderIcon />, label: "Закладки" },
-  { link: "/", icon: <AddTaskOutlinedIcon />, label: "Подлинная" },
-  { link: "/", icon: <PermIdentityOutlinedIcon />, label: "Профиль" },
-  { link: "/", icon: <PendingOutlinedIcon />, label: "Ещё" },
+  { link: "#", icon: <SearchIcon />, label: "Обзор" },
+  { link: "#", icon: <NotificationsOutlinedIcon />, label: "Уведомления" },
+  { link: "#", icon: <EmailOutlinedIcon />, label: "Сообщения" },
+  { link: "#", icon: <StickyNote2OutlinedIcon />, label: "Списки" },
+  { link: "#", icon: <BookmarkBorderIcon />, label: "Закладки" },
+  { link: "#", icon: <AddTaskOutlinedIcon />, label: "Подлинная" },
+  { link: "#", icon: <PermIdentityOutlinedIcon />, label: "Профиль" },
+  { link: "/settings", icon: <PendingOutlinedIcon />, label: "Ещё" },
 ];
