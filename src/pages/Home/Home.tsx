@@ -28,13 +28,13 @@ import {
   TweetsContainer,
   TweetsHeader,
   MenuGrid,
-  HeaderSection,
-  SectionTitle,
   HeaderTitleContainer,
   RightSideGrid,
 } from "./styles";
-import { InnerContainer, SpinnerWrapper } from "../../styles";
+import { HeaderSection, InnerContainer, SpinnerWrapper } from "../../styles";
 import { fetchUsers } from "../../redux/users/asyncActions";
+import { HeaderSectionTitle } from "../../components/HeaderSection/HeaderSectionTitle";
+import { homeForYouTitles } from "./fixtures";
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -76,8 +76,12 @@ export const Home: React.FC = () => {
 
               {isHomeLocation && (
                 <HeaderSection>
-                  <SectionTitle>Для вас</SectionTitle>
-                  <SectionTitle>Вы читаете</SectionTitle>
+                  {homeForYouTitles.map((item) => (
+                    <HeaderSectionTitle
+                      key={item.item.title}
+                      item={item.item}
+                    />
+                  ))}
                 </HeaderSection>
               )}
             </TweetsHeader>

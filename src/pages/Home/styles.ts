@@ -1,9 +1,7 @@
 import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Grid, { GridProps } from "@mui/material/Grid";
-import { colors } from "@mui/material";
 
 export const MenuGrid = styled(Grid)<GridProps>({
   "& .sideProfileContainer": {
@@ -68,30 +66,6 @@ export const HeaderTitleContainer = styled(Paper)({
 
 export const HeaderButton = styled(IconButton)<IconButtonProps>({
   marginRight: 20,
-});
-
-export const HeaderSection = styled(Paper)({
-  width: "100%",
-  height: 53,
-  backgroundColor: "transparent",
-  display: "flex",
-  justifyContent: "space-around",
-  alignItems: "center",
-});
-
-export const SectionTitle = styled(Typography)({
-  width: "100%",
-  height: "100%",
-  color: colors.grey[500],
-  fontWeight: "bold",
-  fontSize: 15,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-
-  "&:hover": {
-    backgroundColor: "rgba(15, 20, 25, 0.1)",
-  },
 });
 
 export const RightSideGrid = styled(Grid)<GridProps>({

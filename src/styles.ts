@@ -47,6 +47,15 @@ export const HeaderText = styled("span")({
   color: grey[500],
 });
 
+export const HeaderSection = styled(Paper)({
+  width: "100%",
+  height: 53,
+  backgroundColor: "transparent",
+  display: "flex",
+  justifyContent: "space-around",
+  alignItems: "stretch",
+});
+
 export const TweetAvatar = styled(Avatar)<AvatarProps>(({ theme }) => ({
   width: theme.spacing(6),
   height: theme.spacing(6),
