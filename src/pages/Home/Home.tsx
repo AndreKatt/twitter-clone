@@ -31,8 +31,10 @@ import {
   HeaderSection,
   SectionTitle,
   HeaderTitleContainer,
+  RightSideGrid,
 } from "./styles";
 import { InnerContainer, SpinnerWrapper } from "../../styles";
+import { fetchUsers } from "../../redux/users/asyncActions";
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -44,20 +46,21 @@ export const Home: React.FC = () => {
   useEffect(() => {
     dispatch(fetchTweets());
     dispatch(fetchTopics());
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   const isHomeLocation = location.pathname === "/home";
   const isTopicsLocation = location.pathname === "/home/search";
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Grid container spacing={3}>
-        <MenuGrid sm={2} md={3} item>
+        <MenuGrid item sm={2} md={2} lg={3}>
           <SideMenu />
           <UserSideProfile />
         </MenuGrid>
 
-        <Grid sm={8} md={6} item>
+        <Grid item sm={9} md={6} lg={5.5}>
           <TweetsContainer variant="outlined">
             <TweetsHeader variant="outlined">
               <HeaderTitleContainer>
@@ -92,7 +95,7 @@ export const Home: React.FC = () => {
           </TweetsContainer>
         </Grid>
 
-        <Grid sm={0} md={3} item>
+        <RightSideGrid item sm={0} md={3.5} lg={3.5}>
           <RightSideContainer>
             <SearchTextField />
             <InnerContainer>
@@ -106,7 +109,7 @@ export const Home: React.FC = () => {
             </InnerContainer>
             <WhoToFollow />
           </RightSideContainer>
-        </Grid>
+        </RightSideGrid>
       </Grid>
     </Container>
   );

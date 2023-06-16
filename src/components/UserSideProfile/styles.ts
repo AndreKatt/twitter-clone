@@ -16,10 +16,10 @@ export const ProfileContainer = styled("div")({
   marginLeft: "-245px",
   cursor: "pointer",
   transition: "background-color 0.2s",
+
   "&:hover": {
     backgroundColor: "#e3f1fc",
   },
-
   "@media(max-width: 1199px)": {
     width: "60px",
     marginLeft: "-58px",

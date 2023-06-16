@@ -1,6 +1,8 @@
 import { styled } from "@mui/system";
 import Paper from "@mui/material/Paper";
 import ListItem from "@mui/material/ListItem";
+import Button, { ButtonProps } from "@mui/material/Button";
+import Typography, { TypographyProps } from "@mui/material/Typography";
 
 export const RecommendedHeader = styled(Paper)({
   borderTop: 0,
@@ -33,4 +35,17 @@ export const RecommendedItem = styled(ListItem)({
   "&:hover": {
     backgroundColor: "#edf3f6",
   },
+});
+
+export const FollowButton = styled(Button)<ButtonProps>({
+  height: 32,
+  backgroundColor: "rgb(15, 20, 25)",
+  paddingBottom: 9,
+  "&:hover": {
+    backgroundColor: "rgb(15, 20, 25)",
+  },
+});
+
+export const More = styled(Typography)<TypographyProps>({
+  padding: "13px 18px",
 });

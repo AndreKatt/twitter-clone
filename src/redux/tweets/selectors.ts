@@ -1,6 +1,5 @@
-import { LoadingState } from "../types";
-// types
 import type { RootState } from "../store";
+import { LoadingState } from "../types";
 import type { AddFormState, TweetsState } from "./types";
 
 export const selectTweets = (state: RootState): TweetsState => state.tweets;

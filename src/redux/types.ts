@@ -5,3 +5,13 @@ export enum LoadingState {
   NEVER = "NEVER",
   SUCCESS = "SUCCESS",
 }
+
+export type UserData = {
+  _id: string;
+  email: string;
+  username: string;
+  fullname: string;
+  passwordHash: string;
+  confirmHash: string;
+  confirmed?: boolean;
+};

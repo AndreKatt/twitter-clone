@@ -1,17 +1,7 @@
-import { LoadingState } from "../types";
+import { LoadingState, UserData } from "../types";
 
 export type Token = {
   access_token: string;
-};
-
-export type UserData = {
-  _id: string;
-  email: string;
-  username: string;
-  fullname: string;
-  passwordHash: string;
-  confirmHash: string;
-  confirmed?: boolean;
 };
 
 export type CurrentUserData = {

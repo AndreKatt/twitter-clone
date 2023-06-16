@@ -4,9 +4,10 @@ import topics from "./topics/slice";
 import tweets from "./tweets/slice";
 import tweet from "./tweet/slice";
 import user from "./user/slice";
+import users from "./users/slice";
 
 export const store = configureStore({
-  reducer: { topics, tweet, tweets, user },
+  reducer: { topics, tweet, tweets, user, users },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

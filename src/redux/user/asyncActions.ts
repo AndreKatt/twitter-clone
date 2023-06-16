@@ -3,7 +3,8 @@ import { axios } from "../../core/axios";
 // types
 import type { RegisterFormProps } from "../../pages/SignIn/components/RegisterForm/types";
 import type { LoginFormProps } from "../../types";
-import type { SignInUserState, UserData } from "./types";
+import type { SignInUserState } from "./types";
+import { UserData } from "../types";
 
 export const signIn = createAsyncThunk<SignInUserState, LoginFormProps>(
   "user/signIn",

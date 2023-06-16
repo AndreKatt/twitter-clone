@@ -6,6 +6,11 @@ import Grid, { GridProps } from "@mui/material/Grid";
 import { colors } from "@mui/material";
 
 export const MenuGrid = styled(Grid)<GridProps>({
+  "& .sideProfileContainer": {
+    "@media(max-height: 655px)": {
+      display: "none",
+    },
+  },
   "@media(max-height: 1240px)": {
     display: "flex",
     justifyContent: "flex-end",
@@ -86,5 +91,11 @@ export const SectionTitle = styled(Typography)({
 
   "&:hover": {
     backgroundColor: "rgba(15, 20, 25, 0.1)",
+  },
+});
+
+export const RightSideGrid = styled(Grid)<GridProps>({
+  "@media(max-width: 899px)": {
+    display: "none",
   },
 });
