@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Popper, { PopperProps } from "@mui/material/Popper";
 import { colors } from "@mui/material";
 
-export const ProfileContainer = styled("div")({
+export const ProfileContainer = styled("div")(({ theme }) => ({
   height: "60px",
   display: "flex",
   flexDirection: "row",
@@ -18,13 +18,15 @@ export const ProfileContainer = styled("div")({
   transition: "background-color 0.2s",
 
   "&:hover": {
-    backgroundColor: "#e3f1fc",
+    backgroundColor: theme.palette.neutral.main,
+    backgroundImage:
+      "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
   },
   "@media(max-width: 1199px)": {
     width: "60px",
     marginLeft: "-58px",
   },
-});
+}));
 
 export const TextContainer = styled("div")({
   display: "block",

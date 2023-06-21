@@ -1,8 +1,8 @@
 // @ts-nocheck
 import { red } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
+import { PaletteMode } from "@mui/material";
 
-export const theme = createTheme({
+export const getDesignTokens = (mode: PaletteMode) => ({
   typography: {
     fontFamily: [
       "system-ui",
@@ -17,6 +17,33 @@ export const theme = createTheme({
   },
 
   palette: {
+    mode,
+    ...(mode === "light"
+      ? {
+          neutral: {
+            light: "#edf3f6",
+            main: "#F5F8FA",
+          },
+          background: {
+            default: "#fff",
+          },
+          text: {
+            primary: "#14171a",
+          },
+        }
+      : {
+          neutral: {
+            light: "rgb(39, 51, 64);",
+            main: "#15202B",
+          },
+          background: {
+            default: "#15202B",
+            paper: "#15202B",
+          },
+          text: {
+            primary: "#fff",
+          },
+        }),
     primary: {
       main: "rgb(29, 155, 240)",
       dark: "rgb(26, 145, 218)",
@@ -28,29 +55,13 @@ export const theme = createTheme({
     error: {
       main: red.A400,
     },
-    background: {
-      default: "#fff",
-    },
-    text: {
-      primary: "#14171a",
-    },
   },
-
-  shadows: {
-    1: "none",
-    24: "none",
-  },
-
+  shadows: [],
+  //  {
+  //   1: "none",
+  //   24: "none",
+  // },
   components: {
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          marginTop: -32,
-          paddingLeft: "0 !important",
-        },
-      },
-    },
-
     MuiPaper: {
       defaultProps: {
         outlined: {
@@ -58,6 +69,11 @@ export const theme = createTheme({
           borderLeft: 0,
           borderRight: 0,
           borderRadius: 0,
+        },
+      },
+      styleOverrides: {
+        root: {
+          backgroundImage: "none",
         },
       },
     },

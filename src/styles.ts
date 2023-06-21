@@ -74,12 +74,14 @@ export const FooterIcon = styled(IconButton)<IconButtonProps>(({ theme }) => ({
   },
 }));
 
-export const InnerContainer = styled(Paper)({
-  backgroundColor: "#F5F8FA",
+export const InnerContainer = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.neutral.main,
+  backgroundImage:
+    "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
   borderRadius: 15,
   marginTop: 20,
 
   "& .MuiList-root": {
     paddingTop: 0,
   },
-});
+}));

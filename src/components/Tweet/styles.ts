@@ -3,7 +3,7 @@ import Paper, { PaperProps } from "@mui/material/Paper";
 import Popper, { PopperProps } from "@mui/material/Popper";
 import ListItemText from "@mui/material/ListItemText";
 
-export const TweetContainer = styled(Paper)<PaperProps>({
+export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "space-between",
@@ -20,9 +20,9 @@ export const TweetContainer = styled(Paper)<PaperProps>({
   transition: "background-color 0.2s ease-in-out",
 
   "&:hover": {
-    backgroundColor: "rgb(245, 248, 250)",
+    backgroundColor: theme.palette.neutral.light,
   },
-});
+}));
 
 export const HeaderContainer = styled("div")({
   display: "grid",

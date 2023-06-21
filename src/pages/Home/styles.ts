@@ -19,10 +19,10 @@ export const AddTweetWrapper = styled("div")({
   padding: 20,
 });
 
-export const AddTweetBottomLine = styled("div")({
+export const AddTweetBottomLine = styled("div")(({ theme }) => ({
   height: 12,
-  backgroundColor: "#E6ECF0",
-});
+  backgroundColor: theme.palette.neutral.light,
+}));
 
 export const RightSideContainer = styled("div")({
   paddingTop: 20,
@@ -41,14 +41,14 @@ export const TweetsHeader = styled(Paper)<PaperProps>({
   position: "sticky",
   top: 0,
   zIndex: 2,
-  backgroundColor: "rgba(255, 255, 255, 0.8)",
+  backgroundColor: "transparent",
   display: "flex",
   flexDirection: "column",
   borderTop: 0,
   borderLeft: 0,
   borderRight: 0,
   borderRadius: 0,
-  backdropFilter: "blur(12px)",
+  backdropFilter: "blur(15px)",
   cursor: "pointer",
 
   "& h6": {
@@ -56,13 +56,15 @@ export const TweetsHeader = styled(Paper)<PaperProps>({
   },
 });
 
-export const HeaderTitleContainer = styled(Paper)({
+export const HeaderTitleContainer = styled(Paper)(({ theme }) => ({
   height: 53,
   backgroundColor: "transparent",
+  // backgroundColor: theme.palette.neutral.main,
+
   display: "flex",
   alignItems: "center",
   paddingLeft: 15,
-});
+}));
 
 export const HeaderButton = styled(IconButton)<IconButtonProps>({
   marginRight: 20,

@@ -16,7 +16,7 @@ export const RecommendedHeader = styled(Paper)({
   },
 });
 
-export const RecommendedItem = styled(ListItem)({
+export const RecommendedItem = styled(ListItem)(({ theme }) => ({
   cursor: "pointer",
 
   "& .MuiTypography-body1": {
@@ -33,18 +33,19 @@ export const RecommendedItem = styled(ListItem)({
     textDecoration: "none",
   },
   "&:hover": {
-    backgroundColor: "#edf3f6",
+    backgroundColor: theme.palette.neutral.light,
   },
-});
+}));
 
-export const FollowButton = styled(Button)<ButtonProps>({
+export const FollowButton = styled(Button)<ButtonProps>(({ theme }) => ({
   height: 32,
-  backgroundColor: "rgb(15, 20, 25)",
+  color: theme.palette.background.default,
+  backgroundColor: theme.palette.text.primary,
   paddingBottom: 9,
   "&:hover": {
-    backgroundColor: "rgb(15, 20, 25)",
+    backgroundColor: theme.palette.text.primary,
   },
-});
+}));
 
 export const More = styled(Typography)<TypographyProps>({
   padding: "13px 18px",

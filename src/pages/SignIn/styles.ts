@@ -9,17 +9,20 @@ import TextField, { TextFieldProps } from "@mui/material/TextField";
 import ListItem from "@mui/material/ListItem";
 
 export const MainContainer = styled(Container)<ContainerProps>({
+  height: "100vh",
   display: "flex",
-  height: "103vh",
-  marginLeft: "-8px",
+  paddingLeft: "0 !important",
+  marginLeft: 0,
 });
 
 export const BlueSideContainer = styled(Paper)({
+  height: "100vh",
+  flex: "0 0 50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "#71C9F8",
-  flex: "0 0 50%",
+  borderRadius: 0,
   overflow: "hidden",
   position: "relative",
 });
