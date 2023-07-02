@@ -5,26 +5,24 @@ export const FullTweetWrapper = styled("div")({
   borderBottom: "1px solid rgba(204, 214, 221)",
 });
 
-export const FullTweetContainer = styled("div")({
+export const FullTweetContainer = styled("div")(({ theme }) => ({
   display: "flex",
-  alignItems: "center", //flex-start????
+  alignItems: "center",
   flexDirection: "row",
   borderTop: 0,
   borderLeft: 0,
   borderRight: 0,
   borderRadius: 0,
   padding: "10px 15px",
-  //   paddingTop: 15,
-  //   paddingLeft: 20,
   cursor: "pointer",
   transition: "background-color 0.2s ease-in-out",
   "& h6": {
     fontWeight: 800,
   },
   "&:hover": {
-    backgroundColor: "rgb(245, 248, 250)",
+    backgroundColor: theme.palette.neutral.light,
   },
-});
+}));
 
 export const FooterContainer = styled("div")({
   display: "flex",

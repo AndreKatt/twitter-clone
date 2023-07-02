@@ -15,9 +15,13 @@ import {
   SideMenuList,
   SideMenuListItem,
 } from "./styles";
+import { useSelector } from "react-redux";
+import { selectUserState } from "../../redux/user/selectors";
 
 export const SideMenu: React.FC = () => {
   const [visibleAddTweet, setVisibleAddTweet] = useState(false);
+  const { currentUser } = useSelector(selectUserState);
+  const menuTitles = menuItems(currentUser!.email);
 
   const handleOpenAddTweet = () => {
     setVisibleAddTweet(true);
@@ -37,7 +41,7 @@ export const SideMenu: React.FC = () => {
         </Link>
       </SideMenuListItem>
 
-      {menuItems.map((item) => (
+      {menuTitles.map((item) => (
         <Link key={item.label} to={item.link}>
           <SideMenuListItem>
             <ListItemWrapper>

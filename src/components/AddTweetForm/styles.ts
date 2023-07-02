@@ -49,12 +49,16 @@ export const AddTweetAvatar = styled(Avatar)<AvatarProps>(({ theme }) => ({
   },
 }));
 
-export const Textarea = styled(TextareaAutosize)<TextareaAutosizeProps>({
-  width: "100%",
-  paddingLeft: 20,
-  border: 0,
-  fontSize: 20,
-  outline: "none",
-  fontFamily: "inherit",
-  resize: "none",
-});
+export const Textarea = styled(TextareaAutosize)<TextareaAutosizeProps>(
+  ({ theme }) => ({
+    width: "100%",
+    color: theme.palette.text.primary,
+    backgroundColor: "inherit",
+    border: 0,
+    fontSize: 20,
+    outline: "none",
+    fontFamily: "inherit",
+    resize: "none",
+    paddingLeft: 20,
+  })
+);

@@ -1,13 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
+import Paper from "@mui/material/Paper";
+// local libs
 import { Tweet } from "../../components/Tweet/Tweet";
+import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
+import { Header } from "../../generic/Header/Header";
 import {
   selectTweetsItems,
   selectTweetsLoading,
 } from "../../redux/tweets/selectors";
+import { title, titles } from "./fixtures";
 // styles
-import { CircularProgressWrapper } from "./styles";
+import {
+  AddTweetBottomLine,
+  AddTweetWrapper,
+  CircularProgressWrapper,
+} from "./styles";
 
 export const HomeTweets: React.FC = () => {
   const tweets = useSelector(selectTweetsItems);
@@ -15,6 +24,14 @@ export const HomeTweets: React.FC = () => {
 
   return (
     <>
+      <Header title={title} titles={titles} />
+      <Paper>
+        <AddTweetWrapper>
+          <AddTweetForm />
+        </AddTweetWrapper>
+        <AddTweetBottomLine />
+      </Paper>
+
       {isLoadingTweets ? (
         <CircularProgressWrapper>
           <CircularProgress />

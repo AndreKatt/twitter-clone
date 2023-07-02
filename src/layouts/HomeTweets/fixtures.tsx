@@ -1,6 +1,8 @@
 import { HeaderSectionTitleType } from "../../types";
 
-export const homeForYouTitles: HeaderSectionTitleType[] = [
+export const title = "Главная";
+
+export const titles: HeaderSectionTitleType[] = [
   { item: { title: "Для вас", active: true } },
   { item: { title: "Вы читаете", active: false } },
 ];

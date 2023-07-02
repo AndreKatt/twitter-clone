@@ -3,6 +3,8 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ReplyIcon from "@mui/icons-material/Reply";
 
+export const title = "Твит";
+
 export const footerIcons = [
   {
     id: "1",

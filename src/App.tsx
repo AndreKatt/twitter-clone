@@ -7,15 +7,17 @@ import { CssBaseline, PaletteMode, ThemeProvider } from "@mui/material";
 // local libs
 import { Home } from "./pages/Home/Home";
 import { SignIn } from "./pages/SignIn/SignIn";
-import { FullTweet } from "./outlets/FullTweet/FullTweet";
-import { TopicTweets } from "./outlets/TopicTweets";
-import { HomeTweets } from "./outlets/HomeTweets/HomeTweets";
+import { FullTweet } from "./layouts/FullTweet/FullTweet";
+import { TopicTweets } from "./layouts/TopicTweets";
+import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
+import { Settings } from "./layouts/Settings/Settings";
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/user/selectors";
 import { getCurrentUserByToken } from "./redux/user/asyncActions";
 // styles
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
+import { Profile } from "./layouts/Profile/Profile";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -67,6 +69,8 @@ function App() {
             <Route path="" element={<HomeTweets />} />
             <Route path="search" element={<TopicTweets />} />
             <Route path="tweet/:id" element={<FullTweet />} />
+            <Route path="settings" element={<Profile />} />
+            <Route path=":email" element={<Settings />} />
           </Route>
           <Route path="signin" element={<SignIn />} />
         </Routes>
