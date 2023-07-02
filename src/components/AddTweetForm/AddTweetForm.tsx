@@ -23,12 +23,15 @@ import {
 //types
 import type { AddTweetFormProps } from "./types";
 import type { UploadedObject } from "../../types";
+import { selectCurrentUser } from "../../redux/currentUser/selectors";
+import { StyledLink } from "../../styles";
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   maxRows,
 }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
+  const user = useSelector(selectCurrentUser);
   const [text, setText] = useState<string>(
     sessionStorage.getItem("tweetText") || ""
   );
@@ -70,10 +73,12 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   return (
     <>
       <BodyContainer>
-        <AddTweetAvatar
-          alt="Ваша аватарка"
-          src="https://images.unsplash.com/photo-1558499932-9609acb6f443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-        />
+        <StyledLink to={`/home/${user?.email}`}>
+          <AddTweetAvatar
+            alt="Ваша аватарка"
+            src="https://images.unsplash.com/photo-1558499932-9609acb6f443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+          />
+        </StyledLink>
         <Textarea
           onChange={handleChangeTextarea}
           placeholder="Что происходит?!"

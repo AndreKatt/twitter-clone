@@ -12,8 +12,8 @@ import { TopicTweets } from "./layouts/TopicTweets";
 import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
 import { Settings } from "./layouts/Settings/Settings";
 import { useAppDispatch } from "./redux/store";
-import { selectIsAuth } from "./redux/user/selectors";
-import { getCurrentUserByToken } from "./redux/user/asyncActions";
+import { selectIsAuth } from "./redux/currentUser/selectors";
+import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
 // styles
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
@@ -43,11 +43,11 @@ function App() {
   useEffect(() => {
     const verify = async () => {
       const { type } = await dispatch(getCurrentUserByToken());
-      if (type === "user/getCurrent/fulfilled") {
+      if (type === "currentUser/getCurrent/fulfilled") {
         setLoading(false);
         navigate("/home");
       }
-      if (type === "user/getCurrent/rejected") {
+      if (type === "currentUser/getCurrent/rejected") {
         setLoading(false);
         navigate("/signin");
       }
@@ -56,24 +56,24 @@ function App() {
     // eslint-disable-next-line
   }, [isAuth]);
 
-  if (loading) {
-    return <LogoIcon color="primary" />;
-  }
-
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes>
-          <Route path="/home/*" element={<Home />}>
-            <Route path="" element={<HomeTweets />} />
-            <Route path="search" element={<TopicTweets />} />
-            <Route path="tweet/:id" element={<FullTweet />} />
-            <Route path="settings" element={<Profile />} />
-            <Route path=":email" element={<Settings />} />
-          </Route>
-          <Route path="signin" element={<SignIn />} />
-        </Routes>
+        {loading ? (
+          <LogoIcon color="primary" />
+        ) : (
+          <Routes>
+            <Route path="/home/*" element={<Home />}>
+              <Route path="" element={<HomeTweets />} />
+              <Route path="search" element={<TopicTweets />} />
+              <Route path="tweet/:id" element={<FullTweet />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path=":email" element={<Profile />} />
+            </Route>
+            <Route path="signin" element={<SignIn />} />
+          </Routes>
+        )}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

@@ -6,8 +6,9 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import PendingOutlinedIcon from "@mui/icons-material/PendingOutlined";
+import { GetMenu } from "./types";
 
-export const menuItems = (currentUser: string) => {
+export const menuItems: GetMenu = (currentUser) => {
   return [
     { link: "/home", icon: <HomeOutlinedIcon />, label: "Главная" },
     { link: "#", icon: <SearchIcon />, label: "Обзор" },

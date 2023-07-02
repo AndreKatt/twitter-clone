@@ -43,6 +43,7 @@ export const HomeTweets: React.FC = () => {
             _id={tweet._id}
             text={tweet.text}
             images={tweet.images}
+            email={tweet.user.email}
             fullname={tweet.user.fullname}
             userName={tweet.user.username}
             // avatarUrl={tweet.user.avatarUrl}

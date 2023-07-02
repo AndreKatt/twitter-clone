@@ -9,7 +9,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
 import DialogActions from "@mui/material/DialogActions";
 // local libs
-import { signUp } from "../../../../redux/user/asyncActions";
+import { signUp } from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
 import { loginFormSchema } from "./fixtures";
 // styles

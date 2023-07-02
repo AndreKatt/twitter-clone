@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
+import { Link, LinkProps } from "react-router-dom";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
@@ -20,15 +21,16 @@ export const SpinnerWrapper = styled("div")({
   paddingBottom: 50,
 });
 
+export const StyledLink = styled(Link)<LinkProps>({
+  color: "inherit",
+  textDecoration: "none",
+});
+
 export const TextContentContainer = styled("div")({
   display: "flex",
   flexDirection: "column",
   paddingLeft: 15,
   paddingRight: 35,
-  "& a": {
-    color: "inherit",
-    textDecoration: "none",
-  },
 });
 
 export const TextContentWrapper = styled("div")({

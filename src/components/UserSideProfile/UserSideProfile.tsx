@@ -7,7 +7,7 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import MenuList from "@mui/material/MenuList";
 import Grow from "@mui/material/Grow";
 // local libs
-import { selectUserState } from "../../redux/user/selectors";
+import { selectUserState } from "../../redux/currentUser/selectors";
 // styles
 import {
   Button,

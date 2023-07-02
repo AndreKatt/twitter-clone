@@ -3,11 +3,12 @@ import { useDispatch } from "react-redux";
 import topics from "./topics/slice";
 import tweets from "./tweets/slice";
 import tweet from "./tweet/slice";
+import currentUser from "./currentUser/slice";
 import user from "./user/slice";
 import users from "./users/slice";
 
 export const store = configureStore({
-  reducer: { topics, tweet, tweets, user, users },
+  reducer: { topics, tweet, tweets, currentUser, users, user },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -56,7 +56,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
       main: red.A400,
     },
   },
-  shadows: ["none"],
+  shadows: ([][1] = "none"),
   components: {
     MuiPaper: {
       defaultProps: {

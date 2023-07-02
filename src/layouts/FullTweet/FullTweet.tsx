@@ -13,7 +13,6 @@ import {
   selectTweetData,
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
-import { setTweetData } from "../../redux/tweet/slice";
 import { ImagesList } from "../../components/ImagesList/ImagesList";
 import { footerIcons, title } from "./fixtures";
 // styles
@@ -45,12 +44,6 @@ export const FullTweet: React.FC = () => {
     if (id) {
       dispatch(fetchTweetData(id));
     }
-
-    return () => {
-      if (id) {
-        dispatch(setTweetData(undefined));
-      }
-    };
   }, [dispatch, id]);
 
   if (isTweetLoading) {

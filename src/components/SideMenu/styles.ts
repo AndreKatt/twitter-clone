@@ -12,10 +12,6 @@ export const SideMenuList = styled("ul")({
   marginTop: 0,
   maxWidth: 270,
   alignSelf: "start",
-  "& a": {
-    textDecoration: "none",
-    color: "inherit",
-  },
 });
 
 export const SideMenuListItem = styled("li")(({ theme }) => ({

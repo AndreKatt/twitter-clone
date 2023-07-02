@@ -1,49 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
-import { getCurrentUserByToken, signIn, signUp } from "./asyncActions";
-//types
-import type { SignInUserState } from "./types";
+import { SelectedUserState } from "./types";
+import { fetchUserData } from "./asyncActions";
 
-const initialState: SignInUserState = {
-  user: undefined,
-  token: undefined,
-  currentUser: undefined,
-  registerStatus: LoadingState.NEVER,
-  loginStatus: LoadingState.NEVER,
-  currentUserStatus: LoadingState.NEVER,
+const initialState: SelectedUserState = {
+  data: undefined,
+  status: LoadingState.NEVER,
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    setUserData(state, action: PayloadAction<SelectedUserState["data"]>) {
+      state.data = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(signIn.fulfilled, (state, action) => {
-        state.token = action.payload.token;
-        state.user = action.payload.user;
-        state.loginStatus = LoadingState.SUCCESS;
+      .addCase(fetchUserData.pending, (state) => {
+        state.status = LoadingState.LOADING;
       })
-      .addCase(signIn.rejected, (state) => {
-        state.loginStatus = LoadingState.ERROR;
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.status = LoadingState.SUCCESS;
       })
-      .addCase(getCurrentUserByToken.pending, (state) => {
-        state.currentUserStatus = LoadingState.LOADING;
-      })
-      .addCase(getCurrentUserByToken.fulfilled, (state, action) => {
-        state.currentUser = action.payload;
-        state.currentUserStatus = LoadingState.SUCCESS;
-      })
-      .addCase(getCurrentUserByToken.rejected, (state) => {
-        state.currentUserStatus = LoadingState.ERROR;
-      })
-      .addCase(signUp.fulfilled, (state) => {
-        state.registerStatus = LoadingState.SUCCESS;
-      })
-      .addCase(signUp.rejected, (state) => {
-        state.registerStatus = LoadingState.ERROR;
+      .addCase(fetchUserData.rejected, (state) => {
+        state.data = undefined;
+        state.status = LoadingState.ERROR;
       });
   },
 });
+
+export const { setUserData } = userSlice.actions;
 
 export default userSlice.reducer;

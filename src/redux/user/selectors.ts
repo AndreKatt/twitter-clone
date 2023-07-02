@@ -1,17 +1,18 @@
-import type { RootState } from "../store";
-import type { SignInUserState } from "./types";
+import { RootState } from "../store";
+import { LoadingState } from "../types";
+// types
+import { SelectedUserState } from "./types";
 
-export const selectUserState = (state: RootState): SignInUserState =>
+export const selectSelectedUser = (state: RootState): SelectedUserState =>
   state.user;
 
-export const selectAuthState = (
+export const selectSelectedUserData = (
   state: RootState
-): SignInUserState["currentUserStatus"] =>
-  selectUserState(state).currentUserStatus;
+): SelectedUserState["data"] => selectSelectedUser(state).data;
 
-export const selectIsAuth = (state: RootState): boolean =>
-  !!selectUserState(state).token;
-
-export const selectCurrentUserStatus = (
+export const selectSelectedUserStatus = (
   state: RootState
-): SignInUserState["currentUserStatus"] => state.user.currentUserStatus;
+): SelectedUserState["status"] => selectSelectedUser(state).status;
+
+export const selectSelectedUserLoading = (state: RootState): boolean =>
+  selectSelectedUserStatus(state) === LoadingState.LOADING;

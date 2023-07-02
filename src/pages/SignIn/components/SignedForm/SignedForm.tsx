@@ -14,7 +14,7 @@ import DialogActions from "@mui/material/DialogActions";
 import {
   getCurrentUserByToken,
   signIn,
-} from "../../../../redux/user/asyncActions";
+} from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
 // styles
 import { InputField } from "../../styles";

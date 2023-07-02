@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -26,6 +25,7 @@ import {
   HeaderText,
   TweetAvatar,
   FooterIcon,
+  StyledLink,
 } from "../../styles";
 import {
   FooterWrapper,
@@ -43,6 +43,7 @@ import type { TweetProps } from "./types";
 export const Tweet: React.FC<TweetProps> = ({
   _id,
   text,
+  email,
   fullname,
   userName,
   images,
@@ -80,32 +81,36 @@ export const Tweet: React.FC<TweetProps> = ({
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
-        <>
+        <StyledLink to={`/home/${email}`}>
           <TweetAvatar
             alt={`Аватарка пользователя ${fullname}`}
             // src={avatarUrl}
           />
-        </>
+        </StyledLink>
 
         <TextContentContainer>
-          <HeaderTextContainer>
-            <TextContentWrapper>
-              <Typography>
-                <b>{fullname}</b>&nbsp;
-                <HeaderText>@{userName}</HeaderText>
-                &nbsp;
-                <HeaderText>·</HeaderText>&nbsp;
-                <HeaderText>{formatDate(new Date(createdAt))} назад</HeaderText>
-              </Typography>
-            </TextContentWrapper>
-          </HeaderTextContainer>
+          <StyledLink to={`/home/${email}`}>
+            <HeaderTextContainer>
+              <TextContentWrapper>
+                <Typography>
+                  <b>{fullname}</b>&nbsp;
+                  <HeaderText>@{userName}</HeaderText>
+                  &nbsp;
+                  <HeaderText>·</HeaderText>&nbsp;
+                  <HeaderText>
+                    {formatDate(new Date(createdAt))} назад
+                  </HeaderText>
+                </Typography>
+              </TextContentWrapper>
+            </HeaderTextContainer>
+          </StyledLink>
 
-          <Link to={`tweet/${_id}`}>
+          <StyledLink to={`tweet/${_id}`}>
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>
             {images && <ImagesList images={images} />}
-          </Link>
+          </StyledLink>
 
           <FooterWrapper>
             {footerIcons.map((item) => (
