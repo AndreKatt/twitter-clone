@@ -23,6 +23,7 @@ import {
   HeaderText,
   TweetAvatar,
   FooterIcon,
+  StyledLink,
 } from "../../styles";
 import {
   FullTweetContainer,
@@ -61,22 +62,24 @@ export const FullTweet: React.FC = () => {
         <Header variant="elevation" title={titles.fullTweet.main} icon />
         <Paper>
           <FullTweetWrapper>
-            <FullTweetContainer>
-              <TweetAvatar
-                alt="Аватарка пользователя"
-                // src={tweetData.user.avatarUrl}
-              />
-              <TextContentContainer>
-                <TextContentWrapper>
-                  <HeaderTextContent>
-                    <b>{tweetData.user.fullname}</b>&nbsp;
-                    <div>
-                      <HeaderText>@{tweetData.user.username}</HeaderText>
-                    </div>
-                  </HeaderTextContent>
-                </TextContentWrapper>
-              </TextContentContainer>
-            </FullTweetContainer>
+            <StyledLink to={`/home/${tweetData.user.email}`}>
+              <FullTweetContainer>
+                <TweetAvatar
+                  alt="Аватарка пользователя"
+                  // src={tweetData.user.avatarUrl}
+                />
+                <TextContentContainer>
+                  <TextContentWrapper>
+                    <HeaderTextContent>
+                      <b>{tweetData.user.fullname}</b>&nbsp;
+                      <div>
+                        <HeaderText>@{tweetData.user.username}</HeaderText>
+                      </div>
+                    </HeaderTextContent>
+                  </TextContentWrapper>
+                </TextContentContainer>
+              </FullTweetContainer>
+            </StyledLink>
 
             <TweetText gutterBottom>
               <span> {tweetData.text}</span>

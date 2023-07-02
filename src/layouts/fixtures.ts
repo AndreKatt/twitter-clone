@@ -1,4 +1,6 @@
-export const titles = {
+import { HeaderTitles } from "./types";
+
+export const titles: HeaderTitles = {
   home: {
     main: "Главная",
     sections: [
@@ -28,6 +30,15 @@ export const titles = {
   },
   settings: {
     main: "Настройки",
+  },
+  display: {
+    main: "Оформление",
+  },
+  languages: {
+    main: "Языки",
+  },
+  background: {
+    main: "Фон",
   },
   fullTweet: {
     main: "Твит",

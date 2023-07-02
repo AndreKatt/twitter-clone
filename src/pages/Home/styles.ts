@@ -20,7 +20,7 @@ export const RightSideContainer = styled("div")({
 
 export const TweetsContainer = styled(Paper)<PaperProps>({
   borderRadius: 0,
-  height: "100vh",
+  height: "100%",
   borderTop: 0,
   borderBottom: 0,
 });

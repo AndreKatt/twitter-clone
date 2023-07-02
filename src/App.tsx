@@ -16,6 +16,8 @@ import { Notifications } from "./layouts/Notifications/Notifications";
 import { Messages } from "./layouts/Messages/Messages";
 import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
 import { Explore } from "./layouts/Explore/Explore";
+import { DisplaySettings } from "./layouts/DisplaySettings/DisplaySettings";
+import { LanguagesSettings } from "./layouts/LanguagesSettings/LanguagesSettings";
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/currentUser/selectors";
 import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
@@ -75,6 +77,11 @@ function App() {
               <Route path="messages" element={<Messages />} />
               <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="settings/display" element={<DisplaySettings />} />
+              <Route
+                path="settings/languages"
+                element={<LanguagesSettings />}
+              />
               <Route path=":email" element={<Profile />} />
               <Route path="tweet/:id" element={<FullTweet />} />
               <Route path="search" element={<TopicTweets />} />
