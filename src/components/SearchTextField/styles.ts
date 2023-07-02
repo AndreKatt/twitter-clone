@@ -6,6 +6,7 @@ import { grey } from "@mui/material/colors";
 export const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
   backgroundColor: theme.palette.neutral.light,
   borderRadius: 30,
+  marginTop: 7,
 
   "& input": {
     padding: "12px 14px 14px 5px",

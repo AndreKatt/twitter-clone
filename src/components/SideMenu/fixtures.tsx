@@ -11,16 +11,20 @@ import { GetMenu } from "./types";
 export const menuItems: GetMenu = (currentUser) => {
   return [
     { link: "/home", icon: <HomeOutlinedIcon />, label: "Главная" },
-    { link: "#", icon: <SearchIcon />, label: "Обзор" },
-    { link: "#", icon: <NotificationsOutlinedIcon />, label: "Уведомления" },
-    { link: "#", icon: <EmailOutlinedIcon />, label: "Сообщения" },
-    { link: "#", icon: <BookmarkBorderIcon />, label: "Закладки" },
+    { link: "explore", icon: <SearchIcon />, label: "Обзор" },
+    {
+      link: "notifications",
+      icon: <NotificationsOutlinedIcon />,
+      label: "Уведомления",
+    },
+    { link: "messages", icon: <EmailOutlinedIcon />, label: "Сообщения" },
+    { link: "bookmarks", icon: <BookmarkBorderIcon />, label: "Закладки" },
     { link: "#", icon: <AddTaskOutlinedIcon />, label: "Подлинная" },
     {
-      link: `/home/${currentUser}`,
+      link: `${currentUser}`,
       icon: <PermIdentityOutlinedIcon />,
       label: "Профиль",
     },
-    { link: "/home/settings", icon: <PendingOutlinedIcon />, label: "Ещё" },
+    { link: "settings", icon: <PendingOutlinedIcon />, label: "Ещё" },
   ];
 };

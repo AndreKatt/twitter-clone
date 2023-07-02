@@ -15,14 +15,12 @@ export const MenuGrid = styled(Grid)<GridProps>({
 });
 
 export const RightSideContainer = styled("div")({
-  paddingTop: 20,
   position: "sticky",
-  top: 0,
 });
 
 export const TweetsContainer = styled(Paper)<PaperProps>({
   borderRadius: 0,
-  height: "100%",
+  height: "100vh",
   borderTop: 0,
   borderBottom: 0,
 });

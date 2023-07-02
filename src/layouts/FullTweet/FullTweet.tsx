@@ -14,7 +14,7 @@ import {
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
 import { ImagesList } from "../../components/ImagesList/ImagesList";
-import { footerIcons, title } from "./fixtures";
+import { footerIcons } from "./fixtures";
 // styles
 import {
   SpinnerWrapper,
@@ -33,6 +33,7 @@ import {
   TweetData,
 } from "./styles";
 import { Header } from "../../generic/Header/Header";
+import { titles } from "../fixtures";
 
 export const FullTweet: React.FC = () => {
   const { id }: { id?: string } = useParams();
@@ -57,7 +58,7 @@ export const FullTweet: React.FC = () => {
   if (tweetData) {
     return (
       <>
-        <Header title={title} icon />
+        <Header variant="elevation" title={titles.fullTweet.main} icon />
         <Paper>
           <FullTweetWrapper>
             <FullTweetContainer>

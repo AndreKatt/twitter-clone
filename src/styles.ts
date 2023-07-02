@@ -81,7 +81,7 @@ export const InnerContainer = styled(Paper)(({ theme }) => ({
   backgroundImage:
     "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
   borderRadius: 15,
-  marginTop: 20,
+  margin: "20px 0",
 
   "& .MuiList-root": {
     paddingTop: 0,

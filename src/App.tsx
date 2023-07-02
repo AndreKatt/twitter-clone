@@ -11,13 +11,17 @@ import { FullTweet } from "./layouts/FullTweet/FullTweet";
 import { TopicTweets } from "./layouts/TopicTweets";
 import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
 import { Settings } from "./layouts/Settings/Settings";
+import { Profile } from "./layouts/Profile/Profile";
+import { Notifications } from "./layouts/Notifications/Notifications";
+import { Messages } from "./layouts/Messages/Messages";
+import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
+import { Explore } from "./layouts/Explore/Explore";
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/currentUser/selectors";
 import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
 // styles
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
-import { Profile } from "./layouts/Profile/Profile";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -66,10 +70,14 @@ function App() {
           <Routes>
             <Route path="/home/*" element={<Home />}>
               <Route path="" element={<HomeTweets />} />
-              <Route path="search" element={<TopicTweets />} />
-              <Route path="tweet/:id" element={<FullTweet />} />
+              <Route path="explore" element={<Explore />} />
+              <Route path="notifications" element={<Notifications />} />
+              <Route path="messages" element={<Messages />} />
+              <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="settings" element={<Settings />} />
               <Route path=":email" element={<Profile />} />
+              <Route path="tweet/:id" element={<FullTweet />} />
+              <Route path="search" element={<TopicTweets />} />
             </Route>
             <Route path="signin" element={<SignIn />} />
           </Routes>

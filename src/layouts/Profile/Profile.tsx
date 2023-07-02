@@ -23,7 +23,7 @@ export const Profile: React.FC = () => {
   }, [dispatch, email]);
 
   if (email && user) {
-    return <Header title={user?.fullname} icon />;
+    return <Header variant="outlined" title={user?.fullname} icon />;
   }
 
   return null;

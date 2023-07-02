@@ -6,15 +6,33 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { HeaderSectionTitle } from "../../components/HeaderSection/HeaderSectionTitle";
 // styles
 import { HeaderSection } from "../../styles";
-import { HeaderButton, HeaderTitleContainer, TweetsHeader } from "./styles";
+import {
+  HeaderButton,
+  HeaderTitleContainer,
+  SearchFieldContainer,
+  TweetsHeader,
+} from "./styles";
 // types
 import { HeaderProps } from "./types";
+import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 
-export const Header: React.FC<HeaderProps> = ({ icon, title, titles }) => {
+export const Header: React.FC<HeaderProps> = ({
+  variant,
+  searchField,
+  icon,
+  title,
+  titles,
+}) => {
   const nav = useNavigate();
 
   return (
-    <TweetsHeader variant="outlined">
+    <TweetsHeader variant={variant}>
+      {searchField && (
+        <SearchFieldContainer>
+          <SearchTextField />
+        </SearchFieldContainer>
+      )}
+
       <HeaderTitleContainer>
         {icon && (
           <HeaderButton onClick={() => nav(-1)} color="primary">

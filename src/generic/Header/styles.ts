@@ -29,6 +29,10 @@ export const TweetsHeader = styled(Paper)<PaperProps>({
   },
 });
 
+export const SearchFieldContainer = styled(Paper)({
+  padding: "0 20px",
+});
+
 export const HeaderButton = styled(IconButton)<IconButtonProps>({
   marginRight: 20,
 });

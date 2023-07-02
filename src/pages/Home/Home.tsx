@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -27,6 +27,7 @@ import { InnerContainer, SpinnerWrapper } from "../../styles";
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const isLoadingTopics = useSelector(selectTopicsLoading);
 
@@ -35,6 +36,8 @@ export const Home: React.FC = () => {
     dispatch(fetchTopics());
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  const isExploreLocation = location.pathname === "/home/explore";
 
   return (
     <Container maxWidth="xl">
@@ -52,16 +55,20 @@ export const Home: React.FC = () => {
 
         <RightSideGrid item sm={0} md={3.5} lg={3.5}>
           <RightSideContainer>
-            <SearchTextField />
-            <InnerContainer>
-              {isLoadingTopics ? (
-                <SpinnerWrapper>
-                  <CircularProgress />
-                </SpinnerWrapper>
-              ) : (
-                <Topics />
-              )}
-            </InnerContainer>
+            {!isExploreLocation && (
+              <>
+                <SearchTextField />
+                <InnerContainer>
+                  {isLoadingTopics ? (
+                    <SpinnerWrapper>
+                      <CircularProgress />
+                    </SpinnerWrapper>
+                  ) : (
+                    <Topics />
+                  )}
+                </InnerContainer>
+              </>
+            )}
             <WhoToFollow />
           </RightSideContainer>
         </RightSideGrid>
