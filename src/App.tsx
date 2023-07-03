@@ -2,8 +2,9 @@
 import { useSelector } from "react-redux";
 import { createContext, useEffect, useMemo, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme } from "@mui/material/styles";
-import { CssBaseline, PaletteMode, ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 // local libs
 import { Home } from "./pages/Home/Home";
 import { SignIn } from "./pages/SignIn/SignIn";
@@ -24,11 +25,18 @@ import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
 // styles
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
+// types
+import { ToggleColorMode } from "./types";
 
-const ColorModeContext = createContext({ toggleColorMode: () => {} });
+export const ColorModeContext: React.Context<{
+  changeColorMode: ToggleColorMode;
+}> = createContext({
+  changeColorMode: (changeMode) => {},
+});
 
 function App() {
-  const [mode, setMode] = useState<"light" | "dark">("dark");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = useState<string>(prefersDarkMode ? "dark" : "light");
   const [loading, setLoading] = useState(true);
   const dispatch = useAppDispatch();
   const isAuth = useSelector(selectIsAuth);
@@ -36,8 +44,8 @@ function App() {
 
   const colorMode = useMemo(
     () => ({
-      toggleColorMode: () => {
-        setMode((prev: PaletteMode) => (prev === "light" ? "dark" : "light"));
+      changeColorMode: (changeMode: string) => {
+        setMode(changeMode);
       },
     }),
     // eslint-disable-next-line

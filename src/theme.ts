@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { red } from "@mui/material/colors";
 import { PaletteMode } from "@mui/material";
 
@@ -56,7 +55,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
       main: red.A400,
     },
   },
-  shadows: ([][1] = "none"),
+  shadows: ["none", "none"],
   components: {
     MuiPaper: {
       defaultProps: {

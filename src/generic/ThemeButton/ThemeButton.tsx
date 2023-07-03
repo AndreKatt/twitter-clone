@@ -1,17 +1,24 @@
 import React from "react";
-import { StyledButtonWithProps } from "./styles";
+import { CheckRadio, StyledButtonWithProps } from "./styles";
 import { StyledButtonProps } from "./types";
 
 export const ThemeButton: React.FC<StyledButtonProps> = ({
   title,
-  themeColor,
+  themecolor,
+  onClick,
+  checked,
+  value,
 }) => {
   return (
     <StyledButtonWithProps
+      onClick={onClick}
+      checked={checked}
+      value={value}
       title={title}
-      themeColor={themeColor}
+      themecolor={themecolor}
       variant="contained"
     >
+      <CheckRadio onClick={onClick} checked={checked} value={value} />
       {title}
     </StyledButtonWithProps>
   );

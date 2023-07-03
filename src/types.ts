@@ -11,3 +11,5 @@ export type LoginFormProps = {
 export type HeaderSectionTitleType = {
   item: { title: string; active?: boolean };
 };
+
+export type ToggleColorMode = (changeMode: string) => void;
