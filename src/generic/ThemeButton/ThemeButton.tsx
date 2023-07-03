@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckRadio, StyledButtonWithProps } from "./styles";
+import { CheckRadio, Label, StyledButtonWithProps } from "./styles";
 import { StyledButtonProps } from "./types";
 
 export const ThemeButton: React.FC<StyledButtonProps> = ({
@@ -19,7 +19,7 @@ export const ThemeButton: React.FC<StyledButtonProps> = ({
       variant="contained"
     >
       <CheckRadio onClick={onClick} checked={checked} value={value} />
-      {title}
+      <Label>{title}</Label>
     </StyledButtonWithProps>
   );
 };

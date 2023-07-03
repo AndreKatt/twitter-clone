@@ -14,6 +14,7 @@ export type HeaderTitles = {
   verified: Titles;
   settings: Titles;
   display: Titles;
+  displayLaguage: Titles;
   background: Titles;
   languages: Titles;
   fullTweet: Titles;

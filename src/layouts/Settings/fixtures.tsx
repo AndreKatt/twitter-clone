@@ -1,5 +1,7 @@
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import PublicIcon from "@mui/icons-material/Public";
+import { displayDescription, languagesDescriptions } from "../fixtures";
+// types
 import { SettingsData } from "./types";
 
 export const settings: SettingsData[] = [
@@ -9,15 +11,13 @@ export const settings: SettingsData[] = [
       <BrushOutlinedIcon style={{ fontSize: 21, margin: "0 10px 0 12px" }} />
     ),
     title: "Оформление",
-    description:
-      "Управляйте размером шрифта, цветами и фоном. Эти настройки влияют на все учетные записи Твиттера на этом устройстве.",
+    description: displayDescription,
   },
   {
     link: "languages",
 
     icon: <PublicIcon style={{ fontSize: 21 }} />,
     title: "Языки",
-    description:
-      "Управляйте языками, которые используются для персонализации Твиттера.",
+    description: languagesDescriptions.languages,
   },
 ];

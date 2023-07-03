@@ -4,10 +4,11 @@ import { useTheme } from "@mui/material/styles";
 import { ColorModeContext } from "../../App";
 import { Header } from "../../generic/Header/Header";
 import { ThemeButton } from "../../generic/ThemeButton/ThemeButton";
-import { titles } from "../fixtures";
+import { displayDescription, titles } from "../fixtures";
 import { buttonLabels } from "./fixtures";
 // styles
 import { ButtonContainer } from "./styles";
+import { HeaderDescription } from "../../styles";
 
 export const DisplaySettings: React.FC = () => {
   const { palette } = useTheme();
@@ -22,6 +23,7 @@ export const DisplaySettings: React.FC = () => {
   return (
     <>
       <Header variant="elevation" title={titles.display.main} icon />
+      <HeaderDescription>{displayDescription}</HeaderDescription>
       <Header variant="elevation" title={titles.background.main} />
       <ButtonContainer>
         <ThemeButton

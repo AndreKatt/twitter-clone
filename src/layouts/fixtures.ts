@@ -37,6 +37,9 @@ export const titles: HeaderTitles = {
   languages: {
     main: "Языки",
   },
+  displayLaguage: {
+    main: "Язык отображения",
+  },
   background: {
     main: "Фон",
   },
@@ -44,3 +47,13 @@ export const titles: HeaderTitles = {
     main: "Твит",
   },
 };
+
+export const languagesDescriptions = {
+  languages:
+    "Управляйте языками, которые используются для персонализации Твиттера.",
+  displayLaguage:
+    "Выберите язык, на котором вы хотите видеть заголовки, кнопки и другой текст в интерфейсе Твиттера.",
+};
+
+export const displayDescription =
+  "Управляйте фоном. Эта настройка влияют на все учетные записи Твиттера на этом устройстве.";

@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { titles } from "../fixtures";
+import { settings } from "./fixtures";
 // styles
 import {
   ArrowIcon,
@@ -12,7 +13,6 @@ import {
   SettingsContainer,
   TextContainer,
 } from "./styles";
-import { settings } from "./fixtures";
 import { StyledLink } from "../../styles";
 
 export const Settings: React.FC = () => {
@@ -24,6 +24,7 @@ export const Settings: React.FC = () => {
           <SettingsContainer>
             <InnerContainer>
               <IconContainer>{item.icon}</IconContainer>
+
               <TextContainer>
                 <Typography>{item.title}</Typography>
                 <Description>{item.description}</Description>

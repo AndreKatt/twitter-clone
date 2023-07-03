@@ -87,3 +87,9 @@ export const InnerContainer = styled(Paper)(({ theme }) => ({
     paddingTop: 0,
   },
 }));
+
+export const HeaderDescription = styled(Paper)({
+  fontSize: 14,
+  color: grey[500],
+  padding: "10px 15px",
+});

@@ -1,7 +1,9 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Button, { ButtonProps } from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Radio, { RadioProps } from "@mui/material/Radio";
+// types
 import { StyledButtonProps } from "./types";
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -41,4 +43,9 @@ export const StyledButtonWithProps = styled(StyledButton)<
 
 export const CheckRadio = styled(Radio)<RadioProps>({
   color: grey[500],
+});
+
+export const Label = styled(Typography)({
+  width: 110,
+  fontWeight: "bold",
 });
