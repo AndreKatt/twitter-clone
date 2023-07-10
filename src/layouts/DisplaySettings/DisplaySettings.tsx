@@ -17,8 +17,6 @@ export const DisplaySettings: React.FC = () => {
   const [value, setValue] = useState<string>(palette.mode);
   const { t } = useTranslation();
 
-  console.log(t);
-
   const titles = getTitles(t);
   const description = getDisplayDescription(t);
   const buttonLabels = getButtonLabels(t);

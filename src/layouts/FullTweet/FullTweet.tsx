@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import format from "date-fns/format";
 import { ru } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import { grey } from "@mui/material/colors";
@@ -45,6 +47,7 @@ export const FullTweet: React.FC = () => {
   const { t } = useTranslation();
 
   const title = getTitles(t).fullTweet.main;
+  const locale = i18next.language === "en" ? enUS : ru;
 
   useEffect(() => {
     if (id) {
@@ -93,8 +96,8 @@ export const FullTweet: React.FC = () => {
                 &nbsp;
                 <span>·</span>&nbsp;
                 <span>
-                  {format(new Date(tweetData.createdAt), "dd MMM yyyy г.", {
-                    locale: ru,
+                  {format(new Date(tweetData.createdAt), "dd MMM yyyy", {
+                    locale: locale,
                   })}
                 </span>
               </TweetData>

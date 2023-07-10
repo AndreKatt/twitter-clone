@@ -16,12 +16,10 @@ export const fetchTweets = createAsyncThunk<TweetsState["items"]>(
 export const uploadFile = createAsyncThunk<UploadedFileData, File>(
   "tweets/uploadFile",
   async (payload) => {
-    console.log(payload);
     const { data } = await axios.post<UploadedFileData>(
       "/api/files/upload",
       payload
     );
-    console.log(data);
     return data;
   }
 );

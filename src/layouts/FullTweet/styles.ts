@@ -1,5 +1,9 @@
 import { styled } from "@mui/system";
 import Typography, { TypographyProps } from "@mui/material/Typography";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import RepeatIcon from "@mui/icons-material/Repeat";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ReplyIcon from "@mui/icons-material/Reply";
 
 export const FullTweetWrapper = styled("div")({
   borderBottom: "1px solid rgba(204, 214, 221)",
@@ -55,4 +59,20 @@ export const TweetText = styled(Typography)<TypographyProps>({
 
 export const TweetData = styled(Typography)<TypographyProps>({
   marginTop: 20,
+});
+
+export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({
+  fontSize: 25,
+});
+
+export const RepostIcon = styled(RepeatIcon)({
+  fontSize: 25,
+});
+
+export const FavoriteIcon = styled(FavoriteBorderIcon)({
+  fontSize: 25,
+});
+
+export const ShareIcon = styled(ReplyIcon)({
+  fontSize: 25,
 });

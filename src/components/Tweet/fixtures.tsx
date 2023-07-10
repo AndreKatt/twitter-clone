@@ -1,19 +1,17 @@
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import PushPinOutlinedIcon from "@mui/icons-material/PushPinOutlined";
 import DriveFile from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ReplyIcon from "@mui/icons-material/Reply";
+import { GetMenuItems } from "./types";
+import { DeleteIcon } from "./styles";
 
-export const menuItems = {
-  delete: {
-    icon: <DeleteOutlinedIcon style={{ color: "red" }} />,
-    label: "Удалить твит",
-  },
-  pin: { icon: <PushPinOutlinedIcon />, label: "Закрепить в профиле" },
-  edit: { icon: <DriveFile />, label: "Редактировать" },
-};
+export const getMenuItems: GetMenuItems = (t) => ({
+  delete: { icon: <DeleteIcon />, label: `${t("tweet.menuLabels.delete")}` },
+  pin: { icon: <PushPinOutlinedIcon />, label: `${t("tweet.menuLabels.pin")}` },
+  edit: { icon: <DriveFile />, label: `${t("tweet.menuLabels.edit")}` },
+});
 
 export const footerIcons = [
   {

@@ -57,6 +57,7 @@ export const HomeTweets: React.FC = () => {
             userName={tweet.user.username}
             // avatarUrl={tweet.user.avatarUrl}
             createdAt={tweet.createdAt}
+            t={t}
           />
         ))
       )}

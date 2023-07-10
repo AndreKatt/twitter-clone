@@ -26,8 +26,16 @@ i18n
             buttonLabel: "Tweet",
             alertText: "Error adding tweet",
           },
+          tweet: {
+            confirm: "Are you sure you want to delete this tweet?",
+            dateText: "ago",
+            menuLabels: {
+              delete: "Delete",
+              pin: "Pin to your profile",
+              edit: "Edit",
+            },
+          },
           searchTextField: "Search Twitter",
-
           userSideProfile: {
             menuLabel1: "Add an existing account",
             menuLabel2: "Log out",
@@ -75,6 +83,10 @@ i18n
                 "Manage which languages are used to personalize your Twitter experience.",
               description2:
                 "Select your preferred language for headlines, buttons, and other text from Twitter.",
+              buttonLabels: {
+                russian: "Russian",
+                english: "English",
+              },
             },
             fullTweet: "Tweet",
           },
@@ -97,8 +109,16 @@ i18n
             buttonLabel: "Твитнуть",
             alertText: "Ошибка при добавлении твита",
           },
+          tweet: {
+            confirm: "Вы действительно хотите удалить этот твит?",
+            dateText: "назад",
+            menuLabels: {
+              delete: "Удалить твит",
+              pin: "Закрепить в профиле",
+              edit: "Редактировать",
+            },
+          },
           searchTextField: "Поиск в Твиттере",
-
           userSideProfile: {
             menuLabel1: "Добавить существующую учетную запись",
             menuLabel2: "Выйти из учетной записи",
@@ -146,6 +166,10 @@ i18n
                 "Управляйте языками, которые используются для персонализации Твиттера.",
               description2:
                 "Выберите язык, на котором вы хотите видеть заголовки, кнопки и другой текст в интерфейсе Твиттера.",
+              buttonLabels: {
+                russian: "Русский",
+                english: "Английский",
+              },
             },
             fullTweet: "Твит",
           },

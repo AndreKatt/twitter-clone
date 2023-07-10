@@ -1,23 +1,30 @@
 import React, { useState } from "react";
+import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import Checkbox from "@mui/material/Checkbox";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { getLanguagesDescriptions, getTitles } from "../fixtures";
-import { labels } from "./fixtures";
+import { getButtonLabels } from "./fixtures";
 // styles
 import { LanguagesContainer, LanguageControlLabel } from "./styles";
 import { HeaderDescription } from "../../styles";
 
 export const LanguagesSettings: React.FC = () => {
-  const [language, setLanguage] = useState<string | null>("Russian");
+  const [language, setLanguage] = useState<string | null>(i18next.language);
   const { t } = useTranslation();
 
   const titles = getTitles(t);
   const descriptions = getLanguagesDescriptions(t);
+  const buttonLabels = getButtonLabels(t);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLanguage(e.currentTarget.ariaLabel);
+  const handleChangeLanguage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const lang = e.currentTarget.ariaLabel;
+
+    if (lang) {
+      i18next.changeLanguage(lang);
+    }
+    setLanguage(lang);
   };
 
   return (
@@ -32,22 +39,22 @@ export const LanguagesSettings: React.FC = () => {
         <LanguageControlLabel
           control={
             <Checkbox
-              checked={language === "Russian"}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "Russian" }}
+              checked={language === "ru"}
+              onChange={handleChangeLanguage}
+              inputProps={{ "aria-label": "ru" }}
             />
           }
-          label={labels.russian}
+          label={buttonLabels.russian}
         />
         <LanguageControlLabel
           control={
             <Checkbox
-              checked={language === "English"}
-              onChange={handleChange}
-              inputProps={{ "aria-label": "English" }}
+              checked={language === "en"}
+              onChange={handleChangeLanguage}
+              inputProps={{ "aria-label": "en" }}
             />
           }
-          label={labels.english}
+          label={buttonLabels.english}
         />
       </LanguagesContainer>
     </>

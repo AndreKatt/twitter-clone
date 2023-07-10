@@ -17,7 +17,7 @@ import { ImagesList } from "../ImagesList/ImagesList";
 import { formatDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
-import { footerIcons, menuItems } from "./fixtures";
+import { footerIcons, getMenuItems } from "./fixtures";
 // styles
 import {
   TextContentContainer,
@@ -39,8 +39,9 @@ import {
 } from "./styles";
 // types
 import type { TweetProps } from "./types";
+import { i18nProps } from "../../types";
 
-export const Tweet: React.FC<TweetProps> = ({
+export const Tweet: React.FC<TweetProps & i18nProps> = ({
   _id,
   text,
   email,
@@ -49,10 +50,13 @@ export const Tweet: React.FC<TweetProps> = ({
   images,
   // avatarUrl,
   createdAt,
+  t,
 }): React.ReactElement => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
+
+  const menuItems = getMenuItems(t);
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
@@ -72,7 +76,7 @@ export const Tweet: React.FC<TweetProps> = ({
   };
 
   const deleteOne = async () => {
-    if (window.confirm("Вы действительно хотите удалить этот твит?")) {
+    if (window.confirm(`${t("tweet.confirm")}`)) {
       await dispatch(deleteTweet(_id));
       handleClose();
     }
@@ -98,7 +102,9 @@ export const Tweet: React.FC<TweetProps> = ({
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
-                    {formatDate(new Date(createdAt))} назад
+                    {`${formatDate(new Date(createdAt))} ${t(
+                      "tweet.dateText"
+                    )}`}
                   </HeaderText>
                 </Typography>
               </TextContentWrapper>

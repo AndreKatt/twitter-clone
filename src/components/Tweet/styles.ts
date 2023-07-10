@@ -1,6 +1,7 @@
 import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import Popper, { PopperProps } from "@mui/material/Popper";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import ListItemText from "@mui/material/ListItemText";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
@@ -100,4 +101,8 @@ export const TweetPopper = styled(Popper)<PopperProps>({
     "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
   inset: "0px 1vw auto auto !important",
   zIndex: 2,
+});
+
+export const DeleteIcon = styled(DeleteOutlinedIcon)({
+  color: "red",
 });
