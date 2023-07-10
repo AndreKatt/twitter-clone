@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 // local libs
 import { ColorModeContext } from "../../App";
 import { Header } from "../../generic/Header/Header";
 import { ThemeButton } from "../../generic/ThemeButton/ThemeButton";
-import { displayDescription, titles } from "../fixtures";
-import { buttonLabels } from "./fixtures";
+import { getDisplayDescription, getTitles } from "../fixtures";
+import { getButtonLabels } from "./fixtures";
 // styles
 import { ButtonContainer } from "./styles";
 import { HeaderDescription } from "../../styles";
@@ -14,6 +15,13 @@ export const DisplaySettings: React.FC = () => {
   const { palette } = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [value, setValue] = useState<string>(palette.mode);
+  const { t } = useTranslation();
+
+  console.log(t);
+
+  const titles = getTitles(t);
+  const description = getDisplayDescription(t);
+  const buttonLabels = getButtonLabels(t);
 
   const handleChangeTheme = (e: React.MouseEvent<HTMLButtonElement>) => {
     colorMode.changeColorMode(e.currentTarget.value);
@@ -22,9 +30,9 @@ export const DisplaySettings: React.FC = () => {
 
   return (
     <>
-      <Header variant="elevation" title={titles.display.main} icon />
-      <HeaderDescription>{displayDescription}</HeaderDescription>
-      <Header variant="elevation" title={titles.background.main} />
+      <Header variant="elevation" title={titles.display.main} t={t} icon />
+      <HeaderDescription>{description}</HeaderDescription>
+      <Header variant="elevation" title={titles.background.main} t={t} />
       <ButtonContainer>
         <ThemeButton
           checked={value === "light"}

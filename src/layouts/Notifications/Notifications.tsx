@@ -1,13 +1,18 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Header } from "../../generic/Header/Header";
-import { titles } from "../fixtures";
+import { getTitles } from "../fixtures";
 
 export const Notifications: React.FC = () => {
+  const { t } = useTranslation();
+  const titles = getTitles(t).notifications;
+
   return (
     <Header
       variant="outlined"
-      title={titles.notifications.main}
-      titles={titles.notifications.sections}
+      title={titles.main}
+      titles={titles.sections}
+      t={t}
     />
   );
 };

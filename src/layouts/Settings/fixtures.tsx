@@ -1,23 +1,22 @@
 import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
 import PublicIcon from "@mui/icons-material/Public";
-import { displayDescription, languagesDescriptions } from "../fixtures";
 // types
-import { SettingsData } from "./types";
+import { GetSettingsData } from "./types";
 
-export const settings: SettingsData[] = [
+export const getSettings: GetSettingsData = (t) => [
   {
     link: "display",
     icon: (
       <BrushOutlinedIcon style={{ fontSize: 21, margin: "0 10px 0 12px" }} />
     ),
-    title: "Оформление",
-    description: displayDescription,
+    title: `${t("layoutTitles.displaySettings.main")}`,
+    description: `${t("layoutTitles.displaySettings.description")}`,
   },
   {
     link: "languages",
 
     icon: <PublicIcon style={{ fontSize: 21 }} />,
-    title: "Языки",
-    description: languagesDescriptions.languages,
+    title: `${t("layoutTitles.languagesSettings.main")}`,
+    description: `${t("layoutTitles.languagesSettings.description1")}`,
   },
 ];

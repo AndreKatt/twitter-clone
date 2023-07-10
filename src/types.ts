@@ -1,3 +1,5 @@
+import { TFunction } from "i18next";
+
 export type UploadedObject = {
   blobUrl: string;
   file: File;
@@ -13,3 +15,7 @@ export type HeaderSectionTitleType = {
 };
 
 export type ToggleColorMode = (changeMode: string) => void;
+
+export type i18nProps = {
+  t: TFunction<"translation", undefined>;
+};

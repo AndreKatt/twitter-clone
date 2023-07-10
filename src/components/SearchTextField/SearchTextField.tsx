@@ -2,12 +2,13 @@ import React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 // styles
 import { InputField, Icon } from "./styles";
+import { i18nProps } from "../../types";
 
-export const SearchTextField: React.FC = () => {
+export const SearchTextField: React.FC<i18nProps> = ({ t }) => {
   return (
     <InputField
       variant="outlined"
-      placeholder="Поиск в Твиттере"
+      placeholder={`${t("searchTextField")}`}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

@@ -22,6 +22,7 @@ import { LanguagesSettings } from "./layouts/LanguagesSettings/LanguagesSettings
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/currentUser/selectors";
 import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
+import "./config/i18n/i18n";
 // styles
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";

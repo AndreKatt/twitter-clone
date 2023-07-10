@@ -1,9 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
+import { useTranslation } from "react-i18next";
 // local libs
 import { Header } from "../../generic/Header/Header";
-import { titles } from "../fixtures";
-import { settings } from "./fixtures";
+import { getTitles } from "../fixtures";
+import { getSettings } from "./fixtures";
 // styles
 import {
   ArrowIcon,
@@ -16,9 +17,13 @@ import {
 import { StyledLink } from "../../styles";
 
 export const Settings: React.FC = () => {
+  const { t } = useTranslation();
+  const title = getTitles(t).settings.main;
+  const settings = getSettings(t);
+
   return (
     <>
-      <Header variant="elevation" title={titles.settings.main} />
+      <Header variant="elevation" title={title} t={t} />
       {settings.map((item) => (
         <StyledLink key={item.title} to={item.link}>
           <SettingsContainer>

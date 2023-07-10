@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { useAppDispatch } from "../../redux/store";
@@ -12,6 +13,7 @@ export const Profile: React.FC = () => {
   const { email } = useParams();
   const dispatch = useAppDispatch();
   const user = useSelector(selectSelectedUserData);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (email) {
@@ -23,7 +25,7 @@ export const Profile: React.FC = () => {
   }, [dispatch, email]);
 
   if (email && user) {
-    return <Header variant="outlined" title={user?.fullname} icon />;
+    return <Header variant="outlined" title={user?.fullname} t={t} icon />;
   }
 
   return null;

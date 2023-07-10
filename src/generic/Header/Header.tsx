@@ -15,13 +15,15 @@ import {
 // types
 import { HeaderProps } from "./types";
 import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
+import { i18nProps } from "../../types";
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header: React.FC<HeaderProps & i18nProps> = ({
   variant,
   searchField,
   icon,
   title,
   titles,
+  t,
 }) => {
   const nav = useNavigate();
 
@@ -29,7 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
     <TweetsHeader variant={variant}>
       {searchField && (
         <SearchFieldContainer>
-          <SearchTextField />
+          <SearchTextField t={t} />
         </SearchFieldContainer>
       )}
 

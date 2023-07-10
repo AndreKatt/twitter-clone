@@ -1,6 +1,6 @@
-import { ButtonLabels } from "./types";
+import { GetButtonLabels } from "./types";
 
-export const buttonLabels: ButtonLabels = {
-  light: "По умолчанию",
-  dark: "Сумерки",
-};
+export const getButtonLabels: GetButtonLabels = (t) => ({
+  light: `${t("layoutTitles.displaySettings.buttonLabels.light")}`,
+  dark: `${t("layoutTitles.displaySettings.buttonLabels.dark")}`,
+});

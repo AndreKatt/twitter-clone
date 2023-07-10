@@ -6,6 +6,7 @@ import Paper from "@mui/material/Paper";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import MenuList from "@mui/material/MenuList";
 import Grow from "@mui/material/Grow";
+import { Divider } from "@mui/material";
 // local libs
 import { selectUserState } from "../../redux/currentUser/selectors";
 // styles
@@ -18,9 +19,10 @@ import {
   Username,
   MenuPopper,
 } from "./styles";
-import { Divider } from "@mui/material";
+// types
+import { i18nProps } from "../../types";
 
-export const UserSideProfile: React.FC = () => {
+export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const user = useSelector(selectUserState);
@@ -71,7 +73,6 @@ export const UserSideProfile: React.FC = () => {
         role={undefined}
         placement="top-end"
         transition
-        // disablePortal
       >
         {({ TransitionProps }) => (
           <Grow
@@ -89,15 +90,9 @@ export const UserSideProfile: React.FC = () => {
                   onKeyDown={handleListKeyDown}
                 >
                   <Divider />
+                  <MenuItem>{t("userSideProfile.menuLabel1")}</MenuItem>
                   <MenuItem>
-                    Добавить существующую
-                    <>
-                      <br />
-                    </>
-                    учетную запись
-                  </MenuItem>
-                  <MenuItem>
-                    Выйти из учетной записи
+                    {t("userSideProfile.menuLabel2")}
                     <>
                       <br />
                     </>

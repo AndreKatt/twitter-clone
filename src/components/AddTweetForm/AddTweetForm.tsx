@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Alert } from "@mui/material";
@@ -36,6 +37,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     sessionStorage.getItem("tweetText") || ""
   );
   const [images, setImages] = useState<UploadedObject[]>([]);
+  const { t } = useTranslation();
+
   const textLimitPercent = (text.length / 280) * 100;
   const textCount = 280 - text.length;
 
@@ -81,7 +84,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         </StyledLink>
         <Textarea
           onChange={handleChangeTextarea}
-          placeholder="Что происходит?!"
+          placeholder={t("addTweetForm.placeholder")}
           value={text}
           maxRows={maxRows}
         />
@@ -133,7 +136,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             {addFormState === AddFormState.LOADING ? (
               <CircularProgress color="inherit" size={22} />
             ) : (
-              "Твитнуть"
+              `${t("addTweetForm.buttonLabel")}`
             )}
           </Button>
         </ButtomRightContainer>
@@ -141,7 +144,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
       {addFormState === AddFormState.ERROR && (
         <Alert severity="error">
-          Ошибка при добавлении твита <span>😔</span>
+          {t("addTweetForm.alertText")}
+          <span>😔</span>
         </Alert>
       )}
     </>

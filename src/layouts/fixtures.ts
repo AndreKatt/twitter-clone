@@ -1,59 +1,86 @@
-import { HeaderTitles } from "./types";
+import {
+  GetDisplayDescription,
+  GetLanguagesDescriptions,
+  GetTitles,
+} from "./types";
 
-export const titles: HeaderTitles = {
+export const getTitles: GetTitles = (t) => ({
   home: {
-    main: "Главная",
+    main: `${t("layoutTitles.home.main")}`,
     sections: [
-      { item: { title: "Для вас", active: true } },
-      { item: { title: "Вы читаете", active: false } },
+      {
+        item: {
+          title: `${t("layoutTitles.home.sections.title1")}`,
+          active: true,
+        },
+      },
+      {
+        item: {
+          title: `${t("layoutTitles.home.sections.title2")}`,
+          active: false,
+        },
+      },
     ],
   },
   explore: {
-    main: "Актуальные темы для вас",
+    main: `${t("topics.label")}`,
   },
   notifications: {
-    main: "Уведомления",
+    main: `${t("layoutTitles.notifications.main")}`,
     sections: [
-      { item: { title: "Все", active: true } },
-      { item: { title: "Подлинная", active: false } },
-      { item: { title: "Упоминания", active: false } },
+      {
+        item: {
+          title: `${t("layoutTitles.notifications.sections.title1")}`,
+          active: true,
+        },
+      },
+      {
+        item: {
+          title: `${t("layoutTitles.notifications.sections.title2")}`,
+          active: false,
+        },
+      },
+      {
+        item: {
+          title: `${t("layoutTitles.notifications.sections.title3")}`,
+          active: false,
+        },
+      },
     ],
   },
   messages: {
-    main: "Сообщения",
+    main: `${t("layoutTitles.messages")}`,
   },
   bookmarks: {
-    main: "Закладки",
+    main: `${t("layoutTitles.bookmarks")}`,
   },
   verified: {
-    main: "Подлинная",
+    main: `${t("layoutTitles.verified")}`,
   },
   settings: {
-    main: "Настройки",
+    main: `${t("layoutTitles.settings")}`,
   },
   display: {
-    main: "Оформление",
+    main: `${t("layoutTitles.displaySettings.main")}`,
   },
   languages: {
-    main: "Языки",
+    main: `${t("layoutTitles.languagesSettings.main")}`,
   },
   displayLaguage: {
-    main: "Язык отображения",
+    main: `${t("layoutTitles.languagesSettings.displayLaguage")}`,
   },
   background: {
-    main: "Фон",
+    main: `${t("layoutTitles.displaySettings.background")}`,
   },
   fullTweet: {
-    main: "Твит",
+    main: `${t("layoutTitles.fullTweet")}`,
   },
-};
+});
 
-export const languagesDescriptions = {
-  languages:
-    "Управляйте языками, которые используются для персонализации Твиттера.",
-  displayLaguage:
-    "Выберите язык, на котором вы хотите видеть заголовки, кнопки и другой текст в интерфейсе Твиттера.",
-};
+export const getLanguagesDescriptions: GetLanguagesDescriptions = (t) => ({
+  languages: `${t("layoutTitles.languagesSettings.description1")}`,
+  displayLaguage: `${t("layoutTitles.languagesSettings.description2")}`,
+});
 
-export const displayDescription =
-  "Управляйте фоном. Эта настройка влияют на все учетные записи Твиттера на этом устройстве.";
+export const getDisplayDescription: GetDisplayDescription = (t) =>
+  `${t("layoutTitles.displaySettings.description")}`;

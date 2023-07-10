@@ -3,6 +3,7 @@ import format from "date-fns/format";
 import { ru } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import { grey } from "@mui/material/colors";
@@ -15,6 +16,7 @@ import {
 } from "../../redux/tweet/selectors";
 import { ImagesList } from "../../components/ImagesList/ImagesList";
 import { footerIcons } from "./fixtures";
+import { getTitles } from "../fixtures";
 // styles
 import {
   SpinnerWrapper,
@@ -34,13 +36,15 @@ import {
   TweetData,
 } from "./styles";
 import { Header } from "../../generic/Header/Header";
-import { titles } from "../fixtures";
 
 export const FullTweet: React.FC = () => {
   const { id }: { id?: string } = useParams();
   const dispatch = useAppDispatch();
   const tweetData = useSelector(selectTweetData);
   const isTweetLoading = useSelector(selectTweetLoading);
+  const { t } = useTranslation();
+
+  const title = getTitles(t).fullTweet.main;
 
   useEffect(() => {
     if (id) {
@@ -59,7 +63,7 @@ export const FullTweet: React.FC = () => {
   if (tweetData) {
     return (
       <>
-        <Header variant="elevation" title={titles.fullTweet.main} icon />
+        <Header variant="elevation" title={title} t={t} icon />
         <Paper>
           <FullTweetWrapper>
             <StyledLink to={`/home/${tweetData.user.email}`}>

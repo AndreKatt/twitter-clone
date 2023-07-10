@@ -9,15 +9,16 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 // local libs
 import { selectTopicsItems } from "../../redux/topics/selectors";
+import { i18nProps } from "../../types";
 
-export const Topics: React.FC = (): React.ReactElement => {
+export const Topics: React.FC<i18nProps> = ({ t }) => {
   const topics = useSelector(selectTopicsItems);
 
   return (
     <>
       {/* <p>BlahBlah</p> */}
       <Paper>
-        <b>Актуальные темы</b>
+        <b>{t("topics.label")}</b>
       </Paper>
       {topics.map((topic) => (
         <List key={topic._id}>
@@ -29,7 +30,7 @@ export const Topics: React.FC = (): React.ReactElement => {
                 primary={topic.name}
                 secondary={
                   <Typography component="span" variant="body2">
-                    Твитов: {topic.count}
+                    {t("topics.description")}: {topic.count}
                   </Typography>
                 }
               />

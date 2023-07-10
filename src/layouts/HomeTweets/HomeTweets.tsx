@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 // local libs
@@ -16,18 +17,22 @@ import {
   AddTweetWrapper,
   CircularProgressWrapper,
 } from "./styles";
-import { titles } from "../fixtures";
+import { getTitles } from "../fixtures";
 
 export const HomeTweets: React.FC = () => {
   const tweets = useSelector(selectTweetsItems);
   const isLoadingTweets = useSelector(selectTweetsLoading);
+  const { t } = useTranslation();
+
+  const titles = getTitles(t).home;
 
   return (
     <>
       <Header
         variant="outlined"
-        title={titles.home.main}
-        titles={titles.home.sections}
+        title={titles.main}
+        titles={titles.sections}
+        t={t}
       />
       <Paper>
         <AddTweetWrapper>

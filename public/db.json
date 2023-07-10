@@ -1,25 +1,4 @@
 {
-  "tweets": [
-    {
-      "id": "1",
-      "_id": "63bc66c2047f941e5549436f",
-      "text": "Consequat culpa commodo excepteur culpa culpa id nisi mollit occaecat nisi duis cillum est. Id minim quis adipisicing et esse quis esse cillum. Duis aute occaecat ullamco nostrud velit.",
-      "user": {
-        "fullname": "Slater Acosta",
-        "username": "pearson",
-        "avatarUrl": "https://images.unsplash.com/photo-1624395213043-fa2e123b2656?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bWVuJTIwZmFjZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-      }
-    },
-    {
-      "_id": "63bc66c2aab4f1335e29fbff",
-      "text": "Aliqua excepteur incididunt irure laborum id voluptate laborum excepteur incididunt excepteur. Consequat consectetur labore nisi exercitation nisi id laborum consequat qui voluptate aliqua est fugiat velit. Ex adipisicing enim cupidatat adipisicing ipsum quis ut reprehenderit commodo.",
-      "user": {
-        "fullname": "Alla Fitzgerald 🖤",
-        "username": "alla_feee",
-        "avatarUrl": "https://images.unsplash.com/photo-1470092922729-762ec45090ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM3fHxsYWR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-      }
-    }
-  ],
   "themes": [
     {
       "_id": "63bc66c2047f941e5549436f",
@@ -41,28 +20,5 @@
       "name": "Навальный",
       "count": 674
     }
-  ],
-  "users": [
-    {
-      "fullname": "Robbie LoveCats",
-      "username": "TheCure",
-      "avatarUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS13INLI1-yVvnzG1s09l1vIQhyMPiqC_iiSQ&usqp=CAU"
-    },
-    {
-      "fullname": "Lambert Whitney",
-      "username": "walters",
-      "avatarUrl": "https://source.unsplash.com/random/100x100?4"
-    },
-    {
-      "fullname": "Jennifer Everett",
-      "username": "workman",
-      "avatarUrl": "https://source.unsplash.com/random/100x100?3"
-    }
-  ],
-  "user": {
-    "_id": "63bc66c2047f941e5549436f",
-    "fullname": "Varvara Acosta",
-    "username": "pearson",
-    "avatarUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTB8fGdpcmx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-  }
+  ]
 }

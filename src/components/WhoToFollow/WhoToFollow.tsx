@@ -18,8 +18,9 @@ import {
   RecommendedItem,
 } from "./styles";
 import { InnerContainer, SpinnerWrapper, StyledLink } from "../../styles";
+import { i18nProps } from "../../types";
 
-export const WhoToFollow: React.FC = () => {
+export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   const users = useSelector(selectUsersData);
   const isLoadingUsers = useSelector(selectUsersLoading);
 
@@ -32,7 +33,7 @@ export const WhoToFollow: React.FC = () => {
       ) : (
         <>
           <RecommendedHeader>
-            <Typography variant="h5">Кого читать</Typography>
+            <Typography variant="h5">{t("whoToFollow.label")}</Typography>
           </RecommendedHeader>
           <List>
             {users.slice(0, 2).map((user) => (
@@ -49,11 +50,13 @@ export const WhoToFollow: React.FC = () => {
                       </Typography>
                     }
                   />
-                  <FollowButton variant="contained">Читать</FollowButton>
+                  <FollowButton variant="contained">
+                    {t("whoToFollow.buttonLabel")}
+                  </FollowButton>
                 </RecommendedItem>
               </StyledLink>
             ))}
-            <More color="primary">Показать еще</More>
+            <More color="primary">{t("whoToFollow.more")}</More>
           </List>
         </>
       )}

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { ModalBlock } from "../ModalBlock/ModalBlock";
 import { AddTweetForm } from "../AddTweetForm/AddTweetForm";
+import { selectUserState } from "../../redux/currentUser/selectors";
 import { menuItems } from "./fixtures";
 // styles
 import {
@@ -14,14 +16,15 @@ import {
   SideMenuList,
   SideMenuListItem,
 } from "./styles";
-import { useSelector } from "react-redux";
-import { selectUserState } from "../../redux/currentUser/selectors";
 import { StyledLink } from "../../styles";
+// types
+import { i18nProps } from "../../types";
 
-export const SideMenu: React.FC = () => {
+export const SideMenu: React.FC<i18nProps> = ({ t }) => {
   const [visibleAddTweet, setVisibleAddTweet] = useState(false);
   const { currentUser } = useSelector(selectUserState);
-  const menuTitles = menuItems(currentUser?.email);
+
+  const menuTitles = menuItems(currentUser?.email, t);
 
   const handleOpenAddTweet = () => {
     setVisibleAddTweet(true);

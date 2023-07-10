@@ -8,23 +8,47 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import PendingOutlinedIcon from "@mui/icons-material/PendingOutlined";
 import { GetMenu } from "./types";
 
-export const menuItems: GetMenu = (currentUser) => {
+export const menuItems: GetMenu = (currentUser, t) => {
   return [
-    { link: "/home", icon: <HomeOutlinedIcon />, label: "Главная" },
-    { link: "explore", icon: <SearchIcon />, label: "Обзор" },
+    {
+      link: "/home",
+      icon: <HomeOutlinedIcon />,
+      label: `${t("sideMenu.home")}`,
+    },
+    {
+      link: "explore",
+      icon: <SearchIcon />,
+      label: `${t("sideMenu.explore")}`,
+    },
     {
       link: "notifications",
       icon: <NotificationsOutlinedIcon />,
-      label: "Уведомления",
+      label: `${t("sideMenu.notifications")}`,
     },
-    { link: "messages", icon: <EmailOutlinedIcon />, label: "Сообщения" },
-    { link: "bookmarks", icon: <BookmarkBorderIcon />, label: "Закладки" },
-    { link: "#", icon: <AddTaskOutlinedIcon />, label: "Подлинная" },
+    {
+      link: "messages",
+      icon: <EmailOutlinedIcon />,
+      label: `${t("sideMenu.messages")}`,
+    },
+    {
+      link: "bookmarks",
+      icon: <BookmarkBorderIcon />,
+      label: `${t("sideMenu.bookmarks")}`,
+    },
+    {
+      link: "#",
+      icon: <AddTaskOutlinedIcon />,
+      label: `${t("sideMenu.verified")}`,
+    },
     {
       link: `${currentUser}`,
       icon: <PermIdentityOutlinedIcon />,
-      label: "Профиль",
+      label: `${t("sideMenu.profile")}`,
     },
-    { link: "settings", icon: <PendingOutlinedIcon />, label: "Ещё" },
+    {
+      link: "settings",
+      icon: <PendingOutlinedIcon />,
+      label: `${t("sideMenu.settings")}`,
+    },
   ];
 };
