@@ -23,9 +23,9 @@ import {
   TextContentContainer,
   TextContentWrapper,
   HeaderText,
-  TweetAvatar,
   FooterIcon,
   StyledLink,
+  UserAvatar,
 } from "../../styles";
 import {
   FooterWrapper,
@@ -87,7 +87,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
     <TweetContainer variant="outlined">
       <HeaderContainer>
         <StyledLink to={`/home/${email}`}>
-          <TweetAvatar
+          <UserAvatar
             alt={`Аватарка пользователя ${fullname}`}
             {...stringAvatar(userName)}
             // src={avatarUrl}

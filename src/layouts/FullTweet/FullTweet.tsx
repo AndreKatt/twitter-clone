@@ -11,13 +11,14 @@ import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import { grey } from "@mui/material/colors";
 // local libs
+import { ImagesList } from "../../components/ImagesList/ImagesList";
+import { Header } from "../../generic/Header/Header";
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
 import {
   selectTweetData,
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
-import { ImagesList } from "../../components/ImagesList/ImagesList";
 import { stringAvatar } from "../../utils/stringAvatar";
 import { footerIcons } from "./fixtures";
 import { getTitles } from "../fixtures";
@@ -27,9 +28,9 @@ import {
   TextContentContainer,
   TextContentWrapper,
   HeaderText,
-  TweetAvatar,
   FooterIcon,
   StyledLink,
+  UserAvatar,
 } from "../../styles";
 import {
   FullTweetContainer,
@@ -39,7 +40,6 @@ import {
   TweetText,
   TweetData,
 } from "./styles";
-import { Header } from "../../generic/Header/Header";
 
 export const FullTweet: React.FC = () => {
   const { id }: { id?: string } = useParams();
@@ -73,7 +73,7 @@ export const FullTweet: React.FC = () => {
           <FullTweetWrapper variant="outlined">
             <StyledLink to={`/home/${tweetData.user.email}`}>
               <FullTweetContainer>
-                <TweetAvatar
+                <UserAvatar
                   alt="Аватарка пользователя"
                   {...stringAvatar(tweetData.user.username)}
                   // src={tweetData.user.avatarUrl}

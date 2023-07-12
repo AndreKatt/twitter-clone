@@ -11,7 +11,6 @@ export const FullTweetWrapper = styled(Paper)({
   borderTop: 0,
   borderRight: 0,
   borderLeft: 0,
-  padding: "0 20px",
 });
 
 export const FullTweetContainer = styled("div")(({ theme }) => ({
@@ -22,7 +21,7 @@ export const FullTweetContainer = styled("div")(({ theme }) => ({
   borderLeft: 0,
   borderRight: 0,
   borderRadius: 0,
-  padding: "10px 0",
+  padding: "10px 20px",
   cursor: "pointer",
   transition: "background-color 0.2s ease-in-out",
   "& h6": {
@@ -38,7 +37,7 @@ export const FooterContainer = styled("div")({
   flexDirection: "row",
   justifyContent: "space-around",
   margin: "5px 0",
-  paddingTop: 5,
+  paddingTop: "5px 0 0 20px",
 });
 
 export const HeaderTextContent = styled(Typography)({
@@ -55,9 +54,10 @@ export const TweetText = styled(Typography)<TypographyProps>({
   flexDirection: "column",
   alignItems: "flex-start",
   fontSize: 18,
-  marginTop: 5,
   lineHeight: 1.3125,
   wordBreak: "break-word",
+  paddingLeft: 20,
+  marginTop: 5,
 });
 
 export const TweetData = styled(Typography)<TypographyProps>({

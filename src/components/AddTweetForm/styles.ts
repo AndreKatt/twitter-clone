@@ -1,5 +1,4 @@
 import { styled } from "@mui/system";
-import Avatar, { AvatarProps } from "@mui/material/Avatar";
 import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
@@ -7,6 +6,7 @@ import TextareaAutosize, {
   TextareaAutosizeProps,
 } from "@mui/material/TextareaAutosize";
 import Divider from "@mui/material/Divider";
+// types
 import { BodyContainerProps, StyledCircularProgressProps } from "./types";
 
 export const BodyContainer = styled("div")<BodyContainerProps>(
@@ -50,17 +50,6 @@ export const CircularProgressWrapper = styled("div")({
     position: "absolute",
   },
 });
-
-export const AddTweetAvatar = styled(Avatar)<AvatarProps>(({ theme }) => ({
-  width: theme.spacing(6),
-  height: theme.spacing(6),
-  cursor: "pointer",
-  transition: "filter 0.2s ",
-
-  "&:hover": {
-    filter: "brightness(0.8)",
-  },
-}));
 
 export const Textarea = styled(TextareaAutosize)<TextareaAutosizeProps>(
   ({ theme }) => ({

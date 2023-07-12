@@ -12,6 +12,7 @@ import { setAddFormState } from "../../redux/tweets/slice";
 import { AddFormState } from "../../redux/tweets/types";
 import { useAppDispatch } from "../../redux/store";
 import { selectCurrentUser } from "../../redux/currentUser/selectors";
+import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   BodyContainer,
@@ -19,12 +20,11 @@ import {
   ImagesWrapper,
   ButtomRightContainer,
   CircularProgressWrapper,
-  AddTweetAvatar,
   Textarea,
   StyledCircularProgress,
   StyledDivider,
 } from "./styles";
-import { StyledLink } from "../../styles";
+import { StyledLink, UserAvatar } from "../../styles";
 //types
 import type { AddTweetFormProps } from "./types";
 import type { UploadedObject } from "../../types";
@@ -81,10 +81,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     <>
       <BodyContainer minHeight={minHeight}>
         <StyledLink to={`/home/${user?.email}`}>
-          <AddTweetAvatar
-            alt="Ваша аватарка"
-            src="https://images.unsplash.com/photo-1558499932-9609acb6f443?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-          />
+          <UserAvatar {...stringAvatar(user?.username)} alt="Ваша аватарка" />
         </StyledLink>
         <Textarea
           onChange={handleChangeTextarea}

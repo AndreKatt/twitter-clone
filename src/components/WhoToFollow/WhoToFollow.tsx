@@ -1,9 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import {
@@ -14,11 +12,18 @@ import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   FollowButton,
+  ListItemsWrapper,
   More,
   RecommendedHeader,
   RecommendedItem,
 } from "./styles";
-import { InnerContainer, SpinnerWrapper, StyledLink } from "../../styles";
+import {
+  InnerContainer,
+  SpinnerWrapper,
+  StyledLink,
+  UserAvatar,
+} from "../../styles";
+// types
 import { i18nProps } from "../../types";
 
 export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
@@ -36,12 +41,12 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
           <RecommendedHeader>
             <Typography variant="h5">{t("whoToFollow.label")}</Typography>
           </RecommendedHeader>
-          <List>
+          <ListItemsWrapper style={{ paddingBottom: 0 }}>
             {users.slice(0, 2).map((user) => (
               <StyledLink key={user.email} to={`/home/${user.email}`}>
                 <RecommendedItem>
                   <ListItemAvatar>
-                    <Avatar
+                    <UserAvatar
                       alt={user.username}
                       {...stringAvatar(user.fullname)}
                     />
@@ -61,7 +66,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
               </StyledLink>
             ))}
             <More color="primary">{t("whoToFollow.more")}</More>
-          </List>
+          </ListItemsWrapper>
         </>
       )}
     </InnerContainer>

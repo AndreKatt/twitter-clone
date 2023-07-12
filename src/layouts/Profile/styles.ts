@@ -22,7 +22,6 @@ export const AvatarWrapper = styled(Paper)({
 
 export const ProfileAvatar = styled(Avatar)({
   position: "absolute",
-  // display: "flex",
   width: 133,
   height: 133,
   fontSize: 70,
@@ -30,6 +29,12 @@ export const ProfileAvatar = styled(Avatar)({
   top: 5,
   left: 5,
   paddingBottom: 10,
+  cursor: "pointer",
+  transition: "filter 0.2s ",
+
+  "&:hover": {
+    filter: "brightness(0.8)",
+  },
 });
 
 export const UserInfoContainer = styled(Paper)({
