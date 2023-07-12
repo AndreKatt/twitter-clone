@@ -8,6 +8,7 @@ import { menuItems } from "./fixtures";
 // styles
 import {
   AddTweetButton,
+  AddTweetFormWrapper,
   ButtonIcon,
   Label,
   ListItemWrapper,
@@ -67,9 +68,9 @@ export const SideMenu: React.FC<i18nProps> = ({ t }) => {
           </AddTweetButton>
 
           <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>
-            <div style={{ width: 550 }}>
+            <AddTweetFormWrapper>
               <AddTweetForm maxRows={15} />
-            </div>
+            </AddTweetFormWrapper>
           </ModalBlock>
         </SideMenuListItem>
       </SideMenuList>

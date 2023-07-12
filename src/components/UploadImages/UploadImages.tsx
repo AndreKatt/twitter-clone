@@ -1,11 +1,11 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
-import ImageOutlined from "@mui/icons-material/ImageOutlined";
 // import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
-
 import { ImagesList } from "../ImagesList/ImagesList";
+// styles
+import { ImageIcon } from "./styles";
 // types
 import type { UploadImagesProps } from "./types";
 
@@ -66,7 +66,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
         removeImage={removeImage}
       />
       <IconButton onClick={handleClickImage} color="primary">
-        <ImageOutlined style={{ fontSize: 26 }} />
+        <ImageIcon />
       </IconButton>
     </div>
   );

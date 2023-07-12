@@ -7,6 +7,9 @@ import List from "@mui/material/List";
 import Twitter from "@mui/icons-material/Twitter";
 import TextField, { TextFieldProps } from "@mui/material/TextField";
 import ListItem from "@mui/material/ListItem";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import SearchOutlineIcon from "@mui/icons-material/Search";
 
 export const MainContainer = styled(Container)<ContainerProps>({
   height: "100vh",
@@ -84,4 +87,19 @@ export const LoginSideWrapper = styled(Paper)({
 
 export const LoginSideContainer = styled(Paper)({
   width: 380,
+});
+
+export const SearchIcon = styled(SearchOutlineIcon)({
+  fontSize: 32,
+  marginRight: 15,
+});
+
+export const PeopleIcon = styled(PeopleOutlineIcon)({
+  fontSize: 32,
+  marginRight: 15,
+});
+
+export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({
+  fontSize: 32,
+  marginRight: 15,
 });

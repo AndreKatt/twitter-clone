@@ -5,7 +5,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Paper from "@mui/material/Paper";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import MenuList from "@mui/material/MenuList";
-import Grow from "@mui/material/Grow";
 import { Divider } from "@mui/material";
 // local libs
 import { selectUserState } from "../../redux/currentUser/selectors";
@@ -18,6 +17,7 @@ import {
   TextContainer,
   Username,
   MenuPopper,
+  StyledGrow,
 } from "./styles";
 // types
 import { i18nProps } from "../../types";
@@ -75,12 +75,7 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
         transition
       >
         {({ TransitionProps }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin: "right bottom",
-            }}
-          >
+          <StyledGrow {...TransitionProps}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
@@ -101,7 +96,7 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </StyledGrow>
         )}
       </MenuPopper>
     </div>

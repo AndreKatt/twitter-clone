@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import {
   ClickAwayListener,
-  Grow,
   ListItemIcon,
   ListItemText,
   MenuList,
@@ -36,6 +35,7 @@ import {
   TweetContainer,
   DeleteMenuText,
   TweetPopper,
+  StyledGrow,
 } from "./styles";
 // types
 import type { TweetProps } from "./types";
@@ -151,12 +151,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
         disablePortal
       >
         {({ TransitionProps }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin: "right top",
-            }}
-          >
+          <StyledGrow {...TransitionProps}>
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
@@ -180,7 +175,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
                 </MenuList>
               </ClickAwayListener>
             </Paper>
-          </Grow>
+          </StyledGrow>
         )}
       </TweetPopper>
     </TweetContainer>

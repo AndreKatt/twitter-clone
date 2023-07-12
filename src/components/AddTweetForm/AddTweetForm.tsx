@@ -20,6 +20,7 @@ import {
   CircularProgressWrapper,
   AddTweetAvatar,
   Textarea,
+  StyledCircularProgress,
 } from "./styles";
 //types
 import type { AddTweetFormProps } from "./types";
@@ -109,12 +110,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
                   />
                 ) : null}
 
-                <CircularProgress
-                  style={
-                    text.length > 280
-                      ? { color: "red" }
-                      : { color: "rgba(0, 0, 0, 0.1)" }
-                  }
+                <StyledCircularProgress
+                  textLength={text.length > 280}
                   variant="determinate"
                   size={20}
                   thickness={4}

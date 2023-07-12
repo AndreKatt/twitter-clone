@@ -22,6 +22,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           neutral: {
             light: "#edf3f6",
             main: "#F5F8FA",
+            dark: "rgb(207, 217, 222)",
           },
           background: {
             default: "#fff",
@@ -34,6 +35,7 @@ export const getDesignTokens = (mode: PaletteMode) => ({
           neutral: {
             light: "rgb(39, 51, 64);",
             main: "#15202B",
+            dark: "rgb(66, 83, 100)",
           },
           background: {
             default: "#15202B",

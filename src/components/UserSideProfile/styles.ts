@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Popper, { PopperProps } from "@mui/material/Popper";
+import Grow, { GrowProps } from "@mui/material/Grow";
 import { colors } from "@mui/material";
 
 export const ProfileContainer = styled("div")(({ theme }) => ({
@@ -66,4 +67,8 @@ export const MenuPopper = styled(Popper)<PopperProps>({
   inset: "auto 1vw 0px auto !important",
   boxShadow:
     "rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px",
+});
+
+export const StyledGrow = styled(Grow)<GrowProps>({
+  transformOrigin: "right bottom",
 });

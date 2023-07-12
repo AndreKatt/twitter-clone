@@ -3,6 +3,8 @@ import { grey } from "@mui/material/colors";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
+import PublicIcon from "@mui/icons-material/Public";
 
 export const SettingsContainer = styled(Paper)(({ theme }) => ({
   display: "flex",
@@ -47,4 +49,13 @@ export const Description = styled(Typography)({
 export const ArrowIcon = styled(ArrowForwardIosIcon)({
   fontSize: 17,
   color: grey[500],
+});
+
+export const BrushIcon = styled(BrushOutlinedIcon)({
+  fontSize: 21,
+  margin: "0 10px 0 12px",
+});
+
+export const EarthIcon = styled(PublicIcon)({
+  fontSize: 21,
 });

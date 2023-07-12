@@ -4,6 +4,7 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography, { TypographyProps } from "@mui/material/Typography";
 import Button, { ButtonProps } from "@mui/material/Button";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
+import Paper from "@mui/material/Paper";
 
 export const SideMenuList = styled("ul")({
   position: "sticky",
@@ -99,4 +100,8 @@ export const ButtonIcon = styled(BorderColorTwoToneIcon)({
   "@media(max-width: 1199px)": {
     display: "flex",
   },
+});
+
+export const AddTweetFormWrapper = styled(Paper)({
+  width: 550,
 });

@@ -1,8 +1,13 @@
 import { styled } from "@mui/system";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import Popper, { PopperProps } from "@mui/material/Popper";
+import Grow, { GrowProps } from "@mui/material/Grow";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import ListItemText from "@mui/material/ListItemText";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import RepeatIcon from "@mui/icons-material/Repeat";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ReplyIcon from "@mui/icons-material/Reply";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",
@@ -105,4 +110,24 @@ export const TweetPopper = styled(Popper)<PopperProps>({
 
 export const DeleteIcon = styled(DeleteOutlinedIcon)({
   color: "red",
+});
+
+export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({
+  fontSize: 20,
+});
+
+export const RepostIcon = styled(RepeatIcon)({
+  fontSize: 20,
+});
+
+export const FavoriteIcon = styled(FavoriteBorderIcon)({
+  fontSize: 20,
+});
+
+export const ShareIcon = styled(ReplyIcon)({
+  fontSize: 20,
+});
+
+export const StyledGrow = styled(Grow)<GrowProps>({
+  transformOrigin: "right top",
 });

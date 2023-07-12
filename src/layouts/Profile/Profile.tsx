@@ -8,6 +8,7 @@ import { fetchUserData } from "../../redux/user/asyncActions";
 import { useSelector } from "react-redux";
 import { selectSelectedUserData } from "../../redux/user/selectors";
 import { setUserData } from "../../redux/user/slice";
+import { AvatarWrapper, ProfileAvatar, ProfileImage } from "./styles";
 
 export const Profile: React.FC = () => {
   const { email } = useParams();
@@ -25,7 +26,15 @@ export const Profile: React.FC = () => {
   }, [dispatch, email]);
 
   if (email && user) {
-    return <Header variant="outlined" title={user?.fullname} t={t} icon />;
+    return (
+      <>
+        <Header variant="outlined" title={user?.fullname} t={t} icon />
+        <ProfileImage />
+        <AvatarWrapper>
+          <ProfileAvatar />
+        </AvatarWrapper>
+      </>
+    );
   }
 
   return null;

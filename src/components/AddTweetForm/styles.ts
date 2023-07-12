@@ -1,8 +1,12 @@
 import { styled } from "@mui/system";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
+import CircularProgress, {
+  CircularProgressProps,
+} from "@mui/material/CircularProgress";
 import TextareaAutosize, {
   TextareaAutosizeProps,
 } from "@mui/material/TextareaAutosize";
+import { StyledCircularProgressProps } from "./types";
 
 export const BodyContainer = styled("div")({
   display: "flex",
@@ -62,3 +66,9 @@ export const Textarea = styled(TextareaAutosize)<TextareaAutosizeProps>(
     paddingLeft: 20,
   })
 );
+
+export const StyledCircularProgress = styled(CircularProgress)<
+  CircularProgressProps & StyledCircularProgressProps
+>(({ textLength }) => ({
+  color: textLength ? "red" : "rgba(0, 0, 0, 0.1)",
+}));

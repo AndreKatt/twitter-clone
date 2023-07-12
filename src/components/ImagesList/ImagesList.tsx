@@ -1,9 +1,8 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
-import DeleteForever from "@mui/icons-material/DeleteForever";
 // import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 // styles
-import { ImageWrapper, ImagesContainer } from "./styles";
+import { DeleteIcon, ImageWrapper, ImagesContainer } from "./styles";
 // types
 import type { ImageListProps } from "./types";
 
@@ -18,10 +17,10 @@ export const ImagesList: React.FC<ImageListProps> = ({
   return (
     <ImagesContainer>
       {images.map((url) => (
-        <ImageWrapper key={url} style={{ backgroundImage: `url(${url})` }}>
+        <ImageWrapper key={url} url={url}>
           {removeImage && (
             <IconButton onClick={(): void => removeImage(url)} color="primary">
-              <DeleteForever style={{ fontSize: 20 }} />
+              <DeleteIcon />
             </IconButton>
           )}
         </ImageWrapper>
