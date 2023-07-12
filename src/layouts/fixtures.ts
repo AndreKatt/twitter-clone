@@ -6,17 +6,17 @@ import {
 
 export const getTitles: GetTitles = (t) => ({
   home: {
-    main: `${t("layoutTitles.home.main")}`,
+    main: `${t("layouts.home.main")}`,
     sections: [
       {
         item: {
-          title: `${t("layoutTitles.home.sections.title1")}`,
+          title: `${t("layouts.home.sections.title1")}`,
           active: true,
         },
       },
       {
         item: {
-          title: `${t("layoutTitles.home.sections.title2")}`,
+          title: `${t("layouts.home.sections.title2")}`,
           active: false,
         },
       },
@@ -26,61 +26,95 @@ export const getTitles: GetTitles = (t) => ({
     main: `${t("topics.label")}`,
   },
   notifications: {
-    main: `${t("layoutTitles.notifications.main")}`,
+    main: `${t("layouts.notifications.main")}`,
     sections: [
       {
         item: {
-          title: `${t("layoutTitles.notifications.sections.title1")}`,
+          title: `${t("layouts.notifications.sections.title1")}`,
           active: true,
         },
       },
       {
         item: {
-          title: `${t("layoutTitles.notifications.sections.title2")}`,
+          title: `${t("layouts.notifications.sections.title2")}`,
           active: false,
         },
       },
       {
         item: {
-          title: `${t("layoutTitles.notifications.sections.title3")}`,
+          title: `${t("layouts.notifications.sections.title3")}`,
           active: false,
         },
       },
     ],
   },
   messages: {
-    main: `${t("layoutTitles.messages")}`,
+    main: `${t("layouts.messages")}`,
   },
   bookmarks: {
-    main: `${t("layoutTitles.bookmarks")}`,
+    main: `${t("layouts.bookmarks")}`,
   },
   verified: {
-    main: `${t("layoutTitles.verified")}`,
+    main: `${t("layouts.verified")}`,
+  },
+  profile: {
+    sections: [
+      {
+        item: {
+          title: `${t("layouts.profile.sections.tweets")}`,
+          active: true,
+        },
+      },
+      {
+        item: {
+          title: `${t("layouts.profile.sections.replies")}`,
+          active: false,
+        },
+      },
+      {
+        item: {
+          title: `${t("layouts.profile.sections.highlights")}`,
+          active: false,
+        },
+      },
+      {
+        item: {
+          title: `${t("layouts.profile.sections.media")}`,
+          active: false,
+        },
+      },
+      {
+        item: {
+          title: `${t("layouts.profile.sections.likes")}`,
+          active: false,
+        },
+      },
+    ],
   },
   settings: {
-    main: `${t("layoutTitles.settings")}`,
+    main: `${t("layouts.settings")}`,
   },
   display: {
-    main: `${t("layoutTitles.displaySettings.main")}`,
+    main: `${t("layouts.displaySettings.main")}`,
   },
   languages: {
-    main: `${t("layoutTitles.languagesSettings.main")}`,
+    main: `${t("layouts.languagesSettings.main")}`,
   },
   displayLaguage: {
-    main: `${t("layoutTitles.languagesSettings.displayLaguage")}`,
+    main: `${t("layouts.languagesSettings.displayLaguage")}`,
   },
   background: {
-    main: `${t("layoutTitles.displaySettings.background")}`,
+    main: `${t("layouts.displaySettings.background")}`,
   },
   fullTweet: {
-    main: `${t("layoutTitles.fullTweet")}`,
+    main: `${t("layouts.fullTweet")}`,
   },
 });
 
 export const getLanguagesDescriptions: GetLanguagesDescriptions = (t) => ({
-  languages: `${t("layoutTitles.languagesSettings.description1")}`,
-  displayLaguage: `${t("layoutTitles.languagesSettings.description2")}`,
+  languages: `${t("layouts.languagesSettings.description1")}`,
+  displayLaguage: `${t("layouts.languagesSettings.description2")}`,
 });
 
 export const getDisplayDescription: GetDisplayDescription = (t) =>
-  `${t("layoutTitles.displaySettings.description")}`;
+  `${t("layouts.displaySettings.description")}`;

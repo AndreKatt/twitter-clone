@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
+import Divider from "@mui/material/Divider";
 import { grey } from "@mui/material/colors";
 // local libs
 import { useAppDispatch } from "../../redux/store";
@@ -17,6 +18,7 @@ import {
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
 import { ImagesList } from "../../components/ImagesList/ImagesList";
+import { stringAvatar } from "../../utils/stringAvatar";
 import { footerIcons } from "./fixtures";
 import { getTitles } from "../fixtures";
 // styles
@@ -68,11 +70,12 @@ export const FullTweet: React.FC = () => {
       <>
         <Header variant="elevation" title={title} t={t} icon />
         <Paper>
-          <FullTweetWrapper>
+          <FullTweetWrapper variant="outlined">
             <StyledLink to={`/home/${tweetData.user.email}`}>
               <FullTweetContainer>
                 <TweetAvatar
                   alt="Аватарка пользователя"
+                  {...stringAvatar(tweetData.user.username)}
                   // src={tweetData.user.avatarUrl}
                 />
                 <TextContentContainer>
@@ -96,12 +99,14 @@ export const FullTweet: React.FC = () => {
                 &nbsp;
                 <span>·</span>&nbsp;
                 <span>
-                  {format(new Date(tweetData.createdAt), "dd MMM yyyy", {
+                  {format(new Date(tweetData.createdAt), "d MMM yyyy", {
                     locale: locale,
                   })}
                 </span>
               </TweetData>
             </TweetText>
+
+            <Divider />
 
             <FooterContainer>
               {footerIcons.map((item) => (

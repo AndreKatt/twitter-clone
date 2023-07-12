@@ -1,6 +1,6 @@
 import { GetButtonLabels } from "./types";
 
 export const getButtonLabels: GetButtonLabels = (t) => ({
-  russian: `${t("layoutTitles.languagesSettings.buttonLabels.russian")}`,
-  english: `${t("layoutTitles.languagesSettings.buttonLabels.english")}`,
+  russian: `${t("layouts.languagesSettings.buttonLabels.russian")}`,
+  english: `${t("layouts.languagesSettings.buttonLabels.english")}`,
 });

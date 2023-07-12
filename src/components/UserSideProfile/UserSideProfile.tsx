@@ -8,6 +8,7 @@ import MenuList from "@mui/material/MenuList";
 import { Divider } from "@mui/material";
 // local libs
 import { selectUserState } from "../../redux/currentUser/selectors";
+import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   Button,
@@ -54,7 +55,7 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <ProfileAvatar />
+        <ProfileAvatar {...stringAvatar(user.currentUser?.username)} />
         <TextContainer>
           <Fullname>
             <b>{user.currentUser?.fullname}</b>

@@ -49,7 +49,7 @@ i18n
             label: "Trends for you",
             description: "Tweets",
           },
-          layoutTitles: {
+          layouts: {
             home: {
               main: "Home",
               sections: { title1: "For you", title2: "Following" },
@@ -65,6 +65,16 @@ i18n
             messages: "Messages",
             bookmarks: "Bookmarks",
             verified: "Verified",
+            profile: {
+              registration: "Joined",
+              sections: {
+                tweets: "Tweets",
+                replies: "Replies",
+                highlights: "Highlights",
+                media: "Media",
+                likes: "Likes",
+              },
+            },
             settings: "Settings",
             displaySettings: {
               main: "Display",
@@ -132,7 +142,7 @@ i18n
             label: "Актуальные темы",
             description: "Твитов",
           },
-          layoutTitles: {
+          layouts: {
             home: {
               main: "Главная",
               sections: { title1: "Для вас", title2: "Вы читаете" },
@@ -148,6 +158,16 @@ i18n
             messages: "Сообщения",
             bookmarks: "Закладки",
             verified: "Подлинная",
+            profile: {
+              registration: "Регистрация:",
+              sections: {
+                tweets: "Твиты",
+                replies: "Ответы",
+                favorite: "Избранное",
+                highlights: "Медиа",
+                likes: "Нравится",
+              },
+            },
             settings: "Настройки",
             displaySettings: {
               main: "Оформление",

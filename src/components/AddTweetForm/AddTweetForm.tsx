@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
+// local libs
 import { UploadImages } from "../UploadImages/UploadImages";
-// redux
 import { selectAddFormState } from "../../redux/tweets/selectors";
 import { addTweet, uploadFile } from "../../redux/tweets/asyncActions";
 import { setAddFormState } from "../../redux/tweets/slice";

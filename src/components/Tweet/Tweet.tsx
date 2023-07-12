@@ -13,10 +13,11 @@ import {
 } from "@mui/material";
 // local libs
 import { ImagesList } from "../ImagesList/ImagesList";
-import { formatDate } from "../../utils/formatDate";
+import { formatTweetDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
 import { footerIcons, getMenuItems } from "./fixtures";
+import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   TextContentContainer,
@@ -88,6 +89,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
         <StyledLink to={`/home/${email}`}>
           <TweetAvatar
             alt={`Аватарка пользователя ${fullname}`}
+            {...stringAvatar(userName)}
             // src={avatarUrl}
           />
         </StyledLink>
@@ -102,7 +104,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
-                    {`${formatDate(new Date(createdAt))} ${t(
+                    {`${formatTweetDate(new Date(createdAt))} ${t(
                       "tweet.dateText"
                     )}`}
                   </HeaderText>

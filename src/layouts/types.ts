@@ -2,7 +2,7 @@ import { TFunction } from "i18next";
 import { HeaderSectionTitleType } from "../types";
 
 type Titles = {
-  main: string;
+  main?: string;
   sections?: HeaderSectionTitleType[];
 };
 
@@ -18,6 +18,7 @@ export type HeaderTitles = {
   messages: Titles;
   bookmarks: Titles;
   verified: Titles;
+  profile: Titles;
   settings: Titles;
   display: Titles;
   displayLaguage: Titles;

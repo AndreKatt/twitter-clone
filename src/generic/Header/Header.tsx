@@ -35,14 +35,16 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
         </SearchFieldContainer>
       )}
 
-      <HeaderTitleContainer>
-        {icon && (
-          <HeaderButton onClick={() => nav(-1)} color="primary">
-            <ArrowBackIcon />
-          </HeaderButton>
-        )}
-        <Typography variant="h6">{title}</Typography>
-      </HeaderTitleContainer>
+      {title && (
+        <HeaderTitleContainer>
+          {icon && (
+            <HeaderButton onClick={() => nav(-1)} color="primary">
+              <ArrowBackIcon />
+            </HeaderButton>
+          )}
+          <Typography variant="h6">{title}</Typography>
+        </HeaderTitleContainer>
+      )}
 
       {titles && (
         <HeaderSection>

@@ -4,9 +4,14 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ReplyIcon from "@mui/icons-material/Reply";
+import Paper from "@mui/material/Paper";
 
-export const FullTweetWrapper = styled("div")({
-  borderBottom: "1px solid rgba(204, 214, 221)",
+export const FullTweetWrapper = styled(Paper)({
+  borderRadius: 0,
+  borderTop: 0,
+  borderRight: 0,
+  borderLeft: 0,
+  padding: "0 20px",
 });
 
 export const FullTweetContainer = styled("div")(({ theme }) => ({
@@ -17,7 +22,7 @@ export const FullTweetContainer = styled("div")(({ theme }) => ({
   borderLeft: 0,
   borderRight: 0,
   borderRadius: 0,
-  padding: "10px 15px",
+  padding: "10px 0",
   cursor: "pointer",
   transition: "background-color 0.2s ease-in-out",
   "& h6": {
@@ -32,9 +37,8 @@ export const FooterContainer = styled("div")({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-around",
-  margin: "10px 20px 5px 20px",
+  margin: "5px 0",
   paddingTop: 5,
-  borderTop: "1px solid rgba(204, 214, 221)",
 });
 
 export const HeaderTextContent = styled(Typography)({
@@ -52,13 +56,12 @@ export const TweetText = styled(Typography)<TypographyProps>({
   alignItems: "flex-start",
   fontSize: 18,
   marginTop: 5,
-  marginLeft: 20,
   lineHeight: 1.3125,
   wordBreak: "break-word",
 });
 
 export const TweetData = styled(Typography)<TypographyProps>({
-  marginTop: 20,
+  margin: "20px 0",
 });
 
 export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({

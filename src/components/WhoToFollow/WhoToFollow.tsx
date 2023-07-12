@@ -10,6 +10,7 @@ import {
   selectUsersData,
   selectUsersLoading,
 } from "../../redux/users/selectors";
+import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   FollowButton,
@@ -40,7 +41,10 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
               <StyledLink key={user.email} to={`/home/${user.email}`}>
                 <RecommendedItem>
                   <ListItemAvatar>
-                    <Avatar alt={user.username} />
+                    <Avatar
+                      alt={user.username}
+                      {...stringAvatar(user.fullname)}
+                    />
                   </ListItemAvatar>
                   <ListItemText
                     primary={user.fullname}

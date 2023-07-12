@@ -6,6 +6,7 @@ export type SelectedUserData = {
   fullname: string;
   username: string;
   confirmed: boolean;
+  createdAt: string;
 };
 
 export type SelectedUserState = {
