@@ -2,6 +2,7 @@ import { Link, LinkProps } from "react-router-dom";
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
+import Typography, { TypographyProps } from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -94,3 +95,26 @@ export const HeaderDescription = styled(Paper)({
   color: grey[500],
   padding: "10px 15px",
 });
+
+export const RightSideBlockHeader = styled(Paper)({
+  borderTop: 0,
+  borderLeft: 0,
+  borderRight: 0,
+  backgroundColor: "transparent",
+  padding: "13px 18px",
+
+  "& h5": {
+    fontWeight: 700,
+  },
+});
+
+export const More = styled(Typography)<TypographyProps>(({ theme }) => ({
+  borderBottomRightRadius: 15,
+  borderBottomLeftRadius: 15,
+  padding: "15px 18px",
+  cursor: "pointer",
+
+  "&:hover": {
+    backgroundColor: theme.palette.neutral.light,
+  },
+}));

@@ -10,18 +10,14 @@ import {
 } from "../../redux/users/selectors";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
-import {
-  FollowButton,
-  ListItemsWrapper,
-  More,
-  RecommendedHeader,
-  RecommendedItem,
-} from "./styles";
+import { FollowButton, ListItemsWrapper, RecommendedItem } from "./styles";
 import {
   InnerContainer,
+  RightSideBlockHeader,
   SpinnerWrapper,
   StyledLink,
   UserAvatar,
+  More,
 } from "../../styles";
 // types
 import { i18nProps } from "../../types";
@@ -38,10 +34,10 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
         </SpinnerWrapper>
       ) : (
         <>
-          <RecommendedHeader>
+          <RightSideBlockHeader>
             <Typography variant="h5">{t("whoToFollow.label")}</Typography>
-          </RecommendedHeader>
-          <ListItemsWrapper style={{ paddingBottom: 0 }}>
+          </RightSideBlockHeader>
+          <ListItemsWrapper>
             {users.slice(0, 2).map((user) => (
               <StyledLink key={user.email} to={`/home/${user.email}`}>
                 <RecommendedItem>
@@ -65,7 +61,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                 </RecommendedItem>
               </StyledLink>
             ))}
-            <More color="primary">{t("whoToFollow.more")}</More>
+            <More color="primary">{t("rightSideBlocks.more")}</More>
           </ListItemsWrapper>
         </>
       )}

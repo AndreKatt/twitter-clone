@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Paper from "@mui/material/Paper";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -9,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 // local libs
 import { selectTopicsItems } from "../../redux/topics/selectors";
+// styles
+import { More, RightSideBlockHeader } from "../../styles";
+// types
 import { i18nProps } from "../../types";
 
 export const Topics: React.FC<i18nProps> = ({ t }) => {
@@ -17,9 +19,10 @@ export const Topics: React.FC<i18nProps> = ({ t }) => {
   return (
     <>
       {/* <p>BlahBlah</p> */}
-      <Paper>
-        <b>{t("topics.label")}</b>
-      </Paper>
+      <RightSideBlockHeader>
+        <Typography variant="h5">{t("topics.label")}</Typography>
+      </RightSideBlockHeader>
+
       {topics.map((topic) => (
         <List key={topic._id}>
           <ListItem>
@@ -39,6 +42,7 @@ export const Topics: React.FC<i18nProps> = ({ t }) => {
           <Divider component="li" />
         </List>
       ))}
+      <More color="primary">{t("rightSideBlocks.more")}</More>
     </>
   );
 };

@@ -40,10 +40,12 @@ i18n
             menuLabel1: "Add an existing account",
             menuLabel2: "Log out",
           },
+          rightSideBlocks: {
+            more: "Show more",
+          },
           whoToFollow: {
             label: "Who to follow",
             buttonLabel: "Follow",
-            more: "Show more",
           },
           topics: {
             label: "Trends for you",
@@ -109,7 +111,7 @@ i18n
             explore: "Обзор",
             notifications: "Уведомления",
             messages: "Сообщения",
-            bookmarks: "Заметки",
+            bookmarks: "Закладки",
             verified: "Подлинная",
             profile: "Профиль",
             settings: "Настройки",
@@ -133,13 +135,15 @@ i18n
             menuLabel1: "Добавить существующую учетную запись",
             menuLabel2: "Выйти из учетной записи",
           },
+          rightSideBlocks: {
+            more: "Показать еще",
+          },
           whoToFollow: {
             label: "Кого читать",
             buttonLabel: "Читать",
-            more: "Показать еще",
           },
           topics: {
-            label: "Актуальные темы",
+            label: "Актуальные темы для вас",
             description: "Твитов",
           },
           layouts: {
@@ -163,8 +167,8 @@ i18n
               sections: {
                 tweets: "Твиты",
                 replies: "Ответы",
-                favorite: "Избранное",
-                highlights: "Медиа",
+                highlights: "Избранное",
+                media: "Медиа",
                 likes: "Нравится",
               },
             },
