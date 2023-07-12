@@ -1,10 +1,9 @@
 import React from "react";
-import Dialog from "@mui/material/Dialog";
 import IconButton from "@mui/material/IconButton";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 // styles
-import { CloseButton } from "./styles";
+import { CloseButton, DialogWrapper } from "./styles";
 // types
 import type { ModalBlockProps } from "./types";
 
@@ -19,7 +18,11 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
   }
 
   return (
-    <Dialog open={visible} onClose={onClose} aria-labelledby="form-dialog">
+    <DialogWrapper
+      open={visible}
+      onClose={onClose}
+      aria-labelledby="form-dialog"
+    >
       <DialogTitle id="form-dialog-title">
         <IconButton onClick={onClose} color="secondary" aria-label="close">
           <CloseButton color="secondary" />
@@ -27,6 +30,6 @@ export const ModalBlock: React.FC<ModalBlockProps> = ({
         {title}
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
-    </Dialog>
+    </DialogWrapper>
   );
 };

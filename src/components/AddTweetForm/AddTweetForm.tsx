@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Alert } from "@mui/material";
+import Alert from "@mui/material/Alert";
 import { UploadImages } from "../UploadImages/UploadImages";
 // redux
 import { selectAddFormState } from "../../redux/tweets/selectors";
@@ -11,6 +11,7 @@ import { addTweet, uploadFile } from "../../redux/tweets/asyncActions";
 import { setAddFormState } from "../../redux/tweets/slice";
 import { AddFormState } from "../../redux/tweets/types";
 import { useAppDispatch } from "../../redux/store";
+import { selectCurrentUser } from "../../redux/currentUser/selectors";
 // styles
 import {
   BodyContainer,
@@ -21,15 +22,17 @@ import {
   AddTweetAvatar,
   Textarea,
   StyledCircularProgress,
+  StyledDivider,
 } from "./styles";
+import { StyledLink } from "../../styles";
 //types
 import type { AddTweetFormProps } from "./types";
 import type { UploadedObject } from "../../types";
-import { selectCurrentUser } from "../../redux/currentUser/selectors";
-import { StyledLink } from "../../styles";
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   maxRows,
+  minHeight,
+  divider,
 }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
@@ -76,7 +79,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
   return (
     <>
-      <BodyContainer>
+      <BodyContainer minHeight={minHeight}>
         <StyledLink to={`/home/${user?.email}`}>
           <AddTweetAvatar
             alt="Ваша аватарка"
@@ -90,6 +93,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
           maxRows={maxRows}
         />
       </BodyContainer>
+
+      {divider && <StyledDivider />}
 
       <BottomContainer>
         <ImagesWrapper>

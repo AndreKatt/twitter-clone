@@ -36,7 +36,7 @@ export const HomeTweets: React.FC = () => {
       />
       <Paper>
         <AddTweetWrapper>
-          <AddTweetForm />
+          <AddTweetForm minHeight={56} />
         </AddTweetWrapper>
         <AddTweetBottomLine />
       </Paper>

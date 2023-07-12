@@ -6,11 +6,20 @@ import CircularProgress, {
 import TextareaAutosize, {
   TextareaAutosizeProps,
 } from "@mui/material/TextareaAutosize";
-import { StyledCircularProgressProps } from "./types";
+import Divider from "@mui/material/Divider";
+import { BodyContainerProps, StyledCircularProgressProps } from "./types";
 
-export const BodyContainer = styled("div")({
-  display: "flex",
-  width: "100%",
+export const BodyContainer = styled("div")<BodyContainerProps>(
+  ({ minHeight }) => ({
+    minHeight: minHeight,
+    display: "flex",
+    width: "100%",
+  })
+);
+
+export const StyledDivider = styled(Divider)({
+  marginTop: 15,
+  marginBottom: 7,
 });
 
 export const BottomContainer = styled("div")({
