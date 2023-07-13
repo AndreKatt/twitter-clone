@@ -2,9 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Alert from "@mui/material/Alert";
-import Slide from "@mui/material/Slide/Slide";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import FormGroup from "@mui/material/FormGroup";
@@ -16,31 +14,19 @@ import {
   signIn,
 } from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
+import { getLoginFormSchema } from "./fixtures";
+import { transition } from "../../fixtures";
 // styles
 import { InputField } from "../../styles";
 import { SignInInputField } from "./styles";
 // types
 import type { SignedFormProps } from "./types";
-import type { LoginFormProps } from "../../../../types";
+import type { LoginFormProps, i18nProps } from "../../../../types";
 
-const loginFormSchema = yup
-  .object({
-    email: yup
-      .string()
-      .required("Введите E-Mail!")
-      .email("E-Mail адрес указан некорректно."),
-    password: yup
-      .string()
-      .required("Введите пароль!")
-      .min(6, "Пароль должен содержать минимум 6 символов."),
-  })
-  .required();
-
-function transition(props: any) {
-  return <Slide {...props} direction="down" />;
-}
-
-export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
+export const SignedForm: React.FC<SignedFormProps & i18nProps> = ({
+  onClose,
+  t,
+}) => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -49,7 +35,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormProps>({
-    resolver: yupResolver(loginFormSchema),
+    resolver: yupResolver(getLoginFormSchema(t)),
     defaultValues: {
       email: "",
       password: "",
@@ -58,12 +44,12 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
 
   const onSubmit = async (data: LoginFormProps) => {
     const { type } = await dispatch(signIn(data));
-    if (type === "user/signIn/fulfilled") {
+    if (type === "currentUser/signIn/fulfilled") {
       setOpen(false);
       await dispatch(getCurrentUserByToken());
       onClose();
     }
-    if (type === "user/signIn/rejected") {
+    if (type === "currentUser/signIn/rejected") {
       setOpen(true);
     }
   };
@@ -79,7 +65,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="email"
-                label="E-Mail"
+                label={t("signIn.signedForm.fieldLabels.email")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -99,7 +85,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
               <SignInInputField
                 autoFocus
                 id="password"
-                label="Пароль"
+                label={t("signIn.signedForm.fieldLabels.password")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -122,7 +108,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
           color="primary"
           fullWidth
         >
-          Далее
+          {t("signIn.signedForm.buttonLabel")}
         </Button>
       </DialogActions>
       <Snackbar
@@ -133,8 +119,7 @@ export const SignedForm: React.FC<SignedFormProps> = ({ onClose }) => {
         TransitionComponent={transition}
       >
         <Alert onClose={onClose} severity="error" sx={{ width: "100%" }}>
-          Не удалось войти в аккаунт. Неверный логин или пароль. Или аккаунт не
-          был подтвержден.
+          {t("signIn.signedForm.errorAlert")}
         </Alert>
       </Snackbar>
     </form>

@@ -11,6 +11,65 @@ i18n
     resources: {
       en: {
         translation: {
+          signIn: {
+            blueSideList: {
+              title1: "Read about what interests you.",
+              title2: "Find out what the world is talking about",
+              title3: "Join the conversation.",
+            },
+            rightSideText: {
+              title1: "Find out what's happening in the world right now",
+              title2: "Join twitter now!",
+            },
+            buttonLabels: {
+              signUp: "Sign up",
+              signIn: "Sign in",
+            },
+            modalBlockTitles: {
+              signUp: "Create an account",
+              signIn: "Sign In",
+            },
+            registerForm: {
+              validationInfo: {
+                emptyEmail: "Enter E-Mail!",
+                wrongEmail: "E-Mail address is incorrect.",
+                emptyUsernsme: "Enter login!",
+                shortUsernsme: "Login must contain at least 2 characters.",
+                emptyFullname: "Enter fullname!",
+                shortFullname: "Fullname must contain at least 2 characters.",
+                emptyPassword: "Enter password!",
+                shortPassword: "Password must contain at least 6 characters.",
+                emptyPassword2: "Confirm password!",
+                wrongPassword2: "Passwords are not the same.",
+              },
+              fieldLabels: {
+                login: "Login",
+                email: "E-Mail",
+                fullname: "Fullname",
+                password: "Password",
+                password2: "Confirm password",
+              },
+              buttonLabel: "Continue",
+              successAlert:
+                "You have successfully registered. An email has been sent to you to verify your account. After verifying your account, log in to your profile.",
+              errorAlert: "Error creating account. Try later.",
+            },
+            signedForm: {
+              validationInfo: {
+                emptyEmail: "Enter E-Mail!",
+                wrongEmail: "E-Mail address is incorrect.",
+                emptyPassword: "Enter password!",
+                shortPassword: "Password must contain at least 6 characters.",
+              },
+              fieldLabels: {
+                email: "E-Mail",
+                password: "Пароль",
+              },
+              buttonLabel: "Continue",
+              errorAlert:
+                "Failed to sign in. Wrong login or password. Or the account has not been verified.",
+            },
+          },
           sideMenu: {
             home: "Home",
             explore: "Explore",
@@ -106,6 +165,65 @@ i18n
       },
       ru: {
         translation: {
+          signIn: {
+            blueSideList: {
+              title1: "Читайте о том, что вам интересно.",
+              title2: "Узнайте, о чем говорят в мире.",
+              title3: "Присоединяйтесь к общению.",
+            },
+            rightSideText: {
+              title1: "Узнайте, что происходит в мире прямо сейчас",
+              title2: "Присоединяйтесь к твиттеру прямо сейчас!",
+            },
+            buttonLabels: {
+              signUp: "Зарегистрироваться",
+              signIn: "Войти",
+            },
+            modalBlockTitles: {
+              signUp: "Создайте учетную запись",
+              signIn: "Войти в аккаунт",
+            },
+            registerForm: {
+              validationInfo: {
+                emptyEmail: "Введите E-Mail!",
+                wrongEmail: "E-Mail адрес указан некорректно.",
+                emptyUsernsme: "Введите логин!",
+                shortUsernsme: "Логин должен содержать минимум 2 символа",
+                emptyFullname: "Введите имя!",
+                shortFullname: "Имя должено содержать минимум 2 символа",
+                emptyPassword: "Введите пароль!",
+                shortPassword: "Пароль должен содержать минимум 6 символов.",
+                emptyPassword2: "Подтвердите пароль!",
+                wrongPassword2: "Пароли не совпадают",
+              },
+              fieldLabels: {
+                login: "Логин",
+                email: "E-Mail",
+                fullname: "Имя",
+                password: "Пароль",
+                password2: "Повторите пароль",
+              },
+              buttonLabel: "Далее",
+              successAlert:
+                "Вы успешно зарегистрированы. На вашу почту направлено письмо для подтверждения аккаунта. После подтверждения аккаунта войдите в профиль.",
+              errorAlert: "Ошибка при создании аккаунта. Попробуйте позже.",
+            },
+            signedForm: {
+              validationInfo: {
+                emptyEmail: "Введите E-Mail!",
+                wrongEmail: "E-Mail адрес указан некорректно.",
+                emptyPassword: "Введите пароль!",
+                shortPassword: "Пароль должен содержать минимум 6 символов.",
+              },
+              fieldLabels: {
+                email: "E-Mail",
+                password: "Пароль",
+              },
+              buttonLabel: "Далее",
+              errorAlert:
+                "Не удалось войти в аккаунт. Неверный логин или пароль. Или аккаунт не был подтвержден.",
+            },
+          },
           sideMenu: {
             home: "Главная",
             explore: "Обзор",

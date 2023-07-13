@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 // local libs
 import { RegisterForm } from "./components/RegisterForm/RegisterForm";
 import { ModalBlock } from "../../components/ModalBlock/ModalBlock";
 import { SignedForm } from "./components/SignedForm/SignedForm";
-import { listInfo } from "./fixtures";
+import { getBlueSideList } from "./fixtures";
 // styles
 import {
   BlueSideContainer,
@@ -24,6 +25,9 @@ import {
 export const SignIn: React.FC = () => {
   const [visibleSign, setvisibleSign] = useState(false);
   const [visibleModal, setVisibleModal] = useState(false);
+  const { t } = useTranslation();
+
+  const blueSideList = getBlueSideList(t);
 
   const handleClickSignIn = () => {
     setVisibleModal(true);
@@ -45,7 +49,7 @@ export const SignIn: React.FC = () => {
         <LogoImage color="primary" />
 
         <ListInfo>
-          {listInfo.map((item) => (
+          {blueSideList.map((item) => (
             <ListInfoItem key={item.id}>
               <Typography variant="h6">
                 {item.icon}
@@ -59,11 +63,9 @@ export const SignIn: React.FC = () => {
       <LoginSideWrapper>
         <LoginSideContainer>
           <LogoIcon color="primary" />
-          <Title variant="h4">
-            Узнайте, что происходит в мире прямо сейчас
-          </Title>
+          <Title variant="h4">{t("signIn.rightSideText.title1")}</Title>
           <Typography>
-            <b>Присоединяйтесь к твиттеру прямо сейчас!</b>
+            <b>{t("signIn.rightSideText.title2")}</b>
           </Typography>
           <br />
           <SignUpButton
@@ -72,7 +74,7 @@ export const SignIn: React.FC = () => {
             color="primary"
             fullWidth={true}
           >
-            Зарегистрироваться
+            {t("signIn.buttonLabels.signUp")}
           </SignUpButton>
           <Button
             onClick={handleClickSignIn}
@@ -80,18 +82,22 @@ export const SignIn: React.FC = () => {
             color="primary"
             fullWidth={true}
           >
-            Войти
+            {t("signIn.buttonLabels.signIn")}
           </Button>
 
           <ModalBlock
-            title={visibleModal ? "Войти в аккаунт" : "Создайте учетную запись"}
+            title={
+              visibleModal
+                ? `${t("signIn.modalBlockTitles.signIn")}`
+                : `${t("signIn.modalBlockTitles.signUp")}`
+            }
             visible={visibleSign}
             onClose={handleClose}
           >
             {visibleModal ? (
-              <SignedForm onClose={handleClose} />
+              <SignedForm onClose={handleClose} t={t} />
             ) : (
-              <RegisterForm onClose={handleClose} />
+              <RegisterForm onClose={handleClose} t={t} />
             )}
           </ModalBlock>
         </LoginSideContainer>

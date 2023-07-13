@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "@mui/material/Button";
-import Slide from "@mui/material/Slide/Slide";
 import Snackbar from "@mui/material/Snackbar";
 import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
@@ -11,18 +10,19 @@ import DialogActions from "@mui/material/DialogActions";
 // local libs
 import { signUp } from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
-import { loginFormSchema } from "./fixtures";
+import { getLoginFormSchema } from "./fixtures";
+import { transition } from "../../fixtures";
 // styles
 import { InputField } from "../../styles";
 import { SignAlert } from "./styles";
 // types
 import type { RegisterFormProps, SignUpFormProps } from "./types";
+import { i18nProps } from "../../../../types";
 
-function transition(props: any) {
-  return <Slide {...props} direction="down" />;
-}
-
-export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
+export const RegisterForm: React.FC<SignUpFormProps & i18nProps> = ({
+  onClose,
+  t,
+}) => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
 
@@ -33,7 +33,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormProps>({
-    resolver: yupResolver(loginFormSchema),
+    resolver: yupResolver(getLoginFormSchema(t)),
     defaultValues: {
       email: "",
       username: "",
@@ -45,10 +45,10 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
 
   const onSubmit = async (data: RegisterFormProps) => {
     const { type } = await dispatch(signUp(data));
-    if (type === "user/signUp/fulfilled") {
+    if (type === "currentUser/signUp/fulfilled") {
       setOpenSuccess(true);
     }
-    if (type === "user/signUp/rejected") {
+    if (type === "currentUser/signUp/rejected") {
       setOpenError(true);
     }
   };
@@ -64,7 +64,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="name"
-                label="Логин"
+                label={t("signIn.registerForm.fieldLabels.login")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -84,7 +84,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="email"
-                label="E-Mail"
+                label={t("signIn.registerForm.fieldLabels.email")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -104,7 +104,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="fullname"
-                label="Имя"
+                label={t("signIn.registerForm.fieldLabels.fullname")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -124,7 +124,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="password"
-                label="Пароль"
+                label={t("signIn.registerForm.fieldLabels.password")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -144,7 +144,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
               <InputField
                 autoFocus
                 id="password2"
-                label="Повторите пароль"
+                label={t("signIn.registerForm.fieldLabels.password2")}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -167,7 +167,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
           color="primary"
           fullWidth
         >
-          Далее
+          {t("signIn.registerForm.buttonLabel")}
         </Button>
       </DialogActions>
       <Snackbar
@@ -178,9 +178,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
         TransitionComponent={transition}
       >
         <SignAlert onClose={onClose} severity="success">
-          Вы успешно зарегистрированы. На вашу почту направлено письмо для
-          подтверждения аккаунта. После подтверждения аккаунта войдите в
-          профиль.
+          {t("signIn.registerForm.successAlert")}
         </SignAlert>
       </Snackbar>
       <Snackbar
@@ -191,7 +189,7 @@ export const RegisterForm: React.FC<SignUpFormProps> = ({ onClose }) => {
         TransitionComponent={transition}
       >
         <SignAlert onClose={onClose} severity="error">
-          Ошибка при создании аккаунта. Попробуйте позже.
+          {t("signIn.registerForm.Alert")}
         </SignAlert>
       </Snackbar>
     </form>
