@@ -64,7 +64,7 @@ export const SideMenu: React.FC<i18nProps> = ({ t }) => {
             color="primary"
           >
             <ButtonIcon />
-            <span>Твитнуть</span>
+            <span>{t("sideMenu.buttonLabel")}</span>
           </AddTweetButton>
 
           <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>

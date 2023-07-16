@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 // local libs
 import { Header } from "../../generic/Header/Header";
+import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
-import { useSelector } from "react-redux";
 import { selectSelectedUserData } from "../../redux/user/selectors";
 import { setUserData } from "../../redux/user/slice";
 import { getTitles } from "../fixtures";
+import { profileButtons } from "./fixtures";
 import { formatRegistrationDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
@@ -16,7 +18,9 @@ import {
   AvatarWrapper,
   CalendarIcon,
   Fullname,
+  StyledIconButton,
   ProfileAvatar,
+  ProfileButtonsContainer,
   ProfileImage,
   RegistrationData,
   UserInfoContainer,
@@ -45,6 +49,14 @@ export const Profile: React.FC = () => {
       <>
         <Header variant="outlined" title={user.fullname} t={t} icon />
         <ProfileImage />
+
+        <ProfileButtonsContainer>
+          {profileButtons.map((icon) => (
+            <StyledIconButton>{icon}</StyledIconButton>
+          ))}
+          <FollowButton height={36}>{t("followButton")}</FollowButton>
+        </ProfileButtonsContainer>
+
         <AvatarWrapper>
           <ProfileAvatar {...stringAvatar(user.fullname)} />
         </AvatarWrapper>

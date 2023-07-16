@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
       {titles && (
         <HeaderSection>
           {titles.map((item) => (
-            <HeaderSectionTitle key={item.item.title} item={item.item} />
+            <HeaderSectionTitle key={item.title.text} title={item.title} />
           ))}
         </HeaderSection>
       )}

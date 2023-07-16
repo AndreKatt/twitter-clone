@@ -4,13 +4,15 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
+// local libs
+import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import {
   selectUsersData,
   selectUsersLoading,
 } from "../../redux/users/selectors";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
-import { FollowButton, ListItemsWrapper, RecommendedItem } from "./styles";
+import { ListItemsWrapper, RecommendedItem } from "./styles";
 import {
   InnerContainer,
   RightSideBlockHeader,
@@ -47,6 +49,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                       {...stringAvatar(user.fullname)}
                     />
                   </ListItemAvatar>
+
                   <ListItemText
                     primary={user.fullname}
                     secondary={
@@ -55,12 +58,14 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                       </Typography>
                     }
                   />
-                  <FollowButton variant="contained">
-                    {t("whoToFollow.buttonLabel")}
+
+                  <FollowButton height={32} variant="contained">
+                    {t("followButton")}
                   </FollowButton>
                 </RecommendedItem>
               </StyledLink>
             ))}
+
             <More color="primary">{t("rightSideBlocks.more")}</More>
           </ListItemsWrapper>
         </>

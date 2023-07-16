@@ -1,6 +1,9 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
@@ -16,7 +19,7 @@ export const AvatarWrapper = styled(Paper)({
   width: 143,
   height: 143,
   borderRadius: "50%",
-  margin: "-71px 0 12px 17px",
+  margin: "-110px 0 12px 17px",
   cursor: "pointer",
 });
 
@@ -37,9 +40,32 @@ export const ProfileAvatar = styled(Avatar)({
   },
 });
 
-export const UserInfoContainer = styled(Paper)({
+export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  width: 36,
+  height: 36,
+  border: `1px solid ${theme.palette.neutral.dark}`,
+  marginRight: 8,
+}));
+
+export const MoreIcon = styled(MoreHorizIcon)(({ theme }) => ({
+  fontSize: 20,
+  color: theme.palette.text.primary,
+}));
+
+export const MailIcon = styled(EmailOutlinedIcon)(({ theme }) => ({
+  fontSize: 20,
+  color: theme.palette.text.primary,
+}));
+
+export const ProfileButtonsContainer = styled("div")({
+  display: "flex",
+  justifyContent: "end",
+  padding: "12px 17px",
+});
+
+export const UserInfoContainer = styled("div")({
   paddingBottom: 20,
-  marginLeft: 17,
+  paddingLeft: 17,
 });
 
 export const Fullname = styled(Typography)({

@@ -9,15 +9,15 @@ export const getTitles: GetTitles = (t) => ({
     main: `${t("layouts.home.main")}`,
     sections: [
       {
-        item: {
-          title: `${t("layouts.home.sections.title1")}`,
-          active: true,
+        title: {
+          text: `${t("layouts.home.sections.title1")}`,
+          isActive: true,
         },
       },
       {
-        item: {
-          title: `${t("layouts.home.sections.title2")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.home.sections.title2")}`,
+          isActive: false,
         },
       },
     ],
@@ -29,21 +29,21 @@ export const getTitles: GetTitles = (t) => ({
     main: `${t("layouts.notifications.main")}`,
     sections: [
       {
-        item: {
-          title: `${t("layouts.notifications.sections.title1")}`,
-          active: true,
+        title: {
+          text: `${t("layouts.notifications.sections.title1")}`,
+          isActive: true,
         },
       },
       {
-        item: {
-          title: `${t("layouts.notifications.sections.title2")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.notifications.sections.title2")}`,
+          isActive: false,
         },
       },
       {
-        item: {
-          title: `${t("layouts.notifications.sections.title3")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.notifications.sections.title3")}`,
+          isActive: false,
         },
       },
     ],
@@ -60,33 +60,33 @@ export const getTitles: GetTitles = (t) => ({
   profile: {
     sections: [
       {
-        item: {
-          title: `${t("layouts.profile.sections.tweets")}`,
-          active: true,
+        title: {
+          text: `${t("layouts.profile.sections.tweets")}`,
+          isActive: true,
         },
       },
       {
-        item: {
-          title: `${t("layouts.profile.sections.replies")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.profile.sections.replies")}`,
+          isActive: false,
         },
       },
       {
-        item: {
-          title: `${t("layouts.profile.sections.highlights")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.profile.sections.highlights")}`,
+          isActive: false,
         },
       },
       {
-        item: {
-          title: `${t("layouts.profile.sections.media")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.profile.sections.media")}`,
+          isActive: false,
         },
       },
       {
-        item: {
-          title: `${t("layouts.profile.sections.likes")}`,
-          active: false,
+        title: {
+          text: `${t("layouts.profile.sections.likes")}`,
+          isActive: false,
         },
       },
     ],

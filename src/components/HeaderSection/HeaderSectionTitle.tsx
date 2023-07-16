@@ -3,12 +3,12 @@ import { BottomLine, Title, TitleContainer } from "./styles";
 import { HeaderSectionTitleType } from "../../types";
 
 export const HeaderSectionTitle: React.FC<HeaderSectionTitleType> = ({
-  item,
+  title,
 }) => {
   return (
     <TitleContainer>
-      <Title>{item.title}</Title>
-      {item.active && <BottomLine />}
+      <Title isActive={title.isActive}>{title.text}</Title>
+      {title.isActive && <BottomLine />}
     </TitleContainer>
   );
 };

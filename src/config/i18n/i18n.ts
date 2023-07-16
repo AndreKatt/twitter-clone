@@ -79,6 +79,7 @@ i18n
             verified: "Verified",
             profile: "Profile",
             settings: "Settings",
+            buttonLabel: "Tweet",
           },
           addTweetForm: {
             placeholder: "What is happening?!",
@@ -104,12 +105,12 @@ i18n
           },
           whoToFollow: {
             label: "Who to follow",
-            buttonLabel: "Follow",
           },
           topics: {
             label: "Trends for you",
             description: "Tweets",
           },
+          followButton: "Follow",
           layouts: {
             home: {
               main: "Home",
@@ -233,6 +234,7 @@ i18n
             verified: "Подлинная",
             profile: "Профиль",
             settings: "Настройки",
+            buttonLabel: "Твитнуть",
           },
           addTweetForm: {
             placeholder: "Что происходит?!",
@@ -258,12 +260,12 @@ i18n
           },
           whoToFollow: {
             label: "Кого читать",
-            buttonLabel: "Читать",
           },
           topics: {
             label: "Актуальные темы для вас",
             description: "Твитов",
           },
+          followButton: "Читать",
           layouts: {
             home: {
               main: "Главная",
