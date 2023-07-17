@@ -15,3 +15,16 @@ export type UserData = {
   confirmHash: string;
   confirmed?: boolean;
 };
+
+export type Tweet = {
+  _id: string;
+  text: string;
+  images?: [];
+  user: {
+    email: string;
+    fullname: string;
+    username: string;
+    // avatarUrl: string;
+  };
+  createdAt: string;
+};

@@ -11,13 +11,10 @@ import {
   selectTweetsItems,
   selectTweetsLoading,
 } from "../../redux/tweets/selectors";
-// styles
-import {
-  AddTweetBottomLine,
-  AddTweetWrapper,
-  CircularProgressWrapper,
-} from "./styles";
 import { getTitles } from "../fixtures";
+// styles
+import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
+import { CircularProgressWrapper } from "../../styles";
 
 export const HomeTweets: React.FC = () => {
   const tweets = useSelector(selectTweetsItems);

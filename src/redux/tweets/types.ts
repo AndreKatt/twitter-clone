@@ -1,4 +1,4 @@
-import { LoadingState } from "../types";
+import { LoadingState, Tweet } from "../types";
 
 export enum AddFormState {
   LOADING = "LOADING",
@@ -14,19 +14,6 @@ export type SendTweet = {
     username: string;
     // avatarUrl: string;
   };
-};
-
-export type Tweet = {
-  _id: string;
-  text: string;
-  images?: [];
-  user: {
-    email: string;
-    fullname: string;
-    username: string;
-    // avatarUrl: string;
-  };
-  createdAt: string;
 };
 
 export type UploadedFileData = {

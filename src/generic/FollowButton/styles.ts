@@ -13,6 +13,7 @@ export const StyledButton = styled(Button)<ButtonProps & FollowButtonProps>(
 
     "&:hover": {
       backgroundColor: theme.palette.text.primary,
+      filter: "opacity(0.9)",
     },
   })
 );

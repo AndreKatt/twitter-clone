@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axios } from "../../core/axios";
 // types
-import type { SendTweet, Tweet, TweetsState, UploadedFileData } from "./types";
+import type { SendTweet, TweetsState, UploadedFileData } from "./types";
+import { Tweet } from "../types";
 
 export const fetchTweets = createAsyncThunk<TweetsState["items"]>(
   "tweets/fetchTweets",

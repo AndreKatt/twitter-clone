@@ -118,3 +118,8 @@ export const More = styled(Typography)<TypographyProps>(({ theme }) => ({
     backgroundColor: theme.palette.neutral.light,
   },
 }));
+
+export const CircularProgressWrapper = styled("div")({
+  textAlign: "center",
+  paddingTop: 150,
+});
