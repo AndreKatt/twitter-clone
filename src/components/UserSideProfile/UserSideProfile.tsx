@@ -19,6 +19,7 @@ import {
   Username,
   MenuPopper,
   StyledGrow,
+  LogOutLink,
 } from "./styles";
 // types
 import { i18nProps } from "../../types";
@@ -43,6 +44,10 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = () => {
+    window.localStorage.removeItem("token");
   };
 
   return (
@@ -87,13 +92,16 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
                 >
                   <Divider />
                   <MenuItem>{t("userSideProfile.menuLabel1")}</MenuItem>
-                  <MenuItem>
-                    {t("userSideProfile.menuLabel2")}
-                    <>
-                      <br />
-                    </>
-                    {`${user.currentUser?.email}`}
-                  </MenuItem>
+
+                  <LogOutLink to="/signIn">
+                    <MenuItem onClick={handleLogOut}>
+                      {t("userSideProfile.menuLabel2")}
+                      <>
+                        <br />
+                      </>
+                      {`${user.currentUser?.email}`}
+                    </MenuItem>
+                  </LogOutLink>
                 </MenuList>
               </ClickAwayListener>
             </Paper>

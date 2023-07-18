@@ -1,5 +1,6 @@
 import { styled } from "@mui/system";
 import Avatar from "@mui/material/Avatar";
+import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Popper, { PopperProps } from "@mui/material/Popper";
@@ -71,4 +72,9 @@ export const MenuPopper = styled(Popper)<PopperProps>({
 
 export const StyledGrow = styled(Grow)<GrowProps>({
   transformOrigin: "right bottom",
+});
+
+export const LogOutLink = styled(Link)({
+  color: "inherit",
+  textDecoration: "none",
 });
