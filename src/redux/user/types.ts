@@ -1,13 +1,4 @@
-import { LoadingState } from "../types";
-
-export type SelectedUserData = {
-  _id: string;
-  email: string;
-  fullname: string;
-  username: string;
-  confirmed: boolean;
-  createdAt: string;
-};
+import { LoadingState, SelectedUserData } from "../types";
 
 export type SelectedUserState = {
   data?: SelectedUserData;

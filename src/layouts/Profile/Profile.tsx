@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -8,11 +8,12 @@ import { Tweet } from "../../components/Tweet/Tweet";
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import { useAppDispatch } from "../../redux/store";
+import { subscribe, unsubscribe } from "../../redux/currentUser/asyncActions";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { fetchUserTweets } from "../../redux/userTweets/asyncActions";
 import { setUserData } from "../../redux/user/slice";
-import { setUserTweets } from "../../redux/userTweets/slice";
 import { selectSelectedUserData } from "../../redux/user/selectors";
+import { selectUserState } from "../../redux/currentUser/selectors";
 import {
   selectUserTweetsItems,
   selectUserTweetsLoading,
@@ -33,29 +34,65 @@ import {
   RegistrationData,
   UserInfoContainer,
   Username,
+  FollowInfoContainer,
+  FollowInfo,
+  Count,
 } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 
 export const Profile: React.FC = () => {
+  const [isFollowing, setIsFollowing] = useState<boolean>(false);
+  const [update, setUpdate] = useState<boolean>(false);
+
   const { email } = useParams();
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
+  const currentUser = useSelector(selectUserState);
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
   const isUserTweetsLoading = useSelector(selectUserTweetsLoading);
-  const { t } = useTranslation();
 
   const titles = getTitles(t).profile.sections;
+
+  let isCurrentUser;
+
+  if (email && currentUser.currentUser && currentUser.user) {
+    isCurrentUser = currentUser.currentUser.email === email;
+  }
+
+  const handleChangeFollowing = async (): Promise<void> => {
+    if (user) {
+      if (isFollowing) {
+        await dispatch(unsubscribe(user._id));
+      }
+      if (!isFollowing) {
+        await dispatch(subscribe(user._id));
+      }
+      setUpdate(!update);
+    }
+  };
+
+  const button = document.querySelector(".followButton");
+
+  if (button) {
+    button.addEventListener("click", handleChangeFollowing);
+  }
 
   useEffect(() => {
     if (email) {
       dispatch(fetchUserData(email));
       dispatch(fetchUserTweets(email));
+
+      if (currentUser.user) {
+        setIsFollowing(currentUser.user.following.includes(email));
+      }
     }
     return () => {
       dispatch(setUserData(undefined));
-      dispatch(setUserTweets([]));
     };
-  }, [dispatch, email]);
+    // eslint-disable-next-line
+  }, [email, update]);
 
   if (email && user) {
     return (
@@ -64,10 +101,21 @@ export const Profile: React.FC = () => {
         <ProfileImage />
 
         <ProfileButtonsContainer>
-          {profileButtons.map((icon) => (
-            <StyledIconButton>{icon}</StyledIconButton>
-          ))}
-          <FollowButton height={36}>{t("followButton")}</FollowButton>
+          {!isCurrentUser && (
+            <>
+              {profileButtons.map((button) => (
+                <StyledIconButton key={button.id}>
+                  {button.icon}
+                </StyledIconButton>
+              ))}
+
+              <FollowButton height={36}>
+                {isFollowing
+                  ? `${t("followButton.unfollow")}`
+                  : `${t("followButton.follow")}`}
+              </FollowButton>
+            </>
+          )}
         </ProfileButtonsContainer>
 
         <AvatarWrapper>
@@ -77,12 +125,25 @@ export const Profile: React.FC = () => {
         <UserInfoContainer>
           <Fullname>{user.fullname}</Fullname>
           <Username>@{user.username}</Username>
+
           <RegistrationData>
             <CalendarIcon />
             {t("layouts.profile.registration") +
               " " +
               formatRegistrationDate(new Date(user.createdAt))}
           </RegistrationData>
+
+          <FollowInfoContainer>
+            <FollowInfo>
+              <Count>{user.following.length + " "}</Count>
+              {t("layouts.profile.following")}
+            </FollowInfo>
+
+            <FollowInfo>
+              <Count>{user.followers.length + " "}</Count>
+              {t("layouts.profile.followers")}
+            </FollowInfo>
+          </FollowInfoContainer>
         </UserInfoContainer>
 
         <Header variant="outlined" titles={titles} t={t} />

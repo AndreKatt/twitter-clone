@@ -110,7 +110,7 @@ i18n
             label: "Trends for you",
             description: "Tweets",
           },
-          followButton: "Follow",
+          followButton: { follow: "Follow", unfollow: "Unfollow" },
           layouts: {
             home: {
               main: "Home",
@@ -129,6 +129,8 @@ i18n
             verified: "Verified",
             profile: {
               registration: "Joined",
+              following: "Following",
+              followers: "Followers",
               sections: {
                 tweets: "Tweets",
                 replies: "Replies",
@@ -265,7 +267,7 @@ i18n
             label: "Актуальные темы для вас",
             description: "Твитов",
           },
-          followButton: "Читать",
+          followButton: { follow: "Читать", unfollow: "Отписаться" },
           layouts: {
             home: {
               main: "Главная",
@@ -284,6 +286,8 @@ i18n
             verified: "Подлинная",
             profile: {
               registration: "Регистрация:",
+              following: "в читаемых",
+              followers: "в читателях",
               sections: {
                 tweets: "Твиты",
                 replies: "Ответы",

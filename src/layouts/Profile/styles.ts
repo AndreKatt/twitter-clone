@@ -74,20 +74,33 @@ export const Fullname = styled(Typography)({
 });
 
 export const Username = styled(Typography)({
-  color: grey[600],
+  color: grey[500],
   fontSize: 15,
   paddingBottom: 20,
 });
 
 export const RegistrationData = styled(Typography)({
-  color: grey[600],
+  color: grey[500],
   fontSize: 15,
   display: "flex",
   alignItems: "center",
-  marginButtom: 12,
+  marginBottom: 12,
 });
 
 export const CalendarIcon = styled(DateRangeOutlinedIcon)({
   fontSize: 18,
   margin: "0 8px 3px 0",
+});
+
+export const FollowInfoContainer = styled("div")({
+  display: "flex",
+});
+
+export const Count = styled("span")(({ theme }) => ({
+  color: theme.palette.text.primary,
+}));
+
+export const FollowInfo = styled(Typography)({
+  color: grey[500],
+  marginRight: 16,
 });

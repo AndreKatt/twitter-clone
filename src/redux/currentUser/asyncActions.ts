@@ -3,13 +3,13 @@ import { axios } from "../../core/axios";
 // types
 import type { RegisterFormProps } from "../../pages/SignIn/components/RegisterForm/types";
 import type { LoginFormProps } from "../../types";
-import type { SignInUserState } from "./types";
-import { UserData } from "../types";
+import { CurrentUserData, type CurrentUserState } from "./types";
+import { SelectedUserData, UserData } from "../types";
 
-export const signIn = createAsyncThunk<SignInUserState, LoginFormProps>(
+export const signIn = createAsyncThunk<CurrentUserState, LoginFormProps>(
   "currentUser/signIn",
   async (postData) => {
-    const { data } = await axios.post<SignInUserState>(
+    const { data } = await axios.post<CurrentUserState>(
       "/api/user/login",
       postData
     );
@@ -31,10 +31,40 @@ export const signUp = createAsyncThunk<UserData, RegisterFormProps>(
 export const getCurrentUserByToken = createAsyncThunk(
   "currentUser/getCurrent",
   async () => {
-    const { data } = await axios.get("/api/user/me");
+    const { data } = await axios.get<CurrentUserData>("/api/user/me");
     window.localStorage.setItem("email", data.email);
     window.localStorage.setItem("username", data.username);
     window.localStorage.setItem("fullname", data.fullname);
+
+    const userData = await axios.get<SelectedUserData>(
+      "/api/user/byUser/" + data.email
+    );
+
+    const user = {
+      currentUser: { ...data },
+      user: { ...userData.data },
+    };
+
+    return user;
+  }
+);
+
+export const subscribe = createAsyncThunk<SelectedUserData, string>(
+  "currentUser/subscribe",
+  async (id) => {
+    const { data } = await axios.patch<SelectedUserData>(
+      `/api/user/follow/${id}`
+    );
+    return data;
+  }
+);
+
+export const unsubscribe = createAsyncThunk<SelectedUserData, string>(
+  "currentUser/unsubscribe",
+  async (id) => {
+    const { data } = await axios.patch<SelectedUserData>(
+      `/api/user/unfollow/${id}`
+    );
     return data;
   }
 );

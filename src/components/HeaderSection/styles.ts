@@ -17,9 +17,9 @@ export const TitleContainer = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const Title = styled(Typography)<TitleProps>(({ isActive, theme }) => ({
+export const Title = styled(Typography)<TitleProps>(({ isactive, theme }) => ({
   height: "100%",
-  color: isActive ? theme.palette.text.primary : colors.grey[500],
+  color: isactive ? theme.palette.text.primary : colors.grey[500],
   fontWeight: "bold",
   fontSize: 15,
   textAlign: "center",

@@ -113,7 +113,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             </HeaderTextContainer>
           </StyledLink>
 
-          <StyledLink to={`tweet/${_id}`}>
+          <StyledLink to={`/home/tweet/${_id}`}>
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>

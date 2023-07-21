@@ -60,7 +60,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                   />
 
                   <FollowButton height={32} variant="contained">
-                    {t("followButton")}
+                    {t("followButton.follow")}
                   </FollowButton>
                 </RecommendedItem>
               </StyledLink>

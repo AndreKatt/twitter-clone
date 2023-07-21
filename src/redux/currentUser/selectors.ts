@@ -1,16 +1,16 @@
 import type { RootState } from "../store";
-import type { SignInUserState } from "./types";
+import type { CurrentUserState } from "./types";
 
-export const selectUserState = (state: RootState): SignInUserState =>
+export const selectUserState = (state: RootState): CurrentUserState =>
   state.currentUser;
 
 export const selectCurrentUser = (
   state: RootState
-): SignInUserState["currentUser"] => selectUserState(state).currentUser;
+): CurrentUserState["currentUser"] => selectUserState(state).currentUser;
 
 export const selectAuthState = (
   state: RootState
-): SignInUserState["currentUserStatus"] =>
+): CurrentUserState["currentUserStatus"] =>
   selectUserState(state).currentUserStatus;
 
 export const selectIsAuth = (state: RootState): boolean =>
@@ -18,4 +18,4 @@ export const selectIsAuth = (state: RootState): boolean =>
 
 export const selectCurrentUserStatus = (
   state: RootState
-): SignInUserState["currentUserStatus"] => state.currentUser.currentUserStatus;
+): CurrentUserState["currentUserStatus"] => state.currentUser.currentUserStatus;

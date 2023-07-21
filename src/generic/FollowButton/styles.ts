@@ -7,7 +7,7 @@ export const StyledButton = styled(Button)<ButtonProps & FollowButtonProps>(
     width: width ? width : "auto",
     height: height,
     color: theme.palette.background.default,
-    fontSize: 14,
+    fontSize: 15,
     backgroundColor: theme.palette.text.primary,
     paddingBottom: 7,
 

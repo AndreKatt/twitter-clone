@@ -7,7 +7,7 @@ export const HeaderSectionTitle: React.FC<HeaderSectionTitleType> = ({
 }) => {
   return (
     <TitleContainer>
-      <Title isActive={title.isActive}>{title.text}</Title>
+      <Title isactive={title.isActive}>{title.text}</Title>
       {title.isActive && <BottomLine />}
     </TitleContainer>
   );

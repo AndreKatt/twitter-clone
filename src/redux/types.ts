@@ -11,9 +11,12 @@ export type UserData = {
   email: string;
   username: string;
   fullname: string;
-  passwordHash: string;
-  confirmHash: string;
+  passwordHash?: string;
+  confirmHash?: string;
   confirmed?: boolean;
+  createdAt?: string;
+  following: string[];
+  followers: string[];
 };
 
 export type Tweet = {
@@ -27,4 +30,15 @@ export type Tweet = {
     // avatarUrl: string;
   };
   createdAt: string;
+};
+
+export type SelectedUserData = {
+  _id: string;
+  email: string;
+  fullname: string;
+  username: string;
+  confirmed: boolean;
+  createdAt: string;
+  following: [];
+  followers: [];
 };

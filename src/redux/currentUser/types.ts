@@ -10,11 +10,13 @@ export type CurrentUserData = {
   fullname: string;
 };
 
-export type SignInUserState = {
+export type CurrentUserState = {
   user?: UserData;
   token?: Token;
   currentUser?: CurrentUserData;
   registerStatus: LoadingState;
   loginStatus: LoadingState;
   currentUserStatus: LoadingState;
+  subscribeStatus: LoadingState;
+  unsubscribeStatus: LoadingState;
 };
