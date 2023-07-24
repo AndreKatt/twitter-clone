@@ -8,12 +8,14 @@ import { Tweet } from "../../components/Tweet/Tweet";
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import { useAppDispatch } from "../../redux/store";
-import { subscribe, unsubscribe } from "../../redux/currentUser/asyncActions";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { fetchUserTweets } from "../../redux/userTweets/asyncActions";
 import { setUserData } from "../../redux/user/slice";
 import { selectSelectedUserData } from "../../redux/user/selectors";
-import { selectUserState } from "../../redux/currentUser/selectors";
+import {
+  selectCurrentUserData,
+  selectCurrentUser,
+} from "../../redux/currentUser/selectors";
 import {
   selectUserTweetsItems,
   selectUserTweetsLoading,
@@ -41,53 +43,30 @@ import {
 import { CircularProgressWrapper } from "../../styles";
 
 export const Profile: React.FC = () => {
-  const [isFollowing, setIsFollowing] = useState<boolean>(false);
   const [update, setUpdate] = useState<boolean>(false);
-
   const { email } = useParams();
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
-  const currentUser = useSelector(selectUserState);
+  const currentUser = useSelector(selectCurrentUser);
+  const currentUserData = useSelector(selectCurrentUserData);
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
   const isUserTweetsLoading = useSelector(selectUserTweetsLoading);
 
   const titles = getTitles(t).profile.sections;
-
   let isCurrentUser;
 
-  if (email && currentUser.currentUser && currentUser.user) {
-    isCurrentUser = currentUser.currentUser.email === email;
-  }
-
-  const handleChangeFollowing = async (): Promise<void> => {
-    if (user) {
-      if (isFollowing) {
-        await dispatch(unsubscribe(user._id));
-      }
-      if (!isFollowing) {
-        await dispatch(subscribe(user._id));
-      }
-      setUpdate(!update);
-    }
-  };
-
-  const button = document.querySelector(".followButton");
-
-  if (button) {
-    button.addEventListener("click", handleChangeFollowing);
+  if (email && currentUser) {
+    isCurrentUser = currentUser.email === email;
   }
 
   useEffect(() => {
     if (email) {
       dispatch(fetchUserData(email));
       dispatch(fetchUserTweets(email));
-
-      if (currentUser.user) {
-        setIsFollowing(currentUser.user.following.includes(email));
-      }
     }
+
     return () => {
       dispatch(setUserData(undefined));
     };
@@ -109,11 +88,15 @@ export const Profile: React.FC = () => {
                 </StyledIconButton>
               ))}
 
-              <FollowButton height={36}>
-                {isFollowing
-                  ? `${t("followButton.unfollow")}`
-                  : `${t("followButton.follow")}`}
-              </FollowButton>
+              <FollowButton
+                userId={user._id}
+                userEmail={user.email}
+                following={currentUserData?.following}
+                update={update}
+                setUpdate={setUpdate}
+                t={t}
+                height={36}
+              />
             </>
           )}
         </ProfileButtonsContainer>

@@ -8,6 +8,10 @@ export const selectCurrentUser = (
   state: RootState
 ): CurrentUserState["currentUser"] => selectUserState(state).currentUser;
 
+export const selectCurrentUserData = (
+  state: RootState
+): CurrentUserState["user"] => selectUserState(state).user;
+
 export const selectAuthState = (
   state: RootState
 ): CurrentUserState["currentUserStatus"] =>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
@@ -10,6 +10,8 @@ import {
   selectUsersData,
   selectUsersLoading,
 } from "../../redux/users/selectors";
+import { selectCurrentUserData } from "../../redux/currentUser/selectors";
+import { useAppDispatch } from "../../redux/store";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import { ListItemsWrapper, RecommendedItem } from "./styles";
@@ -25,8 +27,13 @@ import {
 import { i18nProps } from "../../types";
 
 export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
+  const [update, setUpdate] = useState<boolean>(false);
+  const currentUserData = useSelector(selectCurrentUserData);
   const users = useSelector(selectUsersData);
   const isLoadingUsers = useSelector(selectUsersLoading);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {}, [dispatch, update]);
 
   return (
     <InnerContainer>
@@ -59,9 +66,15 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                     }
                   />
 
-                  <FollowButton height={32} variant="contained">
-                    {t("followButton.follow")}
-                  </FollowButton>
+                  <FollowButton
+                    userId={user._id}
+                    userEmail={user.email}
+                    following={currentUserData?.following}
+                    update={update}
+                    setUpdate={setUpdate}
+                    t={t}
+                    height={32}
+                  />
                 </RecommendedItem>
               </StyledLink>
             ))}
