@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
@@ -11,7 +11,6 @@ import {
   selectUsersLoading,
 } from "../../redux/users/selectors";
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
-import { useAppDispatch } from "../../redux/store";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import { ListItemsWrapper, RecommendedItem } from "./styles";
@@ -31,9 +30,6 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   const currentUserData = useSelector(selectCurrentUserData);
   const users = useSelector(selectUsersData);
   const isLoadingUsers = useSelector(selectUsersLoading);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {}, [dispatch, update]);
 
   return (
     <InnerContainer>

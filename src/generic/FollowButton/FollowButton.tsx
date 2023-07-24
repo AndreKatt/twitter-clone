@@ -18,6 +18,7 @@ export const FollowButton: React.FC<FollowButtonProps & ButtonProps> = ({
   t = () => "Follow",
 }) => {
   const [isFollowing, setIsFollowing] = useState<boolean>(false);
+  const [updateBtn, setUpdateBtn] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const handleChangeFollowing = async (): Promise<void> => {
@@ -29,6 +30,7 @@ export const FollowButton: React.FC<FollowButtonProps & ButtonProps> = ({
         await dispatch(subscribe(userId));
       }
       setUpdate(!update);
+      setUpdateBtn(!updateBtn);
     }
   };
 
@@ -37,7 +39,7 @@ export const FollowButton: React.FC<FollowButtonProps & ButtonProps> = ({
       setIsFollowing(following.includes(userEmail));
     }
     // eslint-disable-next-line
-  }, []);
+  }, [updateBtn]);
 
   return (
     <StyledButton
