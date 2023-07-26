@@ -19,6 +19,8 @@ export type HeaderTitles = {
   bookmarks: Titles;
   verified: Titles;
   profile: Titles;
+  followers: Titles;
+  following: Titles;
   settings: Titles;
   display: Titles;
   displayLaguage: Titles;
@@ -28,7 +30,8 @@ export type HeaderTitles = {
 };
 
 export type GetTitles = (
-  t: TFunction<"translation", undefined>
+  t: TFunction<"translation", undefined>,
+  email?: string
 ) => HeaderTitles;
 
 export type GetLanguagesDescriptions = (

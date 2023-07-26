@@ -5,5 +5,6 @@ export type HeaderProps = {
   searchField?: boolean;
   icon?: boolean;
   title?: string;
+  secondText?: string;
   titles?: Array<HeaderSectionTitleType>;
 };

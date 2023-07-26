@@ -63,9 +63,9 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
         <ProfileAvatar {...stringAvatar(user.currentUser?.username)} />
         <TextContainer>
           <Fullname>
-            <b>{user.currentUser?.fullname}</b>
+            <b>{user.currentUser?.username}</b>
           </Fullname>
-          <Username>{user.currentUser?.username}</Username>
+          <Username>{user.currentUser?.fullname}</Username>
         </TextContainer>
 
         <Button>

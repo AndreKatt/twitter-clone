@@ -103,4 +103,9 @@ export const Count = styled("span")(({ theme }) => ({
 export const FollowInfo = styled(Typography)({
   color: grey[500],
   marginRight: 16,
+  cursor: "pointer",
+
+  "&:hover": {
+    textDecoration: "underline",
+  },
 });

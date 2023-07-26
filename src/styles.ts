@@ -23,6 +23,7 @@ export const SpinnerWrapper = styled("div")({
 });
 
 export const StyledLink = styled(Link)<LinkProps>({
+  width: "100%",
   color: "inherit",
   textDecoration: "none",
 });

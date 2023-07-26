@@ -1,6 +1,8 @@
 import { styled } from "@mui/system";
+import { grey } from "@mui/material/colors";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 export const HeaderTitleContainer = styled(Paper)({
   height: 53,
@@ -8,6 +10,12 @@ export const HeaderTitleContainer = styled(Paper)({
   display: "flex",
   alignItems: "center",
   paddingLeft: 15,
+});
+
+export const SecondTitle = styled(Typography)({
+  fontSize: 13,
+  color: grey[500],
+  marginBottom: 5,
 });
 
 export const TweetsHeader = styled(Paper)<PaperProps>({

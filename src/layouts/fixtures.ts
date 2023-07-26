@@ -4,7 +4,7 @@ import {
   GetTitles,
 } from "./types";
 
-export const getTitles: GetTitles = (t) => ({
+export const getTitles: GetTitles = (t, email) => ({
   home: {
     main: `${t("layouts.home.main")}`,
     sections: [
@@ -87,6 +87,42 @@ export const getTitles: GetTitles = (t) => ({
         title: {
           text: `${t("layouts.profile.sections.likes")}`,
           isActive: false,
+        },
+      },
+    ],
+  },
+  followers: {
+    sections: [
+      {
+        title: {
+          text: `${t("layouts.followers")}`,
+          link: `/home/${email}/followers`,
+          isActive: true,
+        },
+      },
+      {
+        title: {
+          text: `${t("layouts.following")}`,
+          link: `/home/${email}/following`,
+          isActive: false,
+        },
+      },
+    ],
+  },
+  following: {
+    sections: [
+      {
+        title: {
+          text: `${t("layouts.followers")}`,
+          link: `/home/${email}/followers`,
+          isActive: false,
+        },
+      },
+      {
+        title: {
+          text: `${t("layouts.following")}`,
+          link: `/home/${email}/following`,
+          isActive: true,
         },
       },
     ],

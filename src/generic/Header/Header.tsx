@@ -5,11 +5,12 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // local libs
 import { HeaderSectionTitle } from "../../components/HeaderSection/HeaderSectionTitle";
 // styles
-import { HeaderSection } from "../../styles";
+import { HeaderSection, StyledLink } from "../../styles";
 import {
   HeaderButton,
   HeaderTitleContainer,
   SearchFieldContainer,
+  SecondTitle,
   TweetsHeader,
 } from "./styles";
 // types
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
   searchField,
   icon,
   title,
+  secondText,
   titles,
   t,
 }) => {
@@ -42,14 +44,19 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
               <ArrowBackIcon />
             </HeaderButton>
           )}
-          <Typography variant="h6">{title}</Typography>
+          <div>
+            <Typography variant="h6">{title}</Typography>
+            {secondText && <SecondTitle>{secondText}</SecondTitle>}
+          </div>
         </HeaderTitleContainer>
       )}
 
       {titles && (
         <HeaderSection>
           {titles.map((item) => (
-            <HeaderSectionTitle key={item.title.text} title={item.title} />
+            <StyledLink to={item.title.link || "#"}>
+              <HeaderSectionTitle key={item.title.text} title={item.title} />
+            </StyledLink>
           ))}
         </HeaderSection>
       )}

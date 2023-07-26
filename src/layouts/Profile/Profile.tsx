@@ -40,7 +40,7 @@ import {
   FollowInfo,
   Count,
 } from "./styles";
-import { CircularProgressWrapper } from "../../styles";
+import { CircularProgressWrapper, StyledLink } from "../../styles";
 
 export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
@@ -76,7 +76,13 @@ export const Profile: React.FC = () => {
   if (email && user) {
     return (
       <>
-        <Header variant="outlined" title={user.fullname} t={t} icon />
+        <Header
+          variant="outlined"
+          title={user.fullname}
+          secondText={`${userTweets.length} tweet`}
+          t={t}
+          icon
+        />
         <ProfileImage />
 
         <ProfileButtonsContainer>
@@ -118,13 +124,17 @@ export const Profile: React.FC = () => {
 
           <FollowInfoContainer>
             <FollowInfo>
-              <Count>{user.following.length + " "}</Count>
-              {t("layouts.profile.following")}
+              <StyledLink to={"followers"}>
+                <Count>{user.followers.length + " "}</Count>
+                {t("layouts.profile.followers")}
+              </StyledLink>
             </FollowInfo>
 
             <FollowInfo>
-              <Count>{user.followers.length + " "}</Count>
-              {t("layouts.profile.followers")}
+              <StyledLink to={"following"}>
+                <Count>{user.following.length + " "}</Count>
+                {t("layouts.profile.following")}
+              </StyledLink>
             </FollowInfo>
           </FollowInfoContainer>
         </UserInfoContainer>

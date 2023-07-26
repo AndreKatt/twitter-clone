@@ -139,6 +139,8 @@ i18n
                 likes: "Likes",
               },
             },
+            followers: "Followers",
+            following: "Following",
             settings: "Settings",
             displaySettings: {
               main: "Display",
@@ -296,6 +298,8 @@ i18n
                 likes: "Нравится",
               },
             },
+            followers: "Читатели",
+            following: "Читает",
             settings: "Настройки",
             displaySettings: {
               main: "Оформление",
