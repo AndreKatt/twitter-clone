@@ -19,27 +19,17 @@ import {
   selectTweetData,
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
-import { stringAvatar } from "../../utils/stringAvatar";
 import { footerIcons } from "./fixtures";
 import { getTitles } from "../fixtures";
 // styles
+import { SpinnerWrapper, FooterIcon } from "../../styles";
 import {
-  SpinnerWrapper,
-  TextContentContainer,
-  TextContentWrapper,
-  HeaderText,
-  FooterIcon,
-  StyledLink,
-  UserAvatar,
-} from "../../styles";
-import {
-  FullTweetContainer,
   FullTweetWrapper,
   FooterContainer,
-  HeaderTextContent,
   TweetText,
   TweetData,
 } from "./styles";
+import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 
 export const FullTweet: React.FC = () => {
   const { id }: { id?: string } = useParams();
@@ -71,25 +61,7 @@ export const FullTweet: React.FC = () => {
         <Header variant="elevation" title={title} t={t} icon />
         <Paper>
           <FullTweetWrapper variant="outlined">
-            <StyledLink to={`/home/${tweetData.user.email}`}>
-              <FullTweetContainer>
-                <UserAvatar
-                  alt="Аватарка пользователя"
-                  {...stringAvatar(tweetData.user.username)}
-                  // src={tweetData.user.avatarUrl}
-                />
-                <TextContentContainer>
-                  <TextContentWrapper>
-                    <HeaderTextContent>
-                      <b>{tweetData.user.fullname}</b>&nbsp;
-                      <div>
-                        <HeaderText>@{tweetData.user.username}</HeaderText>
-                      </div>
-                    </HeaderTextContent>
-                  </TextContentWrapper>
-                </TextContentContainer>
-              </FullTweetContainer>
-            </StyledLink>
+            <UserInfoBlock email={tweetData.user.email} />
 
             <TweetText gutterBottom>
               <span> {tweetData.text}</span>

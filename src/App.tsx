@@ -13,8 +13,7 @@ import { TopicTweets } from "./layouts/TopicTweets";
 import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
 import { Settings } from "./layouts/Settings/Settings";
 import { Profile } from "./layouts/Profile/Profile";
-import { Following } from "./layouts/Following/Following";
-import { Followers } from "./layouts/Followers/Followers";
+import { Follow } from "./layouts/Follow/Follow";
 import { Notifications } from "./layouts/Notifications/Notifications";
 import { Messages } from "./layouts/Messages/Messages";
 import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
@@ -94,8 +93,14 @@ function App() {
                 element={<LanguagesSettings />}
               />
               <Route path=":email" element={<Profile />} />
-              <Route path=":email/following" element={<Following />} />
-              <Route path=":email/followers" element={<Followers />} />
+              <Route
+                path=":email/following"
+                element={<Follow type="following" />}
+              />
+              <Route
+                path=":email/followers"
+                element={<Follow type="followers" />}
+              />
               <Route path="tweet/:id" element={<FullTweet />} />
               <Route path="search" element={<TopicTweets />} />
             </Route>
