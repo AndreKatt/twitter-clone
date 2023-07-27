@@ -4,10 +4,6 @@ import Popper, { PopperProps } from "@mui/material/Popper";
 import Grow, { GrowProps } from "@mui/material/Grow";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import ListItemText from "@mui/material/ListItemText";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import RepeatIcon from "@mui/icons-material/Repeat";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ReplyIcon from "@mui/icons-material/Reply";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",
@@ -31,63 +27,16 @@ export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
 }));
 
 export const HeaderContainer = styled("div")({
+  width: "100%",
   display: "grid",
   paddingTop: 5,
   gridTemplateColumns: "auto 1fr",
-
-  "@media (max-width: 1150px)": {
-    gridTemplateColumns: "auto 41vw",
-  },
-  "@media (max-width: 1024px)": {
-    gridTemplateColumns: "auto 37vw",
-  },
-  "@media (max-width: 1000px)": {
-    gridTemplateColumns: "auto 43vw",
-  },
-  "@media (max-width: 960px)": {
-    gridTemplateColumns: "auto 57vw",
-  },
-  "@media (max-width: 923px)": {
-    gridTemplateColumns: "auto 56vw",
-  },
-  "@media (max-width: 680px)": {
-    gridTemplateColumns: "auto 52vw",
-  },
 });
 
 export const HeaderTextContainer = styled("div")({
   flex: 1,
   display: "flex",
   justifyContent: "space-between",
-});
-
-export const FooterWrapper = styled("div")({
-  display: "grid",
-  position: "relative",
-  left: -13,
-  width: 450,
-  gridTemplateColumns: "6vw 6vw 6vw 6vw",
-
-  "@media (max-width: 2040px)": {
-    width: 430,
-    gridTemplateColumns: "7vw 7vw 7vw 7vw",
-  },
-  "@media (max-width: 1700px)": {
-    width: 430,
-    gridTemplateColumns: "9vw 9vw 9vw 9vw",
-  },
-  "@media (max-width: 1476px)": {
-    gridTemplateColumns: "10vw 10vw 10vw 10vw",
-  },
-  "@media (max-width: 959px)": {
-    gridTemplateColumns: "13vw 13vw 13vw 13vw",
-  },
-});
-
-export const FooterContainer = styled(Paper)({
-  display: "flex",
-  alignItems: "center",
-  backgroundColor: "inherit",
 });
 
 export const MenuButtonContainer = styled("div")({
@@ -110,22 +59,6 @@ export const TweetPopper = styled(Popper)<PopperProps>({
 
 export const DeleteIcon = styled(DeleteOutlinedIcon)({
   color: "red",
-});
-
-export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({
-  fontSize: 20,
-});
-
-export const RepostIcon = styled(RepeatIcon)({
-  fontSize: 20,
-});
-
-export const FavoriteIcon = styled(FavoriteBorderIcon)({
-  fontSize: 20,
-});
-
-export const ShareIcon = styled(ReplyIcon)({
-  fontSize: 20,
 });
 
 export const StyledGrow = styled(Grow)<GrowProps>({

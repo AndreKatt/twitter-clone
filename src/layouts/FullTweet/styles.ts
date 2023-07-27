@@ -1,9 +1,6 @@
 import { styled } from "@mui/system";
+import { grey } from "@mui/material/colors";
 import Typography, { TypographyProps } from "@mui/material/Typography";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import RepeatIcon from "@mui/icons-material/Repeat";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ReplyIcon from "@mui/icons-material/Reply";
 import Paper from "@mui/material/Paper";
 
 export const FullTweetWrapper = styled(Paper)({
@@ -11,14 +8,6 @@ export const FullTweetWrapper = styled(Paper)({
   borderTop: 0,
   borderRight: 0,
   borderLeft: 0,
-});
-
-export const FooterContainer = styled("div")({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-  margin: "5px 0",
-  paddingTop: "5px 0 0 20px",
 });
 
 export const TweetText = styled(Typography)<TypographyProps>({
@@ -33,21 +22,6 @@ export const TweetText = styled(Typography)<TypographyProps>({
 });
 
 export const TweetData = styled(Typography)<TypographyProps>({
+  color: grey[500],
   margin: "20px 0",
-});
-
-export const ChatIcon = styled(ChatBubbleOutlineOutlinedIcon)({
-  fontSize: 25,
-});
-
-export const RepostIcon = styled(RepeatIcon)({
-  fontSize: 25,
-});
-
-export const FavoriteIcon = styled(FavoriteBorderIcon)({
-  fontSize: 25,
-});
-
-export const ShareIcon = styled(ReplyIcon)({
-  fontSize: 25,
 });

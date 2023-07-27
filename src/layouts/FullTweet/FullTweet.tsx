@@ -9,27 +9,21 @@ import i18next from "i18next";
 import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
-import { grey } from "@mui/material/colors";
 // local libs
 import { ImagesList } from "../../components/ImagesList/ImagesList";
+import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { Header } from "../../generic/Header/Header";
+import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
 import {
   selectTweetData,
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
-import { footerIcons } from "./fixtures";
 import { getTitles } from "../fixtures";
 // styles
-import { SpinnerWrapper, FooterIcon } from "../../styles";
-import {
-  FullTweetWrapper,
-  FooterContainer,
-  TweetText,
-  TweetData,
-} from "./styles";
-import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
+import { SpinnerWrapper } from "../../styles";
+import { FullTweetWrapper, TweetText, TweetData } from "./styles";
 
 export const FullTweet: React.FC = () => {
   const { id }: { id?: string } = useParams();
@@ -66,7 +60,7 @@ export const FullTweet: React.FC = () => {
             <TweetText gutterBottom>
               <span> {tweetData.text}</span>
               {tweetData.images && <ImagesList images={tweetData.images} />}
-              <TweetData color={grey[500]}>
+              <TweetData>
                 <span>{format(new Date(tweetData.createdAt), "H:mm")}</span>
                 &nbsp;
                 <span>·</span>&nbsp;
@@ -79,15 +73,7 @@ export const FullTweet: React.FC = () => {
             </TweetText>
 
             <Divider />
-
-            <FooterContainer>
-              {footerIcons.map((item) => (
-                <div key={item.id}>
-                  <FooterIcon>{item.icon}</FooterIcon>
-                  <span>{item.count}</span>
-                </div>
-              ))}
-            </FooterContainer>
+            <TweetFooter kind="fullTweet" />
           </FullTweetWrapper>
         </Paper>
       </>

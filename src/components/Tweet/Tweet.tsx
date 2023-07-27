@@ -13,23 +13,21 @@ import {
 } from "@mui/material";
 // local libs
 import { ImagesList } from "../ImagesList/ImagesList";
+import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
 import { formatTweetDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
-import { footerIcons, getMenuItems } from "./fixtures";
+import { getMenuItems } from "./fixtures";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
   TextContentContainer,
   TextContentWrapper,
   HeaderText,
-  FooterIcon,
   StyledLink,
   UserAvatar,
 } from "../../styles";
 import {
-  FooterWrapper,
-  FooterContainer,
   HeaderContainer,
   HeaderTextContainer,
   MenuButtonContainer,
@@ -120,14 +118,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             {images && <ImagesList images={images} />}
           </StyledLink>
 
-          <FooterWrapper>
-            {footerIcons.map((item) => (
-              <FooterContainer key={item.id}>
-                <FooterIcon>{item.icon}</FooterIcon>
-                <Typography>{item.label}</Typography>
-              </FooterContainer>
-            ))}
-          </FooterWrapper>
+          <TweetFooter kind="tweet" />
         </TextContentContainer>
       </HeaderContainer>
 

@@ -54,7 +54,7 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
       {titles && (
         <HeaderSection>
           {titles.map((item) => (
-            <StyledLink to={item.title.link || "#"}>
+            <StyledLink key={item.title.text} to={item.title.link || "#"}>
               <HeaderSectionTitle key={item.title.text} title={item.title} />
             </StyledLink>
           ))}

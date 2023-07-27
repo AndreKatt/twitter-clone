@@ -4,7 +4,6 @@ import { grey } from "@mui/material/colors";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
 import Typography, { TypographyProps } from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 export const LogoIcon = styled(TwitterIcon)({
@@ -70,14 +69,6 @@ export const UserAvatar = styled(Avatar)<AvatarProps>({
     filter: "brightness(0.8)",
   },
 });
-
-export const FooterIcon = styled(IconButton)<IconButtonProps>(({ theme }) => ({
-  "&:hover": {
-    "& svg path": {
-      fill: theme.palette.primary.main,
-    },
-  },
-}));
 
 export const InnerContainer = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.neutral.main,

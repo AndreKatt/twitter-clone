@@ -3,8 +3,8 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import { FollowButtonProps } from "./types";
 
 export const StyledButton = styled(Button)<ButtonProps & FollowButtonProps>(
-  ({ theme, width, height }) => ({
-    width: width ? width : "auto",
+  ({ theme, width = "auto", height }) => ({
+    width: width,
     height: height,
     color: theme.palette.background.default,
     fontSize: 15,

@@ -80,9 +80,11 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   return (
     <>
       <BodyContainer minHeight={minHeight}>
-        <StyledLink to={`/home/${user?.email}`}>
-          <UserAvatar {...stringAvatar(user?.username)} alt="Ваша аватарка" />
-        </StyledLink>
+        <div>
+          <StyledLink to={`/home/${user?.email}`}>
+            <UserAvatar {...stringAvatar(user?.username)} alt="Ваша аватарка" />
+          </StyledLink>
+        </div>
         <Textarea
           onChange={handleChangeTextarea}
           placeholder={t("addTweetForm.placeholder")}
