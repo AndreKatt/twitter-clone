@@ -81,7 +81,11 @@ function App() {
         ) : (
           <Routes>
             <Route path="/home/*" element={<Home />}>
-              <Route path="" element={<HomeTweets />} />
+              <Route path="" element={<HomeTweets type="home" />} />
+              <Route
+                path="subscriptions"
+                element={<HomeTweets type="subscriptions" />}
+              />
               <Route path="explore" element={<Explore />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="messages" element={<Messages />} />

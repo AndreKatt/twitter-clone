@@ -1,26 +1,60 @@
 import {
   GetDisplayDescription,
   GetLanguagesDescriptions,
+  GetSections,
   GetTitles,
 } from "./types";
+
+const getHomeSections: GetSections = (type, t) => {
+  const sections = [
+    {
+      title: {
+        text: `${t("layouts.home.sections.title1")}`,
+        link: "/home",
+        isActive: type === "home" ? true : false,
+      },
+    },
+    {
+      title: {
+        text: `${t("layouts.home.sections.title2")}`,
+        link: "subscriptions",
+        isActive: type === "subscriptions" ? true : false,
+      },
+    },
+  ];
+
+  return sections;
+};
+
+const getFollowSections: GetSections = (type, t, email) => {
+  const sections = [
+    {
+      title: {
+        text: `${t("layouts.followers")}`,
+        link: `/home/${email}/followers`,
+        isActive: type === "followers" ? true : false,
+      },
+    },
+    {
+      title: {
+        text: `${t("layouts.following")}`,
+        link: `/home/${email}/following`,
+        isActive: type === "following" ? true : false,
+      },
+    },
+  ];
+
+  return sections;
+};
 
 export const getTitles: GetTitles = (t, email) => ({
   home: {
     main: `${t("layouts.home.main")}`,
-    sections: [
-      {
-        title: {
-          text: `${t("layouts.home.sections.title1")}`,
-          isActive: true,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.home.sections.title2")}`,
-          isActive: false,
-        },
-      },
-    ],
+    sections: getHomeSections("home", t),
+  },
+  subscriptions: {
+    main: `${t("layouts.home.main")}`,
+    sections: getHomeSections("subscriptions", t),
   },
   explore: {
     main: `${t("topics.label")}`,
@@ -92,40 +126,10 @@ export const getTitles: GetTitles = (t, email) => ({
     ],
   },
   followers: {
-    sections: [
-      {
-        title: {
-          text: `${t("layouts.followers")}`,
-          link: `/home/${email}/followers`,
-          isActive: true,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.following")}`,
-          link: `/home/${email}/following`,
-          isActive: false,
-        },
-      },
-    ],
+    sections: getFollowSections("followers", t, email),
   },
   following: {
-    sections: [
-      {
-        title: {
-          text: `${t("layouts.followers")}`,
-          link: `/home/${email}/followers`,
-          isActive: false,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.following")}`,
-          link: `/home/${email}/following`,
-          isActive: true,
-        },
-      },
-    ],
+    sections: getFollowSections("following", t, email),
   },
   settings: {
     main: `${t("layouts.settings")}`,

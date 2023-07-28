@@ -46,7 +46,6 @@ export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
   const { email } = useParams();
   const { t } = useTranslation();
-
   const dispatch = useAppDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const currentUserData = useSelector(selectCurrentUserData);

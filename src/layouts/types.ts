@@ -13,6 +13,7 @@ type LanguagesDescriptions = {
 
 export type HeaderTitles = {
   home: Titles;
+  subscriptions: Titles;
   explore: Titles;
   notifications: Titles;
   messages: Titles;
@@ -41,3 +42,9 @@ export type GetLanguagesDescriptions = (
 export type GetDisplayDescription = (
   t: TFunction<"translation", undefined>
 ) => string;
+
+export type GetSections = (
+  type: string,
+  t: TFunction<"translation", undefined>,
+  email?: string
+) => Titles["sections"];

@@ -3,7 +3,6 @@ import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Avatar, { AvatarProps } from "@mui/material/Avatar";
 import Typography, { TypographyProps } from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 export const LogoIcon = styled(TwitterIcon)({
@@ -50,7 +49,7 @@ export const HeaderText = styled("span")({
   color: grey[500],
 });
 
-export const HeaderSection = styled(Paper)({
+export const HeaderSection = styled("div")({
   width: "100%",
   height: 53,
   backgroundColor: "transparent",
@@ -70,7 +69,7 @@ export const UserAvatar = styled(Avatar)<AvatarProps>({
   },
 });
 
-export const InnerContainer = styled(Paper)(({ theme }) => ({
+export const InnerContainer = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.neutral.main,
   backgroundImage:
     "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
@@ -82,13 +81,13 @@ export const InnerContainer = styled(Paper)(({ theme }) => ({
   },
 }));
 
-export const HeaderDescription = styled(Paper)({
+export const HeaderDescription = styled("div")({
   fontSize: 14,
   color: grey[500],
   padding: "10px 15px",
 });
 
-export const RightSideBlockHeader = styled(Paper)({
+export const RightSideBlockHeader = styled("div")({
   borderTop: 0,
   borderLeft: 0,
   borderRight: 0,
