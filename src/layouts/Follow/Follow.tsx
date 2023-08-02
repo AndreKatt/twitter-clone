@@ -11,7 +11,7 @@ import { selectSelectedUserData } from "../../redux/user/selectors";
 import { setUserData } from "../../redux/user/slice";
 import { getTitles } from "../fixtures";
 // types
-import { FollowProps } from "./types";
+import type { FollowProps } from "./types";
 
 export const Follow: React.FC<FollowProps> = ({ type }) => {
   const { email } = useParams();

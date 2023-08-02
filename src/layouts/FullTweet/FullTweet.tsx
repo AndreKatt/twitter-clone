@@ -73,7 +73,12 @@ export const FullTweet: React.FC = () => {
             </TweetText>
 
             <Divider />
-            <TweetFooter kind="fullTweet" />
+            <TweetFooter
+              likes={tweetData.likes}
+              retweets={tweetData.retweets}
+              replies={tweetData.replies}
+              kind="fullTweet"
+            />
           </FullTweetWrapper>
         </Paper>
       </>

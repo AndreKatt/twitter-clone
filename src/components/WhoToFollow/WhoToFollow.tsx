@@ -23,7 +23,7 @@ import {
   More,
 } from "../../styles";
 // types
-import { i18nProps } from "../../types";
+import type { i18nProps } from "../../types";
 
 export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   const [update, setUpdate] = useState<boolean>(false);

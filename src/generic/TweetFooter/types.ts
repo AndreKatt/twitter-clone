@@ -1,9 +1,20 @@
-export type TweetFooterProps = {
-  kind: "tweet" | "fullTweet";
-};
+import type { Reply } from "../../redux/types";
 
-export type FooterIcon = {
+type FooterIcon = {
   id: number;
   icon: JSX.Element;
   label: string;
+};
+
+export type GetFooterIcons = (
+  likes: string[],
+  retweets: string[],
+  replies: Reply[]
+) => FooterIcon[];
+
+export type TweetFooterProps = {
+  likes?: string[];
+  retweets?: string[];
+  replies?: Reply[];
+  kind: "tweet" | "fullTweet";
 };

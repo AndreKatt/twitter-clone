@@ -1,5 +1,6 @@
 import { TFunction } from "i18next";
-import { HeaderSectionTitleType } from "../types";
+// types
+import type { HeaderSectionTitleType } from "../types";
 
 type Titles = {
   main?: string;

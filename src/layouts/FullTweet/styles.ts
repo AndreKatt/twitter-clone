@@ -1,7 +1,9 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
-import Typography, { TypographyProps } from "@mui/material/Typography";
+import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+// types
+import type { TypographyProps } from "@mui/material/Typography";
 
 export const FullTweetWrapper = styled(Paper)({
   borderRadius: 0,

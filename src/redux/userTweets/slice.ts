@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchUserTweets } from "./asyncActions";
-// types
 import { LoadingState } from "../types";
-import { UserTweetsState } from "./types";
+// types
+import type { UserTweetsState } from "./types";
 
 const initialState: UserTweetsState = {
   items: [],

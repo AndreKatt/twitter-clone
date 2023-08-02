@@ -1,6 +1,9 @@
 import { styled } from "@mui/system";
-import Paper, { PaperProps } from "@mui/material/Paper";
-import Grid, { GridProps } from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+// types
+import { PaperProps } from "@mui/material/Paper";
+import { GridProps } from "@mui/material/Grid";
 
 export const MenuGrid = styled(Grid)<GridProps>({
   "& .sideProfileContainer": {

@@ -1,6 +1,6 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
+import Typography from "@mui/material/Typography";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { getTitles } from "../fixtures";

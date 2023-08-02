@@ -1,4 +1,6 @@
-import { LoadingState, Tweet } from "../types";
+import { LoadingState } from "../types";
+// types
+import type { Tweet } from "../types";
 
 export type UserTweetsState = {
   items: Tweet[];

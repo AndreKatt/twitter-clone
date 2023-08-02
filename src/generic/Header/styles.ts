@@ -1,8 +1,11 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
-import Paper, { PaperProps } from "@mui/material/Paper";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+// types
+import type { PaperProps } from "@mui/material/Paper";
+import type { IconButtonProps } from "@mui/material/IconButton";
 
 export const HeaderTitleContainer = styled(Paper)({
   height: 53,

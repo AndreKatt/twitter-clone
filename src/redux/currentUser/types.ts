@@ -1,19 +1,15 @@
-import { LoadingState, UserData } from "../types";
+import { LoadingState } from "../types";
+// types
+import type { MainUserInfo, UserData } from "../types";
 
 export type Token = {
   access_token: string;
 };
 
-export type CurrentUserData = {
-  email: string;
-  username: string;
-  fullname: string;
-};
-
 export type CurrentUserState = {
   user?: UserData;
   token?: Token;
-  currentUser?: CurrentUserData;
+  currentUser?: MainUserInfo;
   registerStatus: LoadingState;
   loginStatus: LoadingState;
   currentUserStatus: LoadingState;

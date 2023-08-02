@@ -38,7 +38,7 @@ import {
 } from "./styles";
 // types
 import type { TweetProps } from "./types";
-import { i18nProps } from "../../types";
+import type { i18nProps } from "../../types";
 
 export const Tweet: React.FC<TweetProps & i18nProps> = ({
   _id,
@@ -47,6 +47,9 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   fullname,
   userName,
   images,
+  likes,
+  retweets,
+  replies,
   // avatarUrl,
   createdAt,
   t,
@@ -118,7 +121,12 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             {images && <ImagesList images={images} />}
           </StyledLink>
 
-          <TweetFooter kind="tweet" />
+          <TweetFooter
+            likes={likes}
+            retweets={retweets}
+            replies={replies}
+            kind="tweet"
+          />
         </TextContentContainer>
       </HeaderContainer>
 

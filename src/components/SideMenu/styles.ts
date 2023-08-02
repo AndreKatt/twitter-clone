@@ -1,10 +1,14 @@
 import { styled } from "@mui/system";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import Typography, { TypographyProps } from "@mui/material/Typography";
-import Button, { ButtonProps } from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import BorderColorTwoToneIcon from "@mui/icons-material/BorderColorTwoTone";
 import Paper from "@mui/material/Paper";
+// types
+import type { IconButtonProps } from "@mui/material/IconButton";
+import type { TypographyProps } from "@mui/material/Typography";
+import type { ButtonProps } from "@mui/material/Button";
 
 export const SideMenuList = styled("ul")({
   position: "sticky",

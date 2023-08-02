@@ -1,6 +1,8 @@
 import { styled } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import Dialog, { DialogProps } from "@mui/material/Dialog";
+import Dialog from "@mui/material/Dialog";
+// types
+import type { DialogProps } from "@mui/material/Dialog";
 
 export const DialogWrapper = styled(Dialog)<DialogProps>({
   ".MuiPaper-root": {

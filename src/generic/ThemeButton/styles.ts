@@ -1,10 +1,12 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Radio, { RadioProps } from "@mui/material/Radio";
+import Radio from "@mui/material/Radio";
 // types
-import { StyledButtonProps } from "./types";
+import type { ButtonProps } from "@mui/material/Button";
+import type { RadioProps } from "@mui/material/Radio";
+import type { StyledButtonProps } from "./types";
 
 const StyledButton = styled(Button)(({ theme }) => ({
   width: 190,

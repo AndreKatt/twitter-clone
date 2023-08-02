@@ -1,6 +1,6 @@
 import React from "react";
 import { BottomLine, Title, TitleContainer } from "./styles";
-import { HeaderSectionTitleType } from "../../types";
+import type { HeaderSectionTitleType } from "../../types";
 
 export const HeaderSectionTitle: React.FC<HeaderSectionTitleType> = ({
   title,

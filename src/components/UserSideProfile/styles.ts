@@ -3,9 +3,12 @@ import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Popper, { PopperProps } from "@mui/material/Popper";
-import Grow, { GrowProps } from "@mui/material/Grow";
+import Popper from "@mui/material/Popper";
+import Grow from "@mui/material/Grow";
 import { colors } from "@mui/material";
+// types
+import type { PopperProps } from "@mui/material/Popper";
+import type { GrowProps } from "@mui/material/Grow";
 
 export const ProfileContainer = styled("div")(({ theme }) => ({
   height: "60px",

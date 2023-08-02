@@ -1,8 +1,16 @@
-import { TFunction } from "i18next";
+import type { TFunction } from "i18next";
 
 export type UploadedObject = {
   blobUrl: string;
   file: File;
+};
+
+export type RegisterFormProps = {
+  email: string;
+  username: string;
+  fullname: string;
+  password: string;
+  password2: string;
 };
 
 export type LoginFormProps = {

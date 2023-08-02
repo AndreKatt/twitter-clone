@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import DeleteForever from "@mui/icons-material/DeleteForever";
 // types
-import { ImageWrapperProps } from "./types";
+import type { ImageWrapperProps } from "./types";
 
 export const ImagesContainer = styled("div")({
   display: "flex",

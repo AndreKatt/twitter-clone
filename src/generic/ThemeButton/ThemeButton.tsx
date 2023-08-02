@@ -1,6 +1,8 @@
 import React from "react";
+// styles
 import { CheckRadio, Label, StyledButtonWithProps } from "./styles";
-import { StyledButtonProps } from "./types";
+// types
+import type { StyledButtonProps } from "./types";
 
 export const ThemeButton: React.FC<StyledButtonProps> = ({
   title,

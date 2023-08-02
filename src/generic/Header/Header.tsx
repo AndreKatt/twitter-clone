@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // local libs
 import { HeaderSectionTitle } from "../../components/HeaderSection/HeaderSectionTitle";
+import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 // styles
 import { HeaderSection, StyledLink } from "../../styles";
 import {
@@ -14,9 +15,8 @@ import {
   TweetsHeader,
 } from "./styles";
 // types
-import { HeaderProps } from "./types";
-import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
-import { i18nProps } from "../../types";
+import type { HeaderProps } from "./types";
+import type { i18nProps } from "../../types";
 
 export const Header: React.FC<HeaderProps & i18nProps> = ({
   variant,

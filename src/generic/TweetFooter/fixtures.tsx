@@ -3,19 +3,19 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ReplyIcon from "@mui/icons-material/Reply";
 // types
-import { FooterIcon } from "./types";
+import type { GetFooterIcons } from "./types";
 
-export const footerIcons: FooterIcon[] = [
+export const getFooterIcons: GetFooterIcons = (likes, retweets, replies) => [
   {
     id: 1,
     icon: <ChatBubbleOutlineOutlinedIcon />,
-    label: "521",
+    label: `${replies.length}`,
   },
-  { id: 2, icon: <RepeatIcon />, label: "73" },
+  { id: 2, icon: <RepeatIcon />, label: `${retweets.length}` },
   {
     id: 3,
     icon: <FavoriteBorderIcon />,
-    label: "189",
+    label: `${likes.length}`,
   },
   { id: 4, icon: <ReplyIcon />, label: "" },
 ];

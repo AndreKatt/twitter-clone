@@ -6,7 +6,8 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import PendingOutlinedIcon from "@mui/icons-material/PendingOutlined";
-import { GetMenu } from "./types";
+// types
+import type { GetMenu } from "./types";
 
 export const menuItems: GetMenu = (currentUser, t) => {
   return [

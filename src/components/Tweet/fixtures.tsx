@@ -3,7 +3,7 @@ import DriveFile from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 // styles
 import { DeleteIcon } from "./styles";
 // types
-import { GetMenuItems } from "./types";
+import type { GetMenuItems } from "./types";
 
 export const getMenuItems: GetMenuItems = (t) => ({
   delete: { icon: <DeleteIcon />, label: `${t("tweet.menuLabels.delete")}` },

@@ -1,13 +1,11 @@
 import { styled } from "@mui/system";
-import CircularProgress, {
-  CircularProgressProps,
-} from "@mui/material/CircularProgress";
-import TextareaAutosize, {
-  TextareaAutosizeProps,
-} from "@mui/material/TextareaAutosize";
+import CircularProgress from "@mui/material/CircularProgress";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Divider from "@mui/material/Divider";
 // types
-import { BodyContainerProps, StyledCircularProgressProps } from "./types";
+import type { CircularProgressProps } from "@mui/material/CircularProgress";
+import type { TextareaAutosizeProps } from "@mui/material/TextareaAutosize";
+import type { BodyContainerProps, StyledCircularProgressProps } from "./types";
 
 export const BodyContainer = styled("div")<BodyContainerProps>(
   ({ minHeight }) => ({

@@ -19,7 +19,7 @@ import { getTitles } from "../fixtures";
 import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 // types
-import { HomeTweetsProps } from "./types";
+import type { HomeTweetsProps } from "./types";
 
 export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
   const [followingTweets, setfollowingTweets] = useState<
@@ -78,6 +78,9 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
             email={tweet.user.email}
             fullname={tweet.user.fullname}
             userName={tweet.user.username}
+            likes={tweet.likes}
+            retweets={tweet.retweets}
+            replies={tweet.replies}
             // avatarUrl={tweet.user.avatarUrl}
             createdAt={tweet.createdAt}
             t={t}

@@ -1,5 +1,6 @@
-import { TFunction } from "i18next";
 import * as yup from "yup";
+// types
+import type { TFunction } from "i18next";
 
 export const getLoginFormSchema = (t: TFunction<"translation", undefined>) =>
   yup

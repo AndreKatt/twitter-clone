@@ -1,7 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+// local libs
 import { LoadingState } from "../types";
-import { AllUsersState } from "./types";
 import { fetchUsers } from "./asyncActions";
+// types
+import type { AllUsersState } from "./types";
 
 const initialState: AllUsersState = {
   items: [],

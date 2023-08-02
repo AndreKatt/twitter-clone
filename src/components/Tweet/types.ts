@@ -1,4 +1,5 @@
-import { TFunction } from "i18next";
+import { Reply } from "../../redux/types";
+import type { TFunction } from "i18next";
 
 export type TweetProps = {
   _id: string;
@@ -7,6 +8,9 @@ export type TweetProps = {
   email: string;
   fullname: string;
   userName: string;
+  likes: string[];
+  retweets: string[];
+  replies: Reply[];
   // avatarUrl: string;
   createdAt: string;
 };

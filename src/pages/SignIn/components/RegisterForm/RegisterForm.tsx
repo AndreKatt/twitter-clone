@@ -16,8 +16,8 @@ import { transition } from "../../fixtures";
 import { InputField } from "../../styles";
 import { SignAlert } from "./styles";
 // types
-import type { RegisterFormProps, SignUpFormProps } from "./types";
-import { i18nProps } from "../../../../types";
+import type { SignUpFormProps } from "./types";
+import type { RegisterFormProps, i18nProps } from "../../../../types";
 
 export const RegisterForm: React.FC<SignUpFormProps & i18nProps> = ({
   onClose,

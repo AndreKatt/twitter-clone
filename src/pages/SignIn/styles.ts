@@ -1,15 +1,20 @@
 import { styled } from "@mui/material";
-import Container, { ContainerProps } from "@mui/material/Container";
-import Typography, { TypographyProps } from "@mui/material/Typography";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import List from "@mui/material/List";
 import Twitter from "@mui/icons-material/Twitter";
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import TextField from "@mui/material/TextField";
 import ListItem from "@mui/material/ListItem";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import SearchOutlineIcon from "@mui/icons-material/Search";
+// types
+import type { ContainerProps } from "@mui/material/Container";
+import type { TypographyProps } from "@mui/material/Typography";
+import type { ButtonProps } from "@mui/material/Button";
+import type { TextFieldProps } from "@mui/material/TextField";
 
 export const MainContainer = styled(Container)<ContainerProps>({
   height: "100vh",

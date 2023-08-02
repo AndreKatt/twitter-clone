@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axios } from "../../core/axios";
 // types
-import type { RegisterFormProps } from "../../pages/SignIn/components/RegisterForm/types";
-import type { LoginFormProps } from "../../types";
-import { CurrentUserData, type CurrentUserState } from "./types";
-import { SelectedUserData, UserData } from "../types";
+import type { LoginFormProps, RegisterFormProps } from "../../types";
+import type { CurrentUserState } from "./types";
+import type { MainUserInfo, SelectedUserData, UserData } from "../types";
 
 export const signIn = createAsyncThunk<CurrentUserState, LoginFormProps>(
   "currentUser/signIn",
@@ -31,7 +30,7 @@ export const signUp = createAsyncThunk<UserData, RegisterFormProps>(
 export const getCurrentUserByToken = createAsyncThunk(
   "currentUser/getCurrent",
   async () => {
-    const { data } = await axios.get<CurrentUserData>("/api/user/me");
+    const { data } = await axios.get<MainUserInfo>("/api/user/me");
     window.localStorage.setItem("email", data.email);
     window.localStorage.setItem("username", data.username);
     window.localStorage.setItem("fullname", data.fullname);

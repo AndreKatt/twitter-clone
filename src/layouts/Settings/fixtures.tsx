@@ -1,3 +1,4 @@
+// styles
 import { BrushIcon, EarthIcon } from "./styles";
 // types
 import { GetSettingsData } from "./types";

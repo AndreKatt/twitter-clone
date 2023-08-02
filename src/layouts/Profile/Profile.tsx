@@ -154,6 +154,9 @@ export const Profile: React.FC = () => {
               email={userTweet.user.email}
               fullname={userTweet.user.fullname}
               userName={userTweet.user.username}
+              likes={userTweet.likes}
+              retweets={userTweet.retweets}
+              replies={userTweet.replies}
               createdAt={userTweet.createdAt}
               t={t}
             />

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
+import { AddFormState } from "./types";
 import {
   addTweet,
   deleteTweet,
@@ -7,7 +8,7 @@ import {
   updateTweet,
 } from "./asyncActions";
 // types
-import { AddFormState, TweetsState } from "./types";
+import type { TweetsState } from "./types";
 
 const initialState: TweetsState = {
   items: [],

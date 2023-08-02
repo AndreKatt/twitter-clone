@@ -1,4 +1,4 @@
-import { HeaderSectionTitleType } from "../../types";
+import type { HeaderSectionTitleType } from "../../types";
 
 export type HeaderProps = {
   variant: "outlined" | "elevation";

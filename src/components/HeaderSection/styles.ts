@@ -3,7 +3,8 @@ import { colors } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
-import { TitleProps } from "./types";
+// types
+import type { TitleProps } from "./types";
 
 export const TitleContainer = styled(Paper)(({ theme }) => ({
   width: "100%",

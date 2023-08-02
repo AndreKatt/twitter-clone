@@ -1,6 +1,8 @@
 import Slide from "@mui/material/Slide/Slide";
+// styles
 import { ChatIcon, PeopleIcon, SearchIcon } from "./styles";
-import { GetBlueSideList } from "./types";
+// types
+import type { GetBlueSideList } from "./types";
 
 export const getBlueSideList: GetBlueSideList = (t) => [
   {

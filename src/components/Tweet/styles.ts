@@ -1,9 +1,13 @@
 import { styled } from "@mui/system";
-import Paper, { PaperProps } from "@mui/material/Paper";
-import Popper, { PopperProps } from "@mui/material/Popper";
-import Grow, { GrowProps } from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import Grow from "@mui/material/Grow";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import ListItemText from "@mui/material/ListItemText";
+// types
+import type { PaperProps } from "@mui/material/Paper";
+import type { PopperProps } from "@mui/material/Popper";
+import type { GrowProps } from "@mui/material/Grow";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",

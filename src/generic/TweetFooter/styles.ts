@@ -1,6 +1,8 @@
 import { styled } from "@mui/system";
-import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import { TweetFooterProps } from "./types";
+import IconButton from "@mui/material/IconButton";
+// types
+import type { IconButtonProps } from "@mui/material/IconButton";
+import type { TweetFooterProps } from "./types";
 
 export const FooterWrapper = styled("div")<TweetFooterProps>(({ kind }) => ({
   position: "relative",

@@ -1,5 +1,7 @@
 import { styled } from "@mui/system";
-import Button, { ButtonProps } from "@mui/material/Button";
+import Button from "@mui/material/Button";
+// types
+import type { ButtonProps } from "@mui/material/Button";
 import { FollowButtonProps } from "./types";
 
 export const StyledButton = styled(Button)<ButtonProps & FollowButtonProps>(

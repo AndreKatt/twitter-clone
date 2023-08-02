@@ -19,7 +19,7 @@ import {
 } from "./styles";
 import { StyledLink } from "../../styles";
 // types
-import { i18nProps } from "../../types";
+import type { i18nProps } from "../../types";
 
 export const SideMenu: React.FC<i18nProps> = ({ t }) => {
   const [visibleAddTweet, setVisibleAddTweet] = useState(false);

@@ -28,7 +28,7 @@ import "./config/i18n/i18n";
 import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
 // types
-import { ToggleColorMode } from "./types";
+import type { ToggleColorMode } from "./types";
 
 export const ColorModeContext: React.Context<{
   changeColorMode: ToggleColorMode;

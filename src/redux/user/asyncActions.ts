@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+// local libs
 import { axios } from "../../core/axios";
-import { SelectedUserData } from "../types";
+// types
+import type { SelectedUserData } from "../types";
 
 export const fetchUserData = createAsyncThunk<SelectedUserData, string>(
   "user/fetchUserData",

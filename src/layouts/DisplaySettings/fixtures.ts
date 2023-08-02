@@ -1,4 +1,4 @@
-import { GetButtonLabels } from "./types";
+import type { GetButtonLabels } from "./types";
 
 export const getButtonLabels: GetButtonLabels = (t) => ({
   light: `${t("layouts.displaySettings.buttonLabels.light")}`,

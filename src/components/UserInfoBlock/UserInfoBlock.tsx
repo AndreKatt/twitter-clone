@@ -12,6 +12,7 @@ import {
   TextContentWrapper,
   UserAvatar,
 } from "../../styles";
+// types
 import { UserInfoBlockProps } from "./types";
 
 export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {

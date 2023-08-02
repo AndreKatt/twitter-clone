@@ -1,9 +1,13 @@
-import { Link, LinkProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
-import Avatar, { AvatarProps } from "@mui/material/Avatar";
-import Typography, { TypographyProps } from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
 import TwitterIcon from "@mui/icons-material/Twitter";
+// types
+import type { LinkProps } from "react-router-dom";
+import type { AvatarProps } from "@mui/material/Avatar";
+import type { TypographyProps } from "@mui/material/Typography";
 
 export const LogoIcon = styled(TwitterIcon)({
   height: "8%",

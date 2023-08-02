@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 // styles
 import { More, RightSideBlockHeader } from "../../styles";
 // types
-import { i18nProps } from "../../types";
+import type { i18nProps } from "../../types";
 
 export const Topics: React.FC<i18nProps> = ({ t }) => {
   return (

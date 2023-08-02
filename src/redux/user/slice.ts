@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { LoadingState } from "../types";
-import { SelectedUserState } from "./types";
 import { fetchUserData } from "./asyncActions";
+// types
+import type { SelectedUserState } from "./types";
 
 const initialState: SelectedUserState = {
   data: undefined,

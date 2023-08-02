@@ -22,7 +22,7 @@ import {
   LogOutLink,
 } from "./styles";
 // types
-import { i18nProps } from "../../types";
+import type { i18nProps } from "../../types";
 
 export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

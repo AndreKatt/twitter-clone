@@ -1,7 +1,7 @@
 import { RootState } from "../store";
 import { LoadingState } from "../types";
 // types
-import { SelectedUserState } from "./types";
+import type { SelectedUserState } from "./types";
 
 export const selectSelectedUser = (state: RootState): SelectedUserState =>
   state.user;

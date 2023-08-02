@@ -5,7 +5,7 @@ import { subscribe, unsubscribe } from "../../redux/currentUser/asyncActions";
 // styles
 import { StyledButton } from "./styles";
 // types
-import { FollowButtonProps } from "./types";
+import type { FollowButtonProps } from "./types";
 
 export const FollowButton: React.FC<FollowButtonProps & ButtonProps> = ({
   width,

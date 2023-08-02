@@ -1,6 +1,7 @@
 import { RootState } from "../store";
 import { LoadingState } from "../types";
-import { UserTweetsState } from "./types";
+// types
+import type { UserTweetsState } from "./types";
 
 export const selectUserTweets = (state: RootState): UserTweetsState =>
   state.userTweets;
