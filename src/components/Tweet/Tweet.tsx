@@ -122,6 +122,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
           </StyledLink>
 
           <TweetFooter
+            _id={_id}
             likes={likes}
             retweets={retweets}
             replies={replies}

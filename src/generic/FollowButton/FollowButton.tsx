@@ -23,12 +23,10 @@ export const FollowButton: React.FC<FollowButtonProps & ButtonProps> = ({
 
   const handleChangeFollowing = async (): Promise<void> => {
     if (userId && setUpdate) {
-      if (isFollowing) {
-        await dispatch(unsubscribe(userId));
-      }
-      if (!isFollowing) {
-        await dispatch(subscribe(userId));
-      }
+      isFollowing
+        ? await dispatch(unsubscribe(userId))
+        : await dispatch(subscribe(userId));
+
       setUpdate(!update);
       setUpdateBtn(!updateBtn);
     }

@@ -5,7 +5,12 @@ import ReplyIcon from "@mui/icons-material/Reply";
 // types
 import type { GetFooterIcons } from "./types";
 
-export const getFooterIcons: GetFooterIcons = (likes, retweets, replies) => [
+export const getFooterIcons: GetFooterIcons = (
+  likes,
+  retweets,
+  replies,
+  addLike
+) => [
   {
     id: 1,
     icon: <ChatBubbleOutlineOutlinedIcon />,
@@ -16,6 +21,7 @@ export const getFooterIcons: GetFooterIcons = (likes, retweets, replies) => [
     id: 3,
     icon: <FavoriteBorderIcon />,
     label: `${likes.length}`,
+    clickFunction: addLike,
   },
   { id: 4, icon: <ReplyIcon />, label: "" },
 ];

@@ -11,3 +11,19 @@ export const fetchTweetData = createAsyncThunk<Tweet, string>(
     return data;
   }
 );
+
+export const addLike = createAsyncThunk<Tweet, string>(
+  "tweet/addLike",
+  async (id) => {
+    const { data } = await axios.patch("/api/tweets/like/" + id);
+    return data;
+  }
+);
+
+export const removeLike = createAsyncThunk<Tweet, string>(
+  "tweet/removeLike",
+  async (id) => {
+    const { data } = await axios.patch("/api/tweets/unlike/" + id);
+    return data;
+  }
+);

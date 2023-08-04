@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+// local libs
 import { LoadingState } from "../types";
-import { fetchTweetData } from "./asyncActions";
+import { addLike, fetchTweetData } from "./asyncActions";
 // types
 import type { TweetState } from "./types";
 
@@ -27,6 +28,14 @@ const tweetSlice = createSlice({
         state.status = LoadingState.SUCCESS;
       })
       .addCase(fetchTweetData.rejected, (state) => {
+        state.data = undefined;
+        state.status = LoadingState.ERROR;
+      })
+      .addCase(addLike.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.status = LoadingState.SUCCESS;
+      })
+      .addCase(addLike.rejected, (state) => {
         state.data = undefined;
         state.status = LoadingState.ERROR;
       });

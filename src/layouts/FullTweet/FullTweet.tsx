@@ -74,6 +74,7 @@ export const FullTweet: React.FC = () => {
 
             <Divider />
             <TweetFooter
+              _id={tweetData._id}
               likes={tweetData.likes}
               retweets={tweetData.retweets}
               replies={tweetData.replies}
