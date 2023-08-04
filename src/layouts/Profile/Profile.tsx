@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
+import { ProfileFollowingInfo } from "../../generic/ProfileFollowingInfo/ProfileFollowingInfo";
 import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { fetchUserTweets } from "../../redux/userTweets/asyncActions";
@@ -32,10 +33,8 @@ import {
   UserInfoContainer,
   Username,
   FollowInfoContainer,
-  FollowInfo,
-  Count,
 } from "./styles";
-import { CircularProgressWrapper, StyledLink } from "../../styles";
+import { CircularProgressWrapper } from "../../styles";
 // types
 import type { ProfileProps } from "./types";
 
@@ -107,7 +106,6 @@ export const Profile: React.FC<ProfileProps> = ({ type }) => {
         <UserInfoContainer>
           <Fullname>{user.fullname}</Fullname>
           <Username>@{user.username}</Username>
-
           <RegistrationData>
             <CalendarIcon />
             {t("layouts.profile.registration") +
@@ -116,19 +114,8 @@ export const Profile: React.FC<ProfileProps> = ({ type }) => {
           </RegistrationData>
 
           <FollowInfoContainer>
-            <FollowInfo>
-              <StyledLink to={"followers"}>
-                <Count>{user.followers.length + " "}</Count>
-                {t("layouts.profile.followers")}
-              </StyledLink>
-            </FollowInfo>
-
-            <FollowInfo>
-              <StyledLink to={"following"}>
-                <Count>{user.following.length + " "}</Count>
-                {t("layouts.profile.following")}
-              </StyledLink>
-            </FollowInfo>
+            <ProfileFollowingInfo type="followers" userData={user} t={t} />
+            <ProfileFollowingInfo type="following" userData={user} t={t} />
           </FollowInfoContainer>
         </UserInfoContainer>
 
