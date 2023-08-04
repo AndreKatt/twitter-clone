@@ -6,7 +6,7 @@ import { getTitles } from "../fixtures";
 
 export const Messages: React.FC = () => {
   const { t } = useTranslation();
-  const title = getTitles(t).messages.main;
+  const { messages } = getTitles(t);
 
-  return <Header variant="elevation" title={title} t={t} />;
+  return <Header variant="elevation" title={messages} t={t} />;
 };

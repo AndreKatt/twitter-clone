@@ -8,13 +8,13 @@ import { getTitles } from "../fixtures";
 
 export const Bookmarks: React.FC = () => {
   const { t } = useTranslation();
-  const title = getTitles(t).bookmarks.main;
+  const { bookmarks } = getTitles(t);
   const user = useSelector(selectCurrentUserData);
 
   return (
     <Header
       variant="elevation"
-      title={title}
+      title={bookmarks}
       secondText={`@${user?.username}`}
       t={t}
     />

@@ -6,7 +6,7 @@ import { getTitles } from "../fixtures";
 
 export const Explore: React.FC = () => {
   const { t } = useTranslation();
-  const title = getTitles(t).explore.main;
+  const { explore } = getTitles(t);
 
-  return <Header variant="elevation" searchField title={title} t={t} />;
+  return <Header variant="elevation" searchField title={explore} t={t} />;
 };

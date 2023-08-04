@@ -81,7 +81,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     <>
       <BodyContainer minHeight={minHeight}>
         <div>
-          <StyledLink to={`/home/${user?.email}/tweets`}>
+          <StyledLink to={`/${user?.email}/tweets`}>
             <UserAvatar {...stringAvatar(user?.username)} alt="Ваша аватарка" />
           </StyledLink>
         </div>

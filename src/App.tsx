@@ -81,8 +81,8 @@ function App() {
           <LogoIcon color="primary" />
         ) : (
           <Routes>
-            <Route path="/home/*" element={<Home />}>
-              <Route path="" element={<HomeTweets type="home" />} />
+            <Route path="/*" element={<Home />}>
+              <Route path="home" element={<HomeTweets type="home" />} />
               <Route
                 path="subscriptions"
                 element={<HomeTweets type="subscriptions" />}

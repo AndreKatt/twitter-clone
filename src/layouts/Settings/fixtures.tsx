@@ -12,7 +12,6 @@ export const getSettings: GetSettingsData = (t) => [
   },
   {
     link: "languages",
-
     icon: <EarthIcon />,
     title: `${t("layouts.languagesSettings.main")}`,
     description: `${t("layouts.languagesSettings.description1")}`,

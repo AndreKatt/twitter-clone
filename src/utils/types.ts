@@ -1,9 +1,9 @@
 import type { TFunction } from "i18next";
 import type { HeaderSectionTitleType } from "../types";
 
-export type GetProfileSections = (
+export type GetSections = (
   arr: string[],
-  email: string,
   type: string,
-  t: TFunction
+  t: TFunction,
+  email?: string
 ) => HeaderSectionTitleType[];

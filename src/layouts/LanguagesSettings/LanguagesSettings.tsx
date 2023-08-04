@@ -14,9 +14,9 @@ export const LanguagesSettings: React.FC = () => {
   const [language, setLanguage] = useState<string | null>(i18next.language);
   const { t } = useTranslation();
 
-  const titles = getTitles(t);
-  const descriptions = getLanguagesDescriptions(t);
-  const buttonLabels = getButtonLabels(t);
+  const { languages, displayLaguage } = getTitles(t);
+  const { languagesText, displayLaguageText } = getLanguagesDescriptions(t);
+  const { russian, english } = getButtonLabels(t);
 
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const lang = e.currentTarget.ariaLabel;
@@ -29,11 +29,11 @@ export const LanguagesSettings: React.FC = () => {
 
   return (
     <>
-      <Header variant="elevation" title={titles.languages.main} t={t} icon />
-      <HeaderDescription>{descriptions.languages}</HeaderDescription>
+      <Header variant="elevation" title={languages} t={t} icon />
+      <HeaderDescription>{languagesText}</HeaderDescription>
 
-      <Header variant="elevation" title={titles.displayLaguage.main} t={t} />
-      <HeaderDescription>{descriptions.displayLaguage}</HeaderDescription>
+      <Header variant="elevation" title={displayLaguage} t={t} />
+      <HeaderDescription>{displayLaguageText}</HeaderDescription>
 
       <LanguagesContainer>
         <LanguageControlLabel
@@ -44,7 +44,7 @@ export const LanguagesSettings: React.FC = () => {
               inputProps={{ "aria-label": "ru" }}
             />
           }
-          label={buttonLabels.russian}
+          label={russian}
         />
         <LanguageControlLabel
           control={
@@ -54,7 +54,7 @@ export const LanguagesSettings: React.FC = () => {
               inputProps={{ "aria-label": "en" }}
             />
           }
-          label={buttonLabels.english}
+          label={english}
         />
       </LanguagesContainer>
     </>

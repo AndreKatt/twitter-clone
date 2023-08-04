@@ -32,7 +32,7 @@ export const FullTweet: React.FC = () => {
   const isTweetLoading = useSelector(selectTweetLoading);
   const { t } = useTranslation();
 
-  const title = getTitles(t).fullTweet.main;
+  const { fullTweet } = getTitles(t);
   const locale = i18next.language === "en" ? enUS : ru;
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const FullTweet: React.FC = () => {
   if (tweetData) {
     return (
       <>
-        <Header variant="elevation" title={title} t={t} icon />
+        <Header variant="elevation" title={fullTweet} t={t} icon />
         <Paper>
           <FullTweetWrapper variant="outlined">
             <UserInfoBlock email={tweetData.user.email} />

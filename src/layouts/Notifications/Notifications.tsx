@@ -6,13 +6,13 @@ import { getTitles } from "../fixtures";
 
 export const Notifications: React.FC = () => {
   const { t } = useTranslation();
-  const titles = getTitles(t).notifications;
+  const { notifications } = getTitles(t);
 
   return (
     <Header
       variant="outlined"
-      title={titles.main}
-      titles={titles.sections}
+      title={notifications}
+      // titles={titles.sections}
       t={t}
     />
   );

@@ -17,7 +17,7 @@ export const DisplaySettings: React.FC = () => {
   const [value, setValue] = useState<string>(palette.mode);
   const { t } = useTranslation();
 
-  const titles = getTitles(t);
+  const { display, background } = getTitles(t);
   const description = getDisplayDescription(t);
   const buttonLabels = getButtonLabels(t);
 
@@ -28,9 +28,9 @@ export const DisplaySettings: React.FC = () => {
 
   return (
     <>
-      <Header variant="elevation" title={titles.display.main} t={t} icon />
+      <Header variant="elevation" title={display} t={t} icon />
       <HeaderDescription>{description}</HeaderDescription>
-      <Header variant="elevation" title={titles.background.main} t={t} />
+      <Header variant="elevation" title={background} t={t} />
       <ButtonContainer>
         <ThemeButton
           checked={value === "light"}

@@ -14,12 +14,14 @@ import {
 import { UserTweetsState } from "../../redux/userTweets/types";
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 import { axios } from "../../core/axios";
-import { getTitles } from "../fixtures";
+import { getSections } from "../../utils/getSections";
+import { titlesArr } from "./fixtures";
 // styles
 import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 // types
 import type { HomeTweetsProps } from "./types";
+import { getTitles } from "../fixtures";
 
 export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
   const [followingTweets, setfollowingTweets] = useState<
@@ -30,7 +32,8 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
   const isLoadingTweets = useSelector(selectTweetsLoading);
   const { t } = useTranslation();
 
-  const titles = getTitles(t)[type];
+  const titles = getSections(titlesArr, type, t);
+  const { home } = getTitles(t);
   const currentTweets = type === "home" ? homeTweets : followingTweets;
 
   useEffect(() => {
@@ -51,12 +54,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
 
   return (
     <>
-      <Header
-        variant="outlined"
-        title={titles.main}
-        titles={titles.sections}
-        t={t}
-      />
+      <Header variant="outlined" title={home} titles={titles} t={t} />
       <Paper>
         <AddTweetWrapper>
           <AddTweetForm minHeight={56} />

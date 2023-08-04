@@ -31,7 +31,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
 
   if (user)
     return (
-      <StyledLink to={`/home/${user.email}/tweets`}>
+      <StyledLink to={`/${user.email}/tweets`}>
         <FullTweetContainer>
           <UserAvatar
             alt="Аватарка пользователя"

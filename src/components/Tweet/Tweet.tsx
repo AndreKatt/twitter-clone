@@ -49,7 +49,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   const dispatch = useAppDispatch();
   const { _id, text, images, user, createdAt } = tweetData;
 
-  const userLink = `/home/${user.email}/tweets`;
+  const userLink = `/${user.email}/tweets`;
   const menuItems = getMenuItems(t);
 
   function handleListKeyDown(event: React.KeyboardEvent) {

@@ -18,13 +18,13 @@ import { StyledLink } from "../../styles";
 
 export const Settings: React.FC = () => {
   const { t } = useTranslation();
-  const title = getTitles(t).settings.main;
-  const settings = getSettings(t);
+  const { settings } = getTitles(t);
+  const options = getSettings(t);
 
   return (
     <>
-      <Header variant="elevation" title={title} t={t} />
-      {settings.map((item) => (
+      <Header variant="elevation" title={settings} t={t} />
+      {options.map((item) => (
         <StyledLink key={item.title} to={item.link}>
           <SettingsContainer>
             <InnerContainer>

@@ -112,31 +112,28 @@ i18n
           },
           followButton: { follow: "Follow", unfollow: "Unfollow" },
           layouts: {
-            home: {
-              main: "Home",
-              sections: { title1: "For you", title2: "Following" },
-            },
-            notifications: {
-              main: "Notifications",
-              sections: {
+            sections: {
+              home: "For you",
+              subscriptions: "Following",
+              notifications: {
                 title1: "All",
                 title2: "Verified",
                 title3: "Mentions",
               },
+              followers: "Followers",
+              following: "Following",
+              tweets: "Tweets",
+              replies: "Replies",
+              media: "Media",
+              likes: "Likes",
             },
+            home: "Home",
+            notifications: "Notifications",
             messages: "Messages",
             bookmarks: "Bookmarks",
             verified: "Verified",
             profile: {
               registration: "Joined",
-              sections: {
-                followers: "Followers",
-                following: "Following",
-                tweets: "Tweets",
-                replies: "Replies",
-                media: "Media",
-                likes: "Likes",
-              },
             },
             followers: "Followers",
             following: "Following",
@@ -270,31 +267,28 @@ i18n
           },
           followButton: { follow: "Читать", unfollow: "Отписаться" },
           layouts: {
-            home: {
-              main: "Главная",
-              sections: { title1: "Для вас", title2: "Вы читаете" },
-            },
-            notifications: {
-              main: "Уведомления",
-              sections: {
+            sections: {
+              home: "Для вас",
+              subscriptions: "Вы читаете",
+              notifications: {
                 title1: "Все",
                 title2: "Подлинная",
                 title3: "Упоминания",
               },
+              following: "в читаемых",
+              followers: "в читателях",
+              tweets: "Твиты",
+              replies: "Ответы",
+              media: "Медиа",
+              likes: "Нравится",
             },
+            home: "Главная",
+            notifications: "Уведомления",
             messages: "Сообщения",
             bookmarks: "Закладки",
             verified: "Подлинная",
             profile: {
               registration: "Регистрация:",
-              sections: {
-                following: "в читаемых",
-                followers: "в читателях",
-                tweets: "Твиты",
-                replies: "Ответы",
-                media: "Медиа",
-                likes: "Нравится",
-              },
             },
             followers: "Читатели",
             following: "Читает",

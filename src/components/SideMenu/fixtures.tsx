@@ -42,7 +42,7 @@ export const menuItems: GetMenu = (currentUser, t) => {
       label: `${t("sideMenu.verified")}`,
     },
     {
-      link: `${currentUser}`,
+      link: `${currentUser}/tweets`,
       icon: <PermIdentityOutlinedIcon />,
       label: `${t("sideMenu.profile")}`,
     },
