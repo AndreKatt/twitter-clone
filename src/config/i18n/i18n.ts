@@ -129,9 +129,9 @@ i18n
             verified: "Verified",
             profile: {
               registration: "Joined",
-              following: "Following",
-              followers: "Followers",
               sections: {
+                followers: "Followers",
+                following: "Following",
                 tweets: "Tweets",
                 replies: "Replies",
                 media: "Media",
@@ -287,9 +287,9 @@ i18n
             verified: "Подлинная",
             profile: {
               registration: "Регистрация:",
-              following: "в читаемых",
-              followers: "в читателях",
               sections: {
+                following: "в читаемых",
+                followers: "в читателях",
                 tweets: "Твиты",
                 replies: "Ответы",
                 media: "Медиа",

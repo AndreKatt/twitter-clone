@@ -98,8 +98,16 @@ function App() {
                 element={<LanguagesSettings />}
               />
 
-              <Route path=":email/*" element={<Profile />}>
-                <Route path="" element={<ProfileTweets type="tweets" />} />
+              <Route path=":email/" element={<Profile />}>
+                <Route
+                  path="tweets"
+                  element={<ProfileTweets type="tweets" />}
+                />
+                <Route
+                  path="replies"
+                  element={<ProfileTweets type="replies" />}
+                />
+                <Route path="media" element={<ProfileTweets type="media" />} />
                 <Route path="likes" element={<ProfileTweets type="likes" />} />
               </Route>
 

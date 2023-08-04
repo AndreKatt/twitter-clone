@@ -8,16 +8,21 @@ import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { selectSelectedUserData } from "../../redux/user/selectors";
-import { getTitles } from "../fixtures";
+import { getProfileSections } from "../../utils/getProfileSections";
 // types
 import type { FollowProps } from "./types";
+import { titlesArr } from "./fixtures";
 
 export const Follow: React.FC<FollowProps> = ({ type }) => {
   const { email } = useParams();
   const { t } = useTranslation();
   const user = useSelector(selectSelectedUserData);
   const dispatch = useAppDispatch();
-  const titles = getTitles(t, email);
+  // const titles = getTitles(t, email);
+
+  const titles = [
+    ...(user ? getProfileSections(titlesArr, user.email, type, t) : []),
+  ];
 
   useEffect(() => {
     if (email) dispatch(fetchUserData(email));
@@ -30,7 +35,7 @@ export const Follow: React.FC<FollowProps> = ({ type }) => {
         <Header
           title={user.fullname}
           secondText={`@${user.username}`}
-          titles={titles[type].sections}
+          titles={titles}
           t={t}
           icon
           variant="outlined"

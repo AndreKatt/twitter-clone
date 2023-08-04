@@ -19,8 +19,6 @@ export type HeaderTitles = {
   messages: Titles;
   bookmarks: Titles;
   verified: Titles;
-  followers: Titles;
-  following: Titles;
   settings: Titles;
   display: Titles;
   displayLaguage: Titles;

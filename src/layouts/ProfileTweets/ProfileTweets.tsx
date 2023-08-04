@@ -10,7 +10,8 @@ import {
   selectUserTweetsLoading,
 } from "../../redux/userTweets/selectors";
 import { selectSelectedUserData } from "../../redux/user/selectors";
-import { getProfileSections } from "./fixtures";
+import { getProfileSections } from "../../utils/getProfileSections";
+import { titlesArr } from "./fixtures";
 // styles
 import { CircularProgressWrapper } from "../../styles";
 // types
@@ -24,7 +25,9 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
   const userTweets = useSelector(selectUserTweetsItems);
   const isUserTweetsLoading = useSelector(selectUserTweetsLoading);
 
-  const titles = getProfileSections(type, t, user?.email);
+  const titles = [
+    ...(user ? getProfileSections(titlesArr, user.email, type, t) : []),
+  ];
 
   const currentTweets = {
     tweets: userTweets,

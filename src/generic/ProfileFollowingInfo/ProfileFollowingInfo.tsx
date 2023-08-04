@@ -13,7 +13,7 @@ export const ProfileFollowingInfo: React.FC<
     <FollowInfo>
       <StyledLink to={type}>
         <Count>{userData[type].length + " "}</Count>
-        {t(`layouts.profile.${type}`)}
+        {t(`layouts.profile.sections.${type}`)}
       </StyledLink>
     </FollowInfo>
   );

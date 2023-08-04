@@ -49,6 +49,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   const dispatch = useAppDispatch();
   const { _id, text, images, user, createdAt } = tweetData;
 
+  const userLink = `/home/${user.email}/tweets`;
   const menuItems = getMenuItems(t);
 
   function handleListKeyDown(event: React.KeyboardEvent) {
@@ -78,7 +79,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
-        <StyledLink to={`/home/${user.email}`}>
+        <StyledLink to={userLink}>
           <UserAvatar
             alt={`Аватарка пользователя ${user.fullname}`}
             {...stringAvatar(user.username)}
@@ -87,7 +88,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
         </StyledLink>
 
         <TextContentContainer>
-          <StyledLink to={`/home/${user.email}`}>
+          <StyledLink to={userLink}>
             <HeaderTextContainer>
               <TextContentWrapper>
                 <Typography>

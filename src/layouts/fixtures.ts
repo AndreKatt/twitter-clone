@@ -26,27 +26,6 @@ const getHomeSections: GetSections = (type, t) => {
   return sections;
 };
 
-const getFollowSections: GetSections = (type, t, email) => {
-  const sections = [
-    {
-      title: {
-        text: `${t("layouts.followers")}`,
-        link: `/home/${email}/followers`,
-        isActive: type === "followers" ? true : false,
-      },
-    },
-    {
-      title: {
-        text: `${t("layouts.following")}`,
-        link: `/home/${email}/following`,
-        isActive: type === "following" ? true : false,
-      },
-    },
-  ];
-
-  return sections;
-};
-
 export const getTitles: GetTitles = (t, email) => ({
   home: {
     main: `${t("layouts.home.main")}`,
@@ -90,12 +69,6 @@ export const getTitles: GetTitles = (t, email) => ({
   },
   verified: {
     main: `${t("layouts.verified")}`,
-  },
-  followers: {
-    sections: getFollowSections("followers", t, email),
-  },
-  following: {
-    sections: getFollowSections("following", t, email),
   },
   settings: {
     main: `${t("layouts.settings")}`,
