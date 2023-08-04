@@ -1,5 +1,4 @@
-import { TFunction } from "i18next";
-// types
+import type { TFunction } from "i18next";
 import type { HeaderSectionTitleType } from "../types";
 
 type Titles = {
@@ -20,7 +19,6 @@ export type HeaderTitles = {
   messages: Titles;
   bookmarks: Titles;
   verified: Titles;
-  profile: Titles;
   followers: Titles;
   following: Titles;
   settings: Titles;

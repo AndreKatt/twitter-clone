@@ -91,40 +91,6 @@ export const getTitles: GetTitles = (t, email) => ({
   verified: {
     main: `${t("layouts.verified")}`,
   },
-  profile: {
-    sections: [
-      {
-        title: {
-          text: `${t("layouts.profile.sections.tweets")}`,
-          isActive: true,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.profile.sections.replies")}`,
-          isActive: false,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.profile.sections.highlights")}`,
-          isActive: false,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.profile.sections.media")}`,
-          isActive: false,
-        },
-      },
-      {
-        title: {
-          text: `${t("layouts.profile.sections.likes")}`,
-          isActive: false,
-        },
-      },
-    ],
-  },
   followers: {
     sections: getFollowSections("followers", t, email),
   },

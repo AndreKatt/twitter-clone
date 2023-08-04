@@ -1,6 +1,7 @@
 import { LoadingState } from "../types";
 // types
-import type { MainUserInfo, UserData } from "../types";
+import type { UserData } from "../types";
+import type { MainUserInfo } from "../../types";
 
 export type Token = {
   access_token: string;

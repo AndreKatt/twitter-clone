@@ -1,8 +1,8 @@
 import { LoadingState } from "../types";
 // types
-import type { Tweet } from "../types";
+import type { TweetType } from "../../types";
 
 export type TweetState = {
-  data?: Tweet;
+  data?: TweetType;
   status: LoadingState;
 };

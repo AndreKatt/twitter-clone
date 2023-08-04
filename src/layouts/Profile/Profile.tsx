@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 // local libs
-import { Tweet } from "../../components/Tweet/Tweet";
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import { useAppDispatch } from "../../redux/store";
@@ -16,14 +15,10 @@ import {
   selectCurrentUserData,
   selectCurrentUser,
 } from "../../redux/currentUser/selectors";
-import {
-  selectUserTweetsItems,
-  selectUserTweetsLoading,
-} from "../../redux/userTweets/selectors";
-import { getTitles } from "../fixtures";
-import { profileButtons } from "./fixtures";
+import { selectUserTweetsItems } from "../../redux/userTweets/selectors";
 import { formatRegistrationDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
+import { profileButtons } from "./fixtures";
 // styles
 import {
   AvatarWrapper,
@@ -41,8 +36,10 @@ import {
   Count,
 } from "./styles";
 import { CircularProgressWrapper, StyledLink } from "../../styles";
+// types
+import type { ProfileProps } from "./types";
 
-export const Profile: React.FC = () => {
+export const Profile: React.FC<ProfileProps> = ({ type }) => {
   const [update, setUpdate] = useState<boolean>(false);
   const { email } = useParams();
   const { t } = useTranslation();
@@ -51,9 +48,6 @@ export const Profile: React.FC = () => {
   const currentUserData = useSelector(selectCurrentUserData);
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
-  const isUserTweetsLoading = useSelector(selectUserTweetsLoading);
-
-  const titles = getTitles(t).profile.sections;
   let isCurrentUser;
 
   if (email && currentUser) {
@@ -138,30 +132,7 @@ export const Profile: React.FC = () => {
           </FollowInfoContainer>
         </UserInfoContainer>
 
-        <Header variant="outlined" titles={titles} t={t} />
-
-        {isUserTweetsLoading ? (
-          <CircularProgressWrapper>
-            <CircularProgress />
-          </CircularProgressWrapper>
-        ) : (
-          userTweets.map((userTweet) => (
-            <Tweet
-              key={userTweet._id}
-              _id={userTweet._id}
-              text={userTweet.text}
-              images={userTweet.images}
-              email={userTweet.user.email}
-              fullname={userTweet.user.fullname}
-              userName={userTweet.user.username}
-              likes={userTweet.likes}
-              retweets={userTweet.retweets}
-              replies={userTweet.replies}
-              createdAt={userTweet.createdAt}
-              t={t}
-            />
-          ))
-        )}
+        <Outlet />
       </>
     );
   }

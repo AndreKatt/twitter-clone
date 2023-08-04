@@ -134,7 +134,6 @@ i18n
               sections: {
                 tweets: "Tweets",
                 replies: "Replies",
-                highlights: "Highlights",
                 media: "Media",
                 likes: "Likes",
               },
@@ -293,7 +292,6 @@ i18n
               sections: {
                 tweets: "Твиты",
                 replies: "Ответы",
-                highlights: "Избранное",
                 media: "Медиа",
                 likes: "Нравится",
               },

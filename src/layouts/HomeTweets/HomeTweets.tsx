@@ -70,21 +70,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
         </CircularProgressWrapper>
       ) : (
         currentTweets.map((tweet) => (
-          <Tweet
-            key={tweet._id}
-            _id={tweet._id}
-            text={tweet.text}
-            images={tweet.images}
-            email={tweet.user.email}
-            fullname={tweet.user.fullname}
-            userName={tweet.user.username}
-            likes={tweet.likes}
-            retweets={tweet.retweets}
-            replies={tweet.replies}
-            // avatarUrl={tweet.user.avatarUrl}
-            createdAt={tweet.createdAt}
-            t={t}
-          />
+          <Tweet key={tweet._id} tweetData={tweet} t={t} />
         ))
       )}
     </>

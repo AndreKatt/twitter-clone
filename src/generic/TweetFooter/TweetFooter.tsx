@@ -11,15 +11,13 @@ import { FooterIcon, FooterWrapper, FooterContainer } from "./styles";
 import type { TweetFooterProps } from "./types";
 
 export const TweetFooter: React.FC<TweetFooterProps> = ({
-  _id,
-  likes = [],
-  retweets = [],
-  replies = [],
+  tweetData,
   kind,
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const currentUserData = useSelector(selectCurrentUserData);
+  const { _id, likes, retweets, replies } = tweetData;
 
   const handleAddLike = async (): Promise<void> => {
     if (_id) {

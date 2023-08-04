@@ -29,6 +29,7 @@ import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
 // types
 import type { ToggleColorMode } from "./types";
+import { ProfileTweets } from "./layouts/ProfileTweets/ProfileTweets";
 
 export const ColorModeContext: React.Context<{
   changeColorMode: ToggleColorMode;
@@ -96,7 +97,12 @@ function App() {
                 path="settings/languages"
                 element={<LanguagesSettings />}
               />
-              <Route path=":email" element={<Profile />} />
+
+              <Route path=":email/*" element={<Profile />}>
+                <Route path="" element={<ProfileTweets type="tweets" />} />
+                <Route path="likes" element={<ProfileTweets type="likes" />} />
+              </Route>
+
               <Route
                 path=":email/following"
                 element={<Follow type="following" />}

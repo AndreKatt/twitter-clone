@@ -41,22 +41,13 @@ import type { TweetProps } from "./types";
 import type { i18nProps } from "../../types";
 
 export const Tweet: React.FC<TweetProps & i18nProps> = ({
-  _id,
-  text,
-  email,
-  fullname,
-  userName,
-  images,
-  likes,
-  retweets,
-  replies,
-  // avatarUrl,
-  createdAt,
+  tweetData,
   t,
 }): React.ReactElement => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
+  const { _id, text, images, user, createdAt } = tweetData;
 
   const menuItems = getMenuItems(t);
 
@@ -87,21 +78,21 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
-        <StyledLink to={`/home/${email}`}>
+        <StyledLink to={`/home/${user.email}`}>
           <UserAvatar
-            alt={`Аватарка пользователя ${fullname}`}
-            {...stringAvatar(userName)}
+            alt={`Аватарка пользователя ${user.fullname}`}
+            {...stringAvatar(user.username)}
             // src={avatarUrl}
           />
         </StyledLink>
 
         <TextContentContainer>
-          <StyledLink to={`/home/${email}`}>
+          <StyledLink to={`/home/${user.email}`}>
             <HeaderTextContainer>
               <TextContentWrapper>
                 <Typography>
-                  <b>{fullname}</b>&nbsp;
-                  <HeaderText>@{userName}</HeaderText>
+                  <b>{user.fullname}</b>&nbsp;
+                  <HeaderText>@{user.username}</HeaderText>
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
@@ -121,13 +112,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             {images && <ImagesList images={images} />}
           </StyledLink>
 
-          <TweetFooter
-            _id={_id}
-            likes={likes}
-            retweets={retweets}
-            replies={replies}
-            kind="tweet"
-          />
+          <TweetFooter tweetData={tweetData} kind="tweet" />
         </TextContentContainer>
       </HeaderContainer>
 

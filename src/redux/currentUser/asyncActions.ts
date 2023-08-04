@@ -1,9 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axios } from "../../core/axios";
 // types
-import type { LoginFormProps, RegisterFormProps } from "../../types";
+import type {
+  LoginFormProps,
+  RegisterFormProps,
+  MainUserInfo,
+} from "../../types";
 import type { CurrentUserState } from "./types";
-import type { MainUserInfo, SelectedUserData, UserData } from "../types";
+import type { SelectedUserData, UserData } from "../types";
 
 export const signIn = createAsyncThunk<CurrentUserState, LoginFormProps>(
   "currentUser/signIn",

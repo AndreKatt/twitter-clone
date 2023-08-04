@@ -8,7 +8,6 @@ import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { selectSelectedUserData } from "../../redux/user/selectors";
-import { setUserData } from "../../redux/user/slice";
 import { getTitles } from "../fixtures";
 // types
 import type { FollowProps } from "./types";
@@ -22,10 +21,6 @@ export const Follow: React.FC<FollowProps> = ({ type }) => {
 
   useEffect(() => {
     if (email) dispatch(fetchUserData(email));
-
-    return () => {
-      dispatch(setUserData(undefined));
-    };
     // eslint-disable-next-line
   }, [email]);
 

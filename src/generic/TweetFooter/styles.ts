@@ -4,37 +4,41 @@ import IconButton from "@mui/material/IconButton";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { TweetFooterProps } from "./types";
 
-export const FooterWrapper = styled("div")<TweetFooterProps>(({ kind }) => ({
-  position: "relative",
-  display: "grid",
-  justifyContent: "space-between",
-  gridTemplateColumns: "65px 65px 65px 65px",
+export const FooterWrapper = styled("div")<Partial<TweetFooterProps>>(
+  ({ kind }) => ({
+    position: "relative",
+    display: "grid",
+    justifyContent: "space-between",
+    gridTemplateColumns: "65px 65px 65px 65px",
 
-  ...(kind === "tweet"
-    ? {
-        left: -13,
-      }
-    : {
-        left: 13,
-        paddingRight: 30,
-      }),
-}));
+    ...(kind === "tweet"
+      ? {
+          left: -13,
+        }
+      : {
+          left: 13,
+          paddingRight: 30,
+        }),
+  })
+);
 
-export const FooterContainer = styled("div")<TweetFooterProps>(({ kind }) => ({
-  display: "flex",
-  alignItems: "center",
-  backgroundColor: "inherit",
+export const FooterContainer = styled("div")<Partial<TweetFooterProps>>(
+  ({ kind }) => ({
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "inherit",
 
-  ...(kind === "fullTweet" && {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingTop: "5px 0 0 20px",
-    margin: "5px 0",
-  }),
-}));
+    ...(kind === "fullTweet" && {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      paddingTop: "5px 0 0 20px",
+      margin: "5px 0",
+    }),
+  })
+);
 
 export const FooterIcon = styled(IconButton)<
-  IconButtonProps & TweetFooterProps
+  IconButtonProps & Partial<TweetFooterProps>
 >(({ kind, theme }) => ({
   fontSize: kind === "tweet" ? "20px !important" : "25px !important",
 
