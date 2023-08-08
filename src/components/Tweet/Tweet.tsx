@@ -92,8 +92,8 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             <HeaderTextContainer>
               <TextContentWrapper>
                 <Typography>
-                  <b>{user.fullname}</b>&nbsp;
-                  <HeaderText>@{user.username}</HeaderText>
+                  <b>{user.username}</b>&nbsp;
+                  <HeaderText>@{user.fullname}</HeaderText>
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
@@ -106,7 +106,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             </HeaderTextContainer>
           </StyledLink>
 
-          <StyledLink to={`/home/tweet/${_id}`}>
+          <StyledLink to={`/tweet/${_id}`}>
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>

@@ -9,9 +9,9 @@ import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { selectSelectedUserData } from "../../redux/user/selectors";
 import { getSections } from "../../utils/getSections";
+import { titlesArr } from "./fixtures";
 // types
 import type { FollowProps } from "./types";
-import { titlesArr } from "./fixtures";
 
 export const Follow: React.FC<FollowProps> = ({ type }) => {
   const { email } = useParams();

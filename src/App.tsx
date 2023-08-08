@@ -20,6 +20,7 @@ import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
 import { Explore } from "./layouts/Explore/Explore";
 import { DisplaySettings } from "./layouts/DisplaySettings/DisplaySettings";
 import { LanguagesSettings } from "./layouts/LanguagesSettings/LanguagesSettings";
+import { ProfileTweets } from "./layouts/ProfileTweets/ProfileTweets";
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/currentUser/selectors";
 import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
@@ -29,7 +30,6 @@ import { LogoIcon } from "./styles";
 import { getDesignTokens } from "./theme";
 // types
 import type { ToggleColorMode } from "./types";
-import { ProfileTweets } from "./layouts/ProfileTweets/ProfileTweets";
 
 export const ColorModeContext: React.Context<{
   changeColorMode: ToggleColorMode;

@@ -1,7 +1,7 @@
 // styles
 import { BrushIcon, EarthIcon } from "./styles";
 // types
-import { GetSettingsData } from "./types";
+import type { GetSettingsData } from "./types";
 
 export const getSettings: GetSettingsData = (t) => [
   {

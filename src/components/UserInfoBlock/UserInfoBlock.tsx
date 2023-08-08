@@ -35,7 +35,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
         <FullTweetContainer>
           <UserAvatar
             alt="Аватарка пользователя"
-            {...stringAvatar(user.username)}
+            {...stringAvatar(user.fullname)}
             // src={user.avatarUrl}
           />
           <TextContentContainer>
