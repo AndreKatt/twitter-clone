@@ -38,7 +38,7 @@ export const Follow: React.FC<FollowProps> = ({ type }) => {
           variant="outlined"
         />
         {user[type].map((email) => (
-          <UserInfoBlock email={email} />
+          <UserInfoBlock key={email} email={email} />
         ))}
       </>
     );

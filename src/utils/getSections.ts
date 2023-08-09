@@ -5,7 +5,7 @@ export const getSections: GetSections = (arr, type, t, email) => {
     title: {
       text: `${t("layouts.sections." + label)}`,
       link: email ? `/${email}/${label}` : `/${label}`,
-      isActive: type === label ? true : false,
+      isActive: type === label ? 1 : 0,
     },
   }));
 };

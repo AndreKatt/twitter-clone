@@ -1,3 +1,3 @@
 export type TitleProps = {
-  isactive?: boolean;
+  isactive?: 0 | 1;
 };

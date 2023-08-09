@@ -42,7 +42,7 @@ export type LoginFormProps = {
 };
 
 export type HeaderSectionTitleType = {
-  title: { text: string; link?: string; isActive?: boolean };
+  title: { text: string; link?: string; isActive?: 0 | 1 };
 };
 
 export type ToggleColorMode = (changeMode: string) => void;

@@ -14,7 +14,7 @@ import {
   signIn,
 } from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
-import { getLoginFormSchema } from "./fixtures";
+import { getLoginFormSchema } from "../../../../utils/getLoginFormSchema";
 import { transition } from "../../fixtures";
 // styles
 import { InputField } from "../../styles";

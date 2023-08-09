@@ -10,7 +10,7 @@ import DialogActions from "@mui/material/DialogActions";
 // local libs
 import { signUp } from "../../../../redux/currentUser/asyncActions";
 import { useAppDispatch } from "../../../../redux/store";
-import { getLoginFormSchema } from "./fixtures";
+import { getSignUpFormSchema } from "../../../../utils/getSignUpFormSchema";
 import { transition } from "../../fixtures";
 // styles
 import { InputField } from "../../styles";
@@ -33,7 +33,7 @@ export const RegisterForm: React.FC<SignUpFormProps & i18nProps> = ({
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormProps>({
-    resolver: yupResolver(getLoginFormSchema(t)),
+    resolver: yupResolver(getSignUpFormSchema(t)),
     defaultValues: {
       email: "",
       username: "",

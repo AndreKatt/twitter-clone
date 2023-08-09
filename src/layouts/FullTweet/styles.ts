@@ -23,7 +23,7 @@ export const TweetText = styled(Typography)<TypographyProps>({
   marginTop: 5,
 });
 
-export const TweetData = styled(Typography)<TypographyProps>({
+export const TweetData = styled("span")({
   color: grey[500],
   margin: "20px 0",
 });
