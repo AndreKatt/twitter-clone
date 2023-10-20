@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
 
 export const FullTweetContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -20,9 +20,10 @@ export const FullTweetContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-export const HeaderTextContent = styled(Typography)({
+export const HeaderTextContent = styled(Paper)({
   display: "flex",
   flexDirection: "column",
+  backgroundColor: "inherit",
 
   "& div": {
     marginTop: -27,

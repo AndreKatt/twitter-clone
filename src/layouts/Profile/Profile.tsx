@@ -19,7 +19,6 @@ import {
 import { selectUserTweetsItems } from "../../redux/userTweets/selectors";
 import { formatRegistrationDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
-import { profileButtons } from "./fixtures";
 // styles
 import {
   AvatarWrapper,
@@ -33,6 +32,7 @@ import {
   UserInfoContainer,
   Username,
   FollowInfoContainer,
+  MailIcon,
 } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 // types
@@ -80,11 +80,9 @@ export const Profile: React.FC<ProfileProps> = ({ type }) => {
         <ProfileButtonsContainer>
           {!isCurrentUser && (
             <>
-              {profileButtons.map((button) => (
-                <StyledIconButton key={button.id}>
-                  {button.icon}
-                </StyledIconButton>
-              ))}
+              <StyledIconButton>
+                <MailIcon />
+              </StyledIconButton>
 
               <FollowButton
                 userId={user._id}

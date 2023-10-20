@@ -1,6 +1,6 @@
 import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { initReactI18next } from "react-i18next";
 
 i18n
   .use(LanguageDetector)
@@ -97,8 +97,7 @@ i18n
           },
           searchTextField: "Search Twitter",
           userSideProfile: {
-            menuLabel1: "Add an existing account",
-            menuLabel2: "Log out",
+            menuLabel: "Log out",
           },
           rightSideBlocks: {
             more: "Show more",
@@ -252,8 +251,7 @@ i18n
           },
           searchTextField: "Поиск в Твиттере",
           userSideProfile: {
-            menuLabel1: "Добавить существующую учетную запись",
-            menuLabel2: "Выйти из учетной записи",
+            menuLabel: "Выйти из учетной записи",
           },
           rightSideBlocks: {
             more: "Показать еще",

@@ -41,6 +41,7 @@ export const tweetsSlice = createSlice({
       .addCase(fetchTweets.rejected, (state) => {
         state.status = LoadingState.ERROR;
       })
+
       .addCase(addTweet.pending, (state) => {
         state.addFormState = AddFormState.LOADING;
       })
@@ -51,12 +52,14 @@ export const tweetsSlice = createSlice({
       .addCase(addTweet.rejected, (state) => {
         state.addFormState = AddFormState.ERROR;
       })
+
       .addCase(updateTweet.fulfilled, (state) => {
         state.addFormState = AddFormState.NEVER;
       })
       .addCase(updateTweet.rejected, (state) => {
         state.addFormState = AddFormState.ERROR;
       })
+
       .addCase(deleteTweet.pending, (state) => {
         state.status = LoadingState.NEVER;
       })

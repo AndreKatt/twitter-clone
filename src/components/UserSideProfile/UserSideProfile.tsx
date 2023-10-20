@@ -5,7 +5,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Paper from "@mui/material/Paper";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import MenuList from "@mui/material/MenuList";
-import { Divider } from "@mui/material";
 // local libs
 import { selectUserState } from "../../redux/currentUser/selectors";
 import { stringAvatar } from "../../utils/stringAvatar";
@@ -90,12 +89,9 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
                   aria-labelledby="profile"
                   onKeyDown={handleListKeyDown}
                 >
-                  <Divider />
-                  <MenuItem>{t("userSideProfile.menuLabel1")}</MenuItem>
-
                   <LogOutLink to="/signIn">
                     <MenuItem onClick={handleLogOut}>
-                      {t("userSideProfile.menuLabel2")}
+                      {t("userSideProfile.menuLabel")}
                       <>
                         <br />
                       </>

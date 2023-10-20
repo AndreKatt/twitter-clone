@@ -28,4 +28,5 @@ export type SelectedUserData = {
   createdAt: string;
   following: [];
   followers: [];
+  likes: [];
 };

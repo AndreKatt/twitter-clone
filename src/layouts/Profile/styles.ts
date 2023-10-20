@@ -2,7 +2,6 @@ import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
@@ -45,11 +44,6 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   height: 36,
   border: `1px solid ${theme.palette.neutral.dark}`,
   marginRight: 8,
-}));
-
-export const MoreIcon = styled(MoreHorizIcon)(({ theme }) => ({
-  fontSize: 20,
-  color: theme.palette.text.primary,
 }));
 
 export const MailIcon = styled(EmailOutlinedIcon)(({ theme }) => ({

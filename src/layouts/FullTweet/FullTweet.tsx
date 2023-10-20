@@ -41,13 +41,13 @@ export const FullTweet: React.FC = () => {
     }
   }, [dispatch, id]);
 
-  if (isTweetLoading) {
-    return (
-      <SpinnerWrapper>
-        <CircularProgress />
-      </SpinnerWrapper>
-    );
-  }
+  // if (isTweetLoading) {
+  //   return (
+  //     <SpinnerWrapper>
+  //       <CircularProgress />
+  //     </SpinnerWrapper>
+  //   );
+  // }
 
   if (tweetData) {
     return (

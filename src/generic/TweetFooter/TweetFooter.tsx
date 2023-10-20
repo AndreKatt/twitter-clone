@@ -3,7 +3,11 @@ import { useSelector } from "react-redux";
 // local libs
 import { getFooterIcons } from "./fixtures";
 import { useAppDispatch } from "../../redux/store";
-import { addLike, removeLike } from "../../redux/tweet/asyncActions";
+import {
+  addLike,
+  fetchTweetData,
+  removeLike,
+} from "../../redux/tweet/asyncActions";
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 // styles
 import { FooterIcon, FooterWrapper, FooterContainer } from "./styles";
@@ -25,6 +29,7 @@ export const TweetFooter: React.FC<TweetFooterProps> = ({
         ? await dispatch(removeLike(_id))
         : await dispatch(addLike(_id));
 
+      await dispatch(fetchTweetData(_id));
       setIsFavorite(!isFavorite);
     }
   };
@@ -36,7 +41,7 @@ export const TweetFooter: React.FC<TweetFooterProps> = ({
       setIsFavorite(likes.includes(currentUserData.email));
     }
     // eslint-disable-next-line
-  }, [isFavorite]);
+  }, [isFavorite, dispatch]);
 
   return (
     <FooterWrapper kind={kind}>

@@ -10,6 +10,7 @@ import {
   selectUserTweetsLoading,
 } from "../../redux/userTweets/selectors";
 import { selectSelectedUserData } from "../../redux/user/selectors";
+import { selectTweetsItems } from "../../redux/tweets/selectors";
 import { getSections } from "../../utils/getSections";
 import { titlesArr } from "./fixtures";
 // styles
@@ -24,6 +25,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
   const isUserTweetsLoading = useSelector(selectUserTweetsLoading);
+  const allTweets = useSelector(selectTweetsItems);
 
   const titles = [...(user ? getSections(titlesArr, type, t, user.email) : [])];
 
@@ -32,10 +34,18 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
     replies: [],
     highlights: [],
     media: [],
-    likes: [],
+    likes: likedTweets,
   };
 
-  useEffect(() => {}, [likedTweets]);
+  useEffect(() => {
+    if (type === "likes" && user) {
+      const foundTweets = user.likes.map(
+        (id) => allTweets.filter((tweet) => tweet._id === id)[0]
+      );
+      setLikedTweets(foundTweets);
+    }
+    // eslint-disable-next-line
+  }, [type]);
 
   return (
     <>

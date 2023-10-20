@@ -27,7 +27,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
     };
     getUser();
     // eslint-disable-next-line
-  }, [user]);
+  }, []);
 
   if (user)
     return (
