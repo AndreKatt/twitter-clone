@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 // local libs
 import { axios } from "../../core/axios";
 // types
-import type { SendTweet, TweetsState, UploadedFileData } from "./types";
+import type { SendTweet, TweetsState } from "./types";
 import type { TweetType } from "../../types";
 
 export const fetchTweets = createAsyncThunk<TweetsState["items"]>(
@@ -10,17 +10,6 @@ export const fetchTweets = createAsyncThunk<TweetsState["items"]>(
   async () => {
     const { data } = await axios.get<TweetsState["items"]>(
       "/api/tweets/index?_sort=id&_order=desc"
-    );
-    return data;
-  }
-);
-
-export const uploadFile = createAsyncThunk<UploadedFileData, File>(
-  "tweets/uploadFile",
-  async (payload) => {
-    const { data } = await axios.post<UploadedFileData>(
-      "/api/files/upload",
-      payload
     );
     return data;
   }

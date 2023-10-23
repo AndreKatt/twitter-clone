@@ -12,12 +12,6 @@ export type SendTweet = {
   user: MainUserInfo;
 };
 
-export type UploadedFileData = {
-  width: number;
-  height: number;
-  url: string;
-};
-
 export type TweetsState = {
   items: TweetType[];
   status: LoadingState;

@@ -7,11 +7,12 @@ import Alert from "@mui/material/Alert";
 // local libs
 import { UploadImages } from "../UploadImages/UploadImages";
 import { selectAddFormState } from "../../redux/tweets/selectors";
-import { addTweet, uploadFile } from "../../redux/tweets/asyncActions";
+import { addTweet } from "../../redux/tweets/asyncActions";
 import { setAddFormState } from "../../redux/tweets/slice";
 import { AddFormState } from "../../redux/tweets/types";
 import { useAppDispatch } from "../../redux/store";
 import { selectCurrentUser } from "../../redux/currentUser/selectors";
+import { uploadFiles } from "../../utils/uploadImages";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
@@ -60,18 +61,23 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     const email = window.localStorage.getItem("email");
     const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
+    const uploadedUrls =
+      images[0] && (await uploadFiles(images.map((image) => image.file)));
+
     if (fullname && username && email) {
-      const currentUser = {
+      const tweet = {
         text: text,
+        images: uploadedUrls,
         user: {
           email: email,
           fullname: fullname,
           username: username,
         },
       };
-      await dispatch(uploadFile(images[0].file));
-      await dispatch(addTweet(currentUser));
+
+      await dispatch(addTweet(tweet));
       setText("");
+      setImages([]);
     }
 
     setAddFormState(AddFormState.ERROR);
