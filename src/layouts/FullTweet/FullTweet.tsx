@@ -20,7 +20,7 @@ import {
   selectTweetData,
   selectTweetLoading,
 } from "../../redux/tweet/selectors";
-import { getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
 // styles
 import { SpinnerWrapper } from "../../styles";
 import { FullTweetWrapper, TweetText, TweetData } from "./styles";

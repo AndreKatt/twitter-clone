@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Typography from "@mui/material/Typography";
 // local libs
 import { Header } from "../../generic/Header/Header";
-import { getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
 import { getSettings } from "./fixtures";
 // styles
 import {

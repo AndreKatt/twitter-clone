@@ -14,7 +14,7 @@ import {
 // local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
-import { formatTweetDate } from "../../utils/formatDate";
+import { formatTweetInfoDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
 import { getMenuItems } from "./fixtures";
@@ -97,7 +97,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
-                    {`${formatTweetDate(new Date(createdAt))} ${t(
+                    {`${formatTweetInfoDate(new Date(createdAt))} ${t(
                       "tweet.dateText"
                     )}`}
                   </HeaderText>

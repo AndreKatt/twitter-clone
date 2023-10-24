@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 import { ColorModeContext } from "../../App";
 import { Header } from "../../generic/Header/Header";
 import { ThemeButton } from "../../generic/ThemeButton/ThemeButton";
-import { getDisplayDescription, getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
+import { getDisplayDescription } from "../../utils/getDisplayDescription";
 import { getButtonLabels } from "./fixtures";
 // styles
 import { ButtonContainer } from "./styles";

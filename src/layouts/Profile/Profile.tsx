@@ -17,7 +17,7 @@ import {
   selectCurrentUser,
 } from "../../redux/currentUser/selectors";
 import { selectUserTweetsItems } from "../../redux/userTweets/selectors";
-import { formatRegistrationDate } from "../../utils/formatDate";
+import { formatRegistrationInfoDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
@@ -106,7 +106,7 @@ export const Profile: React.FC = () => {
             <CalendarIcon />
             {t("layouts.profile.registration") +
               " " +
-              formatRegistrationDate(new Date(user.createdAt))}
+              formatRegistrationInfoDate(new Date(user.createdAt))}
           </RegistrationData>
 
           <FollowInfoContainer>

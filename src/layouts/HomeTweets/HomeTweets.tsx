@@ -21,7 +21,7 @@ import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 // types
 import type { HomeTweetsProps } from "./types";
-import { getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
 
 export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
   const [followingTweets, setfollowingTweets] = useState<

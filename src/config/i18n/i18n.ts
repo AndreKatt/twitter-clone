@@ -72,7 +72,6 @@ i18n
           },
           sideMenu: {
             home: "Home",
-            explore: "Explore",
             notifications: "Notifications",
             bookmarks: "Bookmarks",
             profile: "Profile",
@@ -222,7 +221,6 @@ i18n
           },
           sideMenu: {
             home: "Главная",
-            explore: "Обзор",
             notifications: "Уведомления",
             bookmarks: "Закладки",
             profile: "Профиль",

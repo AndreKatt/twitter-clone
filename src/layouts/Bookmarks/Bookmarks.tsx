@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 // local libs
 import { Header } from "../../generic/Header/Header";
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
-import { getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
 
 export const Bookmarks: React.FC = () => {
   const { t } = useTranslation();

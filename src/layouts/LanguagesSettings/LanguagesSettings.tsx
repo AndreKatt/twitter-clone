@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import Checkbox from "@mui/material/Checkbox";
 // local libs
 import { Header } from "../../generic/Header/Header";
-import { getLanguagesDescriptions, getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
+import { getLanguagesDescriptions } from "../../utils/getLanguagesDescriptions";
 import { getButtonLabels } from "./fixtures";
 // styles
 import { LanguagesContainer, LanguageControlLabel } from "./styles";

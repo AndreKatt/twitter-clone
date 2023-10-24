@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 // local libs
 import { Header } from "../../generic/Header/Header";
-import { getTitles } from "../fixtures";
+import { getTitles } from "../../utils/getTitles";
 
 export const Notifications: React.FC = () => {
   const { t } = useTranslation();

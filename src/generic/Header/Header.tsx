@@ -4,13 +4,11 @@ import Typography from "@mui/material/Typography";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // local libs
 import { HeaderSectionTitle } from "../../components/HeaderSection/HeaderSectionTitle";
-import { SearchTextField } from "../../components/SearchTextField/SearchTextField";
 // styles
 import { HeaderSection, StyledLink } from "../../styles";
 import {
   HeaderButton,
   HeaderTitleContainer,
-  SearchFieldContainer,
   SecondTitle,
   TweetsHeader,
 } from "./styles";
@@ -20,27 +18,19 @@ import type { i18nProps } from "../../types";
 
 export const Header: React.FC<HeaderProps & i18nProps> = ({
   variant,
-  searchField,
   icon,
   title,
   secondText,
   titles,
-  t,
 }) => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <TweetsHeader variant={variant}>
-      {searchField && (
-        <SearchFieldContainer>
-          <SearchTextField t={t} />
-        </SearchFieldContainer>
-      )}
-
       {title && (
         <HeaderTitleContainer>
           {icon && (
-            <HeaderButton onClick={() => nav(-1)} color="primary">
+            <HeaderButton onClick={() => navigate(-1)} color="primary">
               <ArrowBackIcon />
             </HeaderButton>
           )}
