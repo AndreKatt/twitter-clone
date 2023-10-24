@@ -1,8 +1,8 @@
 // @ts-nocheck
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useSelector } from "react-redux";
 import { createContext, useEffect, useMemo, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme } from "@mui/material/styles";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 // local libs
@@ -15,7 +15,6 @@ import { Settings } from "./layouts/Settings/Settings";
 import { Profile } from "./layouts/Profile/Profile";
 import { Follow } from "./layouts/Follow/Follow";
 import { Notifications } from "./layouts/Notifications/Notifications";
-import { Messages } from "./layouts/Messages/Messages";
 import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
 import { Explore } from "./layouts/Explore/Explore";
 import { DisplaySettings } from "./layouts/DisplaySettings/DisplaySettings";
@@ -89,7 +88,6 @@ function App() {
               />
               <Route path="explore" element={<Explore />} />
               <Route path="notifications" element={<Notifications />} />
-              <Route path="messages" element={<Messages />} />
               <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="settings" element={<Settings />} />
               <Route path="settings/display" element={<DisplaySettings />} />

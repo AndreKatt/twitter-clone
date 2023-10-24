@@ -35,10 +35,8 @@ import {
   MailIcon,
 } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
-// types
-import type { ProfileProps } from "./types";
 
-export const Profile: React.FC<ProfileProps> = ({ type }) => {
+export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
   const { email } = useParams();
   const { t } = useTranslation();

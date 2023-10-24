@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 // local libs
 import { axios } from "../../core/axios";
 import { SelectedUserData } from "../../redux/types";
@@ -7,13 +8,14 @@ import { stringAvatar } from "../../utils/stringAvatar";
 import { FullTweetContainer, HeaderTextContent } from "./styles";
 import {
   HeaderText,
+  SpinnerWrapper,
   StyledLink,
   TextContentContainer,
   TextContentWrapper,
   UserAvatar,
 } from "../../styles";
 // types
-import { UserInfoBlockProps } from "./types";
+import type { UserInfoBlockProps } from "./types";
 
 export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
   const [user, setUser] = useState<SelectedUserData | undefined>(undefined);
@@ -52,5 +54,9 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
       </StyledLink>
     );
 
-  return null;
+  return (
+    <SpinnerWrapper>
+      <CircularProgress />
+    </SpinnerWrapper>
+  );
 };

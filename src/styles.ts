@@ -4,10 +4,12 @@ import { grey } from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import TextField from "@mui/material/TextField";
 // types
 import type { LinkProps } from "react-router-dom";
 import type { AvatarProps } from "@mui/material/Avatar";
 import type { TypographyProps } from "@mui/material/Typography";
+import type { TextFieldProps } from "@mui/material/TextField";
 
 export const LogoIcon = styled(TwitterIcon)({
   height: "8%",
@@ -118,3 +120,7 @@ export const CircularProgressWrapper = styled("div")({
   textAlign: "center",
   paddingTop: 150,
 });
+
+export const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
+  marginBottom: theme.spacing(5),
+}));

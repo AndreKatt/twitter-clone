@@ -3,7 +3,7 @@ import IconButton from "@mui/material/IconButton";
 // import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
-import { ImagesList } from "../ImagesList/ImagesList";
+import { ImagesList } from "../../generic/ImagesList/ImagesList";
 // styles
 import { ImageIcon } from "./styles";
 // types
@@ -29,6 +29,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
     if (e.target) {
       const target = e.target as HTMLInputElement;
       const file = target.files?.[0];
+
       if (file) {
         const fileObj = new Blob([file]);
         onChangeImages((prev) => [
@@ -62,6 +63,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
         hidden
       />
       <ImagesList
+        type="tweetForm"
         images={images.map((img) => img.blobUrl)}
         removeImage={removeImage}
       />

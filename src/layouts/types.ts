@@ -10,9 +10,7 @@ export type HeaderTitles = {
   home: string;
   explore: string;
   notifications: string;
-  messages: string;
   bookmarks: string;
-  verified: string;
   settings: string;
   display: string;
   displayLaguage: string;

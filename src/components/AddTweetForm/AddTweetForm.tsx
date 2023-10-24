@@ -61,10 +61,13 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     const email = window.localStorage.getItem("email");
     const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
-    const uploadedUrls =
-      images[0] && (await uploadFiles(images.map((image) => image.file)));
 
     if (fullname && username && email) {
+      dispatch(setAddFormState(AddFormState.LOADING));
+
+      const uploadedUrls =
+        images[0] && (await uploadFiles(images.map((image) => image.file)));
+
       const tweet = {
         text: text,
         images: uploadedUrls,

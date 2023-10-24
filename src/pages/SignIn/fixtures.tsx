@@ -1,4 +1,3 @@
-import Slide from "@mui/material/Slide/Slide";
 // styles
 import { ChatIcon, PeopleIcon, SearchIcon } from "./styles";
 // types
@@ -21,7 +20,3 @@ export const getBlueSideList: GetBlueSideList = (t) => [
     label: `${t("signIn.blueSideList.title3")}`,
   },
 ];
-
-export function transition(props: any) {
-  return <Slide {...props} direction="down" />;
-}

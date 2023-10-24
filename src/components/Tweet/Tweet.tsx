@@ -12,7 +12,7 @@ import {
   Paper,
 } from "@mui/material";
 // local libs
-import { ImagesList } from "../ImagesList/ImagesList";
+import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
 import { formatTweetDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
@@ -110,7 +110,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             <Typography variant="body1" gutterBottom>
               <span> {text}</span>
             </Typography>
-            {images && <ImagesList images={images} />}
+            {images && <ImagesList type="tweet" images={images} />}
           </StyledLink>
 
           <TweetFooter tweetData={tweetData} kind="tweet" />

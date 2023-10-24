@@ -12,16 +12,16 @@ import DialogActions from "@mui/material/DialogActions";
 import {
   getCurrentUserByToken,
   signIn,
-} from "../../../../redux/currentUser/asyncActions";
-import { useAppDispatch } from "../../../../redux/store";
-import { getLoginFormSchema } from "../../../../utils/getLoginFormSchema";
-import { transition } from "../../fixtures";
+} from "../../redux/currentUser/asyncActions";
+import { useAppDispatch } from "../../redux/store";
+import { getLoginFormSchema } from "../../utils/getLoginFormSchema";
+import { transition } from "../../utils/snackbarTransition";
 // styles
 import { InputField } from "../../styles";
 import { SignInInputField } from "./styles";
 // types
 import type { SignedFormProps } from "./types";
-import type { LoginFormProps, i18nProps } from "../../../../types";
+import type { LoginFormProps, i18nProps } from "../../types";
 
 export const SignedForm: React.FC<SignedFormProps & i18nProps> = ({
   onClose,

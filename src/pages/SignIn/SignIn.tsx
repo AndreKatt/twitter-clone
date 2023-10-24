@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 // local libs
-import { RegisterForm } from "./components/RegisterForm/RegisterForm";
+import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
 import { ModalBlock } from "../../components/ModalBlock/ModalBlock";
-import { SignedForm } from "./components/SignedForm/SignedForm";
+import { SignedForm } from "../../components/SignedForm/SignedForm";
 import { getBlueSideList } from "./fixtures";
 // styles
 import {

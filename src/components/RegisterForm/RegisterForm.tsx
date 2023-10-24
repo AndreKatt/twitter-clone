@@ -8,16 +8,16 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControl from "@mui/material/FormControl";
 import DialogActions from "@mui/material/DialogActions";
 // local libs
-import { signUp } from "../../../../redux/currentUser/asyncActions";
-import { useAppDispatch } from "../../../../redux/store";
-import { getSignUpFormSchema } from "../../../../utils/getSignUpFormSchema";
-import { transition } from "../../fixtures";
+import { signUp } from "../../redux/currentUser/asyncActions";
+import { useAppDispatch } from "../../redux/store";
+import { getSignUpFormSchema } from "../../utils/getSignUpFormSchema";
+import { transition } from "../../utils/snackbarTransition";
 // styles
 import { InputField } from "../../styles";
 import { SignAlert } from "./styles";
 // types
 import type { SignUpFormProps } from "./types";
-import type { RegisterFormProps, i18nProps } from "../../../../types";
+import type { RegisterFormProps, i18nProps } from "../../types";
 
 export const RegisterForm: React.FC<SignUpFormProps & i18nProps> = ({
   onClose,

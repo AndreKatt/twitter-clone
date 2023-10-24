@@ -1,6 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+// local libs
 import { ModalBlock } from "../ModalBlock/ModalBlock";
 import { AddTweetForm } from "../AddTweetForm/AddTweetForm";
 import { selectUserState } from "../../redux/currentUser/selectors";

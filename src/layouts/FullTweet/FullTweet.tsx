@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import format from "date-fns/format";
+import i18next from "i18next";
 import { ru } from "date-fns/locale";
 import { enUS } from "date-fns/locale";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
-import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
+import CircularProgress from "@mui/material/CircularProgress";
 // local libs
-import { ImagesList } from "../../components/ImagesList/ImagesList";
+import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { Header } from "../../generic/Header/Header";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
@@ -41,13 +41,13 @@ export const FullTweet: React.FC = () => {
     }
   }, [dispatch, id]);
 
-  // if (isTweetLoading) {
-  //   return (
-  //     <SpinnerWrapper>
-  //       <CircularProgress />
-  //     </SpinnerWrapper>
-  //   );
-  // }
+  if (isTweetLoading) {
+    return (
+      <SpinnerWrapper>
+        <CircularProgress />
+      </SpinnerWrapper>
+    );
+  }
 
   if (tweetData) {
     return (
@@ -59,7 +59,9 @@ export const FullTweet: React.FC = () => {
 
             <TweetText gutterBottom>
               <span> {tweetData.text}</span>
-              {tweetData.images && <ImagesList images={tweetData.images} />}
+              {tweetData.images && (
+                <ImagesList type="tweet" images={tweetData.images} />
+              )}
               <TweetData>
                 <span>{format(new Date(tweetData.createdAt), "H:mm")}</span>
                 &nbsp;
