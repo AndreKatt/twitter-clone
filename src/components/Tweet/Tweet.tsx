@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
@@ -14,11 +14,12 @@ import {
 // local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
-import { formatTweetInfoDate } from "../../utils/formatDate";
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
-import { getMenuItems } from "./fixtures";
+import { formatTweetInfoDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
+import { getAvatarUrl } from "../../utils/getAvatarUrl";
+import { getMenuItems } from "./fixtures";
 // styles
 import {
   TextContentContainer,
@@ -45,6 +46,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   tweetData,
   t,
 }): React.ReactElement => {
+  const [avatarUrl, setavatarUrl] = useState<string>("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
@@ -77,14 +79,24 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
     }
   };
 
+  useEffect(() => {
+    const getUrl = async () => {
+      const url = await getAvatarUrl(user.email);
+      setavatarUrl(url);
+    };
+
+    getUrl();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <TweetContainer variant="outlined">
       <HeaderContainer>
         <StyledLink to={userLink}>
           <UserAvatar
             alt={`Аватарка пользователя ${user.fullname}`}
+            src={avatarUrl}
             {...stringAvatar(user.username)}
-            // src={avatarUrl}
           />
         </StyledLink>
 

@@ -9,24 +9,13 @@ export enum LoadingState {
 export type UserData = {
   _id: string;
   email: string;
-  username: string;
   fullname: string;
+  username: string;
+  avatarUrl: string;
   passwordHash?: string;
   confirmHash?: string;
   confirmed?: boolean;
   createdAt?: string;
   following: string[];
   followers: string[];
-};
-
-export type SelectedUserData = {
-  _id: string;
-  email: string;
-  fullname: string;
-  username: string;
-  confirmed: boolean;
-  createdAt: string;
-  following: [];
-  followers: [];
-  likes: [];
 };

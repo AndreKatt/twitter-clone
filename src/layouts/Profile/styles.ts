@@ -32,6 +32,9 @@ export const ProfileAvatar = styled(Avatar)({
   cursor: "pointer",
   transition: "filter 0.2s ",
 
+  "& img": {
+    height: "117%",
+  },
   "&:hover": {
     filter: "brightness(0.8)",
   },

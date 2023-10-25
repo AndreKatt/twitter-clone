@@ -47,6 +47,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                 <RecommendedItem>
                   <ListItemAvatar>
                     <UserAvatar
+                      src={user.avatarUrl}
                       alt={user.username}
                       {...stringAvatar(user.fullname)}
                     />

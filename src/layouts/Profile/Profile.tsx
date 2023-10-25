@@ -88,7 +88,10 @@ export const Profile: React.FC = () => {
         </ProfileButtonsContainer>
 
         <AvatarWrapper>
-          <ProfileAvatar {...stringAvatar(user.fullname)} />
+          <ProfileAvatar
+            src={user.avatarUrl}
+            {...stringAvatar(user.fullname)}
+          />
         </AvatarWrapper>
 
         <UserInfoContainer>

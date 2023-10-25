@@ -4,7 +4,6 @@ export type MainUserInfo = {
   email: string;
   fullname: string;
   username: string;
-  // avatarUrl: string;
 };
 
 export type Reply = {
@@ -50,3 +49,18 @@ export type ToggleColorMode = (changeMode: string) => void;
 export type i18nProps = {
   t: TFunction<"translation", undefined>;
 };
+
+export type SelectedUserData = {
+  _id: string;
+  email: string;
+  fullname: string;
+  username: string;
+  avatarUrl: string;
+  confirmed: boolean;
+  createdAt: string;
+  following: [];
+  followers: [];
+  likes: [];
+};
+
+export type GetAvatarUrl = (email: string) => Promise<string>;

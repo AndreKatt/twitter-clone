@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -22,11 +22,14 @@ import {
 } from "./styles";
 // types
 import type { i18nProps } from "../../types";
+import { getAvatarUrl } from "../../utils/getAvatarUrl";
 
 export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
+  const [avatarUrl, setavatarUrl] = useState<string>("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const user = useSelector(selectUserState);
+  const email = localStorage.getItem("email");
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
@@ -49,6 +52,18 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
     window.localStorage.removeItem("token");
   };
 
+  useEffect(() => {
+    if (email) {
+      const getUrl = async () => {
+        const url = await getAvatarUrl(email);
+        setavatarUrl(url);
+      };
+
+      getUrl();
+    }
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="sideProfileContainer">
       <ProfileContainer
@@ -59,7 +74,10 @@ export const UserSideProfile: React.FC<i18nProps> = ({ t }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <ProfileAvatar {...stringAvatar(user.currentUser?.username)} />
+        <ProfileAvatar
+          src={avatarUrl}
+          {...stringAvatar(user.currentUser?.username)}
+        />
         <TextContainer>
           <Fullname>
             <b>{user.currentUser?.username}</b>

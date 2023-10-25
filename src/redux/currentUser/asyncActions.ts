@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+// local libs
 import { axios } from "../../core/axios";
 // types
 import type {
@@ -7,7 +8,8 @@ import type {
   MainUserInfo,
 } from "../../types";
 import type { CurrentUserState } from "./types";
-import type { SelectedUserData, UserData } from "../types";
+import type { UserData } from "../types";
+import type { SelectedUserData } from "../../types";
 
 export const signIn = createAsyncThunk<CurrentUserState, LoginFormProps>(
   "currentUser/signIn",

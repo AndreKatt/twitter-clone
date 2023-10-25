@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 // local libs
 import { axios } from "../../core/axios";
-import { SelectedUserData } from "../../redux/types";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import { FullTweetContainer, HeaderTextContent } from "./styles";
@@ -16,6 +15,7 @@ import {
 } from "../../styles";
 // types
 import type { UserInfoBlockProps } from "./types";
+import type { SelectedUserData } from "../../types";
 
 export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
   const [user, setUser] = useState<SelectedUserData | undefined>(undefined);
@@ -38,7 +38,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
           <UserAvatar
             alt="Аватарка пользователя"
             {...stringAvatar(user.fullname)}
-            // src={user.avatarUrl}
+            src={user.avatarUrl}
           />
           <TextContentContainer>
             <TextContentWrapper>

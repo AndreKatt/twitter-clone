@@ -11,7 +11,10 @@ import { addTweet } from "../../redux/tweets/asyncActions";
 import { setAddFormState } from "../../redux/tweets/slice";
 import { AddFormState } from "../../redux/tweets/types";
 import { useAppDispatch } from "../../redux/store";
-import { selectCurrentUser } from "../../redux/currentUser/selectors";
+import {
+  selectCurrentUser,
+  selectCurrentUserData,
+} from "../../redux/currentUser/selectors";
 import { uploadFiles } from "../../utils/uploadImages";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
@@ -38,6 +41,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
   const user = useSelector(selectCurrentUser);
+  const userData = useSelector(selectCurrentUserData);
   const [text, setText] = useState<string>(
     sessionStorage.getItem("tweetText") || ""
   );
@@ -62,7 +66,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
 
-    if (fullname && username && email) {
+    if (fullname && username && email && user) {
       dispatch(setAddFormState(AddFormState.LOADING));
 
       const uploadedUrls =
@@ -92,7 +96,11 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       <BodyContainer minHeight={minHeight}>
         <div>
           <StyledLink to={`/${user?.email}/tweets`}>
-            <UserAvatar {...stringAvatar(user?.username)} alt="Ваша аватарка" />
+            <UserAvatar
+              src={userData?.avatarUrl}
+              {...stringAvatar(user?.username)}
+              alt="Ваша аватарка"
+            />
           </StyledLink>
         </div>
         <Textarea

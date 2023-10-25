@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import type { SelectedUserData } from "../../redux/types";
+import type { SelectedUserData } from "../../types";
 
 export type FollowButtonProps = {
   width?: number | string;
