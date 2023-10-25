@@ -9,7 +9,7 @@ export const fetchUserTweets = createAsyncThunk<
   string
 >("userTweets/fetchUserTweets", async (email) => {
   const { data } = await axios.get<UserTweetsState["items"]>(
-    `/api/tweets/byEmail/${email}`
+    `/api/tweets/byEmail/${email}?_sort=id&_order=desc`
   );
   return data;
 });

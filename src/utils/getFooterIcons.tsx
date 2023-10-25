@@ -6,6 +6,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import type { GetFooterIcons } from "./types";
 
 export const getFooterIcons: GetFooterIcons = (
+  _id,
   likes,
   retweets,
   replies,
@@ -19,7 +20,7 @@ export const getFooterIcons: GetFooterIcons = (
   { id: 2, icon: <RepeatIcon />, label: `${retweets.length}` },
   {
     id: 3,
-    icon: <FavoriteBorderIcon />,
+    icon: <FavoriteBorderIcon id={`${_id}`} className="likeButton" />,
     label: `${likes.length}`,
     clickFunction: addLike,
   },

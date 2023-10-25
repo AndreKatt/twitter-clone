@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import type { PaperProps } from "@mui/material/Paper";
 import type { PopperProps } from "@mui/material/Popper";
 import type { GrowProps } from "@mui/material/Grow";
-import { TypographyProps } from "@mui/material/Typography";
+import type { TypographyProps } from "@mui/material/Typography";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",

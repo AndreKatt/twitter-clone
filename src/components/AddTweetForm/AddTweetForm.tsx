@@ -81,6 +81,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       await dispatch(addTweet(tweet));
       setText("");
       setImages([]);
+      sessionStorage.removeItem("tweetText");
     }
 
     setAddFormState(AddFormState.ERROR);

@@ -21,6 +21,7 @@ import type { TweetType } from "../../types";
 
 export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
   const [likedTweets, setLikedTweets] = useState<TweetType[]>([]);
+  const [postedFiles, setPostedFiles] = useState<TweetType[]>([]);
   const { t } = useTranslation();
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
@@ -32,9 +33,8 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
   const currentTweets = {
     tweets: userTweets,
     replies: [],
-    highlights: [],
-    media: [],
-    likes: likedTweets,
+    media: postedFiles,
+    likes: likedTweets.reverse(),
   };
 
   useEffect(() => {
@@ -44,8 +44,15 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
       );
       setLikedTweets(foundTweets);
     }
+
+    if (type === "media") {
+      const files = userTweets
+        .filter((tweet) => tweet.images.length > 0)
+        .map((tweet) => ({ ...tweet, text: "" }));
+      setPostedFiles(files);
+    }
     // eslint-disable-next-line
-  }, [type]);
+  }, [type, allTweets, userTweets]);
 
   return (
     <>

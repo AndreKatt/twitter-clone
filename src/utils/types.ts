@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import type { HeaderSectionTitleType } from "../types";
+import type { HeaderSectionTitleType, Reply } from "../types";
 
 export type GetSections = (
   arr: string[],
@@ -36,3 +36,17 @@ export type GetLanguagesDescriptions = (
 export type GetDisplayDescription = (
   t: TFunction<"translation", undefined>
 ) => string;
+type FooterIcon = {
+  id: number;
+  icon: JSX.Element;
+  label: string;
+  clickFunction?: () => void;
+};
+
+export type GetFooterIcons = (
+  _id: string,
+  likes: string[],
+  retweets: string[],
+  replies: Reply[],
+  addLike: () => void
+) => FooterIcon[];

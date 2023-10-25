@@ -24,7 +24,6 @@ import {
   AvatarWrapper,
   CalendarIcon,
   Fullname,
-  StyledIconButton,
   ProfileAvatar,
   ProfileButtonsContainer,
   ProfileImage,
@@ -32,7 +31,6 @@ import {
   UserInfoContainer,
   Username,
   FollowInfoContainer,
-  MailIcon,
 } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 
@@ -77,21 +75,15 @@ export const Profile: React.FC = () => {
 
         <ProfileButtonsContainer>
           {!isCurrentUser && (
-            <>
-              <StyledIconButton>
-                <MailIcon />
-              </StyledIconButton>
-
-              <FollowButton
-                userId={user._id}
-                userEmail={user.email}
-                following={currentUserData?.following}
-                update={update}
-                setUpdate={setUpdate}
-                t={t}
-                height={36}
-              />
-            </>
+            <FollowButton
+              userId={user._id}
+              userEmail={user.email}
+              following={currentUserData?.following}
+              update={update}
+              setUpdate={setUpdate}
+              t={t}
+              height={36}
+            />
           )}
         </ProfileButtonsContainer>
 

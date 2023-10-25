@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useTheme } from "@mui/material";
 // local libs
-import { getFooterIcons } from "./fixtures";
+import { getFooterIcons } from "../../utils/getFooterIcons";
 import { useAppDispatch } from "../../redux/store";
 import {
   addLike,
@@ -21,6 +22,8 @@ export const TweetFooter: React.FC<TweetFooterProps> = ({
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const currentUserData = useSelector(selectCurrentUserData);
+  const theme = useTheme();
+
   const { _id, likes, retweets, replies } = tweetData;
 
   const handleAddLike = async (): Promise<void> => {
@@ -34,11 +37,23 @@ export const TweetFooter: React.FC<TweetFooterProps> = ({
     }
   };
 
-  const footerIcons = getFooterIcons(likes, retweets, replies, handleAddLike);
+  const footerIcons = getFooterIcons(
+    _id,
+    likes,
+    retweets,
+    replies,
+    handleAddLike
+  );
 
   useEffect(() => {
     if (currentUserData) {
       setIsFavorite(likes.includes(currentUserData.email));
+    }
+
+    if (isFavorite) {
+      document
+        .getElementById(_id)
+        ?.style.setProperty("fill", `${theme.palette.primary.main}`);
     }
     // eslint-disable-next-line
   }, [isFavorite, dispatch]);

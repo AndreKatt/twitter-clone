@@ -15,7 +15,7 @@ export type Reply = {
 export type TweetType = {
   _id: string;
   text: string;
-  images?: [];
+  images: [];
   user: MainUserInfo;
   likes: string[];
   retweets: string[];
