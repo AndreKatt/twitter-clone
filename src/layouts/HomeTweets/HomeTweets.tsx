@@ -15,13 +15,13 @@ import { UserTweetsState } from "../../redux/userTweets/types";
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 import { axios } from "../../core/axios";
 import { getSections } from "../../utils/getSections";
+import { getTitles } from "../../utils/getTitles";
 import { titlesArr } from "./fixtures";
 // styles
 import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
 // types
 import type { HomeTweetsProps } from "./types";
-import { getTitles } from "../../utils/getTitles";
 
 export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
   const [followingTweets, setfollowingTweets] = useState<

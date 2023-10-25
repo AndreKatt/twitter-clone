@@ -76,6 +76,7 @@ export const UserAvatar = styled(Avatar)<AvatarProps>({
 });
 
 export const InnerContainer = styled("div")(({ theme }) => ({
+  maxWidth: 400,
   backgroundColor: theme.palette.neutral.main,
   backgroundImage:
     "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",

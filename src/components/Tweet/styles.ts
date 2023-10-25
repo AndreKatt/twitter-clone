@@ -4,10 +4,12 @@ import Popper from "@mui/material/Popper";
 import Grow from "@mui/material/Grow";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
 // types
 import type { PaperProps } from "@mui/material/Paper";
 import type { PopperProps } from "@mui/material/Popper";
 import type { GrowProps } from "@mui/material/Grow";
+import { TypographyProps } from "@mui/material/Typography";
 
 export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",
@@ -41,6 +43,10 @@ export const HeaderTextContainer = styled("div")({
   flex: 1,
   display: "flex",
   justifyContent: "space-between",
+});
+
+export const TweetTextWrapper = styled(Typography)<TypographyProps>({
+  wordBreak: "break-word",
 });
 
 export const MenuButtonContainer = styled("div")({

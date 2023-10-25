@@ -1,6 +1,9 @@
 import { styled } from "@mui/system";
 import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
+import ListItemText from "@mui/material/ListItemText";
+// types
+import type { ListItemTextProps } from "@mui/material/ListItemText";
 
 export const ListItemsWrapper = styled(List)({
   paddingBottom: 0,
@@ -23,3 +26,8 @@ export const RecommendedItem = styled(ListItem)(({ theme }) => ({
     backgroundColor: theme.palette.neutral.light,
   },
 }));
+
+export const UserInfoText = styled(ListItemText)<ListItemTextProps>({
+  wordBreak: "break-word",
+  paddingRight: 10,
+});

@@ -5,15 +5,20 @@ import Grid from "@mui/material/Grid";
 import { PaperProps } from "@mui/material/Paper";
 import { GridProps } from "@mui/material/Grid";
 
+export const GridContainer = styled(Grid)<GridProps>({
+  flexWrap: "nowrap",
+});
+
 export const MenuGrid = styled(Grid)<GridProps>({
   "& .sideProfileContainer": {
-    "@media(max-height: 655px)": {
+    "@media(max-height: 465px)": {
       display: "none",
     },
   },
   "@media(max-height: 1240px)": {
     display: "flex",
     justifyContent: "flex-end",
+    marginLeft: 15,
   },
 });
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 // local libs
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
@@ -13,7 +12,7 @@ import {
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
-import { ListItemsWrapper, RecommendedItem } from "./styles";
+import { ListItemsWrapper, RecommendedItem, UserInfoText } from "./styles";
 import {
   InnerContainer,
   RightSideBlockHeader,
@@ -53,7 +52,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
                     />
                   </ListItemAvatar>
 
-                  <ListItemText
+                  <UserInfoText
                     primary={user.fullname}
                     secondary={
                       <Typography component="span" variant="body2">

@@ -14,9 +14,10 @@ export const SideMenuList = styled("ul")({
   position: "sticky",
   top: 0,
   listStyle: "none",
-  marginTop: 0,
   maxWidth: 270,
   alignSelf: "start",
+  paddingInlineStart: 0,
+  marginTop: 0,
 });
 
 export const SideMenuListItem = styled("li")(({ theme }) => ({

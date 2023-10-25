@@ -1,6 +1,5 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
-// import { UploadedObject } from "../AddTweetForm/AddTweetForm";
 import { useEffect, useRef } from "react";
 import { useCallback } from "react";
 import { ImagesList } from "../../generic/ImagesList/ImagesList";

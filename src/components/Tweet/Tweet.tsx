@@ -35,6 +35,7 @@ import {
   DeleteMenuText,
   TweetPopper,
   StyledGrow,
+  TweetTextWrapper,
 } from "./styles";
 // types
 import type { TweetProps } from "./types";
@@ -107,9 +108,9 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
           </StyledLink>
 
           <StyledLink to={`/tweet/${_id}`}>
-            <Typography variant="body1" gutterBottom>
-              <span> {text}</span>
-            </Typography>
+            <TweetTextWrapper variant="body1" gutterBottom>
+              <span>{text}</span>
+            </TweetTextWrapper>
             {images && <ImagesList type="tweet" images={images} />}
           </StyledLink>
 

@@ -8,12 +8,5 @@ export const Notifications: React.FC = () => {
   const { t } = useTranslation();
   const { notifications } = getTitles(t);
 
-  return (
-    <Header
-      variant="outlined"
-      title={notifications}
-      // titles={titles.sections}
-      t={t}
-    />
-  );
+  return <Header variant="outlined" title={notifications} t={t} />;
 };

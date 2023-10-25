@@ -16,6 +16,7 @@ import {
   TweetsContainer,
   MenuGrid,
   RightSideGrid,
+  GridContainer,
 } from "./styles";
 
 export const Home: React.FC = () => {
@@ -29,24 +30,24 @@ export const Home: React.FC = () => {
 
   return (
     <Container maxWidth="xl">
-      <Grid container spacing={3}>
-        <MenuGrid item sm={2} md={2} lg={3}>
+      <GridContainer container spacing={3}>
+        <MenuGrid item sm={1} md={1} lg={3}>
           <SideMenu t={t} />
           <UserSideProfile t={t} />
         </MenuGrid>
 
-        <Grid item sm={9} md={6} lg={5.5}>
+        <Grid item sm={10} md={7} lg={5.5}>
           <TweetsContainer variant="outlined">
             <Outlet />
           </TweetsContainer>
         </Grid>
 
-        <RightSideGrid item sm={0} md={3.5} lg={3.5}>
+        <RightSideGrid item sm={0} md={4} lg={3.5}>
           <RightSideContainer>
             <WhoToFollow t={t} />
           </RightSideContainer>
         </RightSideGrid>
-      </Grid>
+      </GridContainer>
     </Container>
   );
 };
