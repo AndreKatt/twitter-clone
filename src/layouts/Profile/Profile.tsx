@@ -33,6 +33,7 @@ import {
   FollowInfoContainer,
 } from "./styles";
 import { CircularProgressWrapper } from "../../styles";
+import { Tooltip } from "@mui/material";
 
 export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
@@ -88,10 +89,23 @@ export const Profile: React.FC = () => {
         </ProfileButtonsContainer>
 
         <AvatarWrapper>
-          <ProfileAvatar
-            src={user.avatarUrl}
-            {...stringAvatar(user.fullname)}
-          />
+          {isCurrentUser ? (
+            <Tooltip
+              arrow
+              placement="right-end"
+              title={t("layouts.profile.tooltip")}
+            >
+              <ProfileAvatar
+                src={user.avatarUrl}
+                {...stringAvatar(user.fullname)}
+              />
+            </Tooltip>
+          ) : (
+            <ProfileAvatar
+              src={user.avatarUrl}
+              {...stringAvatar(user.fullname)}
+            />
+          )}
         </AvatarWrapper>
 
         <UserInfoContainer>

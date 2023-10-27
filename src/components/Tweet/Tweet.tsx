@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MenuList from "@mui/material/MenuList";
+import Paper from "@mui/material/Paper";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import {
-  ClickAwayListener,
-  ListItemIcon,
-  ListItemText,
-  MenuList,
-  Paper,
-} from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 // local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
@@ -48,10 +46,12 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
 }): React.ReactElement => {
   const [avatarUrl, setavatarUrl] = useState<string>("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const currentUserEmail = localStorage.getItem("email");
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
   const { _id, text, images, user, createdAt } = tweetData;
 
+  const isCurrentUser = currentUserEmail === tweetData.user.email;
   const userLink = `/${user.email}/tweets`;
   const menuItems = getMenuItems(t);
 
@@ -93,11 +93,13 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
     <TweetContainer variant="outlined">
       <HeaderContainer>
         <StyledLink to={userLink}>
-          <UserAvatar
-            alt={`Аватарка пользователя ${user.fullname}`}
-            src={avatarUrl}
-            {...stringAvatar(user.username)}
-          />
+          <Tooltip arrow title={user.fullname}>
+            <UserAvatar
+              alt={`Аватарка пользователя ${user.fullname}`}
+              src={avatarUrl}
+              {...stringAvatar(user.username)}
+            />
+          </Tooltip>
         </StyledLink>
 
         <TextContentContainer>
@@ -130,55 +132,61 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
         </TextContentContainer>
       </HeaderContainer>
 
-      <MenuButtonContainer>
-        <IconButton
-          aria-label="more"
-          id="more-button"
-          aria-controls={open ? "more-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
-          aria-haspopup="true"
-          onClick={handleClick}
-        >
-          <MoreHorizIcon />
-        </IconButton>
-      </MenuButtonContainer>
+      {isCurrentUser && (
+        <>
+          <MenuButtonContainer>
+            <IconButton
+              aria-label="more"
+              id="more-button"
+              aria-controls={open ? "more-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MoreHorizIcon />
+            </IconButton>
+          </MenuButtonContainer>
 
-      <TweetPopper
-        open={open}
-        anchorEl={anchorEl}
-        role={undefined}
-        placement="bottom-end"
-        transition
-        disablePortal
-      >
-        {({ TransitionProps }) => (
-          <StyledGrow {...TransitionProps}>
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  autoFocusItem={open}
-                  id="more-menu"
-                  aria-labelledby="more-button"
-                  onKeyDown={handleListKeyDown}
-                >
-                  <MenuItem onClick={deleteOne}>
-                    <ListItemIcon>{menuItems.delete.icon}</ListItemIcon>
-                    <DeleteMenuText>{menuItems.delete.label}</DeleteMenuText>
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemIcon>{menuItems.pin.icon}</ListItemIcon>
-                    <ListItemText>{menuItems.pin.label}</ListItemText>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <ListItemIcon>{menuItems.edit.icon}</ListItemIcon>
-                    <ListItemText>{menuItems.edit.label}</ListItemText>
-                  </MenuItem>
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </StyledGrow>
-        )}
-      </TweetPopper>
+          <TweetPopper
+            open={open}
+            anchorEl={anchorEl}
+            role={undefined}
+            placement="bottom-end"
+            transition
+            disablePortal
+          >
+            {({ TransitionProps }) => (
+              <StyledGrow {...TransitionProps}>
+                <Paper>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList
+                      autoFocusItem={open}
+                      id="more-menu"
+                      aria-labelledby="more-button"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      <MenuItem onClick={deleteOne}>
+                        <ListItemIcon>{menuItems.delete.icon}</ListItemIcon>
+                        <DeleteMenuText>
+                          {menuItems.delete.label}
+                        </DeleteMenuText>
+                      </MenuItem>
+                      <MenuItem>
+                        <ListItemIcon>{menuItems.pin.icon}</ListItemIcon>
+                        <ListItemText>{menuItems.pin.label}</ListItemText>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <ListItemIcon>{menuItems.edit.icon}</ListItemIcon>
+                        <ListItemText>{menuItems.edit.label}</ListItemText>
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </StyledGrow>
+            )}
+          </TweetPopper>
+        </>
+      )}
     </TweetContainer>
   );
 };

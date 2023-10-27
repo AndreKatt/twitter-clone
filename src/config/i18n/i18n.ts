@@ -128,6 +128,7 @@ i18n
             bookmarks: "Bookmarks",
             profile: {
               registration: "Joined",
+              tooltip: "Set new avtar",
             },
             followers: "Followers",
             following: "Following",
@@ -277,6 +278,7 @@ i18n
             bookmarks: "Закладки",
             profile: {
               registration: "Регистрация:",
+              tooltip: "Добавить новый аватар",
             },
             followers: "Читатели",
             following: "Читает",

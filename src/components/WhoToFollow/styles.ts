@@ -31,3 +31,7 @@ export const UserInfoText = styled(ListItemText)<ListItemTextProps>({
   wordBreak: "break-word",
   paddingRight: 10,
 });
+
+export const UserInfoContainer = styled("div")({
+  display: "flex",
+});

@@ -12,7 +12,12 @@ import {
 import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
-import { ListItemsWrapper, RecommendedItem, UserInfoText } from "./styles";
+import {
+  ListItemsWrapper,
+  RecommendedItem,
+  UserInfoText,
+  UserInfoContainer,
+} from "./styles";
 import {
   InnerContainer,
   RightSideBlockHeader,
@@ -23,6 +28,7 @@ import {
 } from "../../styles";
 // types
 import type { i18nProps } from "../../types";
+import { Tooltip } from "@mui/material";
 
 export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   const [update, setUpdate] = useState<boolean>(false);
@@ -45,22 +51,26 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
             {users.slice(0, 2).map((user) => (
               <StyledLink key={user.email} to={`/${user.email}/tweets`}>
                 <RecommendedItem>
-                  <ListItemAvatar>
-                    <UserAvatar
-                      src={user.avatarUrl}
-                      alt={user.username}
-                      {...stringAvatar(user.fullname)}
-                    />
-                  </ListItemAvatar>
+                  <Tooltip arrow title={user.username}>
+                    <UserInfoContainer>
+                      <ListItemAvatar>
+                        <UserAvatar
+                          src={user.avatarUrl}
+                          alt={user.username}
+                          {...stringAvatar(user.fullname)}
+                        />
+                      </ListItemAvatar>
 
-                  <UserInfoText
-                    primary={user.fullname}
-                    secondary={
-                      <Typography component="span" variant="body2">
-                        @{user.username}
-                      </Typography>
-                    }
-                  />
+                      <UserInfoText
+                        primary={user.fullname}
+                        secondary={
+                          <Typography component="span" variant="body2">
+                            @{user.username}
+                          </Typography>
+                        }
+                      />
+                    </UserInfoContainer>
+                  </Tooltip>
 
                   <FollowButton
                     userId={user._id}

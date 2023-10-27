@@ -58,9 +58,9 @@ export type SelectedUserData = {
   avatarUrl: string;
   confirmed: boolean;
   createdAt: string;
-  following: [];
-  followers: [];
-  likes: [];
+  following: string[];
+  followers: string[];
+  likes: string[];
 };
 
 export type GetAvatarUrl = (email: string) => Promise<string>;

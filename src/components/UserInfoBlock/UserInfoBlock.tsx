@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import Tooltip from "@mui/material/Tooltip";
 // local libs
 import { axios } from "../../core/axios";
 import { stringAvatar } from "../../utils/stringAvatar";
@@ -35,11 +36,13 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
     return (
       <StyledLink to={`/${user.email}/tweets`}>
         <FullTweetContainer>
-          <UserAvatar
-            alt="Аватарка пользователя"
-            {...stringAvatar(user.fullname)}
-            src={user.avatarUrl}
-          />
+          <Tooltip arrow title={user.username}>
+            <UserAvatar
+              alt="Аватарка пользователя"
+              src={user.avatarUrl}
+              {...stringAvatar(user.fullname)}
+            />
+          </Tooltip>
           <TextContentContainer>
             <TextContentWrapper>
               <HeaderTextContent>
