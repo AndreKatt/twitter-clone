@@ -10,6 +10,8 @@ export const ListItemsWrapper = styled(List)({
 });
 
 export const RecommendedItem = styled(ListItem)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
   cursor: "pointer",
 
   "& .MuiTypography-body1": {
@@ -34,4 +36,5 @@ export const UserInfoText = styled(ListItemText)<ListItemTextProps>({
 
 export const UserInfoContainer = styled("div")({
   display: "flex",
+  justifyContent: "space-between",
 });

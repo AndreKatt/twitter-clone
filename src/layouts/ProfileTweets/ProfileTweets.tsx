@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import CircularProgress from "@mui/material/CircularProgress";
 // local libs
 import { Tweet } from "../../components/Tweet/Tweet";
 import { Header } from "../../generic/Header/Header";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import {
   selectUserTweetsItems,
   selectUserTweetsLoading,
@@ -13,8 +13,6 @@ import { selectSelectedUserData } from "../../redux/user/selectors";
 import { selectTweetsItems } from "../../redux/tweets/selectors";
 import { getSections } from "../../utils/getSections";
 import { titlesArr } from "./fixtures";
-// styles
-import { CircularProgressWrapper } from "../../styles";
 // types
 import type { ProfileTweetsProps } from "./types";
 import type { TweetType } from "../../types";
@@ -59,9 +57,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
       <Header variant="outlined" titles={titles} t={t} />
 
       {isUserTweetsLoading ? (
-        <CircularProgressWrapper>
-          <CircularProgress />
-        </CircularProgressWrapper>
+        <Spinner type="pageCenter" />
       ) : (
         currentTweets[type].map((userTweet) => (
           <Tweet key={userTweet._id} tweetData={userTweet} t={t} />

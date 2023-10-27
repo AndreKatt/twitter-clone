@@ -20,12 +20,6 @@ export const LogoIcon = styled(TwitterIcon)({
   transform: "translate(-50%, -50%)",
 });
 
-export const SpinnerWrapper = styled("div")({
-  textAlign: "center",
-  paddingTop: 50,
-  paddingBottom: 50,
-});
-
 export const StyledLink = styled(Link)<LinkProps>({
   width: "100%",
   color: "inherit",
@@ -116,11 +110,6 @@ export const More = styled(Typography)<TypographyProps>(({ theme }) => ({
     backgroundColor: theme.palette.neutral.light,
   },
 }));
-
-export const CircularProgressWrapper = styled("div")({
-  textAlign: "center",
-  paddingTop: 150,
-});
 
 export const InputField = styled(TextField)<TextFieldProps>(({ theme }) => ({
   marginBottom: theme.spacing(5),

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "@mui/material/Tooltip";
 // local libs
 import { axios } from "../../core/axios";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import { FullTweetContainer, HeaderTextContent } from "./styles";
 import {
   HeaderText,
-  SpinnerWrapper,
   StyledLink,
   TextContentContainer,
   TextContentWrapper,
@@ -57,9 +56,5 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
       </StyledLink>
     );
 
-  return (
-    <SpinnerWrapper>
-      <CircularProgress />
-    </SpinnerWrapper>
-  );
+  return <Spinner type="elementCenter" />;
 };

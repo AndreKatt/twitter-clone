@@ -8,12 +8,12 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
-import CircularProgress from "@mui/material/CircularProgress";
 // local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { Header } from "../../generic/Header/Header";
 import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
 import {
@@ -22,7 +22,6 @@ import {
 } from "../../redux/tweet/selectors";
 import { getTitles } from "../../utils/getTitles";
 // styles
-import { SpinnerWrapper } from "../../styles";
 import { FullTweetWrapper, TweetText, TweetData } from "./styles";
 
 export const FullTweet: React.FC = () => {
@@ -42,11 +41,7 @@ export const FullTweet: React.FC = () => {
   }, [dispatch, id]);
 
   if (isTweetLoading) {
-    return (
-      <SpinnerWrapper>
-        <CircularProgress />
-      </SpinnerWrapper>
-    );
+    return <Spinner type="elementCenter" />;
   }
 
   if (tweetData) {

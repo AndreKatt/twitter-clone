@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import CircularProgress from "@mui/material/CircularProgress";
 import Paper from "@mui/material/Paper";
 // local libs
 import { Tweet } from "../../components/Tweet/Tweet";
 import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
 import { Header } from "../../generic/Header/Header";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import {
   selectTweetsItems,
   selectTweetsLoading,
@@ -19,7 +19,6 @@ import { getTitles } from "../../utils/getTitles";
 import { titlesArr } from "./fixtures";
 // styles
 import { AddTweetBottomLine, AddTweetWrapper } from "./styles";
-import { CircularProgressWrapper } from "../../styles";
 // types
 import type { HomeTweetsProps } from "./types";
 
@@ -63,9 +62,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
       </Paper>
 
       {isLoadingTweets ? (
-        <CircularProgressWrapper>
-          <CircularProgress />
-        </CircularProgressWrapper>
+        <Spinner type="pageCenter" />
       ) : (
         currentTweets.map((tweet) => (
           <Tweet key={tweet._id} tweetData={tweet} t={t} />

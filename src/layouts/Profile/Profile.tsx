@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import CircularProgress from "@mui/material/CircularProgress";
 // local libs
+import { ProfileAvatar } from "../../components/ProfileAvatar/ProfileAvatar";
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
 import { ProfileFollowingInfo } from "../../generic/ProfileFollowingInfo/ProfileFollowingInfo";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import { useAppDispatch } from "../../redux/store";
 import { fetchUserData } from "../../redux/user/asyncActions";
 import { fetchUserTweets } from "../../redux/userTweets/asyncActions";
@@ -18,13 +19,10 @@ import {
 } from "../../redux/currentUser/selectors";
 import { selectUserTweetsItems } from "../../redux/userTweets/selectors";
 import { formatRegistrationInfoDate } from "../../utils/formatDate";
-import { stringAvatar } from "../../utils/stringAvatar";
 // styles
 import {
-  AvatarWrapper,
   CalendarIcon,
   Fullname,
-  ProfileAvatar,
   ProfileButtonsContainer,
   ProfileImage,
   RegistrationData,
@@ -32,8 +30,6 @@ import {
   Username,
   FollowInfoContainer,
 } from "./styles";
-import { CircularProgressWrapper } from "../../styles";
-import { Tooltip } from "@mui/material";
 
 export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
@@ -88,25 +84,7 @@ export const Profile: React.FC = () => {
           )}
         </ProfileButtonsContainer>
 
-        <AvatarWrapper>
-          {isCurrentUser ? (
-            <Tooltip
-              arrow
-              placement="right-end"
-              title={t("layouts.profile.tooltip")}
-            >
-              <ProfileAvatar
-                src={user.avatarUrl}
-                {...stringAvatar(user.fullname)}
-              />
-            </Tooltip>
-          ) : (
-            <ProfileAvatar
-              src={user.avatarUrl}
-              {...stringAvatar(user.fullname)}
-            />
-          )}
-        </AvatarWrapper>
+        <ProfileAvatar isCurrentUser={isCurrentUser} user={user} t={t} />
 
         <UserInfoContainer>
           <Fullname>{user.fullname}</Fullname>
@@ -129,9 +107,5 @@ export const Profile: React.FC = () => {
     );
   }
 
-  return (
-    <CircularProgressWrapper>
-      <CircularProgress />
-    </CircularProgressWrapper>
-  );
+  return <Spinner type="pageCenter" />;
 };

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Tooltip from "@mui/material/Tooltip";
 // local libs
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
+import { Spinner } from "../../generic/Spinner/Spinner";
 import {
   selectUsersData,
   selectUsersLoading,
@@ -21,14 +22,12 @@ import {
 import {
   InnerContainer,
   RightSideBlockHeader,
-  SpinnerWrapper,
   StyledLink,
   UserAvatar,
   More,
 } from "../../styles";
 // types
 import type { i18nProps } from "../../types";
-import { Tooltip } from "@mui/material";
 
 export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   const [update, setUpdate] = useState<boolean>(false);
@@ -39,9 +38,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
   return (
     <InnerContainer>
       {isLoadingUsers ? (
-        <SpinnerWrapper>
-          <CircularProgress />
-        </SpinnerWrapper>
+        <Spinner type="elementCenter" />
       ) : (
         <>
           <RightSideBlockHeader>
