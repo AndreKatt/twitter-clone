@@ -42,6 +42,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
               {...stringAvatar(user.fullname)}
             />
           </Tooltip>
+
           <TextContentContainer>
             <TextContentWrapper>
               <HeaderTextContent>

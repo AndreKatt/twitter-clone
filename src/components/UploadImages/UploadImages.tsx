@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import IconButton from "@mui/material/IconButton";
-import { useEffect, useRef } from "react";
-import { useCallback } from "react";
+// local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 // styles
 import { ImageIcon } from "./styles";

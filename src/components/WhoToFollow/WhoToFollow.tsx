@@ -44,6 +44,7 @@ export const WhoToFollow: React.FC<i18nProps> = ({ t }) => {
           <RightSideBlockHeader>
             <Typography variant="h5">{t("whoToFollow.label")}</Typography>
           </RightSideBlockHeader>
+
           <ListItemsWrapper>
             {users.slice(0, 2).map((user) => (
               <StyledLink key={user.email} to={`/${user.email}/tweets`}>
