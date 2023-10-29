@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import format from "date-fns/format";
 import i18next from "i18next";
 import { ru } from "date-fns/locale";
@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 // local libs
+import { axios } from "../../core/axios";
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
 import { Header } from "../../generic/Header/Header";
@@ -23,8 +24,12 @@ import {
 import { getTitles } from "../../utils/getTitles";
 // styles
 import { FullTweetWrapper, TweetText, TweetData } from "./styles";
+import { Tweet } from "../../components/Tweet/Tweet";
+// types
+import type { TweetType } from "../../types";
 
 export const FullTweet: React.FC = () => {
+  const [replies, setReplies] = useState<TweetType[]>([]);
   const { id }: { id?: string } = useParams();
   const dispatch = useAppDispatch();
   const tweetData = useSelector(selectTweetData);
@@ -37,6 +42,14 @@ export const FullTweet: React.FC = () => {
   useEffect(() => {
     if (id) {
       dispatch(fetchTweetData(id));
+
+      const getReplies = async () => {
+        const { data } = await axios.get<TweetType[]>(
+          "/api/replies/byPublication/" + id
+        );
+        setReplies(data);
+      };
+      getReplies();
     }
   }, [dispatch, id]);
 
@@ -72,6 +85,10 @@ export const FullTweet: React.FC = () => {
             <Divider />
             <TweetFooter tweetData={tweetData} kind="fullTweet" />
           </FullTweetWrapper>
+
+          {replies.map((reply) => (
+            <Tweet tweetData={reply} t={t} />
+          ))}
         </Paper>
       </>
     );

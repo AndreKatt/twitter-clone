@@ -16,7 +16,7 @@ import {
   UserAvatar,
 } from "../../styles";
 import {
-  HeaderContainer,
+  TweetDataContainer,
   HeaderTextContainer,
   TweetContainer,
   TweetTextWrapper,
@@ -49,7 +49,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
 
   return (
     <TweetContainer variant="outlined">
-      <HeaderContainer>
+      <TweetDataContainer>
         <StyledLink to={userLink}>
           <Tooltip arrow title={user.fullname}>
             <UserAvatar
@@ -88,7 +88,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
 
           <TweetFooter tweetData={tweetData} kind="tweet" />
         </TextContentContainer>
-      </HeaderContainer>
+      </TweetDataContainer>
 
       {isCurrentUser && <TweetActionsMenu t={t} id={_id} />}
     </TweetContainer>

@@ -26,7 +26,7 @@ export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   },
 }));
 
-export const HeaderContainer = styled("div")({
+export const TweetDataContainer = styled("div")({
   width: "100%",
   display: "grid",
   paddingTop: 5,
