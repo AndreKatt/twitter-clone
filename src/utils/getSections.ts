@@ -1,4 +1,4 @@
-import { GetSections } from "./types";
+import type { GetSections } from "./types";
 
 export const getSections: GetSections = (arr, type, t, email) => {
   return arr.map((label) => ({

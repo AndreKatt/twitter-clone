@@ -40,9 +40,9 @@ export const LanguagesSettings: React.FC = () => {
         <LanguageControlLabel
           control={
             <Checkbox
-              checked={language === "ru"}
+              checked={language === "ru-RU"}
               onChange={handleChangeLanguage}
-              inputProps={{ "aria-label": "ru" }}
+              inputProps={{ "aria-label": "ru-RU" }}
             />
           }
           label={russian}
@@ -50,9 +50,9 @@ export const LanguagesSettings: React.FC = () => {
         <LanguageControlLabel
           control={
             <Checkbox
-              checked={language === "en"}
+              checked={language === "en-US"}
               onChange={handleChangeLanguage}
-              inputProps={{ "aria-label": "en" }}
+              inputProps={{ "aria-label": "en-US" }}
             />
           }
           label={english}

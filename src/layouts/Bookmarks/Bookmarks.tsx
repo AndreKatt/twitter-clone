@@ -8,8 +8,9 @@ import { getTitles } from "../../utils/getTitles";
 
 export const Bookmarks: React.FC = () => {
   const { t } = useTranslation();
-  const { bookmarks } = getTitles(t);
   const user = useSelector(selectCurrentUserData);
+
+  const { bookmarks } = getTitles(t);
 
   return (
     <Header

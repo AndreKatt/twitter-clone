@@ -50,3 +50,15 @@ export type GetFooterIcons = (
   replies: Reply[],
   addLike: () => void
 ) => FooterIcon[];
+
+type MenuItem = { icon: JSX.Element; label: string };
+
+type MenuItems = {
+  delete: MenuItem;
+  pin: MenuItem;
+  edit: MenuItem;
+};
+
+export type GetMenuItems = (
+  t: TFunction<"translation", undefined>
+) => MenuItems;

@@ -7,7 +7,8 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    fallbackLng: ["en", "ru"],
+    fallbackLng: ["en-US", "ru-RU"],
+    lng: "ru-RU",
     resources: {
       en: {
         translation: {

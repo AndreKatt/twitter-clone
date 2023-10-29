@@ -32,7 +32,7 @@ export const FullTweet: React.FC = () => {
   const { t } = useTranslation();
 
   const { fullTweet } = getTitles(t);
-  const locale = i18next.language === "en" ? enUS : ru;
+  const locale = i18next.language === "en-US" ? enUS : ru;
 
   useEffect(() => {
     if (id) {
