@@ -8,7 +8,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 // local libs
 import { Home } from "./pages/Home/Home";
 import { SignIn } from "./pages/SignIn/SignIn";
-import { FullTweet } from "./layouts/FullTweet/FullTweet";
+import { FullPublication } from "./layouts/FullPublication/FullPublication";
 import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
 import { Settings } from "./layouts/Settings/Settings";
 import { Profile } from "./layouts/Profile/Profile";
@@ -114,7 +114,14 @@ function App() {
                 path=":email/followers"
                 element={<Follow type="followers" />}
               />
-              <Route path="tweet/:id" element={<FullTweet />} />
+              <Route
+                path="tweet/:id"
+                element={<FullPublication type="tweet" />}
+              />
+              <Route
+                path="reply/:id"
+                element={<FullPublication type="reply" />}
+              />
             </Route>
 
             <Route path="signin" element={<SignIn />} />

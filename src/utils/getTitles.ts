@@ -9,5 +9,5 @@ export const getTitles: GetTitles = (t) => ({
   languages: `${t("layouts.languagesSettings.main")}`,
   displayLaguage: `${t("layouts.languagesSettings.displayLaguage")}`,
   background: `${t("layouts.displaySettings.background")}`,
-  fullTweet: `${t("layouts.fullTweet")}`,
+  fullPublication: `${t("layouts.fullPublication")}`,
 });

@@ -69,7 +69,7 @@ export const SideMenu: React.FC<i18nProps> = ({ t }) => {
 
           <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>
             <AddTweetFormWrapper>
-              <AddTweetForm maxRows={15} minHeight={140} divider />
+              <AddTweetForm type="tweet" maxRows={15} minHeight={140} divider />
             </AddTweetFormWrapper>
           </ModalBlock>
         </SideMenuListItem>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 // local libs
+import { axios } from "../../core/axios";
 import { Tweet } from "../../components/Tweet/Tweet";
 import { Header } from "../../generic/Header/Header";
 import { Spinner } from "../../generic/Spinner/Spinner";
@@ -19,6 +20,7 @@ import type { TweetType } from "../../types";
 
 export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
   const [likedTweets, setLikedTweets] = useState<TweetType[]>([]);
+  const [replies, setReplies] = useState<TweetType[]>([]);
   const [postedFiles, setPostedFiles] = useState<TweetType[]>([]);
   const { t } = useTranslation();
   const user = useSelector(selectSelectedUserData);
@@ -30,12 +32,24 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
 
   const currentTweets = {
     tweets: userTweets,
-    replies: [],
+    replies: replies,
     media: postedFiles,
     likes: likedTweets.reverse(),
   };
 
+  const getReplies = async () => {
+    if (user) {
+      const { data } = await axios.get<TweetType[]>(
+        "/api/replies/byUser/" + user.email
+      );
+
+      setReplies(data);
+    }
+  };
+
   useEffect(() => {
+    type === "replies" && getReplies();
+
     if (type === "likes" && user) {
       const foundTweets = user.likes.map(
         (id) => allTweets.filter((tweet) => tweet._id === id)[0]
@@ -49,6 +63,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
         .map((tweet) => ({ ...tweet, text: "" }));
       setPostedFiles(files);
     }
+
     // eslint-disable-next-line
   }, [type, allTweets, userTweets]);
 
@@ -60,7 +75,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
         <Spinner type="pageCenter" />
       ) : (
         currentTweets[type].map((userTweet) => (
-          <Tweet key={userTweet._id} tweetData={userTweet} t={t} />
+          <Tweet key={userTweet._id} type="tweet" tweetData={userTweet} t={t} />
         ))
       )}
     </>

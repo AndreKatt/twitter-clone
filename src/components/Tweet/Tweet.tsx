@@ -27,6 +27,7 @@ import type { i18nProps } from "../../types";
 import { TweetActionsMenu } from "../TweetActionsMenu/TweetActionsMenu";
 
 export const Tweet: React.FC<TweetProps & i18nProps> = ({
+  type,
   tweetData,
   t,
 }): React.ReactElement => {
@@ -79,7 +80,7 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
             </HeaderTextContainer>
           </StyledLink>
 
-          <StyledLink to={`/tweet/${_id}`}>
+          <StyledLink to={`/${type}/${_id}`}>
             <TweetTextWrapper variant="body1" gutterBottom>
               <span>{text}</span>
             </TweetTextWrapper>

@@ -56,7 +56,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
       <Header variant="outlined" title={home} titles={titles} t={t} />
       <Paper>
         <AddTweetWrapper>
-          <AddTweetForm minHeight={56} />
+          <AddTweetForm type="tweet" minHeight={56} />
         </AddTweetWrapper>
         <AddTweetBottomLine />
       </Paper>
@@ -65,7 +65,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
         <Spinner type="pageCenter" />
       ) : (
         currentTweets.map((tweet) => (
-          <Tweet key={tweet._id} tweetData={tweet} t={t} />
+          <Tweet key={tweet._id} type="tweet" tweetData={tweet} t={t} />
         ))
       )}
     </>

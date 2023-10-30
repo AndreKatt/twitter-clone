@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 // local libs
+import { axios } from "../../core/axios";
 import { UploadImages } from "../UploadImages/UploadImages";
 import { selectAddFormState } from "../../redux/tweets/selectors";
 import { addTweet } from "../../redux/tweets/asyncActions";
@@ -31,12 +32,14 @@ import {
 import { StyledLink, UserAvatar } from "../../styles";
 //types
 import type { AddTweetFormProps } from "./types";
-import type { UploadedObject } from "../../types";
+import type { TweetType, UploadedObject } from "../../types";
 
 export const AddTweetForm: React.FC<AddTweetFormProps> = ({
+  type,
   maxRows,
   minHeight,
   divider,
+  tweetId,
 }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
@@ -72,7 +75,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       const uploadedUrls =
         images[0] && (await uploadFiles(images.map((image) => image.file)));
 
-      const tweet = {
+      const publication = {
         text: text,
         images: uploadedUrls,
         user: {
@@ -82,7 +85,17 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         },
       };
 
-      await dispatch(addTweet(tweet));
+      const addReply = async () => {
+        await axios.post<TweetType>(
+          "/api/replies/addReply/" + tweetId,
+          publication
+        );
+      };
+
+      type === "tweet"
+        ? await dispatch(addTweet(publication))
+        : await addReply();
+
       setText("");
       setImages([]);
       sessionStorage.removeItem("tweetText");
@@ -105,7 +118,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         </div>
         <Textarea
           onChange={handleChangeTextarea}
-          placeholder={t("addTweetForm.placeholder")}
+          placeholder={t("addTweetForm.placeholder." + type)}
           value={text}
           maxRows={maxRows}
         />
@@ -155,7 +168,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             {addFormState === AddFormState.LOADING ? (
               <CircularProgress color="inherit" size={22} />
             ) : (
-              `${t("addTweetForm.buttonLabel")}`
+              `${t("addTweetForm.buttonLabel." + type)}`
             )}
           </Button>
         </ButtomRightContainer>

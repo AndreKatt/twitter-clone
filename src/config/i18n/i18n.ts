@@ -80,8 +80,14 @@ i18n
             buttonLabel: "Tweet",
           },
           addTweetForm: {
-            placeholder: "What is happening?!",
-            buttonLabel: "Tweet",
+            placeholder: {
+              tweet: "What is happening?!",
+              reply: "Post your reply",
+            },
+            buttonLabel: {
+              tweet: "Tweet",
+              reply: "Reply",
+            },
             alertText: "Error adding tweet",
           },
           tweet: {
@@ -156,7 +162,7 @@ i18n
                 english: "English",
               },
             },
-            fullTweet: "Tweet",
+            fullPublication: "Tweet",
           },
         },
       },
@@ -230,8 +236,14 @@ i18n
             buttonLabel: "Твитнуть",
           },
           addTweetForm: {
-            placeholder: "Что происходит?!",
-            buttonLabel: "Твитнуть",
+            placeholder: {
+              tweet: "Что происходит?!",
+              reply: "Опубликовать ответ",
+            },
+            buttonLabel: {
+              tweet: "Твитнуть",
+              reply: "Ответить",
+            },
             alertText: "Ошибка при добавлении твита",
           },
           tweet: {
@@ -306,7 +318,7 @@ i18n
                 english: "Английский",
               },
             },
-            fullTweet: "Твит",
+            fullPublication: "Твит",
           },
         },
       },

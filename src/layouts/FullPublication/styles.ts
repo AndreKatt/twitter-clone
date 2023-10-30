@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 // types
 import type { TypographyProps } from "@mui/material/Typography";
+import { Divider } from "@mui/material";
 
 export const FullTweetWrapper = styled(Paper)({
   borderRadius: 0,
@@ -26,4 +27,8 @@ export const TweetText = styled(Typography)<TypographyProps>({
 export const TweetData = styled("span")({
   color: grey[500],
   margin: "20px 0",
+});
+
+export const StyledDivider = styled(Divider)({
+  margin: "0 20px",
 });

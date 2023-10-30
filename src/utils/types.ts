@@ -22,7 +22,7 @@ export type HeaderTitles = {
   displayLaguage: string;
   background: string;
   languages: string;
-  fullTweet: string;
+  fullPublication: string;
 };
 
 export type GetTitles = (
