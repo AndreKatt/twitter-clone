@@ -2,7 +2,6 @@ import type { GetTitles } from "./types";
 
 export const getTitles: GetTitles = (t) => ({
   home: `${t("layouts.home")}`,
-  notifications: `${t("layouts.notifications")}`,
   bookmarks: `${t("layouts.bookmarks")}`,
   settings: `${t("layouts.settings")}`,
   display: `${t("layouts.displaySettings.main")}`,

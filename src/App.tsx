@@ -13,7 +13,6 @@ import { HomeTweets } from "./layouts/HomeTweets/HomeTweets";
 import { Settings } from "./layouts/Settings/Settings";
 import { Profile } from "./layouts/Profile/Profile";
 import { Follow } from "./layouts/Follow/Follow";
-import { Notifications } from "./layouts/Notifications/Notifications";
 import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
 import { DisplaySettings } from "./layouts/DisplaySettings/DisplaySettings";
 import { LanguagesSettings } from "./layouts/LanguagesSettings/LanguagesSettings";
@@ -84,7 +83,6 @@ function App() {
                 path="subscriptions"
                 element={<HomeTweets type="subscriptions" />}
               />
-              <Route path="notifications" element={<Notifications />} />
               <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="settings" element={<Settings />} />
               <Route path="settings/display" element={<DisplaySettings />} />

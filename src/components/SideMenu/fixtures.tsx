@@ -1,5 +1,4 @@
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import PendingOutlinedIcon from "@mui/icons-material/PendingOutlined";
@@ -12,11 +11,6 @@ export const menuItems: GetMenu = (currentUser, t) => {
       link: "/home",
       icon: <HomeOutlinedIcon />,
       label: `${t("sideMenu.home")}`,
-    },
-    {
-      link: "notifications",
-      icon: <NotificationsOutlinedIcon />,
-      label: `${t("sideMenu.notifications")}`,
     },
     {
       link: "bookmarks",

@@ -32,3 +32,7 @@ export const TweetData = styled("span")({
 export const StyledDivider = styled(Divider)({
   margin: "0 20px",
 });
+
+export const AddTweetFormWrapper = styled("div")({
+  margin: 20,
+});

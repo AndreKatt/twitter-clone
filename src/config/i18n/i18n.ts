@@ -73,7 +73,6 @@ i18n
           },
           sideMenu: {
             home: "Home",
-            notifications: "Notifications",
             bookmarks: "Bookmarks",
             profile: "Profile",
             settings: "Settings",
@@ -118,11 +117,6 @@ i18n
             sections: {
               home: "For you",
               subscriptions: "Following",
-              notifications: {
-                title1: "All",
-                title2: "Verified",
-                title3: "Mentions",
-              },
               followers: "Followers",
               following: "Following",
               tweets: "Tweets",
@@ -131,7 +125,6 @@ i18n
               likes: "Likes",
             },
             home: "Home",
-            notifications: "Notifications",
             bookmarks: "Bookmarks",
             profile: {
               registration: "Joined",
@@ -229,7 +222,6 @@ i18n
           },
           sideMenu: {
             home: "Главная",
-            notifications: "Уведомления",
             bookmarks: "Закладки",
             profile: "Профиль",
             settings: "Настройки",
@@ -274,11 +266,6 @@ i18n
             sections: {
               home: "Для вас",
               subscriptions: "Вы читаете",
-              notifications: {
-                title1: "Все",
-                title2: "Подлинная",
-                title3: "Упоминания",
-              },
               following: "в читаемых",
               followers: "в читателях",
               tweets: "Твиты",
@@ -287,7 +274,6 @@ i18n
               likes: "Нравится",
             },
             home: "Главная",
-            notifications: "Уведомления",
             bookmarks: "Закладки",
             profile: {
               registration: "Регистрация:",

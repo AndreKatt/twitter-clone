@@ -15,7 +15,6 @@ type LanguagesDescriptions = {
 
 export type HeaderTitles = {
   home: string;
-  notifications: string;
   bookmarks: string;
   settings: string;
   display: string;

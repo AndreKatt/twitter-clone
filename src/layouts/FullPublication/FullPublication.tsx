@@ -28,6 +28,7 @@ import {
   TweetText,
   TweetData,
   StyledDivider,
+  AddTweetFormWrapper,
 } from "./styles";
 import { Tweet } from "../../components/Tweet/Tweet";
 // types
@@ -105,7 +106,9 @@ export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
             <TweetFooter tweetData={publication} kind="fullTweet" />
             <StyledDivider />
 
-            <AddTweetForm type="reply" tweetId={id} minHeight={56} />
+            <AddTweetFormWrapper>
+              <AddTweetForm type="reply" tweetId={id} minHeight={56} />
+            </AddTweetFormWrapper>
           </FullTweetWrapper>
 
           {replies.map((reply) => (
