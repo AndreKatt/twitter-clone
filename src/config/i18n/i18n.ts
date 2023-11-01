@@ -78,7 +78,7 @@ i18n
             settings: "Settings",
             buttonLabel: "Tweet",
           },
-          addTweetForm: {
+          addPublicationForm: {
             placeholder: {
               tweet: "What is happening?!",
               reply: "Post your reply",
@@ -87,10 +87,10 @@ i18n
               tweet: "Tweet",
               reply: "Reply",
             },
-            alertText: "Error adding tweet",
+            alertText: "Error adding publication",
           },
-          tweet: {
-            confirm: "Are you sure you want to delete this tweet?",
+          publication: {
+            confirm: "Are you sure you want to delete this publication?",
             dateText: "ago",
             menuLabels: {
               delete: "Delete",
@@ -98,7 +98,6 @@ i18n
               edit: "Edit",
             },
           },
-          searchTextField: "Search Twitter",
           userSideProfile: {
             menuLabel: "Log out",
           },
@@ -107,10 +106,6 @@ i18n
           },
           whoToFollow: {
             label: "Who to follow",
-          },
-          topics: {
-            label: "Trends for you",
-            description: "Tweets",
           },
           followButton: { follow: "Follow", unfollow: "Unfollow" },
           layouts: {
@@ -155,7 +150,7 @@ i18n
                 english: "English",
               },
             },
-            fullPublication: "Tweet",
+            fullPublication: "Publication",
           },
         },
       },
@@ -227,7 +222,7 @@ i18n
             settings: "Настройки",
             buttonLabel: "Твитнуть",
           },
-          addTweetForm: {
+          addPublicationForm: {
             placeholder: {
               tweet: "Что происходит?!",
               reply: "Опубликовать ответ",
@@ -236,10 +231,10 @@ i18n
               tweet: "Твитнуть",
               reply: "Ответить",
             },
-            alertText: "Ошибка при добавлении твита",
+            alertText: "Ошибка при добавлении публикации",
           },
-          tweet: {
-            confirm: "Вы действительно хотите удалить этот твит?",
+          publication: {
+            confirm: "Вы действительно хотите удалить эту публикацию?",
             dateText: "назад",
             menuLabels: {
               delete: "Удалить твит",
@@ -247,7 +242,6 @@ i18n
               edit: "Редактировать",
             },
           },
-          searchTextField: "Поиск в Твиттере",
           userSideProfile: {
             menuLabel: "Выйти из учетной записи",
           },
@@ -256,10 +250,6 @@ i18n
           },
           whoToFollow: {
             label: "Кого читать",
-          },
-          topics: {
-            label: "Актуальные темы для вас",
-            description: "Твитов",
           },
           followButton: { follow: "Читать", unfollow: "Отписаться" },
           layouts: {
@@ -304,7 +294,7 @@ i18n
                 english: "Английский",
               },
             },
-            fullPublication: "Твит",
+            fullPublication: "Публикация",
           },
         },
       },

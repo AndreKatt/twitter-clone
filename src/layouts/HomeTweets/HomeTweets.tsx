@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
 // local libs
-import { Tweet } from "../../components/Tweet/Tweet";
-import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
+import { Publication } from "../../components/Publication/Publication";
+import { AddPublicationForm } from "../../components/AddPublicationForm/AddPublicationForm";
 import { Header } from "../../generic/Header/Header";
 import { Spinner } from "../../generic/Spinner/Spinner";
 import {
@@ -56,7 +56,7 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
       <Header variant="outlined" title={home} titles={titles} t={t} />
       <Paper>
         <AddTweetWrapper>
-          <AddTweetForm type="tweet" minHeight={56} />
+          <AddPublicationForm type="tweet" minHeight={56} />
         </AddTweetWrapper>
         <AddTweetBottomLine />
       </Paper>
@@ -65,7 +65,12 @@ export const HomeTweets: React.FC<HomeTweetsProps> = ({ type }) => {
         <Spinner type="pageCenter" />
       ) : (
         currentTweets.map((tweet) => (
-          <Tweet key={tweet._id} type="tweet" tweetData={tweet} t={t} />
+          <Publication
+            key={tweet._id}
+            type="tweet"
+            publicationData={tweet}
+            t={t}
+          />
         ))
       )}
     </>

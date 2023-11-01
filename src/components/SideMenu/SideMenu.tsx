@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 // local libs
 import { ModalBlock } from "../ModalBlock/ModalBlock";
-import { AddTweetForm } from "../AddTweetForm/AddTweetForm";
+import { AddPublicationForm } from "../AddPublicationForm/AddPublicationForm";
 import { selectUserState } from "../../redux/currentUser/selectors";
 import { menuItems } from "./fixtures";
 // styles
 import {
   AddTweetButton,
-  AddTweetFormWrapper,
+  AddPublicationFormWrapper,
   ButtonIcon,
   Label,
   ListItemWrapper,
@@ -68,9 +68,14 @@ export const SideMenu: React.FC<i18nProps> = ({ t }) => {
           </AddTweetButton>
 
           <ModalBlock onClose={handleCloseAddTweet} visible={visibleAddTweet}>
-            <AddTweetFormWrapper>
-              <AddTweetForm type="tweet" maxRows={15} minHeight={140} divider />
-            </AddTweetFormWrapper>
+            <AddPublicationFormWrapper>
+              <AddPublicationForm
+                type="tweet"
+                maxRows={15}
+                minHeight={140}
+                divider
+              />
+            </AddPublicationFormWrapper>
           </ModalBlock>
         </SideMenuListItem>
       </SideMenuList>

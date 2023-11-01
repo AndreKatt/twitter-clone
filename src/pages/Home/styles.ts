@@ -26,7 +26,7 @@ export const RightSideContainer = styled("div")({
   position: "sticky",
 });
 
-export const TweetsContainer = styled(Paper)<PaperProps>({
+export const MainContentContainer = styled(Paper)<PaperProps>({
   borderRadius: 0,
   height: "100%",
   borderTop: 0,

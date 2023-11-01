@@ -11,7 +11,7 @@ export type Reply = {
   text: string;
 };
 
-export type TweetType = {
+export type PublicationType = {
   _id: string;
   text: string;
   images: [];

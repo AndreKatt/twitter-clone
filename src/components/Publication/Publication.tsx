@@ -3,8 +3,8 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 // local libs
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
-import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
-import { formatTweetInfoDate } from "../../utils/formatDate";
+import { PublicationFooter } from "../../generic/PublicationFooter/PublicationFooter";
+import { formatPublicationInfoDate } from "../../utils/formatDate";
 import { stringAvatar } from "../../utils/stringAvatar";
 import { getAvatarUrl } from "../../utils/getAvatarUrl";
 // styles
@@ -16,26 +16,26 @@ import {
   UserAvatar,
 } from "../../styles";
 import {
-  TweetDataContainer,
+  PublicationDataContainer,
   HeaderTextContainer,
-  TweetContainer,
-  TweetTextWrapper,
+  PublicationContainer,
+  PublicationTextWrapper,
 } from "./styles";
 // types
-import type { TweetProps } from "./types";
+import type { PublicationProps } from "./types";
 import type { i18nProps } from "../../types";
 import { TweetActionsMenu } from "../TweetActionsMenu/TweetActionsMenu";
 
-export const Tweet: React.FC<TweetProps & i18nProps> = ({
+export const Publication: React.FC<PublicationProps & i18nProps> = ({
   type,
-  tweetData,
+  publicationData,
   t,
 }): React.ReactElement => {
   const [avatarUrl, setavatarUrl] = useState<string>("");
   const currentUserEmail = localStorage.getItem("email");
-  const { _id, text, images, user, createdAt } = tweetData;
+  const { _id, text, images, user, createdAt } = publicationData;
 
-  const isCurrentUser = currentUserEmail === tweetData.user.email;
+  const isCurrentUser = currentUserEmail === publicationData.user.email;
   const userLink = `/${user.email}/tweets`;
 
   useEffect(() => {
@@ -49,8 +49,8 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
   }, []);
 
   return (
-    <TweetContainer variant="outlined">
-      <TweetDataContainer>
+    <PublicationContainer variant="outlined">
+      <PublicationDataContainer>
         <StyledLink to={userLink}>
           <Tooltip arrow title={user.fullname}>
             <UserAvatar
@@ -71,8 +71,8 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
                   &nbsp;
                   <HeaderText>·</HeaderText>&nbsp;
                   <HeaderText>
-                    {`${formatTweetInfoDate(new Date(createdAt))} ${t(
-                      "tweet.dateText"
+                    {`${formatPublicationInfoDate(new Date(createdAt))} ${t(
+                      "publication.dateText"
                     )}`}
                   </HeaderText>
                 </Typography>
@@ -81,17 +81,20 @@ export const Tweet: React.FC<TweetProps & i18nProps> = ({
           </StyledLink>
 
           <StyledLink to={`/${type}/${_id}`}>
-            <TweetTextWrapper variant="body1" gutterBottom>
+            <PublicationTextWrapper variant="body1" gutterBottom>
               <span>{text}</span>
-            </TweetTextWrapper>
-            {images && <ImagesList type="tweet" images={images} />}
+            </PublicationTextWrapper>
+            {images && <ImagesList type="publication" images={images} />}
           </StyledLink>
 
-          <TweetFooter tweetData={tweetData} kind="tweet" />
+          <PublicationFooter
+            publicationData={publicationData}
+            type="publication"
+          />
         </TextContentContainer>
-      </TweetDataContainer>
+      </PublicationDataContainer>
 
       {isCurrentUser && <TweetActionsMenu t={t} id={_id} />}
-    </TweetContainer>
+    </PublicationContainer>
   );
 };

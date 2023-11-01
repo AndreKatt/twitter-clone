@@ -8,7 +8,7 @@ export const ImagesContainer = styled("div")<ImagesContainerProps>(
     display: "flex",
     alignItems: "center",
     width: "100%",
-    ...(type === "tweetForm"
+    ...(type === "publicationForm"
       ? { height: "auto", flexWrap: "wrap" }
       : { justifyContent: "center", height: 400, flexWrap: "nowrap" }),
     marginTop: 20,
@@ -21,7 +21,7 @@ export const ImageWrapper = styled("div")<ImageWrapperProps>(
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
-    ...(type === "tweetForm"
+    ...(type === "publicationForm"
       ? {
           width: 50,
           height: 50,

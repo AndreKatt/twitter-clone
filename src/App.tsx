@@ -16,7 +16,7 @@ import { Follow } from "./layouts/Follow/Follow";
 import { Bookmarks } from "./layouts/Bookmarks/Bookmarks";
 import { DisplaySettings } from "./layouts/DisplaySettings/DisplaySettings";
 import { LanguagesSettings } from "./layouts/LanguagesSettings/LanguagesSettings";
-import { ProfileTweets } from "./layouts/ProfileTweets/ProfileTweets";
+import { ProfilePublications } from "./layouts/ProfilePublications/ProfilePublications";
 import { useAppDispatch } from "./redux/store";
 import { selectIsAuth } from "./redux/currentUser/selectors";
 import { getCurrentUserByToken } from "./redux/currentUser/asyncActions";
@@ -94,14 +94,20 @@ function App() {
               <Route path=":email/" element={<Profile />}>
                 <Route
                   path="tweets"
-                  element={<ProfileTweets type="tweets" />}
+                  element={<ProfilePublications type="tweets" />}
                 />
                 <Route
                   path="replies"
-                  element={<ProfileTweets type="replies" />}
+                  element={<ProfilePublications type="replies" />}
                 />
-                <Route path="media" element={<ProfileTweets type="media" />} />
-                <Route path="likes" element={<ProfileTweets type="likes" />} />
+                <Route
+                  path="media"
+                  element={<ProfilePublications type="media" />}
+                />
+                <Route
+                  path="likes"
+                  element={<ProfilePublications type="likes" />}
+                />
               </Route>
 
               <Route

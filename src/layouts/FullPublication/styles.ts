@@ -6,14 +6,14 @@ import Paper from "@mui/material/Paper";
 import type { TypographyProps } from "@mui/material/Typography";
 import { Divider } from "@mui/material";
 
-export const FullTweetWrapper = styled(Paper)({
+export const FullPublicationWrapper = styled(Paper)({
   borderRadius: 0,
   borderTop: 0,
   borderRight: 0,
   borderLeft: 0,
 });
 
-export const TweetText = styled(Typography)<TypographyProps>({
+export const PublicationText = styled(Typography)<TypographyProps>({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
@@ -24,7 +24,7 @@ export const TweetText = styled(Typography)<TypographyProps>({
   marginTop: 5,
 });
 
-export const TweetData = styled("span")({
+export const DateContainer = styled("span")({
   color: grey[500],
   margin: "20px 0",
 });
@@ -33,6 +33,6 @@ export const StyledDivider = styled(Divider)({
   margin: "0 20px",
 });
 
-export const AddTweetFormWrapper = styled("div")({
+export const AddPublicationFormWrapper = styled("div")({
   margin: 20,
 });

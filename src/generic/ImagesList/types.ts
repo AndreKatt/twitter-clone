@@ -1,7 +1,7 @@
 export type ImageListProps = {
   images: string[];
   removeImage?: (url: string) => void;
-  type: "tweet" | "tweetForm";
+  type: "publication" | "publicationForm";
 };
 
 export type ImageWrapperProps = {

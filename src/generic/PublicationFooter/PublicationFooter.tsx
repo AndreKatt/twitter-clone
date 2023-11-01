@@ -13,18 +13,18 @@ import { selectCurrentUserData } from "../../redux/currentUser/selectors";
 // styles
 import { FooterIcon, FooterWrapper, FooterContainer } from "./styles";
 // types
-import type { TweetFooterProps } from "./types";
+import type { PublicationFooterProps } from "./types";
 
-export const TweetFooter: React.FC<TweetFooterProps> = ({
-  tweetData,
-  kind,
+export const PublicationFooter: React.FC<PublicationFooterProps> = ({
+  publicationData,
+  type,
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const currentUserData = useSelector(selectCurrentUserData);
   const theme = useTheme();
 
-  const { _id, likes, retweets, replies } = tweetData;
+  const { _id, likes, retweets, replies } = publicationData;
 
   const handleAddLike = async (): Promise<void> => {
     if (_id) {
@@ -59,10 +59,10 @@ export const TweetFooter: React.FC<TweetFooterProps> = ({
   }, [isFavorite, dispatch]);
 
   return (
-    <FooterWrapper kind={kind}>
+    <FooterWrapper type={type}>
       {footerIcons.map((item) => (
-        <FooterContainer onClick={item.clickFunction} key={item.id} kind={kind}>
-          <FooterIcon kind={kind}>{item.icon}</FooterIcon>
+        <FooterContainer onClick={item.clickFunction} key={item.id} type={type}>
+          <FooterIcon type={type}>{item.icon}</FooterIcon>
           <span>{item.label}</span>
         </FooterContainer>
       ))}

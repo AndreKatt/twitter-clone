@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import Paper from "@mui/material/Paper";
 
-export const FullTweetContainer = styled("div")(({ theme }) => ({
+export const UserInfoContainer = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   flexDirection: "row",

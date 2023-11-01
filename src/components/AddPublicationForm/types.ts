@@ -1,9 +1,9 @@
-export type AddTweetFormProps = {
+export type AddPublicationFormProps = {
   type: "tweet" | "reply";
   maxRows?: number;
   minHeight: number;
   divider?: boolean;
-  tweetId?: string;
+  publicationId?: string;
 };
 
 export type StyledCircularProgressProps = {

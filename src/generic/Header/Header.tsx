@@ -10,7 +10,7 @@ import {
   HeaderButton,
   HeaderTitleContainer,
   SecondTitle,
-  TweetsHeader,
+  HeaderContainer,
 } from "./styles";
 // types
 import type { HeaderProps } from "./types";
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
   const navigate = useNavigate();
 
   return (
-    <TweetsHeader variant={variant}>
+    <HeaderContainer variant={variant}>
       {title && (
         <HeaderTitleContainer>
           {icon && (
@@ -50,6 +50,6 @@ export const Header: React.FC<HeaderProps & i18nProps> = ({
           ))}
         </HeaderSection>
       )}
-    </TweetsHeader>
+    </HeaderContainer>
   );
 };

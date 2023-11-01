@@ -11,9 +11,10 @@ import Paper from "@mui/material/Paper";
 import { axios } from "../../core/axios";
 import { ImagesList } from "../../generic/ImagesList/ImagesList";
 import { UserInfoBlock } from "../../components/UserInfoBlock/UserInfoBlock";
-import { AddTweetForm } from "../../components/AddTweetForm/AddTweetForm";
+import { AddPublicationForm } from "../../components/AddPublicationForm/AddPublicationForm";
+import { Publication } from "../../components/Publication/Publication";
 import { Header } from "../../generic/Header/Header";
-import { TweetFooter } from "../../generic/TweetFooter/TweetFooter";
+import { PublicationFooter } from "../../generic/PublicationFooter/PublicationFooter";
 import { Spinner } from "../../generic/Spinner/Spinner";
 import { useAppDispatch } from "../../redux/store";
 import { fetchTweetData } from "../../redux/tweet/asyncActions";
@@ -24,20 +25,21 @@ import {
 import { getTitles } from "../../utils/getTitles";
 // styles
 import {
-  FullTweetWrapper,
-  TweetText,
-  TweetData,
+  FullPublicationWrapper,
+  PublicationText,
+  DateContainer,
   StyledDivider,
-  AddTweetFormWrapper,
+  AddPublicationFormWrapper,
 } from "./styles";
-import { Tweet } from "../../components/Tweet/Tweet";
 // types
 import type { FullPublicationProps } from "./types";
-import type { TweetType } from "../../types";
+import type { PublicationType } from "../../types";
 
 export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
-  const [fullReply, setFullReply] = useState<TweetType | undefined>(undefined);
-  const [replies, setReplies] = useState<TweetType[]>([]);
+  const [fullReply, setFullReply] = useState<PublicationType | undefined>(
+    undefined
+  );
+  const [replies, setReplies] = useState<PublicationType[]>([]);
   const { id }: { id?: string } = useParams();
   const dispatch = useAppDispatch();
   const tweetData = useSelector(selectTweetData);
@@ -48,12 +50,14 @@ export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
   const locale = i18next.language === "en-US" ? enUS : ru;
 
   const fetchReply = async () => {
-    const { data } = await axios.get<TweetType>("/api/replies/byReply/" + id);
+    const { data } = await axios.get<PublicationType>(
+      "/api/replies/byReply/" + id
+    );
     setFullReply(data);
   };
 
   const getReplies = async () => {
-    const { data } = await axios.get<TweetType[]>(
+    const { data } = await axios.get<PublicationType[]>(
       "/api/replies/byPublication/" + id
     );
     setReplies(data);
@@ -82,15 +86,15 @@ export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
       <>
         <Header variant="elevation" title={fullPublication} t={t} icon />
         <Paper>
-          <FullTweetWrapper variant="outlined">
+          <FullPublicationWrapper variant="outlined">
             <UserInfoBlock email={publication.user.email} />
 
-            <TweetText gutterBottom>
+            <PublicationText gutterBottom>
               <span> {publication.text}</span>
               {publication.images && (
-                <ImagesList type="tweet" images={publication.images} />
+                <ImagesList type="publication" images={publication.images} />
               )}
-              <TweetData>
+              <DateContainer>
                 <span>{format(new Date(publication.createdAt), "H:mm")}</span>
                 &nbsp;
                 <span>·</span>&nbsp;
@@ -99,20 +103,32 @@ export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
                     locale: locale,
                   })}
                 </span>
-              </TweetData>
-            </TweetText>
+              </DateContainer>
+            </PublicationText>
 
             <StyledDivider />
-            <TweetFooter tweetData={publication} kind="fullTweet" />
+            <PublicationFooter
+              publicationData={publication}
+              type="fullPublication"
+            />
             <StyledDivider />
 
-            <AddTweetFormWrapper>
-              <AddTweetForm type="reply" tweetId={id} minHeight={56} />
-            </AddTweetFormWrapper>
-          </FullTweetWrapper>
+            <AddPublicationFormWrapper>
+              <AddPublicationForm
+                type="reply"
+                publicationId={id}
+                minHeight={56}
+              />
+            </AddPublicationFormWrapper>
+          </FullPublicationWrapper>
 
           {replies.map((reply) => (
-            <Tweet key={reply._id} type="reply" tweetData={reply} t={t} />
+            <Publication
+              key={reply._id}
+              type="reply"
+              publicationData={reply}
+              t={t}
+            />
           ))}
         </Paper>
       </>

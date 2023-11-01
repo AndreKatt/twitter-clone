@@ -31,22 +31,22 @@ import {
 } from "./styles";
 import { StyledLink, UserAvatar } from "../../styles";
 //types
-import type { AddTweetFormProps } from "./types";
-import type { TweetType, UploadedObject } from "../../types";
+import type { AddPublicationFormProps } from "./types";
+import type { PublicationType, UploadedObject } from "../../types";
 
-export const AddTweetForm: React.FC<AddTweetFormProps> = ({
+export const AddPublicationForm: React.FC<AddPublicationFormProps> = ({
   type,
   maxRows,
   minHeight,
   divider,
-  tweetId,
+  publicationId,
 }): React.ReactElement => {
   const dispatch = useAppDispatch();
   const addFormState = useSelector(selectAddFormState);
   const user = useSelector(selectCurrentUser);
   const userData = useSelector(selectCurrentUserData);
   const [text, setText] = useState<string>(
-    sessionStorage.getItem("tweetText") || ""
+    sessionStorage.getItem("publicationText") || ""
   );
   const [images, setImages] = useState<UploadedObject[]>([]);
   const { t } = useTranslation();
@@ -60,7 +60,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
     if (e.currentTarget) {
       const txt = e.currentTarget.value;
       setText(txt);
-      sessionStorage.setItem("tweetText", txt);
+      sessionStorage.setItem("publicationText", txt);
     }
   };
 
@@ -86,8 +86,8 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
       };
 
       const addReply = async () => {
-        await axios.post<TweetType>(
-          "/api/replies/addReply/" + tweetId,
+        await axios.post<PublicationType>(
+          "/api/replies/addReply/" + publicationId,
           publication
         );
       };
@@ -98,7 +98,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
       setText("");
       setImages([]);
-      sessionStorage.removeItem("tweetText");
+      sessionStorage.removeItem("publicationText");
     }
 
     setAddFormState(AddFormState.ERROR);
@@ -118,7 +118,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
         </div>
         <Textarea
           onChange={handleChangeTextarea}
-          placeholder={t("addTweetForm.placeholder." + type)}
+          placeholder={t("addPublicationTextForm.placeholder." + type)}
           value={text}
           maxRows={maxRows}
         />
@@ -168,7 +168,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
             {addFormState === AddFormState.LOADING ? (
               <CircularProgress color="inherit" size={22} />
             ) : (
-              `${t("addTweetForm.buttonLabel." + type)}`
+              `${t("addPublicationTextForm.buttonLabel." + type)}`
             )}
           </Button>
         </ButtomRightContainer>
@@ -176,7 +176,7 @@ export const AddTweetForm: React.FC<AddTweetFormProps> = ({
 
       {addFormState === AddFormState.ERROR && (
         <Alert severity="error">
-          {t("addTweetForm.alertText")}
+          {t("addPublicationTextForm.alertText")}
           <span>😔</span>
         </Alert>
       )}

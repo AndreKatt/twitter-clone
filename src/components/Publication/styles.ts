@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import type { PaperProps } from "@mui/material/Paper";
 import type { TypographyProps } from "@mui/material/Typography";
 
-export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
+export const PublicationContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "space-between",
@@ -26,7 +26,7 @@ export const TweetContainer = styled(Paper)<PaperProps>(({ theme }) => ({
   },
 }));
 
-export const TweetDataContainer = styled("div")({
+export const PublicationDataContainer = styled("div")({
   width: "100%",
   display: "grid",
   paddingTop: 5,
@@ -39,6 +39,6 @@ export const HeaderTextContainer = styled("div")({
   justifyContent: "space-between",
 });
 
-export const TweetTextWrapper = styled(Typography)<TypographyProps>({
+export const PublicationTextWrapper = styled(Typography)<TypographyProps>({
   wordBreak: "break-word",
 });

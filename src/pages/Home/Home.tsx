@@ -13,7 +13,7 @@ import { fetchUsers } from "../../redux/users/asyncActions";
 // styles
 import {
   RightSideContainer,
-  TweetsContainer,
+  MainContentContainer,
   MenuGrid,
   RightSideGrid,
   GridContainer,
@@ -37,9 +37,9 @@ export const Home: React.FC = () => {
         </MenuGrid>
 
         <Grid item sm={10} md={7} lg={5.5}>
-          <TweetsContainer variant="outlined">
+          <MainContentContainer variant="outlined">
             <Outlet />
-          </TweetsContainer>
+          </MainContentContainer>
         </Grid>
 
         <RightSideGrid item sm={0} md={4} lg={3.5}>

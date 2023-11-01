@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 // local libs
 import { axios } from "../../core/axios";
-import { Tweet } from "../../components/Tweet/Tweet";
+import { Publication } from "../../components/Publication/Publication";
 import { Header } from "../../generic/Header/Header";
 import { Spinner } from "../../generic/Spinner/Spinner";
 import {
@@ -15,13 +15,15 @@ import { selectTweetsItems } from "../../redux/tweets/selectors";
 import { getSections } from "../../utils/getSections";
 import { titlesArr } from "./fixtures";
 // types
-import type { ProfileTweetsProps } from "./types";
-import type { TweetType } from "../../types";
+import type { ProfilePublicationsProps } from "./types";
+import type { PublicationType } from "../../types";
 
-export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
-  const [likedTweets, setLikedTweets] = useState<TweetType[]>([]);
-  const [replies, setReplies] = useState<TweetType[]>([]);
-  const [postedFiles, setPostedFiles] = useState<TweetType[]>([]);
+export const ProfilePublications: React.FC<ProfilePublicationsProps> = ({
+  type,
+}) => {
+  const [likedTweets, setLikedTweets] = useState<PublicationType[]>([]);
+  const [replies, setReplies] = useState<PublicationType[]>([]);
+  const [postedFiles, setPostedFiles] = useState<PublicationType[]>([]);
   const { t } = useTranslation();
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
@@ -30,7 +32,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
 
   const titles = [...(user ? getSections(titlesArr, type, t, user.email) : [])];
 
-  const currentTweets = {
+  const currentPublications = {
     tweets: userTweets,
     replies: replies,
     media: postedFiles,
@@ -39,7 +41,7 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
 
   const getReplies = async () => {
     if (user) {
-      const { data } = await axios.get<TweetType[]>(
+      const { data } = await axios.get<PublicationType[]>(
         "/api/replies/byUser/" + user.email
       );
 
@@ -74,8 +76,13 @@ export const ProfileTweets: React.FC<ProfileTweetsProps> = ({ type }) => {
       {isUserTweetsLoading ? (
         <Spinner type="pageCenter" />
       ) : (
-        currentTweets[type].map((userTweet) => (
-          <Tweet key={userTweet._id} type="tweet" tweetData={userTweet} t={t} />
+        currentPublications[type].map((publication) => (
+          <Publication
+            key={publication._id}
+            type="tweet"
+            publicationData={publication}
+            t={t}
+          />
         ))
       )}
     </>

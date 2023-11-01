@@ -61,7 +61,7 @@ export const UploadImages: React.FC<UploadImagesProps> = ({
         hidden
       />
       <ImagesList
-        type="tweetForm"
+        type="publicationForm"
         images={images.map((img) => img.blobUrl)}
         removeImage={removeImage}
       />

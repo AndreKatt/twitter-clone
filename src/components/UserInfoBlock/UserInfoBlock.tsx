@@ -5,7 +5,7 @@ import { axios } from "../../core/axios";
 import { Spinner } from "../../generic/Spinner/Spinner";
 import { stringAvatar } from "../../utils/stringAvatar";
 // styles
-import { FullTweetContainer, HeaderTextContent } from "./styles";
+import { UserInfoContainer, HeaderTextContent } from "./styles";
 import {
   HeaderText,
   StyledLink,
@@ -34,7 +34,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
   if (user)
     return (
       <StyledLink to={`/${user.email}/tweets`}>
-        <FullTweetContainer>
+        <UserInfoContainer>
           <Tooltip arrow title={user.username}>
             <UserAvatar
               alt="Аватарка пользователя"
@@ -53,7 +53,7 @@ export const UserInfoBlock: React.FC<UserInfoBlockProps> = ({ email }) => {
               </HeaderTextContent>
             </TextContentWrapper>
           </TextContentContainer>
-        </FullTweetContainer>
+        </UserInfoContainer>
       </StyledLink>
     );
 

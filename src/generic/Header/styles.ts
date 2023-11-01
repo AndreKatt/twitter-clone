@@ -21,7 +21,7 @@ export const SecondTitle = styled(Typography)({
   marginBottom: 5,
 });
 
-export const TweetsHeader = styled(Paper)<PaperProps>({
+export const HeaderContainer = styled(Paper)<PaperProps>({
   position: "sticky",
   top: 0,
   zIndex: 2,

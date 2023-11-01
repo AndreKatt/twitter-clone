@@ -107,6 +107,6 @@ export const ButtonIcon = styled(BorderColorTwoToneIcon)({
   },
 });
 
-export const AddTweetFormWrapper = styled(Paper)({
+export const AddPublicationFormWrapper = styled(Paper)({
   width: 550,
 });

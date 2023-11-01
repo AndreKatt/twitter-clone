@@ -1,5 +1,5 @@
 import type { LoadingState } from "../types";
-import type { MainUserInfo, TweetType } from "../../types";
+import type { MainUserInfo, PublicationType } from "../../types";
 
 export enum AddFormState {
   LOADING = "LOADING",
@@ -13,7 +13,7 @@ export type SendTweet = {
 };
 
 export type TweetsState = {
-  items: TweetType[];
+  items: PublicationType[];
   status: LoadingState;
   addFormState: AddFormState;
 };
