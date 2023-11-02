@@ -10,7 +10,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 // local libs
 import { useAppDispatch } from "../../redux/store";
 import { deleteTweet } from "../../redux/tweets/asyncActions";
-import { getTweetMenuItems } from "../../utils/getTweetMenuItems";
+import { getPublicationMenuItems } from "../../utils/getPublicationMenuItems";
 // styles
 import {
   MenuButtonContainer,
@@ -30,7 +30,7 @@ export const TweetActionsMenu: React.FC<TweetActionsMenuProps & i18nProps> = ({
   const open = Boolean(anchorEl);
   const dispatch = useAppDispatch();
 
-  const menuItems = getTweetMenuItems(t);
+  const menuItems = getPublicationMenuItems(t);
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
@@ -50,7 +50,7 @@ export const TweetActionsMenu: React.FC<TweetActionsMenuProps & i18nProps> = ({
   };
 
   const deleteOne = async () => {
-    if (window.confirm(`${t("tweet.confirm")}`)) {
+    if (window.confirm(`${t("publication.confirm")}`)) {
       await dispatch(deleteTweet(id));
       handleClose();
     }

@@ -109,7 +109,7 @@ export const FullPublication: React.FC<FullPublicationProps> = ({ type }) => {
             <StyledDivider />
             <PublicationFooter
               publicationData={publication}
-              type="fullPublication"
+              kind="fullPublication"
             />
             <StyledDivider />
 

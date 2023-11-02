@@ -17,7 +17,7 @@ import type { PublicationFooterProps } from "./types";
 
 export const PublicationFooter: React.FC<PublicationFooterProps> = ({
   publicationData,
-  type,
+  kind,
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const dispatch = useAppDispatch();
@@ -59,10 +59,10 @@ export const PublicationFooter: React.FC<PublicationFooterProps> = ({
   }, [isFavorite, dispatch]);
 
   return (
-    <FooterWrapper type={type}>
+    <FooterWrapper kind={kind}>
       {footerIcons.map((item) => (
-        <FooterContainer onClick={item.clickFunction} key={item.id} type={type}>
-          <FooterIcon type={type}>{item.icon}</FooterIcon>
+        <FooterContainer onClick={item.clickFunction} key={item.id} kind={kind}>
+          <FooterIcon kind={kind}>{item.icon}</FooterIcon>
           <span>{item.label}</span>
         </FooterContainer>
       ))}

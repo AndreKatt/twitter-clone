@@ -64,7 +64,7 @@ export const AddPublicationForm: React.FC<AddPublicationFormProps> = ({
     }
   };
 
-  const handleClickAddTweet = async (): Promise<void> => {
+  const handleClickAddPublication = async (): Promise<void> => {
     const email = window.localStorage.getItem("email");
     const fullname = window.localStorage.getItem("fullname");
     const username = window.localStorage.getItem("username");
@@ -99,6 +99,7 @@ export const AddPublicationForm: React.FC<AddPublicationFormProps> = ({
       setText("");
       setImages([]);
       sessionStorage.removeItem("publicationText");
+      // setAddFormState(AddFormState.NEVER);
     }
 
     setAddFormState(AddFormState.ERROR);
@@ -157,7 +158,7 @@ export const AddPublicationForm: React.FC<AddPublicationFormProps> = ({
           )}
 
           <Button
-            onClick={handleClickAddTweet}
+            onClick={handleClickAddPublication}
             disabled={
               addFormState === AddFormState.LOADING ||
               !text ||

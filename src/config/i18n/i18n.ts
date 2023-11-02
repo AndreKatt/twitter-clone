@@ -78,7 +78,7 @@ i18n
             settings: "Settings",
             buttonLabel: "Tweet",
           },
-          addPublicationForm: {
+          addPublicationTextForm: {
             placeholder: {
               tweet: "What is happening?!",
               reply: "Post your reply",
@@ -123,7 +123,10 @@ i18n
             bookmarks: "Bookmarks",
             profile: {
               registration: "Joined",
-              tooltip: "Set new avtar",
+              tooltip: {
+                avatar: "Set new avtar",
+                photo: "Change photo",
+              },
             },
             followers: "Followers",
             following: "Following",
@@ -222,7 +225,7 @@ i18n
             settings: "Настройки",
             buttonLabel: "Твитнуть",
           },
-          addPublicationForm: {
+          addPublicationTextForm: {
             placeholder: {
               tweet: "Что происходит?!",
               reply: "Опубликовать ответ",
@@ -267,7 +270,10 @@ i18n
             bookmarks: "Закладки",
             profile: {
               registration: "Регистрация:",
-              tooltip: "Добавить новый аватар",
+              tooltip: {
+                avatar: "Добавить новый аватар",
+                photo: "Изменить фото",
+              },
             },
             followers: "Читатели",
             following: "Читает",

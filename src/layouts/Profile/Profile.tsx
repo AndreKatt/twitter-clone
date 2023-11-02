@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Tooltip } from "@mui/material";
 // local libs
+import { HiddenFileInput } from "../../generic/HiddenFileInput/HiddenFileInput";
 import { ProfileAvatar } from "../../components/ProfileAvatar/ProfileAvatar";
 import { Header } from "../../generic/Header/Header";
 import { FollowButton } from "../../generic/FollowButton/FollowButton";
@@ -35,12 +37,21 @@ export const Profile: React.FC = () => {
   const [update, setUpdate] = useState<boolean>(false);
   const { email } = useParams();
   const { t } = useTranslation();
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const dispatch = useAppDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const currentUserData = useSelector(selectCurrentUserData);
   const user = useSelector(selectSelectedUserData);
   const userTweets = useSelector(selectUserTweetsItems);
+
   let isCurrentUser;
+
+  const handleClickImage = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
 
   if (email && currentUser) {
     isCurrentUser = currentUser.email === email;
@@ -68,7 +79,18 @@ export const Profile: React.FC = () => {
           t={t}
           icon
         />
-        <ProfileImage />
+
+        {isCurrentUser ? (
+          <>
+            <HiddenFileInput type="profile" inputRef={inputRef} user={user} />
+
+            <Tooltip arrow title={t("layouts.profile.tooltip.photo")}>
+              <ProfileImage onClick={handleClickImage} />
+            </Tooltip>
+          </>
+        ) : (
+          <ProfileImage />
+        )}
 
         <ProfileButtonsContainer>
           {!isCurrentUser && (

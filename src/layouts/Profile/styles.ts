@@ -1,13 +1,13 @@
 import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 
-export const ProfileImage = styled(Paper)(({ theme }) => ({
+export const ProfileImage = styled("div")(({ theme }) => ({
   height: 200,
   backgroundColor: theme.palette.neutral.dark,
   borderRadius: 0,
+  cursor: "pointer",
 }));
 
 export const ProfileButtonsContainer = styled("div")({

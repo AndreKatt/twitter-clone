@@ -89,7 +89,7 @@ export const Publication: React.FC<PublicationProps & i18nProps> = ({
 
           <PublicationFooter
             publicationData={publicationData}
-            type="publication"
+            kind="publication"
           />
         </TextContentContainer>
       </PublicationDataContainer>

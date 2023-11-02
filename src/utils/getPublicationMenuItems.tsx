@@ -4,11 +4,14 @@ import DriveFile from "@mui/icons-material/DriveFileRenameOutlineOutlined";
 // types
 import type { GetMenuItems } from "./types";
 
-export const getTweetMenuItems: GetMenuItems = (t) => ({
+export const getPublicationMenuItems: GetMenuItems = (t) => ({
   delete: {
     icon: <DeleteOutlinedIcon sx={{ color: "red" }} />,
-    label: `${t("tweet.menuLabels.delete")}`,
+    label: `${t("publication.menuLabels.delete")}`,
   },
-  pin: { icon: <PushPinOutlinedIcon />, label: `${t("tweet.menuLabels.pin")}` },
-  edit: { icon: <DriveFile />, label: `${t("tweet.menuLabels.edit")}` },
+  pin: {
+    icon: <PushPinOutlinedIcon />,
+    label: `${t("publication.menuLabels.pin")}`,
+  },
+  edit: { icon: <DriveFile />, label: `${t("publication.menuLabels.edit")}` },
 });
