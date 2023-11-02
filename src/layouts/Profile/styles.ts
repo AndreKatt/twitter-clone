@@ -2,13 +2,21 @@ import { styled } from "@mui/system";
 import { grey } from "@mui/material/colors";
 import Typography from "@mui/material/Typography";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
+// types
+import type { ProfileImageProps } from "./types";
 
-export const ProfileImage = styled("div")(({ theme }) => ({
-  height: 200,
-  backgroundColor: theme.palette.neutral.dark,
-  borderRadius: 0,
-  cursor: "pointer",
-}));
+export const ProfileImage = styled("div")<ProfileImageProps>(
+  ({ theme, url }) => ({
+    height: 200,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundImage: `url(${url})`,
+    backgroundColor: theme.palette.neutral.dark,
+    borderRadius: 0,
+    cursor: "pointer",
+  })
+);
 
 export const ProfileButtonsContainer = styled("div")({
   display: "flex",

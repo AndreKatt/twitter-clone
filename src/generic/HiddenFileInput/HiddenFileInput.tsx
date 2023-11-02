@@ -25,17 +25,16 @@ export const HiddenFileInput: React.FC<HiddenFileInputProps> = ({
               { blobUrl: URL.createObjectURL(fileObj), file },
             ]);
           }
-
-          if (type === "profile") {
-            if (user) {
-              try {
-                const url = await uploadFiles([file]);
-                await axios.patch(`/api/user/setAvatar/${user._id}`, {
-                  avatarUrl: url[0],
-                });
-              } catch {
-                alert("Не удалось загрузить файл! Попробуйте позже");
-              }
+        } else {
+          if (user && file) {
+            try {
+              const url = await uploadFiles([file]);
+              console.log(`/api/user/${type}/${user._id}`);
+              await axios.patch(`/api/user/${type}/${user._id}`, {
+                imageUrl: url[0],
+              });
+            } catch {
+              alert("Не удалось загрузить файл! Попробуйте позже");
             }
           }
         }
@@ -50,7 +49,7 @@ export const HiddenFileInput: React.FC<HiddenFileInputProps> = ({
       inputRef.current.addEventListener("change", handleChangeFileInput);
     }
     // eslint-disable-next-line
-  }, []);
+  }, [type, inputRef]);
 
   return (
     <input

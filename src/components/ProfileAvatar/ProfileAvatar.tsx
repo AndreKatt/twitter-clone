@@ -26,7 +26,7 @@ export const ProfileAvatar: React.FC<ProfileAvatarProps & i18nProps> = ({
     <AvatarWrapper>
       {isCurrentUser ? (
         <>
-          <HiddenFileInput type="profile" inputRef={inputRef} user={user} />
+          <HiddenFileInput type="setAvatar" inputRef={inputRef} user={user} />
 
           <Tooltip
             arrow

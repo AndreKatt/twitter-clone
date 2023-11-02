@@ -56,6 +56,7 @@ export type SelectedUserData = {
   fullname: string;
   username: string;
   avatarUrl: string;
+  profileImageUrl: string;
   confirmed: boolean;
   createdAt: string;
   following: string[];

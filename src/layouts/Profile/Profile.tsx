@@ -67,7 +67,7 @@ export const Profile: React.FC = () => {
       dispatch(setUserData(undefined));
     };
     // eslint-disable-next-line
-  }, [email, update]);
+  }, [email, update, inputRef]);
 
   if (email && user) {
     return (
@@ -82,14 +82,21 @@ export const Profile: React.FC = () => {
 
         {isCurrentUser ? (
           <>
-            <HiddenFileInput type="profile" inputRef={inputRef} user={user} />
+            <HiddenFileInput
+              type="setProfileImage"
+              inputRef={inputRef}
+              user={user}
+            />
 
             <Tooltip arrow title={t("layouts.profile.tooltip.photo")}>
-              <ProfileImage onClick={handleClickImage} />
+              <ProfileImage
+                url={user.profileImageUrl}
+                onClick={handleClickImage}
+              />
             </Tooltip>
           </>
         ) : (
-          <ProfileImage />
+          <ProfileImage url={user.profileImageUrl} />
         )}
 
         <ProfileButtonsContainer>
