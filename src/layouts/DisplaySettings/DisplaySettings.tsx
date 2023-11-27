@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 // local libs
-import { ColorModeContext } from "../../ColorModeContext";
+import { useColorMode } from "../../ColorModeContext";
 import { Header } from "../../generic/Header/Header";
 import { ThemeButton } from "../../generic/ThemeButton/ThemeButton";
 import { getTitles } from "../../utils/getTitles";
@@ -14,7 +14,8 @@ import { HeaderDescription } from "../../styles";
 
 export const DisplaySettings: React.FC = () => {
   const { palette } = useTheme();
-  const colorMode = useContext(ColorModeContext);
+  const colorMode = useColorMode();
+
   const [value, setValue] = useState<string>(palette.mode);
   const { t } = useTranslation();
 

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
@@ -8,11 +8,15 @@ import { getDesignTokens } from "./theme";
 // types
 import type { ColorModeProviderProps, ToggleColorMode } from "./types";
 
-export const ColorModeContext: React.Context<{
+const ColorModeContext: React.Context<{
   changeColorMode: ToggleColorMode;
 }> = createContext({
   changeColorMode: (changeMode) => {},
 });
+
+export const useColorMode = () => {
+  return useContext(ColorModeContext);
+};
 
 export const ColorModeProvider: React.FC<ColorModeProviderProps> = ({
   children,
