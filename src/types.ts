@@ -1,4 +1,9 @@
 import type { TFunction } from "i18next";
+import { ReactNode } from "react";
+
+export type ColorModeProviderProps = {
+  children: ReactNode;
+};
 
 export type MainUserInfo = {
   email: string;

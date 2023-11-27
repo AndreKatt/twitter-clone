@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
 // local libs
-import { ColorModeContext } from "../../App";
+import { ColorModeContext } from "../../ColorModeContext";
 import { Header } from "../../generic/Header/Header";
 import { ThemeButton } from "../../generic/ThemeButton/ThemeButton";
 import { getTitles } from "../../utils/getTitles";
