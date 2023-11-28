@@ -1,2 +1,2 @@
-# This is Partial<Twitter> WOW!!!!!
+# This is Partial Twitter WOW!!!!!
 not ended yet.......
